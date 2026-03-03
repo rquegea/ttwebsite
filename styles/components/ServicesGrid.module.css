@@ -1,0 +1,52 @@
+/* ServicesGrid — 2×2 cards with hover elevation */
+
+.section {
+  padding: var(--space-32) 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-12);
+}
+
+.card {
+  padding: var(--space-12);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  transition: transform var(--t-base), box-shadow var(--t-base);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+.cardIcon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--space-6);
+  color: var(--color-text-dark);
+}
+
+.cardTitle {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-3);
+  color: var(--color-text-dark);
+}
+
+.cardDescription {
+  font-size: var(--text-body);
+  color: var(--color-text-dim);
+  line-height: var(--leading-body);
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

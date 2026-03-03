@@ -1,0 +1,32 @@
+/* IntroText — heading with muted span */
+
+.section {
+  background-color: #FAFAFA;
+  color: #000000;
+  padding: var(--space-32) 0;
+}
+
+.heading {
+  font-size: var(--text-h2-alt);
+  font-weight: var(--weight-medium);
+  max-width: 800px;
+  margin: 0;
+  font-family: var(--font-body);
+  line-height: var(--leading-heading);
+}
+
+.headingMuted {
+  color: var(--color-text-muted);
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .section {
+    padding: var(--space-16) 0;
+  }
+
+  .heading {
+    font-size: 1.6rem;
+  }
+}

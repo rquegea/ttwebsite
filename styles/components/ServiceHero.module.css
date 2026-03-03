@@ -1,0 +1,54 @@
+/* ServiceHero — light-themed hero for service subpages */
+
+.section {
+  padding: 15rem 0 var(--space-24) 0;
+  text-align: center;
+  background-color: var(--color-bg-primary);
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: var(--weight-medium);
+  margin-bottom: var(--space-4);
+  color: var(--color-text-primary);
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: 0 auto var(--space-6);
+  line-height: var(--leading-heading);
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--color-text-dim);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: var(--leading-relaxed);
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .section {
+    padding: 10rem 0 var(--space-16) 0;
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 8rem 0 var(--space-12) 0;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+}

@@ -1,0 +1,85 @@
+/* FeaturesList — 2-column grid with dim-on-hover pattern */
+
+.section {
+  background-color: #FFFFFF;
+  color: #000000;
+  padding: var(--space-32) 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+/* Dim-on-hover: all items dim, hovered item stays bright */
+.list:hover .item {
+  opacity: 0.3;
+}
+
+.list .item:hover {
+  opacity: 1;
+}
+
+.item {
+  transition: opacity var(--t-base);
+  cursor: pointer;
+  padding: var(--space-4) 0;
+}
+
+.itemTitle {
+  font-family: var(--font-body);
+  font-size: var(--text-h3);
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-2);
+}
+
+.itemDescription {
+  color: var(--color-text-dim);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.multimedia {
+  display: flex;
+  flex-direction: column;
+}
+
+.videoPlaceholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #F0F0F0;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4);
+  background-size: cover;
+  background-position: center;
+}
+
+.videoCaptionTitle {
+  font-family: var(--font-body);
+  font-size: var(--text-h3);
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-2);
+}
+
+.videoCaptionText {
+  color: var(--color-text-dim);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+}

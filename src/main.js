@@ -123,23 +123,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2000);
   }
 
-  // Dynamic Word Cycler in Hero
+  // Dynamic Word Cycler in Hero (bilingual with gender agreement)
   const dynamicWordEl = document.getElementById('dynamic-word');
-  if (dynamicWordEl) {
-    const words = ['brands', 'companies', 'teams', 'tech', 'campaigns', 'creativity'];
+  const dynamicAdjEl = document.getElementById('dynamic-adjective');
+  if (dynamicWordEl && dynamicAdjEl) {
+    const lang = document.documentElement.lang;
+
+    const wordsES = [
+      { word: 'marcas', adj: 'extraordinarias' },
+      { word: 'empresas', adj: 'extraordinarias' },
+      { word: 'equipos', adj: 'extraordinarios' },
+      { word: 'campañas', adj: 'extraordinarias' },
+      { word: 'eventos', adj: 'extraordinarios' },
+      { word: 'tecnología', adj: 'extraordinaria' }
+    ];
+
+    const wordsEN = [
+      { word: 'brands', adj: 'extraordinary' },
+      { word: 'companies', adj: 'extraordinary' },
+      { word: 'teams', adj: 'extraordinary' },
+      { word: 'campaigns', adj: 'extraordinary' },
+      { word: 'events', adj: 'extraordinary' },
+      { word: 'technology', adj: 'extraordinary' }
+    ];
+
+    const words = lang === 'en' ? wordsEN : wordsES;
     let wordIndex = 0;
 
     setInterval(() => {
-      // Fade out
+      // Fade out both
       dynamicWordEl.style.opacity = '0';
+      dynamicAdjEl.style.opacity = '0';
 
       setTimeout(() => {
-        // Change word
+        // Change word and adjective
         wordIndex = (wordIndex + 1) % words.length;
-        dynamicWordEl.textContent = words[wordIndex];
+        dynamicWordEl.textContent = words[wordIndex].word;
+        dynamicAdjEl.textContent = words[wordIndex].adj;
 
-        // Fade in
+        // Fade in both
         dynamicWordEl.style.opacity = '1';
+        dynamicAdjEl.style.opacity = '1';
       }, 400); // Wait for fade out transition (0.4s)
     }, 3000); // Change every 3s
   }

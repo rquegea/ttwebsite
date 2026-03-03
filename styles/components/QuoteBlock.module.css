@@ -1,0 +1,47 @@
+/* QuoteBlock — full-width centered quote */
+
+.section {
+  padding: var(--space-24) 0;
+  text-align: center;
+  background-color: var(--color-bg-surface-alt);
+}
+
+.quoteMark {
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  color: var(--color-text-subtle);
+  line-height: 1;
+  margin-bottom: var(--space-4);
+}
+
+.quote {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-style: italic;
+  line-height: var(--leading-heading);
+  color: var(--color-text-dark-alt);
+  max-width: 800px;
+  margin: 0 auto var(--space-8);
+}
+
+.author {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-dark);
+}
+
+.authorRole {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .quote {
+    font-size: 1.3rem;
+  }
+}

@@ -1,0 +1,78 @@
+/* Footer — always dark regardless of page theme */
+
+.footer {
+  background-color: #0D0D0D;
+  padding: var(--space-16) 0;
+  border-top: 1px solid #1A1A1A;
+  color: #FFFFFF;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-16);
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: var(--weight-semibold);
+  color: #FFFFFF;
+}
+
+.links {
+  display: flex;
+  gap: var(--space-16);
+}
+
+/* Dim-on-hover: all links dim, hovered link stays bright */
+.links:hover .columnLink {
+  color: var(--color-text-dimmer);
+}
+
+.links .columnLink:hover {
+  color: #FFFFFF;
+}
+
+.columnTitle {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+  font-weight: var(--weight-medium);
+}
+
+.columnList {
+  list-style: none;
+}
+
+.columnItem {
+  margin-bottom: var(--space-4);
+}
+
+.columnLink {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  transition: color var(--t-base);
+}
+
+.bottom {
+  border-top: 1px solid #1A1A1A;
+  padding-top: var(--space-8);
+  color: var(--color-text-muted);
+  font-size: var(--text-small);
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .top {
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+
+  .links {
+    flex-wrap: wrap;
+    gap: var(--space-8);
+  }
+}

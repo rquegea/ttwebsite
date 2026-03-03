@@ -1,0 +1,111 @@
+/* Header — adapts to dark/light via --header-* tokens */
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-header);
+  padding: var(--space-8) 0;
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  transition: background-color var(--t-base);
+}
+
+.header:hover {
+  background-color: var(--header-bg-hover);
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.5px;
+  color: var(--header-logo);
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: var(--space-10);
+}
+
+.navGlider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background-color: var(--header-glider);
+  transition: all var(--t-glider);
+  opacity: 0;
+  pointer-events: none;
+  z-index: var(--z-glider);
+}
+
+.navLink {
+  font-size: var(--text-body);
+  color: var(--header-text);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 450;
+  padding-bottom: var(--space-10);
+  margin-bottom: calc(-1 * var(--space-10));
+}
+
+.navLink:hover {
+  color: var(--header-text-hover);
+}
+
+.hasDropdown > a svg {
+  transition: transform var(--t-base);
+}
+
+.hasDropdown:hover > a svg {
+  transform: rotate(180deg);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.loginLink {
+  color: var(--header-text);
+  font-size: var(--text-body);
+}
+
+.loginLink:hover {
+  color: var(--header-text-hover);
+}
+
+.mobileMenuBtn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--header-logo);
+  cursor: pointer;
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .nav {
+    display: none;
+  }
+
+  .mobileMenuBtn {
+    display: block;
+  }
+
+  .login {
+    display: none;
+  }
+}

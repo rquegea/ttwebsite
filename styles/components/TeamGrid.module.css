@@ -1,0 +1,61 @@
+/* TeamGrid — team member cards in 4-column grid */
+
+.section {
+  padding: var(--space-32) 0;
+  background-color: var(--color-bg-surface-alt);
+}
+
+.sectionTitle {
+  font-size: var(--text-h2-alt);
+  font-weight: var(--weight-medium);
+  text-align: center;
+  margin-bottom: var(--space-16);
+  color: var(--color-text-dark);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-12);
+}
+
+.member {
+  text-align: center;
+}
+
+.photo {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: var(--space-4);
+}
+
+.name {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-1);
+}
+
+.role {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+}

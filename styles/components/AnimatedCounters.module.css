@@ -1,0 +1,53 @@
+/* AnimatedCounters — numeric stats in 4-column grid */
+
+.section {
+  padding: var(--space-24) 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-8);
+  text-align: center;
+}
+
+.item {
+  padding: var(--space-8);
+}
+
+.number {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: var(--weight-normal);
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-2);
+  line-height: 1;
+}
+
+/* Animation class applied by IntersectionObserver */
+.numberAnimated {
+  animation: countUp 0.6s ease-out forwards;
+}
+
+.label {
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .number {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .number {
+    font-size: 2.2rem;
+  }
+}

@@ -1,0 +1,51 @@
+/* Button — primary, outline, outlineDark */
+
+.primary {
+  background-color: #FFFFFF;
+  color: #0A0A0A;
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-sm);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-h3);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: background-color var(--t-fast);
+}
+
+.primary:hover {
+  background-color: #E0E0E0;
+}
+
+.outline {
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 1px solid var(--color-border-accent);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: var(--font-body);
+  white-space: nowrap;
+  transition: border-color var(--t-fast);
+}
+
+.outline:hover {
+  border-color: #FFFFFF;
+}
+
+.outlineDark {
+  background-color: transparent;
+  color: #000000;
+  border: 1px solid var(--color-text-subtle);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: border-color var(--t-fast);
+}
+
+.outlineDark:hover {
+  border-color: #000000;
+}

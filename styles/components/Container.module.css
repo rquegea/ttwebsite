@@ -1,0 +1,13 @@
+/* Container — max-width wrapper */
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 var(--container-pad-mobile);
+  }
+}

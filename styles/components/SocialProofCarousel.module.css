@@ -1,0 +1,53 @@
+/* SocialProofCarousel — infinite scroll logo bar */
+
+.socialProof {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  padding: var(--space-8) 0;
+  z-index: var(--z-overlay);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.carouselWrapper {
+  flex: 1;
+  overflow: hidden;
+  margin-right: var(--space-8);
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.logosCarousel {
+  display: flex;
+  gap: var(--space-16);
+  align-items: center;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+}
+
+.clientLogoImg {
+  height: 30px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .content {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .carouselWrapper {
+    margin-right: 0;
+  }
+}

@@ -1,0 +1,61 @@
+/* LogoGrid — responsive client logo grid */
+
+.section {
+  padding: var(--space-32) 0;
+}
+
+.sectionTitle {
+  font-size: var(--text-h2-alt);
+  font-weight: var(--weight-medium);
+  text-align: center;
+  margin-bottom: var(--space-16);
+  color: var(--color-text-dark);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-8);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  aspect-ratio: 16 / 9;
+  transition: border-color var(--t-base);
+}
+
+.item:hover {
+  border-color: var(--color-text-dark-muted);
+}
+
+.logo {
+  max-height: 40px;
+  width: auto;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: filter var(--t-base), opacity var(--t-base);
+}
+
+.item:hover .logo {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,87 @@
+/* UseCasesCarousel — vertical rotating carousel with mask */
+
+.section {
+  background-color: #FAFAFA;
+  color: #000000;
+  padding: var(--space-32) 0;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  flex: 1;
+  text-align: left;
+  font-weight: var(--weight-medium);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+}
+
+.center {
+  flex: 2;
+  font-family: var(--font-heading);
+  font-size: var(--text-h2-alt);
+  height: 280px;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.track {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.trackItem {
+  padding: var(--space-4) 0;
+  color: var(--color-text-subtle);
+  transition: all var(--t-base);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+}
+
+.trackItemActive {
+  color: #000000 !important;
+  font-weight: var(--weight-normal) !important;
+  opacity: 1 !important;
+  font-size: 2.8rem !important;
+}
+
+.right {
+  flex: 1;
+  text-align: right;
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    gap: var(--space-12);
+    text-align: center;
+  }
+
+  .left {
+    text-align: center;
+  }
+
+  .right {
+    text-align: center;
+  }
+}
