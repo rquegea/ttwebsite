@@ -1,4 +1,4 @@
-import "/style.css?t=1771935251564";
+
 
 document.addEventListener('DOMContentLoaded', () => {
   // Mobile Menu Overlay Toggle
@@ -59,76 +59,68 @@ document.addEventListener('DOMContentLoaded', () => {
   // Vertical Carousel functionality
   const track = document.getElementById('use-cases-track');
   if (track) {
-    let originalItems = Array.from(track.children);
-    const originalLength = originalItems.length;
+    const originalItemsList = Array.from(track.children);
+    const originalLength = originalItemsList.length;
+    const itemHeight = 80;
 
-    // Clone all items to create an infinite buffer before and after
-    const fragmentBefore = document.createDocumentFragment();
-    const fragmentAfter = document.createDocumentFragment();
+    // Clone all items multiple times so we have infinite scroll buffer before and after
+    originalItemsList.forEach(item => track.appendChild(item.cloneNode(true)));
+    originalItemsList.forEach(item => track.appendChild(item.cloneNode(true)));
+    originalItemsList.forEach(item => track.appendChild(item.cloneNode(true)));
 
-    originalItems.forEach(item => {
-      fragmentBefore.appendChild(item.cloneNode(true));
-      fragmentAfter.appendChild(item.cloneNode(true));
-    });
+    // Refresh the node list with the clones
+    const allItems = Array.from(track.children);
 
-    track.insertBefore(fragmentBefore, track.firstChild);
-    track.appendChild(fragmentAfter);
-
-    const items = Array.from(track.children);
-    // Start strictly in the middle set (which is the true original set)
+    // Start pointing at the first item of the SECOND cloned batch to ensure we have elements above it.
+    // That means index = originalLength. We don't start at 0 so it's surrounded by content instantly.
     let currentIndex = originalLength;
 
     const updateCarousel = (animate = true) => {
-      if (items.length === 0) return;
+      // 1) Update active classes
+      allItems.forEach((it, idx) => {
+        // Light up the current one, AND any corresponding clones so math doesn't skew heights
+        if (idx % originalLength === currentIndex % originalLength) {
+          it.classList.add('is-active');
+        } else {
+          it.classList.remove('is-active');
+        }
+      });
 
+      // 2) Scroll track vertically
       if (!animate) {
         track.style.transition = 'none';
       } else {
-        track.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+        track.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
       }
 
-      const item = items[currentIndex];
-
-      const itemCenterLine = item.offsetTop + (item.offsetHeight / 2);
-      const windowCenterLine = track.parentElement.offsetHeight / 2;
-      const translateY = windowCenterLine - itemCenterLine;
+      // Viewport container is exactly 280px tall. Visual center is at 140px.
+      // Top of track to top of current item = currentIndex * 80
+      // Center of current item = (currentIndex * 80) + 40
+      // We want this center point to sit at 140px from the top of the container
+      const translateY = 140 - ((currentIndex * itemHeight) + (itemHeight / 2));
 
       track.style.transform = `translateY(${translateY}px)`;
-
-      // Update active classes
-      items.forEach((it, idx) => {
-        // Because of cloning, sometimes items have the same text, but we only light up the exact active one.
-        if (idx === currentIndex) {
-          it.classList.add('active');
-        } else {
-          it.classList.remove('active');
-        }
-      });
     };
 
-    // Initialize display position immediately after font load or next tick
-    requestAnimationFrame(() => updateCarousel(false));
+    // Execute instantly for layout on frame 0
+    updateCarousel(false);
 
-    // Some fonts might change heights, so recalculate just in case
-    setTimeout(() => updateCarousel(false), 100);
-
-    // Auto loop infinitely
+    // Run carousel
     setInterval(() => {
       currentIndex++;
       updateCarousel(true);
 
-      // If we've scrolled into the cloned post-region
-      // we teleport back perfectly seamlessly to the middle region after the transition finishes
-      if (currentIndex === (originalLength * 2)) {
+      // If we've scrolled fully to the end of the second batch
+      if (currentIndex === originalLength * 2) {
+        // Wait exactly 500ms for CSS transition to visually stop, then silently teleport back one full batch length
         setTimeout(() => {
-          currentIndex = originalLength;
-          updateCarousel(false);
-        }, 600); // 600ms is the CSS transition duration
+          if (currentIndex === originalLength * 2) { // just safety check
+            currentIndex = originalLength;
+            updateCarousel(false);
+          }
+        }, 550);
       }
-    }, 2500);
-
-    // Update on window resize to keep it centered
-    window.addEventListener('resize', () => updateCarousel(false));
+    }, 2000);
   }
 
   // Dynamic Word Cycler in Hero
