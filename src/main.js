@@ -123,48 +123,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2000);
   }
 
+  // Scroll Reveal — IntersectionObserver
+  const revealEls = document.querySelectorAll('.reveal');
+  if (revealEls.length) {
+    const revealObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+  }
+
   // Dynamic Word Cycler in Hero (bilingual with gender agreement)
   const dynamicWordEl = document.getElementById('dynamic-word');
   const dynamicAdjEl = document.getElementById('dynamic-adjective');
   if (dynamicWordEl && dynamicAdjEl) {
-    const lang = document.documentElement.lang;
-
-    const wordsES = [
-      { word: 'marcas', adj: 'extraordinarias' },
-      { word: 'empresas', adj: 'extraordinarias' },
-      { word: 'equipos', adj: 'extraordinarios' },
-      { word: 'campañas', adj: 'extraordinarias' },
-      { word: 'eventos', adj: 'extraordinarios' },
-      { word: 'tecnología', adj: 'extraordinaria' }
-    ];
-
-    const wordsEN = [
-      { word: 'brands', adj: 'extraordinary' },
-      { word: 'companies', adj: 'extraordinary' },
-      { word: 'teams', adj: 'extraordinary' },
-      { word: 'campaigns', adj: 'extraordinary' },
-      { word: 'events', adj: 'extraordinary' },
-      { word: 'technology', adj: 'extraordinary' }
-    ];
-
-    const words = lang === 'en' ? wordsEN : wordsES;
+    const words = ['brands', 'technology', 'events', 'tech'];
     let wordIndex = 0;
 
     setInterval(() => {
-      // Fade out both
       dynamicWordEl.style.opacity = '0';
-      dynamicAdjEl.style.opacity = '0';
 
       setTimeout(() => {
-        // Change word and adjective
         wordIndex = (wordIndex + 1) % words.length;
-        dynamicWordEl.textContent = words[wordIndex].word;
-        dynamicAdjEl.textContent = words[wordIndex].adj;
-
-        // Fade in both
+        dynamicWordEl.textContent = words[wordIndex];
         dynamicWordEl.style.opacity = '1';
-        dynamicAdjEl.style.opacity = '1';
-      }, 400); // Wait for fade out transition (0.4s)
-    }, 3000); // Change every 3s
+      }, 400);
+    }, 3000);
   }
 });

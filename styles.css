@@ -41,10 +41,32 @@ a {
     width: 100%;
     z-index: 100;
     padding: 2rem 0;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    border-bottom: 1px solid transparent;
 }
 
 .header:hover {
+    background-color: #FFFFFF;
+    border-bottom-color: #EAEAEA;
+}
+
+.header:hover .logo {
+    color: #0A0A0A;
+}
+
+.header:hover .nav a {
+    color: #0A0A0A;
+}
+
+.header:hover .nav a:hover {
+    color: #666666;
+}
+
+.header:hover .login a {
+    color: #0A0A0A;
+}
+
+.header:hover .nav-glider {
     background-color: #0A0A0A;
 }
 
@@ -52,6 +74,8 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 100%;
+    padding: 0 3rem;
 }
 
 .logo {
@@ -99,14 +123,15 @@ a {
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: #0A0A0A;
+    background-color: #FFFFFF;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: all 0.2s ease;
-    padding: 4rem 0;
-    border-top: 1px solid #1A1A1A;
-    border-bottom: 1px solid #1A1A1A;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    padding: 3rem 0 4rem;
+    border-top: 1px solid #EAEAEA;
+    border-bottom: 1px solid #EAEAEA;
     z-index: 150;
 }
 
@@ -114,6 +139,7 @@ a {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+    transform: translateY(0);
 }
 
 .has-dropdown>a svg {
@@ -267,6 +293,76 @@ a {
     color: #666666;
     font-size: 0.95rem;
     line-height: 1.5;
+}
+
+/* Mega-menu feature items — Harvey style */
+.mega-menu .features-list {
+    gap: 0;
+}
+
+.mega-menu .feature-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 1rem;
+    padding: 2rem 0;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.mega-menu .feature-item h3 {
+    grid-column: 1;
+    color: #000000;
+    margin-bottom: 0.25rem;
+}
+
+.mega-menu .feature-item p {
+    grid-column: 1;
+    color: #888888;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.mega-menu .feature-item .arrow {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    color: #CCCCCC;
+    font-size: 1.2rem;
+    line-height: 1;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.mega-menu .feature-item:hover .arrow {
+    opacity: 1;
+    color: #000000;
+    transform: translateX(4px);
+}
+
+/* Dim on hover — mega-menu */
+.mega-menu .features-list:hover .feature-item {
+    opacity: 0.3;
+}
+
+.mega-menu .features-list:hover .feature-item:hover {
+    opacity: 1;
+}
+
+/* Mega-menu multimedia */
+.mega-menu .video-placeholder {
+    background-color: #F5F5F5;
+}
+
+.mega-menu .video-caption h4 {
+    color: #000000;
+}
+
+.mega-menu .video-caption p {
+    color: #888888;
+}
+
+.mega-menu-multimedia {
+    transition: opacity 0.3s ease;
 }
 
 .video-placeholder {
@@ -651,11 +747,12 @@ a {
 
 .light-theme .header {
     background-color: #FFFFFF;
-    border-bottom: 1px solid #EAEAEA;
+    border-bottom-color: #EAEAEA;
 }
 
 .light-theme .header:hover {
     background-color: #FFFFFF;
+    border-bottom-color: #EAEAEA;
 }
 
 .light-theme .logo,
@@ -674,6 +771,8 @@ a {
     background-color: #0A0A0A;
 }
 
+/* light-theme mega-menu inherits white from base — no override needed */
+
 .light-theme main {
     padding-top: 15rem;
     min-height: 80vh;
@@ -686,7 +785,7 @@ a {
 }
 
 /* ============================================
-   SERVICE LANDING PAGES
+   VERTICAL LANDING PAGES (/think/, /tech/, etc.)
    ============================================ */
 
 /* Service Hero */
@@ -913,7 +1012,7 @@ a {
     opacity: 1;
 }
 
-/* Service Pages Responsive */
+/* Vertical Landing Responsive */
 @media (max-width: 1024px) {
     .service-hero {
         padding: 10rem 0 4rem 0;
@@ -921,6 +1020,10 @@ a {
 
     .service-hero h1 {
         font-size: 2.5rem;
+    }
+
+    .services-grid-inner {
+        grid-template-columns: 1fr;
     }
 
     .logos-grid {
@@ -935,10 +1038,6 @@ a {
 
     .service-hero h1 {
         font-size: 1.8rem;
-    }
-
-    .services-grid-inner {
-        grid-template-columns: 1fr;
     }
 
     .methodology-steps {
@@ -971,37 +1070,146 @@ a {
     .logos-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
-    .container {
-        padding: 0 1.5rem;
-    }
 }
 
 /* ============================================
-   SERVICE SUBPAGES (individual service detail)
+   SUBPAGE — Harvey-style redesign
    ============================================ */
 
-/* Capabilities Section */
-.capabilities {
-    padding: 6rem 0;
-    background-color: #FFFFFF;
-    border-top: 1px solid #EAEAEA;
+/* 1. Hero */
+.subpage-hero {
+    padding: 12rem 0 4rem;
+    text-align: left;
+    background: #FFFFFF;
 }
 
-.capabilities h2 {
-    font-size: 2.2rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
+.subpage-hero .breadcrumb {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: #888888;
+    margin-bottom: 2rem;
+}
+
+.subpage-hero .breadcrumb a {
+    color: #888888;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.subpage-hero .breadcrumb a:hover {
     color: #0A0A0A;
 }
 
-.capabilities .section-intro {
+.subpage-hero .breadcrumb span {
+    margin: 0 0.5rem;
+    color: #CCCCCC;
+}
+
+.subpage-hero .breadcrumb .current {
+    color: #0A0A0A;
+    font-weight: 500;
+}
+
+.subpage-hero h1 {
+    font-family: 'Lora', serif;
+    font-size: 4.5rem;
+    font-weight: 400;
+    line-height: 1.1;
+    max-width: 900px;
+    margin: 0;
+    color: #0A0A0A;
+}
+
+/* 2. Showcase */
+.subpage-showcase {
+    background: #FFFFFF;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.subpage-showcase .showcase-image {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    background: #1A1A1A;
+}
+
+/* 3. Split sections — 2 columns with stacked features */
+.subpage-split {
+    padding: 6rem 0;
+    background-color: #FFFFFF;
+}
+
+.subpage-split .split-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.subpage-split.reversed .split-grid {
+    grid-template-columns: 1fr 1.4fr;
+}
+
+.split-media {
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: #0A0A0A;
+}
+
+.split-media-light {
+    background: #F0F0F0;
+}
+
+.feature-stack {
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-stack-item {
+    padding: 2rem 0;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.feature-stack-item:first-child {
+    padding-top: 0;
+}
+
+.feature-stack-item:last-child {
+    border-bottom: none;
+}
+
+.feature-stack-item h3 {
     font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #0A0A0A;
+}
+
+.feature-stack-item p {
     font-size: 0.95rem;
-    color: #666666;
-    max-width: 600px;
     line-height: 1.6;
+    color: #666666;
+}
+
+/* 4. Capabilities */
+.subpage-capabilities {
+    padding: 6rem 0;
+    background-color: #FAFAFA;
+}
+
+.subpage-capabilities h2 {
+    font-family: 'Lora', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    max-width: 700px;
+    line-height: 1.3;
     margin-bottom: 3rem;
+    color: #0A0A0A;
 }
 
 .capabilities-grid {
@@ -1014,6 +1222,7 @@ a {
     padding: 2rem;
     border: 1px solid #EAEAEA;
     border-radius: 8px;
+    background: #FFFFFF;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -1036,95 +1245,49 @@ a {
     line-height: 1.5;
 }
 
-/* Why T&T Section */
-.why-tyt {
-    padding: 6rem 0;
-    background-color: #FAFAFA;
-}
-
-.why-tyt h2 {
-    font-size: 2.2rem;
-    font-weight: 500;
-    margin-bottom: 3rem;
-    color: #0A0A0A;
-}
-
-.differentiators {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-}
-
-.differentiator {
-    position: relative;
-}
-
-.differentiator-number {
-    font-family: 'Lora', serif;
-    font-size: 2.5rem;
-    color: #CCCCCC;
-    line-height: 1;
-    margin-bottom: 1rem;
-}
-
-.differentiator h3 {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #0A0A0A;
-}
-
-.differentiator p {
-    font-size: 0.9rem;
-    color: #666666;
-    line-height: 1.5;
-}
-
-/* Projects Section */
-.projects {
+/* 5. Projects */
+.subpage-projects {
     padding: 6rem 0;
     background-color: #FFFFFF;
 }
 
-.projects h2 {
+.subpage-projects h2 {
+    font-family: 'Lora', serif;
     font-size: 2.2rem;
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 3rem;
     color: #0A0A0A;
 }
 
-.projects-grid {
+.subpage-projects-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
 }
 
-.project-card {
+.subpage-project-card {
     border: 1px solid #EAEAEA;
     border-radius: 8px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.project-card:hover {
+.subpage-project-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
 }
 
-.project-card-image {
+.subpage-project-card .project-image {
     width: 100%;
-    aspect-ratio: 16 / 10;
-    background-color: #F0F0F0;
-    background-size: cover;
-    background-position: center;
+    aspect-ratio: 16/10;
+    background-color: #1A1A1A;
 }
 
-.project-card-body {
+.subpage-project-card .project-body {
     padding: 1.5rem;
 }
 
-.project-card-sector {
+.subpage-project-card .project-tag {
     font-family: 'Inter', sans-serif;
     font-size: 0.75rem;
     font-weight: 500;
@@ -1134,7 +1297,7 @@ a {
     margin-bottom: 0.5rem;
 }
 
-.project-card-body h3 {
+.subpage-project-card .project-body h3 {
     font-family: 'Inter', sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
@@ -1142,35 +1305,136 @@ a {
     color: #0A0A0A;
 }
 
-.project-card-body p {
+.subpage-project-card .project-body p {
     font-size: 0.9rem;
     color: #666666;
     line-height: 1.5;
 }
 
-/* Service Subpages Responsive */
+/* 6. FAQ */
+.subpage-faq {
+    padding: 6rem 0;
+    background-color: #FFFFFF;
+}
+
+.subpage-faq .faq-inner {
+    max-width: 800px;
+}
+
+.subpage-faq h2 {
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    color: #0A0A0A;
+}
+
+.subpage-faq details {
+    border-bottom: 1px solid #EAEAEA;
+    padding: 1.5rem 0;
+}
+
+.subpage-faq details:first-of-type {
+    border-top: 1px solid #EAEAEA;
+}
+
+.subpage-faq summary {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    list-style: none;
+    color: #0A0A0A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subpage-faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.subpage-faq summary::after {
+    content: '+';
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: #888888;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.subpage-faq details[open] summary::after {
+    content: '−';
+}
+
+.subpage-faq details[open] summary {
+    margin-bottom: 1rem;
+}
+
+.subpage-faq details p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #666666;
+    padding-right: 2rem;
+}
+
+/* Scroll Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Subpage Responsive */
 @media (max-width: 1024px) {
-    .capabilities-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .subpage-hero h1 {
+        font-size: 3.5rem;
     }
 
-    .differentiators {
+    .subpage-split .split-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
 
-    .projects-grid {
+    .subpage-split.reversed .split-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .capabilities-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .subpage-projects-grid {
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 768px) {
+    .subpage-hero {
+        padding: 8rem 0 3rem;
+    }
+
+    .subpage-hero h1 {
+        font-size: 2.8rem;
+    }
+
     .capabilities-grid {
         grid-template-columns: 1fr;
     }
 
-    .projects-grid {
-        grid-template-columns: 1fr;
+    .container {
+        padding: 0 1.5rem;
     }
 }
 
