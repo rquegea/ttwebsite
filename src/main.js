@@ -25,24 +25,47 @@ document.addEventListener('DOMContentLoaded', () => {
   const navItems = document.querySelectorAll('.nav > ul > li:not(.nav-glider)');
 
   if (navContainer && navGlider && headerContainer) {
+    let hideTimeout = null;
+
     navItems.forEach(item => {
       item.addEventListener('mouseenter', () => {
-        // Calculate dimensions relative to the nav container
+        if (hideTimeout) { clearTimeout(hideTimeout); hideTimeout = null; }
         const liRect = item.getBoundingClientRect();
         const headerRect = headerContainer.getBoundingClientRect();
-
-        // Update slider position and width
         navGlider.style.width = `${liRect.width}px`;
         navGlider.style.transform = `translateX(${liRect.left - headerRect.left}px)`;
         navGlider.style.opacity = '1';
       });
     });
 
-    // Hide slider when leaving the ul navigation area
-    navContainer.addEventListener('mouseleave', () => {
-      navGlider.style.opacity = '0';
+    // Cancel hide when re-entering nav area (covers gaps between li's)
+    navContainer.addEventListener('mouseenter', () => {
+      if (hideTimeout) { clearTimeout(hideTimeout); hideTimeout = null; }
+    });
+
+    headerContainer.addEventListener('mouseleave', () => {
+      hideTimeout = setTimeout(() => { navGlider.style.opacity = '0'; }, 150);
     });
   }
+
+  // Mega-menu JS control with timeout (replaces CSS :hover)
+  const dropdowns = document.querySelectorAll('.has-dropdown');
+  let menuCloseTimeout = null;
+
+  dropdowns.forEach(dropdown => {
+    dropdown.addEventListener('mouseenter', () => {
+      if (menuCloseTimeout) { clearTimeout(menuCloseTimeout); menuCloseTimeout = null; }
+      // Close all other dropdowns
+      dropdowns.forEach(d => { if (d !== dropdown) d.classList.remove('is-open'); });
+      dropdown.classList.add('is-open');
+    });
+
+    dropdown.addEventListener('mouseleave', () => {
+      menuCloseTimeout = setTimeout(() => {
+        dropdown.classList.remove('is-open');
+      }, 150);
+    });
+  });
 
   // Feature items interactivity
   const featureItems = document.querySelectorAll('.feature-item');
