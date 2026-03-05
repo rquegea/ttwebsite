@@ -67,7 +67,7 @@ a {
 }
 
 .header:hover .nav-glider {
-    background-color: #0A0A0A;
+    background-color: #7B1C2E;
 }
 
 .header-container {
@@ -408,6 +408,8 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    max-width: 100%;
+    padding: 0 3rem;
 }
 
 .carousel-wrapper {
@@ -899,7 +901,7 @@ a {
 }
 
 .light-theme .nav-glider {
-    background-color: #0A0A0A;
+    background-color: #7B1C2E;
 }
 
 /* light-theme mega-menu inherits white from base — no override needed */

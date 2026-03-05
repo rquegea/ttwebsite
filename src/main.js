@@ -138,6 +138,23 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach(el => revealObserver.observe(el));
   }
 
+  // Dynamic Word Cycler in CTA Banner
+  const ctaDynamicWordEl = document.getElementById('cta-dynamic-word');
+  if (ctaDynamicWordEl) {
+    const ctaWords = ['brand', 'evento'];
+    let ctaWordIndex = 0;
+
+    setInterval(() => {
+      ctaDynamicWordEl.style.opacity = '0';
+
+      setTimeout(() => {
+        ctaWordIndex = (ctaWordIndex + 1) % ctaWords.length;
+        ctaDynamicWordEl.textContent = ctaWords[ctaWordIndex];
+        ctaDynamicWordEl.style.opacity = '1';
+      }, 400);
+    }, 3000);
+  }
+
   // Dynamic Word Cycler in Hero (bilingual with gender agreement)
   const dynamicWordEl = document.getElementById('dynamic-word');
   const dynamicAdjEl = document.getElementById('dynamic-adjective');
