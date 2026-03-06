@@ -24,6 +24,11 @@ function extractBody(html: string): string {
   return match ? match[1] : html;
 }
 
+function extractBodyClass(html: string): string {
+  const match = html.match(/<body[^>]*class="([^"]*)"/i);
+  return match ? match[1] : '';
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang, slug = [] } = params;
   const htmlPath = getHtmlPath(lang, slug);
@@ -46,6 +51,7 @@ export default function Page({ params }: Props) {
 
   const html = fs.readFileSync(htmlPath, 'utf-8');
   const bodyContent = extractBody(html);
+  const bodyClass = extractBodyClass(html);
 
-  return <div dangerouslySetInnerHTML={{ __html: bodyContent }} />;
+  return <div className={bodyClass} dangerouslySetInnerHTML={{ __html: bodyContent }} />;
 }

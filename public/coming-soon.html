@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T&T — Coming Soon</title>
+  <meta name="description" content="T&T (Truco y Trufa) - Estamos renovando nuestra web. Empresa de marketing, comunicación y transformación en Madrid.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #ffffff;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      font-family: 'Press Start 2P', monospace;
+      color: #0a0a0a;
+    }
+
+    /* Scanlines overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
+      );
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    canvas {
+      display: block;
+      position: fixed;
+      inset: 0;
+    }
+
+    /* Center logo + text */
+    .center-content {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .logo-img {
+      width: 140px;
+      height: auto;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { filter: drop-shadow(0 0 10px rgba(183, 65, 40, 0.2)); }
+      50% { filter: drop-shadow(0 0 25px rgba(183, 65, 40, 0.5)); }
+    }
+
+    .coming-soon {
+      font-size: clamp(18px, 4vw, 36px);
+      margin-top: 24px;
+      letter-spacing: 4px;
+      color: #0a0a0a;
+      text-shadow: 2px 2px 0 rgba(183, 65, 40, 0.15);
+      animation: flicker 4s linear infinite;
+    }
+
+    @keyframes flicker {
+      0%, 95%, 100% { opacity: 1; }
+      96% { opacity: 0.8; }
+      97% { opacity: 1; }
+      98% { opacity: 0.6; }
+      99% { opacity: 1; }
+    }
+
+    .tagline {
+      font-size: clamp(6px, 1.5vw, 12px);
+      margin-top: 16px;
+      color: #B74128;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      height: 1.5em;
+      white-space: nowrap;
+    }
+
+    .tagline .word-rotate {
+      display: inline-block;
+      min-width: 50px;
+      transition: opacity 0.4s ease;
+    }
+
+    .contact {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 10;
+      pointer-events: auto;
+    }
+
+    .contact p {
+      font-size: clamp(6px, 1.2vw, 10px);
+      color: #999;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    .contact a {
+      color: #B74128;
+      text-decoration: none;
+      font-size: clamp(7px, 1.3vw, 11px);
+      letter-spacing: 1px;
+      transition: color 0.3s;
+      word-break: break-all;
+    }
+
+    .contact a:hover {
+      color: #0a0a0a;
+    }
+
+    /* Score display */
+    .score {
+      position: fixed;
+      top: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      font-size: clamp(16px, 3vw, 32px);
+      color: #ddd;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    /* Insert coin blink */
+    .insert-coin {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: clamp(7px, 1.2vw, 10px);
+      color: #B74128;
+      letter-spacing: 2px;
+      z-index: 10;
+      animation: blink 1.2s step-end infinite;
+      pointer-events: auto;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: 'Press Start 2P', monospace;
+      padding: 10px 20px;
+      transition: color 0.2s;
+    }
+
+    .insert-coin:hover {
+      color: #0a0a0a;
+      animation: none;
+    }
+
+    /* Player mode indicator */
+    .player-mode {
+      position: fixed;
+      top: 55px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: clamp(6px, 1vw, 9px);
+      color: #B74128;
+      letter-spacing: 2px;
+      z-index: 10;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .player-mode.active {
+      opacity: 1;
+    }
+
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    @media (max-width: 600px) {
+      .logo-img { width: 80px; }
+      .score { gap: 40px; font-size: 16px; top: 10px; }
+      .coming-soon { font-size: 16px; margin-top: 16px; letter-spacing: 2px; }
+      .tagline { font-size: 6px; letter-spacing: 1px; margin-top: 10px; }
+      .insert-coin { font-size: 6px; bottom: 65px; letter-spacing: 1px; padding: 8px 12px; }
+      .player-mode { top: 40px; font-size: 5px; }
+      .contact { bottom: 20px; width: 90%; }
+      .contact p { font-size: 6px; }
+      .contact a { font-size: 7px; }
+      .center-content { width: 90%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Score -->
+  <div class="score">
+    <span id="score-left">0</span>
+    <span id="score-right">0</span>
+  </div>
+
+  <!-- Center content -->
+  <div class="center-content">
+    <img src="/logos/tyt80s.png" alt="T&T" class="logo-img">
+    <div class="coming-soon">COMING SOON</div>
+    <div class="tagline">WE MAKE <span class="word-rotate" id="rotating-word">BRANDS</span> EXTRAORDINARY</div>
+  </div>
+
+  <!-- Insert coin -->
+  <button class="insert-coin" id="insert-coin">INSERT COIN TO PLAY</button>
+
+  <!-- Player mode indicator -->
+  <div class="player-mode" id="player-mode">PLAYER 1 — MOVE YOUR MOUSE / TOUCH</div>
+
+  <!-- Contact -->
+  <div class="contact">
+    <p>MIENTRAS TANTO, ESCRÍBENOS</p>
+    <a href="mailto:trucoytrufa@trucoytrufa.es">trucoytrufa@trucoytrufa.es</a>
+  </div>
+
+  <!-- Pong canvas -->
+  <canvas id="pong"></canvas>
+
+  <script>
+    // --- Rotating words ---
+    const words = ['BRANDS', 'EVENTS', 'TECH', 'IDEAS', 'TEAMS'];
+    let wordIndex = 0;
+    const rotatingWord = document.getElementById('rotating-word');
+
+    setInterval(() => {
+      rotatingWord.style.opacity = '0';
+      setTimeout(() => {
+        wordIndex = (wordIndex + 1) % words.length;
+        rotatingWord.textContent = words[wordIndex];
+        rotatingWord.style.opacity = '1';
+      }, 400);
+    }, 2500);
+
+    // --- Pong game ---
+    const canvas = document.getElementById('pong');
+    const ctx = canvas.getContext('2d');
+    const scoreLeftEl = document.getElementById('score-left');
+    const scoreRightEl = document.getElementById('score-right');
+    const insertCoinBtn = document.getElementById('insert-coin');
+    const playerModeEl = document.getElementById('player-mode');
+
+    let W, H;
+    let scoreLeft = 0;
+    let scoreRight = 0;
+    let mouseY = 0;
+    let playerMode = false;
+    let isMobile = window.innerWidth <= 600;
+
+    // Insert coin — switch to player mode
+    insertCoinBtn.addEventListener('click', () => {
+      playerMode = true;
+      scoreLeft = 0;
+      scoreRight = 0;
+      scoreLeftEl.textContent = '0';
+      scoreRightEl.textContent = '0';
+      insertCoinBtn.style.display = 'none';
+      playerModeEl.classList.add('active');
+      mouseY = H / 2;
+      resetBall(1);
+    });
+
+    // Mouse/touch tracking for player
+    document.addEventListener('mousemove', (e) => {
+      mouseY = e.clientY;
+    });
+    document.addEventListener('touchmove', (e) => {
+      mouseY = e.touches[0].clientY;
+    }, { passive: true });
+
+    // Ball (square)
+    const BALL_SIZE = isMobile ? 14 : 18;
+    const ball = {
+      x: 0, y: 0,
+      vx: 3, vy: 2,
+      size: BALL_SIZE,
+      trail: []
+    };
+
+    // Paddles
+    const PADDLE_W = 10;
+    const PADDLE_H = isMobile ? 50 : 70;
+    const AI_SPEED = 3.5;
+
+    const paddleLeft = { x: 20, y: 0 };
+    const paddleRight = { x: 0, y: 0 };
+
+    // Particles
+    let particles = [];
+
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+      ball.x = W / 2;
+      ball.y = H / 2;
+      paddleLeft.y = H / 2 - PADDLE_H / 2;
+      paddleRight.x = W - 20 - PADDLE_W;
+      paddleRight.y = H / 2 - PADDLE_H / 2;
+      isMobile = window.innerWidth <= 600;
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+
+    function spawnParticles(x, y) {
+      for (let i = 0; i < 6; i++) {
+        particles.push({
+          x, y,
+          vx: (Math.random() - 0.5) * 4,
+          vy: (Math.random() - 0.5) * 4,
+          life: 1
+        });
+      }
+    }
+
+    function update() {
+      ball.x += ball.vx;
+      ball.y += ball.vy;
+
+      // Trail
+      ball.trail.push({ x: ball.x, y: ball.y });
+      if (ball.trail.length > 8) ball.trail.shift();
+
+      // Top/bottom bounce
+      const half = ball.size / 2;
+      if (ball.y - half <= 0 || ball.y + half >= H) {
+        ball.vy *= -1;
+        ball.y = ball.y - half <= 0 ? half : H - half;
+      }
+
+      // Left paddle AI
+      const leftTarget = ball.y - PADDLE_H / 2;
+      if (paddleLeft.y < leftTarget - 5) paddleLeft.y += AI_SPEED;
+      else if (paddleLeft.y > leftTarget + 5) paddleLeft.y -= AI_SPEED;
+      paddleLeft.y = Math.max(0, Math.min(H - PADDLE_H, paddleLeft.y));
+
+      // Right paddle — player or AI
+      if (playerMode) {
+        paddleRight.y = mouseY - PADDLE_H / 2;
+      } else {
+        const rightTarget = ball.y - PADDLE_H / 2;
+        if (paddleRight.y < rightTarget - 5) paddleRight.y += AI_SPEED;
+        else if (paddleRight.y > rightTarget + 5) paddleRight.y -= AI_SPEED;
+      }
+      paddleRight.y = Math.max(0, Math.min(H - PADDLE_H, paddleRight.y));
+
+      // Ball vs left paddle
+      if (
+        ball.x - half <= paddleLeft.x + PADDLE_W &&
+        ball.y + half >= paddleLeft.y &&
+        ball.y - half <= paddleLeft.y + PADDLE_H &&
+        ball.vx < 0
+      ) {
+        ball.vx = Math.abs(ball.vx) * 1.02;
+        ball.x = paddleLeft.x + PADDLE_W + half;
+        const hit = (ball.y - paddleLeft.y) / PADDLE_H - 0.5;
+        ball.vy += hit * 2;
+        spawnParticles(ball.x, ball.y);
+      }
+
+      // Ball vs right paddle
+      if (
+        ball.x + half >= paddleRight.x &&
+        ball.y + half >= paddleRight.y &&
+        ball.y - half <= paddleRight.y + PADDLE_H &&
+        ball.vx > 0
+      ) {
+        ball.vx = -Math.abs(ball.vx) * 1.02;
+        ball.x = paddleRight.x - half;
+        const hit = (ball.y - paddleRight.y) / PADDLE_H - 0.5;
+        ball.vy += hit * 2;
+        spawnParticles(ball.x, ball.y);
+      }
+
+      // Score
+      if (ball.x < -ball.size) {
+        scoreRight++;
+        scoreRightEl.textContent = scoreRight;
+        resetBall(-1);
+      }
+      if (ball.x > W + ball.size) {
+        scoreLeft++;
+        scoreLeftEl.textContent = scoreLeft;
+        resetBall(1);
+      }
+
+      // Speed cap
+      const maxSpeed = 7;
+      ball.vx = Math.max(-maxSpeed, Math.min(maxSpeed, ball.vx));
+      ball.vy = Math.max(-maxSpeed, Math.min(maxSpeed, ball.vy));
+
+      // Update particles
+      particles = particles.filter(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life -= 0.03;
+        return p.life > 0;
+      });
+    }
+
+    function resetBall(dir) {
+      ball.x = W / 2;
+      ball.y = H / 2;
+      ball.vx = 3 * dir;
+      ball.vy = (Math.random() - 0.5) * 4;
+      ball.trail = [];
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      // Dashed center line
+      ctx.setLineDash([10, 10]);
+      ctx.strokeStyle = '#eee';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(W / 2, 0);
+      ctx.lineTo(W / 2, H);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Ball trail
+      const half = ball.size / 2;
+      ball.trail.forEach((t, i) => {
+        const alpha = (i / ball.trail.length) * 0.15;
+        const s = ball.size * (0.5 + (i / ball.trail.length) * 0.5);
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = '#B74128';
+        ctx.fillRect(t.x - s / 2, t.y - s / 2, s, s);
+      });
+      ctx.globalAlpha = 1;
+
+      // Ball (square)
+      ctx.save();
+      ctx.shadowColor = '#B74128';
+      ctx.shadowBlur = 12;
+      ctx.fillStyle = '#B74128';
+      ctx.fillRect(ball.x - half, ball.y - half, ball.size, ball.size);
+      ctx.restore();
+
+      // Paddles
+      ctx.shadowColor = '#0a0a0a';
+      ctx.shadowBlur = 5;
+      ctx.fillStyle = '#0a0a0a';
+      ctx.fillRect(paddleLeft.x, paddleLeft.y, PADDLE_W, PADDLE_H);
+      ctx.fillRect(paddleRight.x, paddleRight.y, PADDLE_W, PADDLE_H);
+      ctx.shadowBlur = 0;
+
+      // Particles (square pixels)
+      particles.forEach(p => {
+        ctx.globalAlpha = p.life;
+        ctx.fillStyle = '#B74128';
+        ctx.fillRect(p.x - 2, p.y - 2, 4, 4);
+      });
+      ctx.globalAlpha = 1;
+    }
+
+    function loop() {
+      update();
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    loop();
+  </script>
+</body>
+</html>
