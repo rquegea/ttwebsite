@@ -196,47 +196,153 @@ a {
     pointer-events: auto;
 }
 
-/* Hero Section */
+/* Hero Section — Video Carousel */
 .hero {
     position: relative;
     height: 100vh;
-    min-height: 800px;
-    display: flex;
-    align-items: center;
-    background-image: url('https://images.unsplash.com/photo-1573164574572-cb89e39749b4?auto=format&fit=crop&w=1920&q=80');
-    background-size: cover;
-    background-position: center;
+    min-height: 700px;
+    overflow: hidden;
+    background: #0A0A0A;
+}
+
+.hero-slides {
+    position: absolute;
+    inset: 0;
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+.hero-slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .hero-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
     z-index: 1;
 }
 
-.hero-inner-container {
-    position: relative;
-    z-index: 2;
-    width: 100%;
+.hero-client-list {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    pointer-events: none;
 }
 
-.hero h1 {
-    font-size: 5rem;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    font-weight: 400;
+.hero-client-list-track {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
 }
 
-.hero p {
-    font-size: 1.25rem;
-    max-width: 600px;
-    margin-bottom: 2.5rem;
-    line-height: 1.6;
-    color: #E0E0E0;
+.hero-client-list-track li {
+    font-family: 'Inter', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.12);
+    text-transform: uppercase;
+    transition: all 0.5s ease;
+}
+
+.hero-client-list-track li.active {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.hero-main-text {
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    white-space: nowrap;
+}
+
+.hero-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.hero-client-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+}
+
+.hero-client-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: opacity 0.5s ease;
+}
+
+.hero-cta {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+    background: #fff;
+    color: #0A0A0A;
+    border-radius: 999px;
+    padding: 0.8rem 1.5rem;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.2s ease;
+}
+
+.hero-cta:hover {
+    background: #E0E0E0;
+}
+
+.hero-pause {
+    position: absolute;
+    right: 2rem;
+    bottom: 5rem;
+    z-index: 12;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
 }
 
 .cta-primary {
@@ -397,13 +503,10 @@ a {
 
 /* Social Proof Carousel */
 .social-proof {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    position: relative;
     width: 100%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+    background: #0A0A0A;
     padding: 2rem 0;
-    z-index: 10;
 }
 
 .social-proof-content {
@@ -427,14 +530,13 @@ a {
     gap: 4rem;
     align-items: center;
     width: max-content;
-    animation: scroll 40s linear infinite;
+    animation: scroll 120s linear infinite;
 }
 
 .client-logo img {
     height: 30px;
     width: auto;
-    filter: brightness(0) invert(1);
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 
@@ -446,6 +548,34 @@ a {
 
     100% {
         transform: translateX(-50%);
+    }
+}
+
+/* Hero Responsive */
+@media (max-width: 768px) {
+    .hero-label, .hero-client-name {
+        font-size: 1.5rem;
+    }
+
+    .hero-client-list-track li {
+        font-size: 2rem;
+    }
+
+    .hero-main-text {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-cta {
+        right: 1rem;
+        bottom: 2rem;
+        top: auto;
+        transform: none;
+    }
+
+    .hero-pause {
+        right: 1rem;
+        bottom: 5rem;
     }
 }
 
@@ -2450,21 +2580,22 @@ a {
 
 .legal-header h1 {
     font-family: 'Lora', serif;
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     font-weight: 500;
     color: #0A0A0A;
     margin-bottom: 0.75rem;
     letter-spacing: -0.02em;
-    text-align: left;
+    text-align: center;
 }
 
-.legal-header .legal-updated {
+.legal-date {
     font-family: 'Inter', sans-serif;
     font-size: 0.85rem;
-    color: #999;
+    color: #888;
     font-weight: 400;
     display: block;
-    text-align: left;
+    text-align: center;
+    margin-bottom: 3rem;
 }
 
 /* TOC / Índice */
@@ -2539,18 +2670,18 @@ a {
 
 .legal-section h2 {
     font-family: 'Inter', sans-serif;
-    font-size: 1.15rem;
+    font-size: 1.4rem;
     font-weight: 600;
     color: #0A0A0A;
+    margin-top: 2.5rem;
     margin-bottom: 1rem;
-    padding-top: 1rem;
     letter-spacing: -0.01em;
     text-align: left;
 }
 
 .legal-section h3 {
     font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: #333;
     margin-bottom: 0.75rem;
@@ -2561,9 +2692,9 @@ a {
 .legal-section p {
     font-family: 'Inter', sans-serif;
     font-size: 0.95rem;
-    line-height: 1.75;
-    color: #444;
-    margin-bottom: 1rem;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 0.8rem;
     text-align: left;
 }
 
@@ -2577,21 +2708,21 @@ a {
 .legal-section li {
     font-family: 'Inter', sans-serif;
     font-size: 0.95rem;
-    line-height: 1.75;
-    color: #444;
+    line-height: 1.7;
+    color: #333;
     margin-bottom: 0.4rem;
 }
 
 .legal-section a {
-    color: #0A0A0A;
+    color: #1a365d;
     text-decoration: underline;
     text-underline-offset: 3px;
-    text-decoration-color: #CCC;
+    text-decoration-color: rgba(26, 54, 93, 0.3);
     transition: text-decoration-color 0.2s ease;
 }
 
 .legal-section a:hover {
-    text-decoration-color: #0A0A0A;
+    text-decoration-color: #1a365d;
 }
 
 /* Data block (company info) */
@@ -2674,6 +2805,12 @@ a {
     background-color: #FAFAFA;
 }
 
+.legal-table td:first-child {
+    font-weight: 700;
+    color: #666;
+    width: 30%;
+}
+
 /* Cookie badges */
 .cookie-badge {
     display: inline-block;
@@ -2720,6 +2857,6 @@ a {
     }
 
     .legal-section h2 {
-        font-size: 1.05rem;
+        font-size: 1.2rem;
     }
 }

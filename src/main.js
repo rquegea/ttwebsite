@@ -178,21 +178,83 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3000);
   }
 
-  // Dynamic Word Cycler in Hero (bilingual with gender agreement)
-  const dynamicWordEl = document.getElementById('dynamic-word');
-  const dynamicAdjEl = document.getElementById('dynamic-adjective');
-  if (dynamicWordEl && dynamicAdjEl) {
-    const words = ['brands', 'technology', 'events', 'tech'];
-    let wordIndex = 0;
+  // Hero Video Carousel — crossfade background videos + client sync
+  const heroSlides = document.querySelectorAll('.hero-slide');
+  const heroPauseBtn = document.querySelector('.hero-pause');
+  const heroPauseIcon = document.querySelector('.hero-pause-icon');
+  const heroClientName = document.querySelector('.hero-client-name');
+  const heroClientListItems = document.querySelectorAll('.hero-client-list-track li');
+  const heroCta = document.querySelector('.hero-cta');
 
-    setInterval(() => {
-      dynamicWordEl.style.opacity = '0';
+  const heroClients = [
+    { name: 'BARCELÓ', href: '/projects' },
+    { name: 'PLAYSTATION', href: '/projects' },
+    { name: 'KPMG', href: '/projects' },
+    { name: 'DOM PÉRIGNON', href: '/projects' },
+    { name: 'NIVEA', href: '/projects' }
+  ];
 
-      setTimeout(() => {
-        wordIndex = (wordIndex + 1) % words.length;
-        dynamicWordEl.textContent = words[wordIndex];
-        dynamicWordEl.style.opacity = '1';
-      }, 400);
-    }, 3000);
+  if (heroSlides.length > 0) {
+    let currentSlide = 0;
+    let isPaused = false;
+    let slideInterval;
+
+    function updateHeroClient(index) {
+      // Fade out client name
+      if (heroClientName) {
+        heroClientName.style.opacity = '0';
+        setTimeout(() => {
+          heroClientName.textContent = heroClients[index].name;
+          heroClientName.style.opacity = '1';
+        }, 400);
+      }
+
+      // Move active class in client list
+      heroClientListItems.forEach((li, i) => {
+        li.classList.toggle('active', i === index);
+      });
+
+      // Update CTA href
+      if (heroCta) {
+        heroCta.href = heroClients[index].href;
+      }
+    }
+
+    function nextSlide() {
+      const currentVideo = heroSlides[currentSlide].querySelector('video');
+      if (currentVideo) currentVideo.pause();
+      heroSlides[currentSlide].classList.remove('active');
+
+      currentSlide = (currentSlide + 1) % heroSlides.length;
+
+      heroSlides[currentSlide].classList.add('active');
+      const newVideo = heroSlides[currentSlide].querySelector('video');
+      if (newVideo) newVideo.play();
+
+      updateHeroClient(currentSlide);
+    }
+
+    function startSlides() {
+      slideInterval = setInterval(nextSlide, 6000);
+    }
+
+    startSlides();
+
+    if (heroPauseBtn) {
+      heroPauseBtn.addEventListener('click', () => {
+        isPaused = !isPaused;
+        if (isPaused) {
+          clearInterval(slideInterval);
+          heroPauseIcon.textContent = '▶';
+          const vid = heroSlides[currentSlide].querySelector('video');
+          if (vid) vid.pause();
+        } else {
+          const vid = heroSlides[currentSlide].querySelector('video');
+          if (vid) vid.play();
+          startSlides();
+          heroPauseIcon.textContent = '⏸';
+        }
+      });
+    }
   }
 });

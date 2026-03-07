@@ -295,69 +295,210 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section — Video Carousel -->
   <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-inner-container container">
-      <div class="hero-content">
-        <h1>We make<br><span id="dynamic-word"
-            style="display:inline-block; transition: opacity 0.4s ease;">brands</span><br><span id="dynamic-adjective" style="display:inline-block; transition: opacity 0.4s ease;">extraordinary</span></h1>
-        <p>Creatividad que construye. Tecnología que transforma. Estrategia que conquista mercados. T&T es la fuerza detrás de las marcas más ambiciosas.</p>
-        <button class="cta-primary">Solicita una propuesta</button>
+    <!-- Video slides with crossfade -->
+    <div class="hero-slides">
+      <div class="hero-slide active" data-index="0">
+        <video autoplay muted loop playsinline>
+          <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-slide" data-index="1">
+        <video muted loop playsinline>
+          <source src="https://videos.pexels.com/video-files/3191572/3191572-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-slide" data-index="2">
+        <video muted loop playsinline>
+          <source src="https://videos.pexels.com/video-files/856973/856973-hd_1920_1080_30fps.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-slide" data-index="3">
+        <video muted loop playsinline>
+          <source src="https://videos.pexels.com/video-files/3214448/3214448-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-slide" data-index="4">
+        <video muted loop playsinline>
+          <source src="https://videos.pexels.com/video-files/2795405/2795405-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
 
-    <!-- Social Proof Bar -->
-    <div class="social-proof">
-      <div class="social-proof-content container">
-        <div class="carousel-wrapper">
-          <div class="logos-carousel">
-            <!-- First set of logos -->
-            <div class="client-logo"><img src="/logos/barcelologoweb.png" alt="Barcelo"></div>
-            <div class="client-logo"><img src="/logos/campofriologoweb.png" alt="Campofrio"></div>
-            <div class="client-logo"><img src="/logos/dentonslogoweb.png" alt="Dentons"></div>
-            <div class="client-logo"><img src="/logos/domperignomlogoweb.png" alt="Dom Perignon"></div>
-            <div class="client-logo"><img src="/logos/eaelogoblanco.png" alt="EAE Business School"></div>
-            <div class="client-logo"><img src="/logos/gullonlogoblanco.png" alt="Gullon"></div>
-            <div class="client-logo"><img src="/logos/kpmg.png" alt="KPMG"></div>
-            <div class="client-logo"><img src="/logos/lotuslogoweb.png" alt="Lotus"></div>
-            <div class="client-logo"><img src="/logos/moetlogoweb.png" alt="Moet"></div>
-            <div class="client-logo"><img src="/logos/nivealogoweb.png" alt="Nivea"></div>
-            <div class="client-logo"><img src="/logos/planetalogoweb.png" alt="Grupo Planeta"></div>
-            <div class="client-logo"><img src="/logos/playstationlogoweb.png" alt="Playstation"></div>
-            <div class="client-logo"><img src="/logos/primelogoblanco.png" alt="Prime"></div>
-            <div class="client-logo"><img src="/logos/ruinartlogoweb.png" alt="Ruinart"></div>
-            <div class="client-logo"><img src="/logos/sabadelllogoweb.png" alt="Sabadell"></div>
-            <div class="client-logo"><img src="/logos/tolsalogoweb.png" alt="Tolsa"></div>
-            <div class="client-logo"><img src="/logos/unielogoblanco.png" alt="UNIE"></div>
-            <div class="client-logo"><img src="/logos/uoclogoweb.png" alt="UOC"></div>
-            <div class="client-logo"><img src="/logos/viulogoblanco.png" alt="VIU"></div>
-            <!-- Duplicate for infinite effect -->
-            <div class="client-logo"><img src="/logos/barcelologoweb.png" alt="Barcelo"></div>
-            <div class="client-logo"><img src="/logos/campofriologoweb.png" alt="Campofrio"></div>
-            <div class="client-logo"><img src="/logos/dentonslogoweb.png" alt="Dentons"></div>
-            <div class="client-logo"><img src="/logos/domperignomlogoweb.png" alt="Dom Perignon"></div>
-            <div class="client-logo"><img src="/logos/eaelogoblanco.png" alt="EAE Business School"></div>
-            <div class="client-logo"><img src="/logos/gullonlogoblanco.png" alt="Gullon"></div>
-            <div class="client-logo"><img src="/logos/kpmg.png" alt="KPMG"></div>
-            <div class="client-logo"><img src="/logos/lotuslogoweb.png" alt="Lotus"></div>
-            <div class="client-logo"><img src="/logos/moetlogoweb.png" alt="Moet"></div>
-            <div class="client-logo"><img src="/logos/nivealogoweb.png" alt="Nivea"></div>
-            <div class="client-logo"><img src="/logos/planetalogoweb.png" alt="Grupo Planeta"></div>
-            <div class="client-logo"><img src="/logos/playstationlogoweb.png" alt="Playstation"></div>
-            <div class="client-logo"><img src="/logos/primelogoblanco.png" alt="Prime"></div>
-            <div class="client-logo"><img src="/logos/ruinartlogoweb.png" alt="Ruinart"></div>
-            <div class="client-logo"><img src="/logos/sabadelllogoweb.png" alt="Sabadell"></div>
-            <div class="client-logo"><img src="/logos/tolsalogoweb.png" alt="Tolsa"></div>
-            <div class="client-logo"><img src="/logos/unielogoblanco.png" alt="UNIE"></div>
-            <div class="client-logo"><img src="/logos/uoclogoweb.png" alt="UOC"></div>
-            <div class="client-logo"><img src="/logos/viulogoblanco.png" alt="VIU"></div>
-          </div>
-        </div>
-        <a href="#" class="cta-outline">Nuestros clientes</a>
-      </div>
+    <!-- Overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- Lista vertical decorativa de clientes (fondo) -->
+    <div class="hero-client-list">
+      <ul class="hero-client-list-track">
+        <li class="active">Barceló</li>
+        <li>PlayStation</li>
+        <li>KPMG</li>
+        <li>Dom Pérignon</li>
+        <li>Nivea</li>
+      </ul>
     </div>
+
+    <!-- Texto principal centrado -->
+    <div class="hero-main-text">
+      <span class="hero-label">HECHO CON</span>
+      <div class="hero-client-logo"></div>
+      <span class="hero-client-name">BARCELÓ</span>
+    </div>
+
+    <!-- Botón ver proyecto (derecha) -->
+    <a href="/projects" class="hero-cta">Ver proyecto →</a>
+
+    <!-- Pause/play control -->
+    <button class="hero-pause" aria-label="Pausar carrusel">
+      <span class="hero-pause-icon">⏸</span>
+    </button>
   </section>
+
+  <!-- Social Proof Bar -->
+  <div class="social-proof">
+    <div class="social-proof-content container">
+      <div class="carousel-wrapper">
+        <div class="logos-carousel">
+          <div class="client-logo"><img src="/logos/barcelo.png" alt="Barceló"></div>
+          <div class="client-logo"><img src="/logos/lotus.png" alt="Lotus Biscoff"></div>
+          <div class="client-logo"><img src="/logos/mission.png" alt="Mission"></div>
+          <div class="client-logo"><img src="/logos/pringles.png" alt="Pringles"></div>
+          <div class="client-logo"><img src="/logos/chocobom.png" alt="ChocoBom"></div>
+          <div class="client-logo"><img src="/logos/kellogs.svg" alt="Kellogg's"></div>
+          <div class="client-logo"><img src="/logos/doritos logo.png" alt="Doritos"></div>
+          <div class="client-logo"><img src="/logos/zero.png" alt="Zero Sin Azúcares"></div>
+          <div class="client-logo"><img src="/logos/president.png" alt="Président"></div>
+          <div class="client-logo"><img src="/logos/campofrio.png" alt="Campofrío"></div>
+          <div class="client-logo"><img src="/logos/mexifood.png" alt="Mexifoods"></div>
+          <div class="client-logo"><img src="/logos/gullon.png" alt="Gullón"></div>
+          <div class="client-logo"><img src="/logos/mooiza.png" alt="Mooiza"></div>
+          <div class="client-logo"><img src="/logos/pancracio.webp" alt="Pancracio"></div>
+          <div class="client-logo"><img src="/logos/nakd.png" alt="Nākd"></div>
+          <div class="client-logo"><img src="/logos/biogran.png" alt="Biogran"></div>
+          <div class="client-logo"><img src="/logos/lactalis.png" alt="Lactalis"></div>
+          <div class="client-logo"><img src="/logos/trek.png" alt="Trek"></div>
+          <div class="client-logo"><img src="/logos/minibites.png" alt="Mini Bites"></div>
+          <div class="client-logo"><img src="/logos/vitalday.png" alt="Vitalday"></div>
+          <div class="client-logo"><img src="/logos/carloteña.png" alt="La Carloteña"></div>
+          <div class="client-logo"><img src="/logos/embutidosespaña.webp" alt="Embutidos España"></div>
+          <div class="client-logo"><img src="/logos/osborne.png" alt="Osborne"></div>
+          <div class="client-logo"><img src="/logos/moet.png" alt="Moët & Chandon"></div>
+          <div class="client-logo"><img src="/logos/cacique.png" alt="Cacique"></div>
+          <div class="client-logo"><img src="/logos/glenmorangie.png" alt="Glenmorangie"></div>
+          <div class="client-logo"><img src="/logos/domperignon.png" alt="Dom Pérignon"></div>
+          <div class="client-logo"><img src="/logos/prime.png" alt="Prime"></div>
+          <div class="client-logo"><img src="/logos/macaronesian.png" alt="Macaronesian Gin"></div>
+          <div class="client-logo"><img src="/logos/veuve.png" alt="Veuve Clicquot"></div>
+          <div class="client-logo"><img src="/logos/fireball.png" alt="Fireball"></div>
+          <div class="client-logo"><img src="/logos/glenfiddich.png" alt="Glenfiddich"></div>
+          <div class="client-logo"><img src="/logos/runiart.png" alt="Ruinart"></div>
+          <div class="client-logo"><img src="/logos/botran.png" alt="Botran"></div>
+          <div class="client-logo"><img src="/logos/gvine.png" alt="G'Vine"></div>
+          <div class="client-logo"><img src="/logos/yzaguirre.png" alt="Yzaguirre"></div>
+          <div class="client-logo"><img src="/logos/chandon.png" alt="Chandon"></div>
+          <div class="client-logo"><img src="/logos/hendricks.png" alt="Hendrick's Gin"></div>
+          <div class="client-logo"><img src="/logos/terry.png" alt="Terry"></div>
+          <div class="client-logo"><img src="/logos/whisperingangel.png" alt="Whispering Angel"></div>
+          <div class="client-logo"><img src="/logos/minuty.png" alt="Minuty"></div>
+          <div class="client-logo"><img src="/logos/hansaplast.png" alt="Hansaplast"></div>
+          <div class="client-logo"><img src="/logos/liposan.webp" alt="Liposan"></div>
+          <div class="client-logo"><img src="/logos/nivea.svg" alt="Nivea"></div>
+          <div class="client-logo"><img src="/logos/roclogo.png" alt="RoC"></div>
+          <div class="client-logo"><img src="/logos/carmex.png" alt="Carmex"></div>
+          <div class="client-logo"><img src="/logos/okeefes.webp" alt="O'Keeffe's"></div>
+          <div class="client-logo"><img src="/logos/moussel.jpg" alt="Moussel"></div>
+          <div class="client-logo"><img src="/logos/eucerin.png" alt="Eucerin"></div>
+          <div class="client-logo"><img src="/logos/gorillaglue.png" alt="Gorilla Glue"></div>
+          <div class="client-logo"><img src="/logos/leifheit.png" alt="Leifheit"></div>
+          <div class="client-logo"><img src="/logos/wd40.png" alt="WD-40"></div>
+          <div class="client-logo"><img src="/logos/unie.png" alt="UNIE"></div>
+          <div class="client-logo"><img src="/logos/uned.jpg" alt="UNED"></div>
+          <div class="client-logo"><img src="/logos/thecore.webp" alt="The Core"></div>
+          <div class="client-logo"><img src="/logos/planeta.png" alt="Planeta"></div>
+          <div class="client-logo"><img src="/logos/udit.png" alt="UDIT"></div>
+          <div class="client-logo"><img src="/logos/eae.png" alt="EAE"></div>
+          <div class="client-logo"><img src="/logos/viulogo.png" alt="VIU"></div>
+          <div class="client-logo"><img src="/logos/sabadell.png" alt="Sabadell"></div>
+          <div class="client-logo"><img src="/logos/pinguino.png" alt="Pingüino Torreblanca"></div>
+          <div class="client-logo"><img src="/logos/makro logo.png" alt="Makro"></div>
+          <div class="client-logo"><img src="/logos/warner.webp" alt="Parque Warner"></div>
+          <div class="client-logo"><img src="/logos/shell.png" alt="Shell"></div>
+          <div class="client-logo"><img src="/logos/faunia.png" alt="Faunia"></div>
+          <div class="client-logo"><img src="/logos/play.png" alt="PlayStation"></div>
+          <!-- Duplicate for infinite scroll -->
+          <div class="client-logo"><img src="/logos/barcelo.png" alt="Barceló"></div>
+          <div class="client-logo"><img src="/logos/lotus.png" alt="Lotus Biscoff"></div>
+          <div class="client-logo"><img src="/logos/mission.png" alt="Mission"></div>
+          <div class="client-logo"><img src="/logos/pringles.png" alt="Pringles"></div>
+          <div class="client-logo"><img src="/logos/chocobom.png" alt="ChocoBom"></div>
+          <div class="client-logo"><img src="/logos/kellogs.svg" alt="Kellogg's"></div>
+          <div class="client-logo"><img src="/logos/doritos logo.png" alt="Doritos"></div>
+          <div class="client-logo"><img src="/logos/zero.png" alt="Zero Sin Azúcares"></div>
+          <div class="client-logo"><img src="/logos/president.png" alt="Président"></div>
+          <div class="client-logo"><img src="/logos/campofrio.png" alt="Campofrío"></div>
+          <div class="client-logo"><img src="/logos/mexifood.png" alt="Mexifoods"></div>
+          <div class="client-logo"><img src="/logos/gullon.png" alt="Gullón"></div>
+          <div class="client-logo"><img src="/logos/mooiza.png" alt="Mooiza"></div>
+          <div class="client-logo"><img src="/logos/pancracio.webp" alt="Pancracio"></div>
+          <div class="client-logo"><img src="/logos/nakd.png" alt="Nākd"></div>
+          <div class="client-logo"><img src="/logos/biogran.png" alt="Biogran"></div>
+          <div class="client-logo"><img src="/logos/lactalis.png" alt="Lactalis"></div>
+          <div class="client-logo"><img src="/logos/trek.png" alt="Trek"></div>
+          <div class="client-logo"><img src="/logos/minibites.png" alt="Mini Bites"></div>
+          <div class="client-logo"><img src="/logos/vitalday.png" alt="Vitalday"></div>
+          <div class="client-logo"><img src="/logos/carloteña.png" alt="La Carloteña"></div>
+          <div class="client-logo"><img src="/logos/embutidosespaña.webp" alt="Embutidos España"></div>
+          <div class="client-logo"><img src="/logos/osborne.png" alt="Osborne"></div>
+          <div class="client-logo"><img src="/logos/moet.png" alt="Moët & Chandon"></div>
+          <div class="client-logo"><img src="/logos/cacique.png" alt="Cacique"></div>
+          <div class="client-logo"><img src="/logos/glenmorangie.png" alt="Glenmorangie"></div>
+          <div class="client-logo"><img src="/logos/domperignon.png" alt="Dom Pérignon"></div>
+          <div class="client-logo"><img src="/logos/prime.png" alt="Prime"></div>
+          <div class="client-logo"><img src="/logos/macaronesian.png" alt="Macaronesian Gin"></div>
+          <div class="client-logo"><img src="/logos/veuve.png" alt="Veuve Clicquot"></div>
+          <div class="client-logo"><img src="/logos/fireball.png" alt="Fireball"></div>
+          <div class="client-logo"><img src="/logos/glenfiddich.png" alt="Glenfiddich"></div>
+          <div class="client-logo"><img src="/logos/runiart.png" alt="Ruinart"></div>
+          <div class="client-logo"><img src="/logos/botran.png" alt="Botran"></div>
+          <div class="client-logo"><img src="/logos/gvine.png" alt="G'Vine"></div>
+          <div class="client-logo"><img src="/logos/yzaguirre.png" alt="Yzaguirre"></div>
+          <div class="client-logo"><img src="/logos/chandon.png" alt="Chandon"></div>
+          <div class="client-logo"><img src="/logos/hendricks.png" alt="Hendrick's Gin"></div>
+          <div class="client-logo"><img src="/logos/terry.png" alt="Terry"></div>
+          <div class="client-logo"><img src="/logos/whisperingangel.png" alt="Whispering Angel"></div>
+          <div class="client-logo"><img src="/logos/minuty.png" alt="Minuty"></div>
+          <div class="client-logo"><img src="/logos/hansaplast.png" alt="Hansaplast"></div>
+          <div class="client-logo"><img src="/logos/liposan.webp" alt="Liposan"></div>
+          <div class="client-logo"><img src="/logos/nivea.svg" alt="Nivea"></div>
+          <div class="client-logo"><img src="/logos/roclogo.png" alt="RoC"></div>
+          <div class="client-logo"><img src="/logos/carmex.png" alt="Carmex"></div>
+          <div class="client-logo"><img src="/logos/okeefes.webp" alt="O'Keeffe's"></div>
+          <div class="client-logo"><img src="/logos/moussel.jpg" alt="Moussel"></div>
+          <div class="client-logo"><img src="/logos/eucerin.png" alt="Eucerin"></div>
+          <div class="client-logo"><img src="/logos/gorillaglue.png" alt="Gorilla Glue"></div>
+          <div class="client-logo"><img src="/logos/leifheit.png" alt="Leifheit"></div>
+          <div class="client-logo"><img src="/logos/wd40.png" alt="WD-40"></div>
+          <div class="client-logo"><img src="/logos/unie.png" alt="UNIE"></div>
+          <div class="client-logo"><img src="/logos/uned.jpg" alt="UNED"></div>
+          <div class="client-logo"><img src="/logos/thecore.webp" alt="The Core"></div>
+          <div class="client-logo"><img src="/logos/planeta.png" alt="Planeta"></div>
+          <div class="client-logo"><img src="/logos/udit.png" alt="UDIT"></div>
+          <div class="client-logo"><img src="/logos/eae.png" alt="EAE"></div>
+          <div class="client-logo"><img src="/logos/viulogo.png" alt="VIU"></div>
+          <div class="client-logo"><img src="/logos/sabadell.png" alt="Sabadell"></div>
+          <div class="client-logo"><img src="/logos/pinguino.png" alt="Pingüino Torreblanca"></div>
+          <div class="client-logo"><img src="/logos/makro logo.png" alt="Makro"></div>
+          <div class="client-logo"><img src="/logos/warner.webp" alt="Parque Warner"></div>
+          <div class="client-logo"><img src="/logos/shell.png" alt="Shell"></div>
+          <div class="client-logo"><img src="/logos/faunia.png" alt="Faunia"></div>
+          <div class="client-logo"><img src="/logos/play.png" alt="PlayStation"></div>
+        </div>
+      </div>
+      <a href="#" class="cta-outline">Nuestros clientes</a>
+    </div>
+  </div>
 
   <!-- Intro Text Section -->
   <section class="intro-text">
