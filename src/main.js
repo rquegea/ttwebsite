@@ -129,18 +129,20 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCarousel(false);
 
     // Run carousel
+    let isResetting = false;
     setInterval(() => {
+      if (isResetting) return;
+
       currentIndex++;
       updateCarousel(true);
 
       // If we've scrolled fully to the end of the second batch
-      if (currentIndex === originalLength * 2) {
-        // Wait exactly 500ms for CSS transition to visually stop, then silently teleport back one full batch length
+      if (currentIndex >= originalLength * 2) {
+        isResetting = true;
         setTimeout(() => {
-          if (currentIndex === originalLength * 2) { // just safety check
-            currentIndex = originalLength;
-            updateCarousel(false);
-          }
+          currentIndex = originalLength;
+          updateCarousel(false);
+          isResetting = false;
         }, 550);
       }
     }, 2000);
@@ -244,7 +246,10 @@ window.addEventListener('load', function() {
   heroTrack.style.transition = 'none';
   heroTrack.style.transform = 'translateY(-' + ((heroIdx - 1) * ITEM_H) + 'px)';
 
+  var heroResetting = false;
   setInterval(function() {
+    if (heroResetting) return;
+
     heroIdx++;
 
     // Animate
@@ -259,6 +264,7 @@ window.addEventListener('load', function() {
 
     // Reset to beginning when we hit the clone
     if (heroIdx >= TOTAL_REAL + 1) {
+      heroResetting = true;
       setTimeout(function() {
         heroIdx = 1;
         heroTrack.style.transition = 'none';
@@ -267,6 +273,7 @@ window.addEventListener('load', function() {
           heroSpans[j].classList.remove('active');
         }
         heroSpans[1].classList.add('active');
+        heroResetting = false;
       }, 650);
     }
   }, 3000);

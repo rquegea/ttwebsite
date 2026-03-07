@@ -106,18 +106,17 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCarousel(false);
 
     // Run carousel
+    let isResetting = false;
     setInterval(() => {
+      if (isResetting) return;
       currentIndex++;
       updateCarousel(true);
-
-      // If we've scrolled fully to the end of the second batch
-      if (currentIndex === originalLength * 2) {
-        // Wait exactly 500ms for CSS transition to visually stop, then silently teleport back one full batch length
+      if (currentIndex >= originalLength * 2) {
+        isResetting = true;
         setTimeout(() => {
-          if (currentIndex === originalLength * 2) { // just safety check
-            currentIndex = originalLength;
-            updateCarousel(false);
-          }
+          currentIndex = originalLength;
+          updateCarousel(false);
+          isResetting = false;
         }, 550);
       }
     }, 2000);
@@ -154,5 +153,45 @@ document.addEventListener('DOMContentLoaded', () => {
         dynamicWordEl.style.opacity = '1';
       }, 400);
     }, 3000);
+  }
+
+  // Hero name carousel
+  var heroTrack = document.querySelector('.hero-name-track');
+  if (heroTrack) {
+    var heroSpans = heroTrack.querySelectorAll('span');
+    if (heroSpans.length > 0) {
+      var rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+      var ITEM_H = 4.2 * rootFontSize;
+      var TOTAL_REAL = 5;
+      var heroIdx = 1;
+
+      heroTrack.style.transition = 'none';
+      heroTrack.style.transform = 'translateY(-' + ((heroIdx - 1) * ITEM_H) + 'px)';
+
+      var heroResetting = false;
+      setInterval(function() {
+        if (heroResetting) return;
+        heroIdx++;
+        heroTrack.style.transition = 'transform 0.6s cubic-bezier(0.4,0,0.2,1)';
+        heroTrack.style.transform = 'translateY(-' + ((heroIdx - 1) * ITEM_H) + 'px)';
+        for (var j = 0; j < heroSpans.length; j++) {
+          heroSpans[j].classList.remove('active');
+        }
+        if (heroSpans[heroIdx]) heroSpans[heroIdx].classList.add('active');
+        if (heroIdx >= TOTAL_REAL + 1) {
+          heroResetting = true;
+          setTimeout(function() {
+            heroIdx = 1;
+            heroTrack.style.transition = 'none';
+            heroTrack.style.transform = 'translateY(0px)';
+            for (var j = 0; j < heroSpans.length; j++) {
+              heroSpans[j].classList.remove('active');
+            }
+            heroSpans[1].classList.add('active');
+            heroResetting = false;
+          }, 650);
+        }
+      }, 3000);
+    }
   }
 });
