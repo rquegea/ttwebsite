@@ -1,5 +1,6 @@
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
   // Mobile Menu Overlay Toggle
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -181,31 +182,31 @@ document.addEventListener('DOMContentLoaded', () => {
       var rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
       var ITEM_H = 4.2 * rootFontSize;
       var TOTAL_REAL = 5;
-      var heroIdx = 1;
+      var heroIdx = 2;
 
       heroTrack.style.transition = 'none';
-      heroTrack.style.transform = 'translateY(-' + ((heroIdx - 1) * ITEM_H) + 'px)';
+      heroTrack.style.transform = 'translateY(-' + ((heroIdx - 2) * ITEM_H) + 'px)';
 
       var heroResetting = false;
       setInterval(function() {
         if (heroResetting) return;
         heroIdx++;
         heroTrack.style.transition = 'transform 0.6s cubic-bezier(0.4,0,0.2,1)';
-        heroTrack.style.transform = 'translateY(-' + ((heroIdx - 1) * ITEM_H) + 'px)';
+        heroTrack.style.transform = 'translateY(-' + ((heroIdx - 2) * ITEM_H) + 'px)';
         for (var j = 0; j < heroSpans.length; j++) {
           heroSpans[j].classList.remove('active');
         }
         if (heroSpans[heroIdx]) heroSpans[heroIdx].classList.add('active');
-        if (heroIdx >= TOTAL_REAL + 1) {
+        if (heroIdx >= TOTAL_REAL + 2) {
           heroResetting = true;
           setTimeout(function() {
-            heroIdx = 1;
+            heroIdx = 2;
             heroTrack.style.transition = 'none';
             heroTrack.style.transform = 'translateY(0px)';
             for (var j = 0; j < heroSpans.length; j++) {
               heroSpans[j].classList.remove('active');
             }
-            heroSpans[1].classList.add('active');
+            heroSpans[2].classList.add('active');
             heroResetting = false;
           }, 650);
         }

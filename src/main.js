@@ -239,12 +239,12 @@ window.addEventListener('load', function() {
   // Hardcoded: each span is 4.2rem tall
   var rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
   var ITEM_H = 4.2 * rootFontSize;
-  var TOTAL_REAL = 5;
-  var heroIdx = 1;
+  var TOTAL_REAL = 8;
+  var heroIdx = 2; // índice del primer cliente real (hay 2 clones antes)
 
-  // Position track so item at heroIdx is in the middle row
+  // Posicionar con el activo centrado: translateY(-((heroIdx - 2) * ITEM_H))
   heroTrack.style.transition = 'none';
-  heroTrack.style.transform = 'translateY(-' + ((heroIdx - 1) * ITEM_H) + 'px)';
+  heroTrack.style.transform = 'translateY(-' + ((heroIdx - 2) * ITEM_H) + 'px)';
 
   var heroResetting = false;
   setInterval(function() {
@@ -252,27 +252,27 @@ window.addEventListener('load', function() {
 
     heroIdx++;
 
-    // Animate
+    // Animar centrado
     heroTrack.style.transition = 'transform 0.6s cubic-bezier(0.4,0,0.2,1)';
-    heroTrack.style.transform = 'translateY(-' + ((heroIdx - 1) * ITEM_H) + 'px)';
+    heroTrack.style.transform = 'translateY(-' + ((heroIdx - 2) * ITEM_H) + 'px)';
 
-    // Update active class
+    // Actualizar clase active
     for (var j = 0; j < heroSpans.length; j++) {
       heroSpans[j].classList.remove('active');
     }
     if (heroSpans[heroIdx]) heroSpans[heroIdx].classList.add('active');
 
-    // Reset to beginning when we hit the clone
-    if (heroIdx >= TOTAL_REAL + 1) {
+    // Reset cuando llega al primer clon del final (índice 10)
+    if (heroIdx >= TOTAL_REAL + 2) {
       heroResetting = true;
       setTimeout(function() {
-        heroIdx = 1;
+        heroIdx = 2;
         heroTrack.style.transition = 'none';
         heroTrack.style.transform = 'translateY(0px)';
         for (var j = 0; j < heroSpans.length; j++) {
           heroSpans[j].classList.remove('active');
         }
-        heroSpans[1].classList.add('active');
+        heroSpans[2].classList.add('active');
         heroResetting = false;
       }, 650);
     }
