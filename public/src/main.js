@@ -18,6 +18,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Mega-menu hover with delay to prevent flicker
+  const dropdowns = document.querySelectorAll('.has-dropdown');
+  let dropdownTimer = null;
+
+  dropdowns.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      clearTimeout(dropdownTimer);
+      dropdowns.forEach(d => d.classList.remove('is-open'));
+      item.classList.add('is-open');
+    });
+
+    item.addEventListener('mouseleave', () => {
+      dropdownTimer = setTimeout(() => {
+        item.classList.remove('is-open');
+      }, 400);
+    });
+  });
+
   // Gliding underline for navigation
   const navContainer = document.querySelector('.nav ul');
   const headerContainer = document.querySelector('.header');
