@@ -206,74 +206,25 @@ a {
 }
 
 .hero-slides {
-    position: absolute;
-    inset: 0;
-}
-
-.hero-slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 1s ease;
-}
-
-.hero-slide.active {
-    opacity: 1;
-}
-
-.hero-slide video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    display: none;
 }
 
 .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    z-index: 1;
+    display: none;
 }
 
-.hero-client-list {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.hero-client-list-track {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    padding: 0;
-    margin: 0;
-}
-
-.hero-client-list-track li {
-    font-family: 'Inter', sans-serif;
-    font-size: 3.5rem;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.12);
-    text-transform: uppercase;
-    transition: all 0.5s ease;
-}
-
-.hero-client-list-track li.active {
-    color: rgba(255, 255, 255, 0.25);
-}
-
-.hero-main-text {
+.hero-center {
     position: absolute;
     z-index: 4;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hero-label-fixed {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -290,21 +241,39 @@ a {
 }
 
 .hero-client-logo {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.2);
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.15);
     flex-shrink: 0;
 }
 
-.hero-client-name {
+.hero-name-container {
+    height: 12.6rem;
+    overflow: hidden;
+}
+
+.hero-name-track {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-name-track span {
     font-family: 'Inter', sans-serif;
     font-size: 2.8rem;
-    font-weight: 600;
-    color: #fff;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.15);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    transition: opacity 0.5s ease;
+    height: 4.2rem;
+    line-height: 4.2rem;
+    white-space: nowrap;
+    transition: color 0.4s ease;
+}
+
+.hero-name-track span.active {
+    color: #fff;
 }
 
 .hero-cta {
@@ -316,7 +285,7 @@ a {
     background: #fff;
     color: #0A0A0A;
     border-radius: 999px;
-    padding: 0.8rem 1.5rem;
+    padding: 0.75rem 1.5rem;
     font-weight: 500;
     text-decoration: none;
     font-size: 0.9rem;
@@ -330,18 +299,24 @@ a {
 
 .hero-pause {
     position: absolute;
-    right: 2rem;
-    bottom: 5rem;
-    z-index: 12;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 12px;
-    padding: 0.8rem 1rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
     color: #fff;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.85rem;
     line-height: 1;
 }
 
@@ -553,29 +528,20 @@ a {
 
 /* Hero Responsive */
 @media (max-width: 768px) {
-    .hero-label, .hero-client-name {
-        font-size: 1.5rem;
+    .hero-label {
+        font-size: 1.4rem;
     }
 
-    .hero-client-list-track li {
-        font-size: 2rem;
-    }
-
-    .hero-main-text {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .hero-cta {
-        right: 1rem;
-        bottom: 2rem;
-        top: auto;
-        transform: none;
+    .hero-client-logo {
+        width: 40px;
+        height: 40px;
     }
 
     .hero-pause {
-        right: 1rem;
-        bottom: 5rem;
+        left: 1rem;
+        bottom: 2rem;
+        top: auto;
+        transform: none;
     }
 }
 

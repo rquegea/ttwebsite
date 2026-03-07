@@ -25,7 +25,9 @@
       "Bash(npx next:*)",
       "Bash(python3:*)",
       "WebFetch(domain:www.trucoytrufa.es)",
-      "WebFetch(domain:saffron-consultants.com)"
+      "WebFetch(domain:saffron-consultants.com)",
+      "WebSearch",
+      "WebFetch(domain:www.pexels.com)"
     ]
   }
 }

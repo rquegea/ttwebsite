@@ -178,47 +178,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3000);
   }
 
-  // Hero Video Carousel — crossfade background videos + client sync
+  // Hero Video Carousel — crossfade background videos
   const heroSlides = document.querySelectorAll('.hero-slide');
   const heroPauseBtn = document.querySelector('.hero-pause');
   const heroPauseIcon = document.querySelector('.hero-pause-icon');
-  const heroClientName = document.querySelector('.hero-client-name');
-  const heroClientListItems = document.querySelectorAll('.hero-client-list-track li');
-  const heroCta = document.querySelector('.hero-cta');
-
-  const heroClients = [
-    { name: 'BARCELÓ', href: '/projects' },
-    { name: 'PLAYSTATION', href: '/projects' },
-    { name: 'KPMG', href: '/projects' },
-    { name: 'DOM PÉRIGNON', href: '/projects' },
-    { name: 'NIVEA', href: '/projects' }
-  ];
 
   if (heroSlides.length > 0) {
     let currentSlide = 0;
     let isPaused = false;
     let slideInterval;
-
-    function updateHeroClient(index) {
-      // Fade out client name
-      if (heroClientName) {
-        heroClientName.style.opacity = '0';
-        setTimeout(() => {
-          heroClientName.textContent = heroClients[index].name;
-          heroClientName.style.opacity = '1';
-        }, 400);
-      }
-
-      // Move active class in client list
-      heroClientListItems.forEach((li, i) => {
-        li.classList.toggle('active', i === index);
-      });
-
-      // Update CTA href
-      if (heroCta) {
-        heroCta.href = heroClients[index].href;
-      }
-    }
 
     function nextSlide() {
       const currentVideo = heroSlides[currentSlide].querySelector('video');
@@ -230,8 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
       heroSlides[currentSlide].classList.add('active');
       const newVideo = heroSlides[currentSlide].querySelector('video');
       if (newVideo) newVideo.play();
-
-      updateHeroClient(currentSlide);
     }
 
     function startSlides() {
@@ -257,4 +223,52 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
+
 });
+
+// Hero name carousel — completely separate, runs after full load
+window.addEventListener('load', function() {
+  var heroTrack = document.querySelector('.hero-name-track');
+  if (!heroTrack) return;
+
+  var heroSpans = heroTrack.querySelectorAll('span');
+  if (heroSpans.length === 0) return;
+
+  // Hardcoded: each span is 4.2rem tall
+  var rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+  var ITEM_H = 4.2 * rootFontSize;
+  var TOTAL_REAL = 5;
+  var heroIdx = 1;
+
+  // Position track so item at heroIdx is in the middle row
+  heroTrack.style.transition = 'none';
+  heroTrack.style.transform = 'translateY(-' + ((heroIdx - 1) * ITEM_H) + 'px)';
+
+  setInterval(function() {
+    heroIdx++;
+
+    // Animate
+    heroTrack.style.transition = 'transform 0.6s cubic-bezier(0.4,0,0.2,1)';
+    heroTrack.style.transform = 'translateY(-' + ((heroIdx - 1) * ITEM_H) + 'px)';
+
+    // Update active class
+    for (var j = 0; j < heroSpans.length; j++) {
+      heroSpans[j].classList.remove('active');
+    }
+    if (heroSpans[heroIdx]) heroSpans[heroIdx].classList.add('active');
+
+    // Reset to beginning when we hit the clone
+    if (heroIdx >= TOTAL_REAL + 1) {
+      setTimeout(function() {
+        heroIdx = 1;
+        heroTrack.style.transition = 'none';
+        heroTrack.style.transform = 'translateY(0px)';
+        for (var j = 0; j < heroSpans.length; j++) {
+          heroSpans[j].classList.remove('active');
+        }
+        heroSpans[1].classList.add('active');
+      }, 650);
+    }
+  }, 3000);
+});
+
