@@ -33,7 +33,7 @@
 .nav ul {
   list-style: none;
   display: flex;
-  gap: var(--space-10);
+  /* gap: var(--space-10); — eliminado: el espacio se gestiona con padding en .navLink */
 }
 
 .navGlider {
@@ -57,6 +57,8 @@
   font-weight: 450;
   padding-bottom: var(--space-10);
   margin-bottom: calc(-1 * var(--space-10));
+  padding-left: calc(var(--space-10) / 2);
+  padding-right: calc(var(--space-10) / 2);
 }
 
 .navLink:hover {

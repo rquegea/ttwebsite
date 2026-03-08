@@ -31,9 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     item.addEventListener('mouseleave', () => {
-      dropdownTimer = setTimeout(() => {
-        item.classList.remove('is-open');
-      }, 400);
+      clearTimeout(dropdownTimer);
+      item.classList.remove('is-open');
     });
   });
 
