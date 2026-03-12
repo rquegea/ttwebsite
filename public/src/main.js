@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (heroSpans.length > 0) {
       var rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
       var ITEM_H = 4.2 * rootFontSize;
-      var TOTAL_REAL = 5;
+      var TOTAL_REAL = 7;
       var heroIdx = 2;
 
       heroTrack.style.transition = 'none';
@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
             heroResetting = false;
           }, 650);
         }
-      }, 3000);
+      }, 3500);
     }
   }
 });

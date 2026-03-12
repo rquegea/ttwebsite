@@ -238,10 +238,10 @@ window.addEventListener('load', function() {
   // Hardcoded: each span is 4.2rem tall
   var rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
   var ITEM_H = 4.2 * rootFontSize;
-  var TOTAL_REAL = 8;
+  var TOTAL_REAL = 7;
   var heroIdx = 2; // índice del primer cliente real (hay 2 clones antes)
 
-  // Posicionar con el activo centrado: translateY(-((heroIdx - 2) * ITEM_H))
+  // Posicionar: offset (heroIdx - 2) centra el activo en el mask gradient
   heroTrack.style.transition = 'none';
   heroTrack.style.transform = 'translateY(-' + ((heroIdx - 2) * ITEM_H) + 'px)';
 
@@ -250,8 +250,9 @@ window.addEventListener('load', function() {
     if (heroResetting) return;
 
     heroIdx++;
+    console.log('heroIdx:', heroIdx, 'nombre:', heroSpans[heroIdx] ? heroSpans[heroIdx].textContent : 'N/A', 'reset?', heroIdx >= TOTAL_REAL + 2);
 
-    // Animar centrado
+    // Animar al siguiente nombre
     heroTrack.style.transition = 'transform 0.6s cubic-bezier(0.4,0,0.2,1)';
     heroTrack.style.transform = 'translateY(-' + ((heroIdx - 2) * ITEM_H) + 'px)';
 
@@ -261,7 +262,7 @@ window.addEventListener('load', function() {
     }
     if (heroSpans[heroIdx]) heroSpans[heroIdx].classList.add('active');
 
-    // Reset cuando llega al primer clon del final (índice 10)
+    // Reset cuando llega al primer clon del final
     if (heroIdx >= TOTAL_REAL + 2) {
       heroResetting = true;
       setTimeout(function() {
@@ -275,6 +276,6 @@ window.addEventListener('load', function() {
         heroResetting = false;
       }, 650);
     }
-  }, 3000);
+  }, 3500);
 });
 

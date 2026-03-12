@@ -27,7 +27,9 @@
       "WebFetch(domain:www.trucoytrufa.es)",
       "WebFetch(domain:saffron-consultants.com)",
       "WebSearch",
-      "WebFetch(domain:www.pexels.com)"
+      "WebFetch(domain:www.pexels.com)",
+      "Bash(kill 98829:*)",
+      "Bash(ls:*)"
     ]
   }
 }
