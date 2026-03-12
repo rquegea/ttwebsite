@@ -190,12 +190,35 @@ document.addEventListener('DOMContentLoaded', () => {
       // Activar primer icono
       if (brandIcons.length > 0) brandIcons[0].classList.add('active');
 
+      // Función para centrar icono activo en carrusel horizontal (móvil)
+      var logoContainer = document.querySelector('.hero-client-logo');
+      function centerClientIcon(idx, animate) {
+        if (!logoContainer || clientIcons.length === 0) return;
+        var icon = clientIcons[idx];
+        if (!icon) return;
+        var iconW = icon.offsetWidth;
+        var gap = parseFloat(getComputedStyle(logoContainer).gap) || 0;
+        var offset = idx * (iconW + gap);
+        if (animate === false) {
+          logoContainer.style.transition = 'none';
+        } else {
+          logoContainer.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
+        }
+        logoContainer.style.transform = 'translateX(' + (-offset) + 'px)';
+      }
+
+      // Centrar primer icono en móvil al cargar
+      if (window.innerWidth <= 768) {
+        centerClientIcon(0, false);
+      }
+
       heroTrack.style.transition = 'none';
       heroTrack.style.transform = 'translateY(-' + ((heroIdx - 2) * ITEM_H) + 'px)';
 
       var heroResetting = false;
-      setInterval(function() {
-        if (heroResetting) return;
+      var heroPaused = false;
+      var heroInterval = setInterval(function() {
+        if (heroResetting || heroPaused) return;
         heroIdx++;
 
         // Animar nombre
@@ -230,6 +253,10 @@ document.addEventListener('DOMContentLoaded', () => {
           clientIcons[k].classList.remove('active');
         }
         if (clientIcons[brandIdx]) clientIcons[brandIdx].classList.add('active');
+        // Desplazar carrusel horizontal de iconos en móvil
+        if (window.innerWidth <= 768) {
+          centerClientIcon(brandIdx);
+        }
 
         // Reset cuando llega al primer clon del final
         if (heroIdx >= TOTAL_REAL + 2) {
@@ -264,11 +291,32 @@ document.addEventListener('DOMContentLoaded', () => {
               clientIcons[k].classList.remove('active');
             }
             if (clientIcons[0]) clientIcons[0].classList.add('active');
+            if (window.innerWidth <= 768) {
+              centerClientIcon(0, false);
+            }
 
             heroResetting = false;
           }, 650);
         }
       }, 3500);
+
+      // Botón pause/play
+      var pauseBtn = document.querySelector('.hero-pause');
+      var pauseIcon = document.querySelector('.hero-pause-icon');
+      if (pauseBtn) {
+        pauseBtn.addEventListener('click', function() {
+          heroPaused = !heroPaused;
+          if (heroPaused) {
+            pauseIcon.textContent = '▶';
+            var currentVid = heroSlides[videoIdx] ? heroSlides[videoIdx].querySelector('video') : null;
+            if (currentVid) currentVid.pause();
+          } else {
+            pauseIcon.textContent = '⏸';
+            var currentVid = heroSlides[videoIdx] ? heroSlides[videoIdx].querySelector('video') : null;
+            if (currentVid) currentVid.play();
+          }
+        });
+      }
     }
   }
 });
