@@ -238,7 +238,7 @@ window.addEventListener('load', function() {
   // Hardcoded: each span is 4.2rem tall
   var rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
   var ITEM_H = 4.2 * rootFontSize;
-  var TOTAL_REAL = 7;
+  var TOTAL_REAL = 8;
   var heroIdx = 2; // índice del primer cliente real (hay 2 clones antes)
 
   // Posicionar: offset (heroIdx - 2) centra el activo en el mask gradient

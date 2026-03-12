@@ -251,9 +251,7 @@
           <a href="#">Acceso</a>
         </div>
         <button class="mobile-menu-btn" aria-label="Toggle menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 6H21M3 12H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-          </svg>
+          <span class="menu-icon">■</span> MENU
         </button>
       </div>
     </div>
@@ -263,38 +261,25 @@
       <div class="mobile-menu-header container">
         <div class="logo">T&T</div>
         <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M18 6L6 18M6 6L18 18" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
+          <span class="menu-icon">■</span> CLOSE
         </button>
       </div>
       <nav class="mobile-menu-nav container">
         <ul>
-          <li><a href="/think/">t&think <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="1.5">
-                <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
-              </svg></a></li>
-          <li><a href="/tech/">t&tech <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="1.5">
-                <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
-              </svg></a></li>
-          <li><a href="/trends/">t&trends <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="1.5">
-                <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
-              </svg></a></li>
-          <li><a href="/team/">t&team <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="1.5">
-                <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
-              </svg></a></li>
-          <li><a href="/events/">t&events <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="1.5">
-                <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
-              </svg></a></li>
+          <li><a href="/think/">t&think</a></li>
+          <li><a href="/tech/">t&tech</a></li>
+          <li><a href="/trends/">t&trends</a></li>
+          <li><a href="/team/">t&team</a></li>
+          <li><a href="/events/">t&events</a></li>
+          <li><a href="/contacto/">Contacto</a></li>
         </ul>
       </nav>
       <div class="mobile-menu-footer container">
-        <button class="cta-primary">Solicita una propuesta</button>
-        <button class="cta-outline">Acceso</button>
+        <div class="mobile-social-links">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="Facebook">f</a>
+        </div>
       </div>
     </div>
   </header>
@@ -305,27 +290,42 @@
     <div class="hero-slides">
       <div class="hero-slide active" data-index="0">
         <video autoplay muted loop playsinline>
-          <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4" type="video/mp4">
+          <source src="/videos/barcelo.mp4" type="video/mp4">
         </video>
       </div>
       <div class="hero-slide" data-index="1">
         <video muted loop playsinline>
-          <source src="https://videos.pexels.com/video-files/3129540/3129540-uhd_2560_1440_30fps.mp4" type="video/mp4">
+          <source src="/videos/play.mp4" type="video/mp4">
         </video>
       </div>
       <div class="hero-slide" data-index="2">
         <video muted loop playsinline>
-          <source src="https://videos.pexels.com/video-files/3611029/3611029-hd_1920_1080_25fps.mp4" type="video/mp4">
+          <source src="/videos/domperignon.mp4" type="video/mp4">
         </video>
       </div>
       <div class="hero-slide" data-index="3">
         <video muted loop playsinline>
-          <source src="https://videos.pexels.com/video-files/4990234/4990234-hd_1920_1080_25fps.mp4" type="video/mp4">
+          <source src="/videos/sabadell.mp4" type="video/mp4">
         </video>
       </div>
       <div class="hero-slide" data-index="4">
         <video muted loop playsinline>
-          <source src="https://videos.pexels.com/video-files/9665235/9665235-hd_1920_1080_25fps.mp4" type="video/mp4">
+          <source src="/videos/planeta.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-slide" data-index="5">
+        <video muted loop playsinline>
+          <source src="/videos/moet.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-slide" data-index="6">
+        <video muted loop playsinline>
+          <source src="/videos/prime.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-slide" data-index="7">
+        <video muted loop playsinline>
+          <source src="/videos/lotus.mp4" type="video/mp4">
         </video>
       </div>
     </div>
@@ -337,27 +337,49 @@
     <div class="hero-center">
       <div class="hero-label-fixed">
         <span class="hero-label">HECHO CON</span>
-        <div class="hero-client-logo"></div>
+        <div class="hero-client-logo">
+          <img src="/favicon/barcelo.png" alt="Barceló" class="client-icon active">
+          <img src="/favicon/playstation.jpg" alt="PlayStation" class="client-icon">
+          <img src="/favicon/domperignom.png" alt="Dom Pérignon" class="client-icon">
+          <img src="/favicon/sabadell.jpg" alt="Sabadell" class="client-icon">
+          <img src="/favicon/planeta.jpeg" alt="Grupo Planeta" class="client-icon">
+          <img src="/favicon/moet.png" alt="Moët" class="client-icon">
+          <img src="/favicon/prime.jpg" alt="Prime" class="client-icon">
+          <img src="/favicon/lotus.png" alt="Lotus" class="client-icon">
+        </div>
       </div>
       <div class="hero-name-container">
         <div class="hero-name-track">
           <!-- 2 clones (últimos 2 reales) para el loop -->
-          <span>GRUPO PLANETA</span>
-          <span>MOËT</span>
-          <!-- 7 clientes reales -->
+          <span>PRIME</span>
+          <span>LOTUS</span>
+          <!-- 8 clientes reales -->
           <span class="active">BARCELÓ</span>
           <span>PLAYSTATION</span>
-          <span>KPMG</span>
           <span>DOM PÉRIGNON</span>
           <span>SABADELL</span>
           <span>GRUPO PLANETA</span>
-          <span>MOËT</span>
+          <span>MOËT&amp;CHANDON</span>
+          <span>PRIME</span>
+          <span>LOTUS</span>
           <!-- 3 clones (primeros 3 reales) para el loop -->
           <span>BARCELÓ</span>
           <span>PLAYSTATION</span>
-          <span>KPMG</span>
+          <span>DOM PÉRIGNON</span>
         </div>
       </div>
+    </div>
+
+    <!-- Brand icons -->
+    <div class="hero-brand-icons">
+      <img src="/favicon/barcelo.png" alt="Barceló">
+      <img src="/favicon/playstation.jpg" alt="PlayStation">
+      <img src="/favicon/domperignom.png" alt="Dom Pérignon">
+      <img src="/favicon/sabadell.jpg" alt="Sabadell">
+      <img src="/favicon/planeta.jpeg" alt="Grupo Planeta">
+      <img src="/favicon/moet.png" alt="Moët">
+      <img src="/favicon/prime.jpg" alt="Prime">
+      <img src="/favicon/lotus.png" alt="Lotus">
     </div>
 
     <!-- Pause/play control -->

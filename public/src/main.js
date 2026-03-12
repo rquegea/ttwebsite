@@ -173,15 +173,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3000);
   }
 
-  // Hero name carousel
+  // Hero name carousel + video sync + brand icons
   var heroTrack = document.querySelector('.hero-name-track');
+  var heroSlides = document.querySelectorAll('.hero-slide');
+  var brandIcons = document.querySelectorAll('.hero-brand-icons img');
+  var clientIcons = document.querySelectorAll('.hero-client-logo .client-icon');
   if (heroTrack) {
     var heroSpans = heroTrack.querySelectorAll('span');
     if (heroSpans.length > 0) {
       var rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
       var ITEM_H = 4.2 * rootFontSize;
-      var TOTAL_REAL = 7;
+      var TOTAL_REAL = 8;
       var heroIdx = 2;
+      var videoIdx = 0;
+
+      // Activar primer icono
+      if (brandIcons.length > 0) brandIcons[0].classList.add('active');
 
       heroTrack.style.transition = 'none';
       heroTrack.style.transform = 'translateY(-' + ((heroIdx - 2) * ITEM_H) + 'px)';
@@ -190,12 +197,41 @@ document.addEventListener('DOMContentLoaded', () => {
       setInterval(function() {
         if (heroResetting) return;
         heroIdx++;
+
+        // Animar nombre
         heroTrack.style.transition = 'transform 0.6s cubic-bezier(0.4,0,0.2,1)';
         heroTrack.style.transform = 'translateY(-' + ((heroIdx - 2) * ITEM_H) + 'px)';
         for (var j = 0; j < heroSpans.length; j++) {
           heroSpans[j].classList.remove('active');
         }
         if (heroSpans[heroIdx]) heroSpans[heroIdx].classList.add('active');
+
+        // Sincronizar vídeo + iconos
+        var brandIdx = (heroIdx - 2) % TOTAL_REAL;
+        if (heroSlides.length > 0) {
+          var prevVideo = heroSlides[videoIdx].querySelector('video');
+          if (prevVideo) prevVideo.pause();
+          heroSlides[videoIdx].classList.remove('active');
+
+          videoIdx = brandIdx;
+          heroSlides[videoIdx].classList.add('active');
+          var newVideo = heroSlides[videoIdx].querySelector('video');
+          if (newVideo) {
+            newVideo.currentTime = 0;
+            newVideo.play();
+          }
+        }
+        // Iconos (bottom bar + logo inline)
+        for (var k = 0; k < brandIcons.length; k++) {
+          brandIcons[k].classList.remove('active');
+        }
+        if (brandIcons[brandIdx]) brandIcons[brandIdx].classList.add('active');
+        for (var k = 0; k < clientIcons.length; k++) {
+          clientIcons[k].classList.remove('active');
+        }
+        if (clientIcons[brandIdx]) clientIcons[brandIdx].classList.add('active');
+
+        // Reset cuando llega al primer clon del final
         if (heroIdx >= TOTAL_REAL + 2) {
           heroResetting = true;
           setTimeout(function() {
@@ -206,6 +242,29 @@ document.addEventListener('DOMContentLoaded', () => {
               heroSpans[j].classList.remove('active');
             }
             heroSpans[2].classList.add('active');
+
+            // Reset vídeo + iconos al primero
+            if (heroSlides.length > 0) {
+              var prevVid = heroSlides[videoIdx].querySelector('video');
+              if (prevVid) prevVid.pause();
+              heroSlides[videoIdx].classList.remove('active');
+              videoIdx = 0;
+              heroSlides[0].classList.add('active');
+              var firstVid = heroSlides[0].querySelector('video');
+              if (firstVid) {
+                firstVid.currentTime = 0;
+                firstVid.play();
+              }
+            }
+            for (var k = 0; k < brandIcons.length; k++) {
+              brandIcons[k].classList.remove('active');
+            }
+            if (brandIcons[0]) brandIcons[0].classList.add('active');
+            for (var k = 0; k < clientIcons.length; k++) {
+              clientIcons[k].classList.remove('active');
+            }
+            if (clientIcons[0]) clientIcons[0].classList.add('active');
+
             heroResetting = false;
           }, 650);
         }
