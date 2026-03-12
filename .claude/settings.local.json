@@ -29,7 +29,9 @@
       "WebSearch",
       "WebFetch(domain:www.pexels.com)",
       "Bash(kill 98829:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }

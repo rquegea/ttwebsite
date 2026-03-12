@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var heroSpans = heroTrack.querySelectorAll('span');
     if (heroSpans.length > 0) {
       var rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-      var ITEM_H = 4.2 * rootFontSize;
+      var ITEM_H = 5.4 * rootFontSize;
       var TOTAL_REAL = 8;
       var heroIdx = 2;
       var videoIdx = 0;

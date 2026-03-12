@@ -206,9 +206,10 @@ a {
     visibility: hidden;
     pointer-events: none;
     transition: all 0.3s ease;
-    padding: 2rem 0;
+    padding: 2rem 1.5rem;
     display: flex;
     flex-direction: column;
+    text-align: left;
 }
 
 .mobile-menu-overlay.is-active {
@@ -255,20 +256,23 @@ a {
     list-style: none;
     padding: 0;
     margin: 0;
+    text-align: left;
+    width: 100%;
 }
 
 .mobile-menu-nav li {
-    margin-bottom: 1.2rem;
+    margin-bottom: 2rem;
 }
 
 .mobile-menu-nav a {
     font-family: 'Inter', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 600;
+    font-size: 2.2rem;
+    font-weight: 700;
     color: #0A0A0A;
     text-transform: uppercase;
     text-decoration: none;
-    letter-spacing: 0.02em;
+    letter-spacing: -0.01em;
+    display: block;
 }
 
 .mobile-menu-nav a:hover {
@@ -364,7 +368,7 @@ a {
 
 .hero-label {
     font-family: 'Inter', sans-serif;
-    font-size: 2.8rem;
+    font-size: 3.6rem;
     font-weight: 500;
     color: #fff;
     text-transform: uppercase;
@@ -373,9 +377,9 @@ a {
 
 .hero-client-logo {
     position: relative;
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
+    width: 72px;
+    height: 72px;
+    border-radius: 16px;
     background: rgba(255, 255, 255, 0.15);
     flex-shrink: 0;
     overflow: hidden;
@@ -398,7 +402,7 @@ a {
 }
 
 .hero-name-container {
-    height: 21rem;
+    height: 27rem;
     overflow: hidden;
     mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.25) 18%, black 38%, black 62%, rgba(0,0,0,0.25) 82%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.25) 18%, black 38%, black 62%, rgba(0,0,0,0.25) 82%, transparent 100%);
@@ -412,13 +416,13 @@ a {
 
 .hero-name-track span {
     font-family: 'Inter', sans-serif;
-    font-size: 2.8rem;
+    font-size: 3.6rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.3);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    height: 4.2rem;
-    line-height: 4.2rem;
+    height: 5.4rem;
+    line-height: 5.4rem;
     white-space: nowrap;
     transition: color 0.4s ease;
 }
@@ -685,7 +689,7 @@ a {
         transform: none;
         flex-direction: column;
         align-items: flex-start;
-        padding: 5rem 1.5rem 0;
+        padding: 7rem 1.5rem 0;
         width: 100%;
     }
 
@@ -701,7 +705,9 @@ a {
     }
 
     .hero-client-logo {
-        display: none;
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
     }
 
     .hero-name-container {
@@ -745,26 +751,29 @@ a {
     .hero-brand-icons {
         display: flex;
     }
+
+    .hero-pause {
+        left: auto;
+        right: 1.5rem;
+    }
 }
 
 /* Hero brand icons */
 .hero-brand-icons {
     display: none;
     position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 2.5rem;
+    right: 1.5rem;
     z-index: 5;
-    gap: 1rem;
+    gap: 0.5rem;
     align-items: center;
-    justify-content: center;
 }
 
 .hero-brand-icons img {
-    width: 32px;
-    height: 32px;
-    border-radius: 6px;
-    object-fit: contain;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    object-fit: cover;
     opacity: 0.7;
     transition: opacity 0.3s ease;
 }
@@ -1176,6 +1185,16 @@ a {
 
 /* Responsive */
 @media (max-width: 1024px) {
+    .header:hover {
+        background-color: transparent;
+        border-bottom-color: transparent;
+    }
+
+    .header:hover .logo,
+    .header:hover .mobile-menu-btn {
+        color: #fff;
+    }
+
     .hero h1 {
         font-size: 4rem;
     }
