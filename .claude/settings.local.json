@@ -31,7 +31,9 @@
       "Bash(kill 98829:*)",
       "Bash(ls:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(cat:*)",
+      "Bash(git checkout:*)"
     ]
   }
 }
