@@ -1686,6 +1686,17 @@ a {
     object-fit: contain;
 }
 
+.project-brand-logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    object-fit: contain;
+    background: #1A1A1A;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    flex-shrink: 0;
+    padding: 8px;
+}
+
 .project-overlay-text {
     display: flex;
     flex-direction: column;
