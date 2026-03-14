@@ -48,36 +48,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mega-menu JS control — SOLO JS, sin CSS :hover (evita race condition)
+  // Mega-menu JS control — unified hover zone (trigger + mega-menu panel)
   const dropdowns = document.querySelectorAll('.has-dropdown');
   let menuCloseTimeout = null;
 
-  const openDropdown = (dropdown) => {
-    if (menuCloseTimeout) { clearTimeout(menuCloseTimeout); menuCloseTimeout = null; }
-    dropdowns.forEach(d => { if (d !== dropdown) d.classList.remove('is-open'); });
-    dropdown.classList.add('is-open');
-  };
-
-  const scheduleClose = (dropdown) => {
-    menuCloseTimeout = setTimeout(() => {
-      dropdown.classList.remove('is-open');
+  function clearMenuTimeout() {
+    if (menuCloseTimeout) {
+      clearTimeout(menuCloseTimeout);
       menuCloseTimeout = null;
-    }, 300);
-  };
+    }
+  }
+
+  function scheduleMenuClose(delay = 400) {
+    clearMenuTimeout();
+    menuCloseTimeout = setTimeout(() => {
+      dropdowns.forEach(d => d.classList.remove('is-open'));
+    }, delay);
+  }
 
   dropdowns.forEach(dropdown => {
+    const trigger = dropdown.querySelector('a');
     const megaMenu = dropdown.querySelector('.mega-menu');
 
-    dropdown.addEventListener('mouseenter', () => openDropdown(dropdown));
-    dropdown.addEventListener('mouseleave', () => scheduleClose(dropdown));
+    // Hover sobre el link del nav → abrir este menú, cerrar otros
+    trigger.addEventListener('mouseenter', () => {
+      clearMenuTimeout();
+      dropdowns.forEach(d => { if (d !== dropdown) d.classList.remove('is-open'); });
+      dropdown.classList.add('is-open');
+    });
 
+    // Salir del link del nav → programar cierre
+    trigger.addEventListener('mouseleave', () => {
+      scheduleMenuClose(400);
+    });
+
+    // Hover sobre el mega-menu panel → cancelar cierre
     if (megaMenu) {
       megaMenu.addEventListener('mouseenter', () => {
-        if (menuCloseTimeout) { clearTimeout(menuCloseTimeout); menuCloseTimeout = null; }
+        clearMenuTimeout();
       });
-      megaMenu.addEventListener('mouseleave', () => scheduleClose(dropdown));
+
+      megaMenu.addEventListener('mouseleave', () => {
+        scheduleMenuClose(300);
+      });
     }
   });
+
 
   // Feature items interactivity
   const featureItems = document.querySelectorAll('.feature-item');

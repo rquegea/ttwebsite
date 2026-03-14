@@ -166,20 +166,6 @@ a {
     z-index: 150;
 }
 
-/* Puente invisible: cierra el gap entre el nav link y el panel del mega-menu.
-   visibility: visible y pointer-events: auto sobreescriben los del padre (.mega-menu)
-   para que el puente capture hover incluso cuando el menú está oculto. */
-.mega-menu::before {
-    content: '';
-    position: absolute;
-    top: -40px;
-    left: 0;
-    width: 100%;
-    height: 40px;
-    visibility: visible;
-    pointer-events: auto;
-}
-
 .has-dropdown.is-open .mega-menu {
     opacity: 1;
     visibility: visible;
