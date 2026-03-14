@@ -26,26 +26,7 @@ function findHtmlFiles(dir, results = []) {
 const ROOT = path.resolve(__dirname, '..');
 
 // Files to SKIP (will be deleted in Phase 4)
-const SKIP_PATHS = [
-  'think/pr-comunicacion',
-  'think/performance',
-  'think/trade-marketing',
-  'tech/desarrollo',
-  'tech/inteligencia-artificial',
-  'tech/crm',
-  'tech/automatizacion',
-  'trends',
-  'events',
-  'en/think/pr-communications',
-  'en/think/performance',
-  'en/think/trade-marketing',
-  'en/tech/development',
-  'en/tech/artificial-intelligence',
-  'en/tech/crm',
-  'en/tech/automation',
-  'en/trends',
-  'en/events',
-];
+const SKIP_PATHS = [];
 
 // SVG icons
 const CHEVRON_DOWN = '<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>';
@@ -135,12 +116,28 @@ function getEsNav(isHomepage) {
             <a href="/tailor/">t&amp;tailor ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <div class="mega-menu-container container">
-                <div class="features-multimedia mega-menu-multimedia" style="flex:1;">
+                <div class="features-list">
+                  <a href="/tailor/" class="feature-item active">
+                    <h3>PLV y Displays</h3>
+                    <p>Material de punto de venta, expositores y soportes gráficos de alta calidad.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/tailor/" class="feature-item">
+                    <h3>Merchandising y Textil</h3>
+                    <p>Ropa corporativa, artículos promocionales y textil técnico de marca.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/tailor/" class="feature-item">
+                    <h3>Packaging y Producción</h3>
+                    <p>Packaging premium, roll-ups, vinilos y producción gráfica a medida.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                </div>
+                <div class="features-multimedia mega-menu-multimedia">
                   <div class="video-placeholder"></div>
                   <div class="video-caption">
                     <h4>Producción a Medida</h4>
                     <p>Todo lo que tu marca necesita fabricar. Del diseño al objeto.</p>
-                    <a href="/tailor/" class="scroll-cta" style="margin-top:0.5rem;display:inline-block;">Descubrir →</a>
                   </div>
                 </div>
               </div>
@@ -178,12 +175,28 @@ function getEsNav(isHomepage) {
             <a href="/talk/">t&amp;talk ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <div class="mega-menu-container container">
-                <div class="features-multimedia mega-menu-multimedia" style="flex:1;">
+                <div class="features-list">
+                  <a href="/talk/" class="feature-item active">
+                    <h3>PR y Comunicación</h3>
+                    <p>Relaciones públicas, comunicación corporativa y gestión de reputación.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/talk/" class="feature-item">
+                    <h3>SEO, GEO y Paid Media</h3>
+                    <p>Posicionamiento orgánico, publicidad digital y captación de tráfico cualificado.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/talk/" class="feature-item">
+                    <h3>Content y Medios</h3>
+                    <p>Estrategia de contenidos, medios convencionales y planificación multimedia.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                </div>
+                <div class="features-multimedia mega-menu-multimedia">
                   <div class="video-placeholder"></div>
                   <div class="video-caption">
                     <h4>Comunicación y Medios</h4>
                     <p>Que hablen de tu marca. En el medio correcto, con el mensaje exacto.</p>
-                    <a href="/talk/" class="scroll-cta" style="margin-top:0.5rem;display:inline-block;">Descubrir →</a>
                   </div>
                 </div>
               </div>
@@ -344,12 +357,28 @@ function getEnNav(isHomepage) {
             <a href="/en/tailor/">t&amp;tailor ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <div class="mega-menu-container container">
-                <div class="features-multimedia mega-menu-multimedia" style="flex:1;">
+                <div class="features-list">
+                  <a href="/en/tailor/" class="feature-item active">
+                    <h3>POS &amp; Displays</h3>
+                    <p>Point-of-sale materials, display units and high-quality graphic supports.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/en/tailor/" class="feature-item">
+                    <h3>Merchandising &amp; Textiles</h3>
+                    <p>Corporate clothing, promotional items and branded technical textiles.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/en/tailor/" class="feature-item">
+                    <h3>Packaging &amp; Print</h3>
+                    <p>Premium packaging, roll-ups, vinyl wraps and bespoke graphic production.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                </div>
+                <div class="features-multimedia mega-menu-multimedia">
                   <div class="video-placeholder"></div>
                   <div class="video-caption">
                     <h4>Bespoke Production</h4>
                     <p>Everything your brand needs to manufacture. From design to object.</p>
-                    <a href="/en/tailor/" class="scroll-cta" style="margin-top:0.5rem;display:inline-block;">Discover →</a>
                   </div>
                 </div>
               </div>
@@ -387,12 +416,28 @@ function getEnNav(isHomepage) {
             <a href="/en/talk/">t&amp;talk ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <div class="mega-menu-container container">
-                <div class="features-multimedia mega-menu-multimedia" style="flex:1;">
+                <div class="features-list">
+                  <a href="/en/talk/" class="feature-item active">
+                    <h3>PR &amp; Communications</h3>
+                    <p>Public relations, corporate communications and reputation management.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/en/talk/" class="feature-item">
+                    <h3>SEO, GEO &amp; Paid Media</h3>
+                    <p>Organic positioning, digital advertising and qualified traffic acquisition.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/en/talk/" class="feature-item">
+                    <h3>Content &amp; Media</h3>
+                    <p>Content strategy, traditional media and multimedia planning.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                </div>
+                <div class="features-multimedia mega-menu-multimedia">
                   <div class="video-placeholder"></div>
                   <div class="video-caption">
                     <h4>Communications &amp; Media</h4>
                     <p>Get your brand talked about. In the right medium, with the right message.</p>
-                    <a href="/en/talk/" class="scroll-cta" style="margin-top:0.5rem;display:inline-block;">Discover →</a>
                   </div>
                 </div>
               </div>
