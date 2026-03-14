@@ -3237,3 +3237,67 @@ a {
         font-size: 1.2rem;
     }
 }
+
+/* ============================================
+   PROJECT CARD CLIENT BADGE (Saffron-style)
+   ============================================ */
+
+.project-card-home .project-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0,0,0,0.45), transparent);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.project-client-badge {
+    position: absolute;
+    bottom: 1.1rem;
+    left: 1.1rem;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.project-client-badge .badge-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    min-height: 42px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.15);
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.project-client-badge .badge-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.project-client-badge .badge-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    display: block;
+    line-height: 1.2;
+}
+
+.project-client-badge .badge-sector {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.7);
+    display: block;
+    line-height: 1.2;
+}
