@@ -49,7 +49,7 @@ function getEsNav(isHomepage) {
           <div class="nav-glider"></div>
           <!-- t&think -->
           <li class="has-dropdown">
-            <a href="/think/">t&amp;think ${CHEVRON_DOWN}</a>
+            <span class="nav-vertical-label">t&amp;think ${CHEVRON_DOWN}</span>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -86,7 +86,7 @@ function getEsNav(isHomepage) {
           </li>
           <!-- t&tech -->
           <li class="has-dropdown">
-            <a href="/tech/">t&amp;tech ${CHEVRON_DOWN}</a>
+            <span class="nav-vertical-label">t&amp;tech ${CHEVRON_DOWN}</span>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -113,7 +113,7 @@ function getEsNav(isHomepage) {
           </li>
           <!-- t&tailor -->
           <li class="has-dropdown">
-            <a href="/tailor/">t&amp;tailor ${CHEVRON_DOWN}</a>
+            <span class="nav-vertical-label">t&amp;tailor ${CHEVRON_DOWN}</span>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -145,7 +145,7 @@ function getEsNav(isHomepage) {
           </li>
           <!-- t&trade -->
           <li class="has-dropdown">
-            <a href="/trade/">t&amp;trade ${CHEVRON_DOWN}</a>
+            <span class="nav-vertical-label">t&amp;trade ${CHEVRON_DOWN}</span>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -172,7 +172,7 @@ function getEsNav(isHomepage) {
           </li>
           <!-- t&talk -->
           <li class="has-dropdown">
-            <a href="/talk/">t&amp;talk ${CHEVRON_DOWN}</a>
+            <span class="nav-vertical-label">t&amp;talk ${CHEVRON_DOWN}</span>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -204,7 +204,7 @@ function getEsNav(isHomepage) {
           </li>
           <!-- t&team -->
           <li class="has-dropdown">
-            <a href="/team/">t&amp;team ${CHEVRON_DOWN}</a>
+            <span class="nav-vertical-label">t&amp;team ${CHEVRON_DOWN}</span>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -253,12 +253,12 @@ function getEsNav(isHomepage) {
       </div>
       <nav class="mobile-menu-nav${isHomepage ? '' : ' container'}">
         <ul>
-          <li><a href="/think/">t&amp;think${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
-          <li><a href="/tech/">t&amp;tech${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
-          <li><a href="/tailor/">t&amp;tailor${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
-          <li><a href="/trade/">t&amp;trade${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
-          <li><a href="/talk/">t&amp;talk${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
-          <li><a href="/team/">t&amp;team${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
+          <li><span class="nav-vertical-label">t&amp;think</span></li>
+          <li><span class="nav-vertical-label">t&amp;tech</span></li>
+          <li><span class="nav-vertical-label">t&amp;tailor</span></li>
+          <li><span class="nav-vertical-label">t&amp;trade</span></li>
+          <li><span class="nav-vertical-label">t&amp;talk</span></li>
+          <li><span class="nav-vertical-label">t&amp;team</span></li>
           <li><a href="/contacto/">Contacto${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
         </ul>
       </nav>
@@ -290,7 +290,7 @@ function getEnNav(isHomepage) {
           <div class="nav-glider"></div>
           <!-- t&think -->
           <li class="has-dropdown">
-            <a href="/en/think/">t&amp;think ${CHEVRON_DOWN}</a>
+            <span class="nav-vertical-label">t&amp;think ${CHEVRON_DOWN}</span>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -327,7 +327,7 @@ function getEnNav(isHomepage) {
           </li>
           <!-- t&tech -->
           <li class="has-dropdown">
-            <a href="/en/tech/">t&amp;tech ${CHEVRON_DOWN}</a>
+            <span class="nav-vertical-label">t&amp;tech ${CHEVRON_DOWN}</span>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -354,7 +354,7 @@ function getEnNav(isHomepage) {
           </li>
           <!-- t&tailor -->
           <li class="has-dropdown">
-            <a href="/en/tailor/">t&amp;tailor ${CHEVRON_DOWN}</a>
+            <span class="nav-vertical-label">t&amp;tailor ${CHEVRON_DOWN}</span>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -386,7 +386,7 @@ function getEnNav(isHomepage) {
           </li>
           <!-- t&trade -->
           <li class="has-dropdown">
-            <a href="/en/trade/">t&amp;trade ${CHEVRON_DOWN}</a>
+            <span class="nav-vertical-label">t&amp;trade ${CHEVRON_DOWN}</span>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -413,7 +413,7 @@ function getEnNav(isHomepage) {
           </li>
           <!-- t&talk -->
           <li class="has-dropdown">
-            <a href="/en/talk/">t&amp;talk ${CHEVRON_DOWN}</a>
+            <span class="nav-vertical-label">t&amp;talk ${CHEVRON_DOWN}</span>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -445,7 +445,7 @@ function getEnNav(isHomepage) {
           </li>
           <!-- t&team -->
           <li class="has-dropdown">
-            <a href="/en/team/">t&amp;team ${CHEVRON_DOWN}</a>
+            <span class="nav-vertical-label">t&amp;team ${CHEVRON_DOWN}</span>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -494,12 +494,12 @@ function getEnNav(isHomepage) {
       </div>
       <nav class="mobile-menu-nav${isHomepage ? '' : ' container'}">
         <ul>
-          <li><a href="/en/think/">t&amp;think${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
-          <li><a href="/en/tech/">t&amp;tech${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
-          <li><a href="/en/tailor/">t&amp;tailor${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
-          <li><a href="/en/trade/">t&amp;trade${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
-          <li><a href="/en/talk/">t&amp;talk${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
-          <li><a href="/en/team/">t&amp;team${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
+          <li><span class="nav-vertical-label">t&amp;think</span></li>
+          <li><span class="nav-vertical-label">t&amp;tech</span></li>
+          <li><span class="nav-vertical-label">t&amp;tailor</span></li>
+          <li><span class="nav-vertical-label">t&amp;trade</span></li>
+          <li><span class="nav-vertical-label">t&amp;talk</span></li>
+          <li><span class="nav-vertical-label">t&amp;team</span></li>
           <li><a href="/en/contact/">Contact${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
         </ul>
       </nav>
