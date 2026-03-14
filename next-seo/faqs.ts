@@ -1,5 +1,5 @@
 // ============================================================================
-// T&T — FAQPage Content (17 subpages × 3 FAQs × 2 locales = 102 FAQ items)
+// T&T — FAQPage Content (subpages x 3 FAQs x 2 locales)
 // ============================================================================
 
 import type { Locale } from './routes';
@@ -13,23 +13,23 @@ type FaqMap = Record<string, Record<Locale, FaqItem[]>>;
 
 export const faqData: FaqMap = {
 
-  // ════════════════════════════════════════════════════════════════════════
+  // ============================================================================
   // t&think
-  // ════════════════════════════════════════════════════════════════════════
+  // ============================================================================
 
   creatividad: {
     es: [
       {
-        question: '¿Qué incluye el servicio de creatividad y dirección de arte?',
-        answer: 'Desde conceptualización de campañas y diseño gráfico hasta identidad visual completa, packaging y producción audiovisual. Cada proyecto se aborda desde la estrategia de marca.',
+        question: '¿Que incluye el servicio de creatividad y direccion de arte?',
+        answer: 'Desde conceptualizacion de campanas y diseno grafico hasta identidad visual completa, packaging y produccion audiovisual. Cada proyecto se aborda desde la estrategia de marca.',
       },
       {
-        question: '¿Trabajáis con marcas de cualquier sector?',
-        answer: 'Sí. Hemos desarrollado creatividad para gran consumo, banca, educación, lujo y tecnología. El proceso se adapta al sector y la audiencia.',
+        question: '¿Trabajais con marcas de cualquier sector?',
+        answer: 'Si. Hemos desarrollado creatividad para gran consumo, banca, educacion, lujo y tecnologia. El proceso se adapta al sector y la audiencia.',
       },
       {
-        question: '¿Cuánto tarda un proyecto de identidad visual?',
-        answer: 'Depende del alcance. Una identidad visual completa suele desarrollarse en 6-10 semanas, incluyendo investigación, propuestas y aplicaciones.',
+        question: '¿Cuanto tarda un proyecto de identidad visual?',
+        answer: 'Depende del alcance. Una identidad visual completa suele desarrollarse en 6-10 semanas, incluyendo investigacion, propuestas y aplicaciones.',
       },
     ],
     en: [
@@ -48,253 +48,28 @@ export const faqData: FaqMap = {
     ],
   },
 
-  'pr-comunicacion': {
+  estrategia: {
     es: [
       {
-        question: '¿Qué tipo de medios gestionáis?',
-        answer: 'Medios nacionales e internacionales, prensa generalista y especializada, medios digitales y podcasts. Adaptamos la estrategia de medios al objetivo de cada cliente.',
-      },
-      {
-        question: '¿Ofrecéis gestión de crisis?',
-        answer: 'Sí. Diseñamos protocolos de crisis, formamos portavoces y gestionamos la comunicación en tiempo real cuando surgen situaciones críticas.',
-      },
-      {
-        question: '¿Cómo medís el impacto de las acciones de PR?',
-        answer: 'Con métricas de alcance, share of voice, análisis de sentimiento, cobertura en medios clave y su impacto en objetivos de negocio.',
-      },
-    ],
-    en: [
-      {
-        question: 'What type of media do you manage?',
-        answer: 'National and international media, generalist and specialist press, digital media and podcasts. We adapt the media strategy to each client\'s objectives.',
-      },
-      {
-        question: 'Do you offer crisis management?',
-        answer: 'Yes. We design crisis protocols, train spokespeople and manage real-time communications when critical situations arise.',
-      },
-      {
-        question: 'How do you measure PR impact?',
-        answer: 'Through reach metrics, share of voice, sentiment analysis, coverage in key media and its impact on business objectives.',
-      },
-    ],
-  },
-
-  performance: {
-    es: [
-      {
-        question: '¿Qué plataformas de paid media gestionáis?',
-        answer: 'Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads, programática y medios offline. Seleccionamos los canales según el objetivo y la audiencia.',
-      },
-      {
-        question: '¿Cuánto presupuesto mínimo recomendáis para performance?',
-        answer: 'Depende del canal y mercado. Definimos el presupuesto óptimo tras analizar competencia, audiencia y objetivos de conversión.',
-      },
-      {
-        question: '¿Reportáis resultados en tiempo real?',
-        answer: 'Sí. Configuramos dashboards con datos en tiempo real y enviamos informes periódicos con análisis de rendimiento y recomendaciones de optimización.',
-      },
-    ],
-    en: [
-      {
-        question: 'Which paid media platforms do you manage?',
-        answer: 'Google Ads, Meta Ads, LinkedIn Ads, TikTok Ads, programmatic and offline media. We select channels based on the objective and audience.',
-      },
-      {
-        question: 'What minimum budget do you recommend for performance?',
-        answer: 'It depends on the channel and market. We define the optimal budget after analysing competition, audience and conversion goals.',
-      },
-      {
-        question: 'Do you report results in real time?',
-        answer: 'Yes. We set up dashboards with real-time data and send periodic reports with performance analysis and optimisation recommendations.',
-      },
-    ],
-  },
-
-  'trade-marketing': {
-    es: [
-      {
-        question: '¿Qué tipo de activaciones en punto de venta realizáis?',
-        answer: 'Desde displays y PLV hasta promotoras, degustaciones, pop-ups y experiencias inmersivas en retail.',
-      },
-      {
-        question: '¿Trabajáis con la distribución organizada?',
-        answer: 'Sí. Tenemos experiencia en gran distribución, retail especializado y canal horeca. Adaptamos cada acción al canal.',
-      },
-      {
-        question: '¿Cómo medís el ROI de las acciones de trade marketing?',
-        answer: 'Medimos sell-out, rotación, cobertura de implantación y lift de ventas durante y después de cada campaña.',
-      },
-    ],
-    en: [
-      {
-        question: 'What type of point-of-sale activations do you carry out?',
-        answer: 'From displays and POS materials to promoters, tastings, pop-ups and immersive retail experiences.',
-      },
-      {
-        question: 'Do you work with organised distribution?',
-        answer: 'Yes. We have experience in large-scale distribution, specialist retail and horeca channels. We adapt each action to the channel.',
-      },
-      {
-        question: 'How do you measure trade marketing ROI?',
-        answer: 'We measure sell-out, rotation, implementation coverage and sales lift during and after each campaign.',
-      },
-    ],
-  },
-
-  // ════════════════════════════════════════════════════════════════════════
-  // t&tech
-  // ════════════════════════════════════════════════════════════════════════
-
-  desarrollo: {
-    es: [
-      {
-        question: '¿Qué tecnologías utilizáis para el desarrollo?',
-        answer: 'React, Next.js, Vue, Node.js, Python y plataformas como Shopify y WordPress. Elegimos el stack según las necesidades del proyecto.',
-      },
-      {
-        question: '¿Cuánto tarda un proyecto de desarrollo web?',
-        answer: 'Un sitio corporativo suele estar listo en 8-12 semanas. E-commerce y aplicaciones complejas pueden requerir 12-20 semanas según el alcance.',
-      },
-      {
-        question: '¿Ofrecéis mantenimiento tras el lanzamiento?',
-        answer: 'Sí. Ofrecemos planes de mantenimiento con actualizaciones, monitorización, soporte técnico y mejoras evolutivas.',
-      },
-    ],
-    en: [
-      {
-        question: 'What technologies do you use for development?',
-        answer: 'React, Next.js, Vue, Node.js, Python and platforms like Shopify and WordPress. We choose the stack based on project needs.',
-      },
-      {
-        question: 'How long does a web development project take?',
-        answer: 'A corporate site is typically ready in 8-12 weeks. E-commerce and complex applications may require 12-20 weeks depending on scope.',
-      },
-      {
-        question: 'Do you offer post-launch maintenance?',
-        answer: 'Yes. We offer maintenance plans including updates, monitoring, technical support and iterative improvements.',
-      },
-    ],
-  },
-
-  'inteligencia-artificial': {
-    es: [
-      {
-        question: '¿Necesito un equipo técnico interno para implementar IA?',
-        answer: 'No. Nos integramos con tu equipo existente y gestionamos todo el proceso, desde la definición del caso de uso hasta el despliegue.',
-      },
-      {
-        question: '¿Qué resultados puedo esperar de un proyecto de IA?',
-        answer: 'Depende del caso de uso. Nuestros proyectos han logrado reducir tiempos de respuesta un 60%, automatizar el 40% de consultas y mejorar la precisión de predicciones comerciales.',
-      },
-      {
-        question: '¿Podéis integrar IA con nuestro CRM actual?',
-        answer: 'Sí. Trabajamos con APIs de HubSpot, Salesforce y Zoho para crear flujos inteligentes que conectan IA con tu operación comercial.',
-      },
-    ],
-    en: [
-      {
-        question: 'Do I need an internal technical team to implement AI?',
-        answer: 'No. We integrate with your existing team and manage the entire process, from use case definition to deployment.',
-      },
-      {
-        question: 'What results can I expect from an AI project?',
-        answer: 'It depends on the use case. Our projects have achieved 60% response time reduction, 40% query automation and improved accuracy in commercial predictions.',
-      },
-      {
-        question: 'Can you integrate AI with our current CRM?',
-        answer: 'Yes. We work with HubSpot, Salesforce and Zoho APIs to create intelligent flows that connect AI with your commercial operations.',
-      },
-    ],
-  },
-
-  crm: {
-    es: [
-      {
-        question: '¿Qué CRM es mejor para mi empresa?',
-        answer: 'Depende de tu tamaño, sector y operación comercial. Analizamos tus necesidades y recomendamos entre HubSpot, Salesforce, Zoho o desarrollo a medida.',
-      },
-      {
-        question: '¿Cuánto tiempo lleva implementar un CRM?',
-        answer: 'Una implementación estándar toma 4-8 semanas. Proyectos con migración de datos y personalizaciones complejas pueden extenderse a 12-16 semanas.',
-      },
-      {
-        question: '¿Podéis migrar datos de nuestro CRM actual?',
-        answer: 'Sí. Gestionamos migraciones completas con mapeo de campos, limpieza de datos y validación para asegurar cero pérdida de información.',
-      },
-    ],
-    en: [
-      {
-        question: 'Which CRM is best for my company?',
-        answer: 'It depends on your size, sector and commercial operation. We analyse your needs and recommend between HubSpot, Salesforce, Zoho or custom development.',
-      },
-      {
-        question: 'How long does CRM implementation take?',
-        answer: 'A standard implementation takes 4-8 weeks. Projects with data migration and complex customisations may extend to 12-16 weeks.',
-      },
-      {
-        question: 'Can you migrate data from our current CRM?',
-        answer: 'Yes. We manage complete migrations with field mapping, data cleansing and validation to ensure zero information loss.',
-      },
-    ],
-  },
-
-  automatizacion: {
-    es: [
-      {
-        question: '¿Qué herramientas de automatización utilizáis?',
-        answer: 'HubSpot, Zapier, Make (Integromat), n8n, ActiveCampaign y desarrollos custom. Elegimos la herramienta según complejidad y presupuesto.',
-      },
-      {
-        question: '¿La automatización puede sustituir a mi equipo?',
-        answer: 'No. La automatización elimina tareas repetitivas para que tu equipo se enfoque en trabajo estratégico. Es un multiplicador de productividad, no un sustituto.',
-      },
-      {
-        question: '¿Cuánto tarda en verse resultados?',
-        answer: 'Los primeros flujos automatizados pueden estar operativos en 2-4 semanas. El impacto en eficiencia suele ser visible desde el primer mes.',
-      },
-    ],
-    en: [
-      {
-        question: 'What automation tools do you use?',
-        answer: 'HubSpot, Zapier, Make (Integromat), n8n, ActiveCampaign and custom builds. We choose the tool based on complexity and budget.',
-      },
-      {
-        question: 'Can automation replace my team?',
-        answer: 'No. Automation eliminates repetitive tasks so your team can focus on strategic work. It\'s a productivity multiplier, not a replacement.',
-      },
-      {
-        question: 'How long before seeing results?',
-        answer: 'The first automated flows can be operational in 2-4 weeks. The efficiency impact is typically visible from the first month.',
-      },
-    ],
-  },
-
-  // ════════════════════════════════════════════════════════════════════════
-  // t&trends
-  // ════════════════════════════════════════════════════════════════════════
-
-  consultoria: {
-    es: [
-      {
-        question: '¿En qué consiste un proyecto de consultoría estratégica?',
+        question: '¿En que consiste un proyecto de estrategia con T&T?',
         answer: 'Analizamos tu posicionamiento, mercado y competencia para definir una hoja de ruta con objetivos, prioridades y acciones concretas.',
       },
       {
-        question: '¿Cuánto dura un proceso de consultoría?',
-        answer: 'Un diagnóstico estratégico se completa en 4-6 semanas. Proyectos de acompañamiento continuo se estructuran en ciclos trimestrales.',
+        question: '¿Cuanto dura un proceso de consultoria estrategica?',
+        answer: 'Un diagnostico estrategico se completa en 4-6 semanas. Proyectos de acompanamiento continuo se estructuran en ciclos trimestrales.',
       },
       {
-        question: '¿Trabajáis con startups o solo con grandes empresas?',
-        answer: 'Ambos. Adaptamos la metodología al tamaño y madurez del negocio. Lo importante es la ambición del proyecto, no el tamaño de la empresa.',
+        question: '¿Trabajais con startups o solo con grandes empresas?',
+        answer: 'Ambos. Adaptamos la metodologia al tamano y madurez del negocio. Lo importante es la ambicion del proyecto, no el tamano de la empresa.',
       },
     ],
     en: [
       {
-        question: 'What does a strategic consulting project involve?',
+        question: 'What does a strategy project with T&T involve?',
         answer: 'We analyse your positioning, market and competition to define a roadmap with objectives, priorities and concrete actions.',
       },
       {
-        question: 'How long does a consulting process last?',
+        question: 'How long does a strategic consulting process last?',
         answer: 'A strategic diagnosis is completed in 4-6 weeks. Ongoing advisory projects are structured in quarterly cycles.',
       },
       {
@@ -304,50 +79,19 @@ export const faqData: FaqMap = {
     ],
   },
 
-  'data-analitica': {
-    es: [
-      {
-        question: '¿Qué herramientas de analítica utilizáis?',
-        answer: 'Google Analytics 4, Looker Studio, Power BI, BigQuery y herramientas de atribución avanzada. Seleccionamos según el ecosistema del cliente.',
-      },
-      {
-        question: '¿Podéis unificar datos de múltiples plataformas?',
-        answer: 'Sí. Creamos data lakes y dashboards que integran datos de web, CRM, paid media, redes sociales y ventas en una sola vista.',
-      },
-      {
-        question: '¿Cómo transformáis datos en decisiones de negocio?',
-        answer: 'Traducimos métricas en insights accionables. Cada dashboard incluye recomendaciones claras vinculadas a KPIs de negocio.',
-      },
-    ],
-    en: [
-      {
-        question: 'What analytics tools do you use?',
-        answer: 'Google Analytics 4, Looker Studio, Power BI, BigQuery and advanced attribution tools. We select based on the client\'s ecosystem.',
-      },
-      {
-        question: 'Can you unify data from multiple platforms?',
-        answer: 'Yes. We create data lakes and dashboards that integrate web, CRM, paid media, social and sales data into a single view.',
-      },
-      {
-        question: 'How do you turn data into business decisions?',
-        answer: 'We translate metrics into actionable insights. Each dashboard includes clear recommendations linked to business KPIs.',
-      },
-    ],
-  },
-
   investigacion: {
     es: [
       {
-        question: '¿Qué metodologías de investigación utilizáis?',
-        answer: 'Cuantitativas (encuestas, paneles), cualitativas (focus groups, entrevistas en profundidad) y análisis de datos secundarios. Combinamos según el objetivo.',
+        question: '¿Que metodologias de investigacion utilizais?',
+        answer: 'Cuantitativas (encuestas, paneles), cualitativas (focus groups, entrevistas en profundidad) y analisis de datos secundarios. Combinamos segun el objetivo.',
       },
       {
-        question: '¿En qué sectores tenéis experiencia en investigación?',
-        answer: 'Gran consumo, banca, educación, lujo, tecnología y servicios profesionales. Nuestro equipo tiene experiencia en investigación multisectorial.',
+        question: '¿En que sectores teneis experiencia en investigacion?',
+        answer: 'Gran consumo, banca, educacion, lujo, tecnologia y servicios profesionales. Nuestro equipo tiene experiencia en investigacion multisectorial.',
       },
       {
-        question: '¿Cuánto tarda un estudio de mercado?',
-        answer: 'Un estudio estándar se completa en 6-8 semanas. Investigaciones con fieldwork internacional pueden requerir 10-14 semanas.',
+        question: '¿Cuanto tarda un estudio de mercado?',
+        answer: 'Un estudio estandar se completa en 6-8 semanas. Investigaciones con fieldwork internacional pueden requerir 10-14 semanas.',
       },
     ],
     en: [
@@ -366,23 +110,256 @@ export const faqData: FaqMap = {
     ],
   },
 
-  // ════════════════════════════════════════════════════════════════════════
+  'data-analitica': {
+    es: [
+      {
+        question: '¿Que herramientas de analitica utilizais?',
+        answer: 'Google Analytics 4, Looker Studio, Power BI, BigQuery y herramientas de atribucion avanzada. Seleccionamos segun el ecosistema del cliente.',
+      },
+      {
+        question: '¿Podeis unificar datos de multiples plataformas?',
+        answer: 'Si. Creamos data lakes y dashboards que integran datos de web, CRM, paid media, redes sociales y ventas en una sola vista.',
+      },
+      {
+        question: '¿Como transformais datos en decisiones de negocio?',
+        answer: 'Traducimos metricas en insights accionables. Cada dashboard incluye recomendaciones claras vinculadas a KPIs de negocio.',
+      },
+    ],
+    en: [
+      {
+        question: 'What analytics tools do you use?',
+        answer: 'Google Analytics 4, Looker Studio, Power BI, BigQuery and advanced attribution tools. We select based on the client\'s ecosystem.',
+      },
+      {
+        question: 'Can you unify data from multiple platforms?',
+        answer: 'Yes. We create data lakes and dashboards that integrate web, CRM, paid media, social and sales data into a single view.',
+      },
+      {
+        question: 'How do you turn data into business decisions?',
+        answer: 'We translate metrics into actionable insights. Each dashboard includes clear recommendations linked to business KPIs.',
+      },
+    ],
+  },
+
+  // ============================================================================
+  // t&tech
+  // ============================================================================
+
+  '2laps': {
+    es: [
+      {
+        question: '¿Que es 2laps?',
+        answer: '2laps es un producto tecnologico propio de T&T disenado para acelerar procesos de marketing y transformacion digital, combinando automatizacion y datos en tiempo real.',
+      },
+      {
+        question: '¿Para que tipo de empresas esta pensado 2laps?',
+        answer: 'Para marcas que necesitan velocidad en la toma de decisiones y optimizacion continua de sus campanas y operaciones de marketing.',
+      },
+      {
+        question: '¿Como se integra 2laps con mi stack actual?',
+        answer: '2laps se conecta con las principales plataformas de marketing, CRM y analitica a traves de APIs, adaptandose a la infraestructura existente del cliente.',
+      },
+    ],
+    en: [
+      {
+        question: 'What is 2laps?',
+        answer: '2laps is T&T\'s proprietary technology product designed to accelerate marketing and digital transformation processes, combining automation and real-time data.',
+      },
+      {
+        question: 'What type of companies is 2laps designed for?',
+        answer: 'For brands that need speed in decision-making and continuous optimisation of their marketing campaigns and operations.',
+      },
+      {
+        question: 'How does 2laps integrate with my current stack?',
+        answer: '2laps connects with major marketing, CRM and analytics platforms via APIs, adapting to the client\'s existing infrastructure.',
+      },
+    ],
+  },
+
+  '1000er': {
+    es: [
+      {
+        question: '¿Que es 1000er?',
+        answer: '1000er es la plataforma tecnologica de T&T disenada para escalar resultados de negocio, con foco en rendimiento, datos y automatizacion inteligente.',
+      },
+      {
+        question: '¿Que diferencia a 1000er de otras herramientas del mercado?',
+        answer: '1000er esta construido desde la vision de negocio, no desde la tecnologia. Cada funcionalidad responde a un reto real de marketing y transformacion.',
+      },
+      {
+        question: '¿Cuanto tiempo lleva implementar 1000er?',
+        answer: 'La implementacion base se completa en 4-6 semanas. Configuraciones avanzadas con integraciones a medida pueden extenderse a 8-12 semanas.',
+      },
+    ],
+    en: [
+      {
+        question: 'What is 1000er?',
+        answer: '1000er is T&T\'s proprietary technology platform designed to scale business results, focused on performance, data and intelligent automation.',
+      },
+      {
+        question: 'What makes 1000er different from other tools on the market?',
+        answer: '1000er is built from a business perspective, not a technology one. Every feature responds to a real marketing and transformation challenge.',
+      },
+      {
+        question: 'How long does it take to implement 1000er?',
+        answer: 'The base implementation is completed in 4-6 weeks. Advanced configurations with custom integrations may extend to 8-12 weeks.',
+      },
+    ],
+  },
+
+  // ============================================================================
+  // t&tailor
+  // ============================================================================
+
+  tailor: {
+    es: [
+      {
+        question: '¿Que tipo de producciones realiza t&tailor?',
+        answer: 'Producciones a medida para marcas que necesitan soluciones unicas: desde contenido audiovisual y grafico hasta piezas fisicas y experiencias de marca personalizadas.',
+      },
+      {
+        question: '¿Cual es el proceso de trabajo de t&tailor?',
+        answer: 'Partimos de un brief detallado, desarrollamos propuestas creativas y ejecutamos la produccion con control de calidad en cada fase. Cada proyecto es unico.',
+      },
+      {
+        question: '¿Para que sectores trabaja t&tailor?',
+        answer: 'Lujo, gran consumo, banca, educacion y tecnologia. La produccion a medida se adapta al posicionamiento y las necesidades especificas de cada marca.',
+      },
+    ],
+    en: [
+      {
+        question: 'What type of productions does t&tailor handle?',
+        answer: 'Bespoke productions for brands that need unique solutions: from audiovisual and graphic content to physical pieces and personalised brand experiences.',
+      },
+      {
+        question: 'What is t&tailor\'s working process?',
+        answer: 'We start from a detailed brief, develop creative proposals and execute the production with quality control at every stage. Every project is unique.',
+      },
+      {
+        question: 'Which sectors does t&tailor work with?',
+        answer: 'Luxury, FMCG, banking, education and technology. Bespoke production adapts to the positioning and specific needs of each brand.',
+      },
+    ],
+  },
+
+  // ============================================================================
+  // t&trade
+  // ============================================================================
+
+  'trade-show': {
+    es: [
+      {
+        question: '¿Disenais y construis el stand completo?',
+        answer: 'Si. Desde el diseno conceptual y los renders 3D hasta la construccion, montaje, desmontaje y almacenaje del stand.',
+      },
+      {
+        question: '¿En que ferias teneis experiencia?',
+        answer: 'FITUR, MWC, Alimentaria, Fruit Attraction y ferias sectoriales europeas. Nos adaptamos a cualquier recinto y normativa.',
+      },
+      {
+        question: '¿Cuanto tiempo de antelacion necesitais para un stand?',
+        answer: 'Recomendamos 8-12 semanas para stands de diseno custom. Stands modulares pueden prepararse en 4-6 semanas.',
+      },
+    ],
+    en: [
+      {
+        question: 'Do you design and build the complete stand?',
+        answer: 'Yes. From conceptual design and 3D renders to construction, assembly, dismantling and storage.',
+      },
+      {
+        question: 'Which trade shows do you have experience with?',
+        answer: 'FITUR, MWC, Alimentaria, Fruit Attraction and European sector fairs. We adapt to any venue and regulations.',
+      },
+      {
+        question: 'How much lead time do you need for a stand?',
+        answer: 'We recommend 8-12 weeks for custom design stands. Modular stands can be prepared in 4-6 weeks.',
+      },
+    ],
+  },
+
+  'trade-marketing': {
+    es: [
+      {
+        question: '¿Que tipo de activaciones en punto de venta realizais?',
+        answer: 'Desde displays y PLV hasta promotoras, degustaciones, pop-ups y experiencias inmersivas en retail.',
+      },
+      {
+        question: '¿Trabajais con la distribucion organizada?',
+        answer: 'Si. Tenemos experiencia en gran distribucion, retail especializado y canal horeca. Adaptamos cada accion al canal.',
+      },
+      {
+        question: '¿Como medis el ROI de las acciones de trade marketing?',
+        answer: 'Medimos sell-out, rotacion, cobertura de implantacion y lift de ventas durante y despues de cada campana.',
+      },
+    ],
+    en: [
+      {
+        question: 'What type of point-of-sale activations do you carry out?',
+        answer: 'From displays and POS materials to promoters, tastings, pop-ups and immersive retail experiences.',
+      },
+      {
+        question: 'Do you work with organised distribution?',
+        answer: 'Yes. We have experience in large-scale distribution, specialist retail and horeca channels. We adapt each action to the channel.',
+      },
+      {
+        question: 'How do you measure trade marketing ROI?',
+        answer: 'We measure sell-out, rotation, implementation coverage and sales lift during and after each campaign.',
+      },
+    ],
+  },
+
+  // ============================================================================
+  // t&talk
+  // ============================================================================
+
+  talk: {
+    es: [
+      {
+        question: '¿Que servicios de comunicacion ofrece t&talk?',
+        answer: 'Relaciones publicas, comunicacion corporativa, gestion de crisis, media relations y estrategia de reputacion. Cubrimos todo el espectro de comunicacion de marca.',
+      },
+      {
+        question: '¿Gestionais relaciones con medios internacionales?',
+        answer: 'Si. Trabajamos con medios nacionales e internacionales, prensa generalista y especializada, medios digitales y podcasts.',
+      },
+      {
+        question: '¿Como medis el impacto de las acciones de comunicacion?',
+        answer: 'Con metricas de alcance, share of voice, analisis de sentimiento, cobertura en medios clave y su impacto en objetivos de negocio.',
+      },
+    ],
+    en: [
+      {
+        question: 'What communications services does t&talk offer?',
+        answer: 'Public relations, corporate communications, crisis management, media relations and reputation strategy. We cover the full spectrum of brand communications.',
+      },
+      {
+        question: 'Do you manage relationships with international media?',
+        answer: 'Yes. We work with national and international media, generalist and specialist press, digital media and podcasts.',
+      },
+      {
+        question: 'How do you measure the impact of communications activities?',
+        answer: 'Through reach metrics, share of voice, sentiment analysis, coverage in key media and its impact on business objectives.',
+      },
+    ],
+  },
+
+  // ============================================================================
   // t&team
-  // ════════════════════════════════════════════════════════════════════════
+  // ============================================================================
 
   captacion: {
     es: [
       {
-        question: '¿En qué perfiles estáis especializados?',
-        answer: 'Marketing digital, comunicación, creatividad, data, tecnología y perfiles directivos del sector. Reclutamos desde analistas hasta C-level.',
+        question: '¿En que perfiles estais especializados?',
+        answer: 'Marketing digital, comunicacion, creatividad, data, tecnologia y perfiles directivos del sector. Reclutamos desde analistas hasta C-level.',
       },
       {
-        question: '¿Cuánto tarda un proceso de selección?',
-        answer: 'Un proceso estándar se completa en 3-5 semanas. Posiciones directivas o muy especializadas pueden requerir 6-10 semanas.',
+        question: '¿Cuanto tarda un proceso de seleccion?',
+        answer: 'Un proceso estandar se completa en 3-5 semanas. Posiciones directivas o muy especializadas pueden requerir 6-10 semanas.',
       },
       {
-        question: '¿Ofrecéis garantía de reemplazo?',
-        answer: 'Sí. Incluimos un periodo de garantía en todos nuestros procesos de selección. Si el candidato no funciona, reactivamos la búsqueda sin coste adicional.',
+        question: '¿Ofreceis garantia de reemplazo?',
+        answer: 'Si. Incluimos un periodo de garantia en todos nuestros procesos de seleccion. Si el candidato no funciona, reactivamos la busqueda sin coste adicional.',
       },
     ],
     en: [
@@ -404,16 +381,16 @@ export const faqData: FaqMap = {
   formacion: {
     es: [
       {
-        question: '¿Qué formatos de formación ofrecéis?',
-        answer: 'Workshops presenciales, formación online en directo, programas híbridos y cursos bajo demanda. Adaptamos el formato a la disponibilidad del equipo.',
+        question: '¿Que formatos de formacion ofreceis?',
+        answer: 'Workshops presenciales, formacion online en directo, programas hibridos y cursos bajo demanda. Adaptamos el formato a la disponibilidad del equipo.',
       },
       {
-        question: '¿Personalizáis los contenidos para cada empresa?',
-        answer: 'Sí. Cada programa se diseña a partir de un diagnóstico previo de necesidades, nivel del equipo y objetivos de negocio.',
+        question: '¿Personalizais los contenidos para cada empresa?',
+        answer: 'Si. Cada programa se disena a partir de un diagnostico previo de necesidades, nivel del equipo y objetivos de negocio.',
       },
       {
-        question: '¿Qué áreas de formación cubrís?',
-        answer: 'Marketing digital, inteligencia artificial aplicada, liderazgo, comunicación corporativa, analítica de datos y herramientas digitales.',
+        question: '¿Que areas de formacion cubris?',
+        answer: 'Marketing digital, inteligencia artificial aplicada, liderazgo, comunicacion corporativa, analitica de datos y herramientas digitales.',
       },
     ],
     en: [
@@ -435,16 +412,16 @@ export const faqData: FaqMap = {
   teambuilding: {
     es: [
       {
-        question: '¿Qué tipo de actividades de team building ofrecéis?',
-        answer: 'Workshops creativos, dinámicas de resolución de problemas, actividades outdoor, experiencias gastronómicas y gamificación corporativa.',
+        question: '¿Que tipo de actividades de team building ofreceis?',
+        answer: 'Workshops creativos, dinamicas de resolucion de problemas, actividades outdoor, experiencias gastronomicas y gamificacion corporativa.',
       },
       {
-        question: '¿Para cuántas personas podéis organizar actividades?',
-        answer: 'Desde equipos de 5 personas hasta eventos corporativos de más de 500. Adaptamos la dinámica al tamaño del grupo.',
+        question: '¿Para cuantas personas podeis organizar actividades?',
+        answer: 'Desde equipos de 5 personas hasta eventos corporativos de mas de 500. Adaptamos la dinamica al tamano del grupo.',
       },
       {
         question: '¿Las actividades se pueden integrar en un evento corporativo?',
-        answer: 'Sí. Diseñamos dinámicas de team building que se integran en convenciones, jornadas de empresa o retiros corporativos.',
+        answer: 'Si. Disenamos dinamicas de team building que se integran en convenciones, jornadas de empresa o retiros corporativos.',
       },
     ],
     en: [
@@ -459,103 +436,6 @@ export const faqData: FaqMap = {
       {
         question: 'Can activities be integrated into a corporate event?',
         answer: 'Yes. We design team building dynamics that integrate into conventions, company days or corporate retreats.',
-      },
-    ],
-  },
-
-  // ════════════════════════════════════════════════════════════════════════
-  // t&events
-  // ════════════════════════════════════════════════════════════════════════
-
-  corporativos: {
-    es: [
-      {
-        question: '¿Qué tipo de eventos corporativos organizáis?',
-        answer: 'Convenciones, presentaciones de producto, galas, jornadas de empresa, inauguraciones y eventos de networking.',
-      },
-      {
-        question: '¿Gestionáis toda la producción del evento?',
-        answer: 'Sí. Desde el concepto creativo y la logística hasta la producción técnica, catering, audiovisual y gestión de invitados.',
-      },
-      {
-        question: '¿Organizáis eventos fuera de España?',
-        answer: 'Sí. Hemos producido eventos en Europa y Latinoamérica. Trabajamos con partners locales para garantizar la ejecución en cualquier mercado.',
-      },
-    ],
-    en: [
-      {
-        question: 'What types of corporate events do you organise?',
-        answer: 'Conventions, product launches, galas, company days, inaugurations and networking events.',
-      },
-      {
-        question: 'Do you manage the entire event production?',
-        answer: 'Yes. From creative concept and logistics to technical production, catering, audiovisual and guest management.',
-      },
-      {
-        question: 'Do you organise events outside Spain?',
-        answer: 'Yes. We\'ve produced events across Europe and Latin America. We work with local partners to ensure execution in any market.',
-      },
-    ],
-  },
-
-  stands: {
-    es: [
-      {
-        question: '¿Diseñáis y construís el stand completo?',
-        answer: 'Sí. Desde el diseño conceptual y los renders 3D hasta la construcción, montaje, desmontaje y almacenaje del stand.',
-      },
-      {
-        question: '¿En qué ferias tenéis experiencia?',
-        answer: 'FITUR, MWC, Alimentaria, Fruit Attraction y ferias sectoriales europeas. Nos adaptamos a cualquier recinto y normativa.',
-      },
-      {
-        question: '¿Cuánto tiempo de antelación necesitáis para un stand?',
-        answer: 'Recomendamos 8-12 semanas para stands de diseño custom. Stands modulares pueden prepararse en 4-6 semanas.',
-      },
-    ],
-    en: [
-      {
-        question: 'Do you design and build the complete stand?',
-        answer: 'Yes. From conceptual design and 3D renders to construction, assembly, dismantling and storage.',
-      },
-      {
-        question: 'Which trade shows do you have experience with?',
-        answer: 'FITUR, MWC, Alimentaria, Fruit Attraction and European sector fairs. We adapt to any venue and regulations.',
-      },
-      {
-        question: 'How much lead time do you need for a stand?',
-        answer: 'We recommend 8-12 weeks for custom design stands. Modular stands can be prepared in 4-6 weeks.',
-      },
-    ],
-  },
-
-  'marketing-experiencial': {
-    es: [
-      {
-        question: '¿Qué es exactamente el marketing experiencial?',
-        answer: 'Acciones que crean experiencias memorables entre marca y consumidor. Pop-ups, roadshows, activaciones inmersivas y eventos de engagement que generan conexión emocional.',
-      },
-      {
-        question: '¿Cómo medís el impacto de una activación experiencial?',
-        answer: 'Con métricas de asistencia, engagement, cobertura mediática, UGC generado, leads captados y su impacto posterior en ventas y notoriedad.',
-      },
-      {
-        question: '¿Podéis ejecutar activaciones en múltiples ciudades?',
-        answer: 'Sí. Diseñamos activaciones escalables y gestionamos roadshows multiciudad con producción local coordinada desde nuestro equipo central.',
-      },
-    ],
-    en: [
-      {
-        question: 'What exactly is experiential marketing?',
-        answer: 'Actions that create memorable experiences between brand and consumer. Pop-ups, roadshows, immersive activations and engagement events that generate emotional connection.',
-      },
-      {
-        question: 'How do you measure the impact of an experiential activation?',
-        answer: 'Through attendance metrics, engagement, media coverage, UGC generated, leads captured and subsequent impact on sales and awareness.',
-      },
-      {
-        question: 'Can you execute activations in multiple cities?',
-        answer: 'Yes. We design scalable activations and manage multi-city roadshows with local production coordinated from our central team.',
       },
     ],
   },

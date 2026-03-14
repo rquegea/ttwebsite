@@ -8,7 +8,7 @@ T&T (antes Truco y Trufa) es una empresa de marketing, comunicación y transform
 
 - **NUNCA uses "agencia"** en texto visible. Solo en meta tags SEO (porque la gente busca "agencia de marketing")
 - **NUNCA uses "en Madrid"** como propuesta de valor en titulares. Madrid solo aparece en: footer, contacto, schema.org, meta description
-- Las verticales (t&think, t&tech, t&trends, t&team, t&events) son **LÍNEAS DE NEGOCIO**, no "servicios"
+- Las verticales (t&think, t&tech, t&tailor, t&trade, t&talk, t&team) son **LÍNEAS DE NEGOCIO**, no "servicios"
 - **Tono**: institucional-premium con personalidad. Como LLYC pero menos corporativo. Seguro, ambicioso, sin arrogancia
 - **Frases cortas**. Párrafos máx 3 líneas
 - **Sin clichés**: prohibido "360", "integral", "de la mano", "soluciones a medida", "llave en mano", "sinergias", "holístico"
@@ -20,15 +20,16 @@ T&T (antes Truco y Trufa) es una empresa de marketing, comunicación y transform
 
 Barceló · Campofrío · Dentons · Dom Pérignon · EAE Business School · Gullón · KPMG · Lotus · Moët · Nivea · Grupo Planeta · PlayStation · Ruinart · Sabadell · Tolsa · UNIE · UOC · VIU
 
-## 5 Líneas de negocio
+## 6 Líneas de negocio
 
 | Vertical | Servicios |
 |----------|-----------|
-| t&think | Creatividad y Dirección de Arte, PR y Comunicación, Performance y Medios, Trade Marketing |
-| t&tech | Desarrollo Web y App, Inteligencia Artificial, Sistemas CRM, Automatización |
-| t&trends | Consultoría Estratégica, Data y Analítica, Investigación de Mercados |
-| t&team | Captación de Talento, Formación Corporativa, Team Building |
-| t&events | Eventos Corporativos, Stands y Ferias, Marketing Experiencial |
+| t&think | Creatividad y Dirección de Arte, Estrategia de Marca, Investigación de Mercados, Data y Analítica |
+| t&tech | 2laps (herramienta propia), 1000er (plataforma propia) |
+| t&tailor | Producción a medida: PLV, roll-ups, merchandising, textil corporativo, packaging |
+| t&trade | Trade Show y Ferias, Trade Marketing (activaciones en punto de venta) |
+| t&talk | PR y Comunicación, SEO, GEO, Paid Media, Medios Convencionales, Content Marketing |
+| t&team | Captación de Talento, Formación Continua, Teambuilding |
 
 ## Stack técnico
 
@@ -41,11 +42,12 @@ Barceló · Campofrío · Dentons · Dom Pérignon · EAE Business School · Gul
 
 ```
 /es/ y /en/ (cada página existe en ambos idiomas)
-├── /think/ (+ /creatividad/, /pr-comunicacion/, /performance/, /trade-marketing/)
-├── /tech/ (+ /desarrollo/, /inteligencia-artificial/, /crm/, /automatizacion/)
-├── /trends/ (+ /consultoria/, /data-analitica/, /investigacion/)
+├── /think/ (+ /creatividad/, /estrategia/, /investigacion/, /data-analitica/)
+├── /tech/ (+ /2laps/, /1000er/)
+├── /tailor/ (landing única, sin subpáginas)
+├── /trade/ (+ /trade-show/, /trade-marketing/)
+├── /talk/ (landing única, sin subpáginas)
 ├── /team/ (+ /captacion/, /formacion/, /teambuilding/)
-├── /events/ (+ /corporativos/, /stands/, /marketing-experiencial/)
 ├── /clientes/
 ├── /empresa/
 ├── /contacto/

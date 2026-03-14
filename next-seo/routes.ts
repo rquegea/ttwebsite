@@ -1,5 +1,5 @@
 // ============================================================================
-// T&T — Route Definitions (27 pages × 2 locales = 54 URLs)
+// T&T — Route Definitions (22 pages x 2 locales = 44 URLs)
 // Next.js 14+ App Router with i18n: /es/... and /en/...
 // ============================================================================
 
@@ -17,7 +17,7 @@ export interface RouteDefinition {
   /** Key of parent route (for breadcrumbs) */
   parent?: string;
   /** Vertical it belongs to */
-  vertical?: 'tthink' | 'ttech' | 'ttrends' | 'tteam' | 'tevents';
+  vertical?: 'tthink' | 'ttech' | 'ttailor' | 'ttrade' | 'ttalk' | 'tteam';
   /** Whether this is a service subpage (has FAQs) */
   isSubpage?: boolean;
   /** Breadcrumb label per locale */
@@ -25,14 +25,14 @@ export interface RouteDefinition {
 }
 
 export const routes: RouteDefinition[] = [
-  // ── Homepage ──────────────────────────────────────────────────────────
+  // -- Homepage ---------------------------------------------------------------
   {
     key: 'home',
     path: { es: '/', en: '/' },
     label: { es: 'Inicio', en: 'Home' },
   },
 
-  // ── t&think ───────────────────────────────────────────────────────────
+  // -- t&think ----------------------------------------------------------------
   {
     key: 'think',
     path: { es: '/think/', en: '/think/' },
@@ -46,34 +46,34 @@ export const routes: RouteDefinition[] = [
     parent: 'think',
     vertical: 'tthink',
     isSubpage: true,
-    label: { es: 'Creatividad y Dirección de Arte', en: 'Creativity & Art Direction' },
+    label: { es: 'Creatividad y Direccion de Arte', en: 'Creativity & Art Direction' },
   },
   {
-    key: 'pr-comunicacion',
-    path: { es: '/think/pr-comunicacion/', en: '/think/pr-communications/' },
+    key: 'estrategia',
+    path: { es: '/think/estrategia/', en: '/think/strategy/' },
     parent: 'think',
     vertical: 'tthink',
     isSubpage: true,
-    label: { es: 'PR y Comunicación', en: 'PR & Communications' },
+    label: { es: 'Estrategia', en: 'Strategy' },
   },
   {
-    key: 'performance',
-    path: { es: '/think/performance/', en: '/think/performance/' },
+    key: 'investigacion',
+    path: { es: '/think/investigacion/', en: '/think/research/' },
     parent: 'think',
     vertical: 'tthink',
     isSubpage: true,
-    label: { es: 'Performance y Medios', en: 'Performance & Media' },
+    label: { es: 'Investigacion de Mercados', en: 'Market Research' },
   },
   {
-    key: 'trade-marketing',
-    path: { es: '/think/trade-marketing/', en: '/think/trade-marketing/' },
+    key: 'data-analitica',
+    path: { es: '/think/data-analitica/', en: '/think/data-analytics/' },
     parent: 'think',
     vertical: 'tthink',
     isSubpage: true,
-    label: { es: 'Trade Marketing', en: 'Trade Marketing' },
+    label: { es: 'Data y Analitica', en: 'Data & Analytics' },
   },
 
-  // ── t&tech ────────────────────────────────────────────────────────────
+  // -- t&tech -----------------------------------------------------------------
   {
     key: 'tech',
     path: { es: '/tech/', en: '/tech/' },
@@ -82,72 +82,66 @@ export const routes: RouteDefinition[] = [
     label: { es: 't&tech', en: 't&tech' },
   },
   {
-    key: 'desarrollo',
-    path: { es: '/tech/desarrollo/', en: '/tech/development/' },
+    key: '2laps',
+    path: { es: '/tech/2laps/', en: '/tech/2laps/' },
     parent: 'tech',
     vertical: 'ttech',
     isSubpage: true,
-    label: { es: 'Desarrollo Web y App', en: 'Web & App Development' },
+    label: { es: '2laps', en: '2laps' },
   },
   {
-    key: 'inteligencia-artificial',
-    path: { es: '/tech/inteligencia-artificial/', en: '/tech/artificial-intelligence/' },
+    key: '1000er',
+    path: { es: '/tech/1000er/', en: '/tech/1000er/' },
     parent: 'tech',
     vertical: 'ttech',
     isSubpage: true,
-    label: { es: 'Inteligencia Artificial', en: 'Artificial Intelligence' },
-  },
-  {
-    key: 'crm',
-    path: { es: '/tech/crm/', en: '/tech/crm/' },
-    parent: 'tech',
-    vertical: 'ttech',
-    isSubpage: true,
-    label: { es: 'Sistemas CRM', en: 'CRM Systems' },
-  },
-  {
-    key: 'automatizacion',
-    path: { es: '/tech/automatizacion/', en: '/tech/automation/' },
-    parent: 'tech',
-    vertical: 'ttech',
-    isSubpage: true,
-    label: { es: 'Automatización', en: 'Automation' },
+    label: { es: '1000er', en: '1000er' },
   },
 
-  // ── t&trends ──────────────────────────────────────────────────────────
+  // -- t&tailor ---------------------------------------------------------------
   {
-    key: 'trends',
-    path: { es: '/trends/', en: '/trends/' },
+    key: 'tailor',
+    path: { es: '/tailor/', en: '/tailor/' },
     parent: 'home',
-    vertical: 'ttrends',
-    label: { es: 't&trends', en: 't&trends' },
-  },
-  {
-    key: 'consultoria',
-    path: { es: '/trends/consultoria/', en: '/trends/consulting/' },
-    parent: 'trends',
-    vertical: 'ttrends',
-    isSubpage: true,
-    label: { es: 'Consultoría Estratégica', en: 'Strategic Consulting' },
-  },
-  {
-    key: 'data-analitica',
-    path: { es: '/trends/data-analitica/', en: '/trends/data-analytics/' },
-    parent: 'trends',
-    vertical: 'ttrends',
-    isSubpage: true,
-    label: { es: 'Data y Analítica', en: 'Data & Analytics' },
-  },
-  {
-    key: 'investigacion',
-    path: { es: '/trends/investigacion/', en: '/trends/research/' },
-    parent: 'trends',
-    vertical: 'ttrends',
-    isSubpage: true,
-    label: { es: 'Investigación de Mercados', en: 'Market Research' },
+    vertical: 'ttailor',
+    label: { es: 't&tailor', en: 't&tailor' },
   },
 
-  // ── t&team ────────────────────────────────────────────────────────────
+  // -- t&trade ----------------------------------------------------------------
+  {
+    key: 'trade',
+    path: { es: '/trade/', en: '/trade/' },
+    parent: 'home',
+    vertical: 'ttrade',
+    label: { es: 't&trade', en: 't&trade' },
+  },
+  {
+    key: 'trade-show',
+    path: { es: '/trade/trade-show/', en: '/trade/trade-show/' },
+    parent: 'trade',
+    vertical: 'ttrade',
+    isSubpage: true,
+    label: { es: 'Trade Show', en: 'Trade Show' },
+  },
+  {
+    key: 'trade-marketing',
+    path: { es: '/trade/trade-marketing/', en: '/trade/trade-marketing/' },
+    parent: 'trade',
+    vertical: 'ttrade',
+    isSubpage: true,
+    label: { es: 'Trade Marketing', en: 'Trade Marketing' },
+  },
+
+  // -- t&talk -----------------------------------------------------------------
+  {
+    key: 'talk',
+    path: { es: '/talk/', en: '/talk/' },
+    parent: 'home',
+    vertical: 'ttalk',
+    label: { es: 't&talk', en: 't&talk' },
+  },
+
+  // -- t&team -----------------------------------------------------------------
   {
     key: 'team',
     path: { es: '/team/', en: '/team/' },
@@ -161,7 +155,7 @@ export const routes: RouteDefinition[] = [
     parent: 'team',
     vertical: 'tteam',
     isSubpage: true,
-    label: { es: 'Captación de Talento', en: 'Talent Acquisition' },
+    label: { es: 'Captacion de Talento', en: 'Talent Acquisition' },
   },
   {
     key: 'formacion',
@@ -169,7 +163,7 @@ export const routes: RouteDefinition[] = [
     parent: 'team',
     vertical: 'tteam',
     isSubpage: true,
-    label: { es: 'Formación Corporativa', en: 'Corporate Training' },
+    label: { es: 'Formacion Corporativa', en: 'Corporate Training' },
   },
   {
     key: 'teambuilding',
@@ -180,40 +174,7 @@ export const routes: RouteDefinition[] = [
     label: { es: 'Team Building', en: 'Team Building' },
   },
 
-  // ── t&events ──────────────────────────────────────────────────────────
-  {
-    key: 'events',
-    path: { es: '/events/', en: '/events/' },
-    parent: 'home',
-    vertical: 'tevents',
-    label: { es: 't&events', en: 't&events' },
-  },
-  {
-    key: 'corporativos',
-    path: { es: '/events/corporativos/', en: '/events/corporate/' },
-    parent: 'events',
-    vertical: 'tevents',
-    isSubpage: true,
-    label: { es: 'Eventos Corporativos', en: 'Corporate Events' },
-  },
-  {
-    key: 'stands',
-    path: { es: '/events/stands/', en: '/events/stands-exhibitions/' },
-    parent: 'events',
-    vertical: 'tevents',
-    isSubpage: true,
-    label: { es: 'Stands y Ferias', en: 'Stands & Exhibitions' },
-  },
-  {
-    key: 'marketing-experiencial',
-    path: { es: '/events/marketing-experiencial/', en: '/events/experiential-marketing/' },
-    parent: 'events',
-    vertical: 'tevents',
-    isSubpage: true,
-    label: { es: 'Marketing Experiencial', en: 'Experiential Marketing' },
-  },
-
-  // ── General pages ─────────────────────────────────────────────────────
+  // -- General pages ----------------------------------------------------------
   {
     key: 'clientes',
     path: { es: '/clientes/', en: '/clients/' },
@@ -240,7 +201,7 @@ export const routes: RouteDefinition[] = [
   },
 ];
 
-// ── Helpers ───────────────────────────────────────────────────────────────
+// -- Helpers ------------------------------------------------------------------
 
 export function getRoute(key: string): RouteDefinition | undefined {
   return routes.find((r) => r.key === key);

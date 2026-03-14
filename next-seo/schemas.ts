@@ -6,7 +6,7 @@
 import { SITE_URL, routes, getRoute, type Locale } from './routes';
 import { faqData } from './faqs';
 
-// ── 1. Organization (global) ────────────────────────────────────────────────
+// -- 1. Organization (global) -------------------------------------------------
 
 export function organizationSchema() {
   return {
@@ -22,7 +22,7 @@ export function organizationSchema() {
       width: 200,
       height: 60,
     },
-    description: 'T&T is a marketing, communications and transformation company. Creativity, technology, strategy, talent and events for extraordinary brands.',
+    description: 'T&T is a marketing, communications and transformation company. Creativity, technology, strategy, talent and production for extraordinary brands.',
     foundingDate: '2015',
     slogan: 'We make brands extraordinary',
     email: 'hello@tyt.com',
@@ -35,12 +35,15 @@ export function organizationSchema() {
     knowsAbout: [
       'Marketing',
       'Brand Strategy',
-      'Web Development',
-      'Artificial Intelligence',
-      'CRM Implementation',
-      'Public Relations',
-      'Corporate Events',
       'Market Research',
+      'Data Analytics',
+      'Artificial Intelligence',
+      'Bespoke Production',
+      'Trade Show',
+      'Trade Marketing',
+      'Communications & Media',
+      'Talent Acquisition',
+      'Corporate Training',
     ],
     numberOfEmployees: {
       '@type': 'QuantitativeValue',
@@ -49,7 +52,7 @@ export function organizationSchema() {
     },
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '[Calle y número]',
+      streetAddress: '[Calle y numero]',
       addressLocality: 'Madrid',
       addressRegion: 'Comunidad de Madrid',
       postalCode: '28XXX',
@@ -64,7 +67,7 @@ export function organizationSchema() {
   };
 }
 
-// ── 2. LocalBusiness (Madrid HQ) ────────────────────────────────────────────
+// -- 2. LocalBusiness (Madrid HQ) ---------------------------------------------
 
 export function localBusinessSchema() {
   return {
@@ -76,10 +79,10 @@ export function localBusinessSchema() {
     url: SITE_URL,
     telephone: '+34-XXX-XXX-XXX',
     email: 'hello@tyt.com',
-    priceRange: '€€€',
+    priceRange: '$$$',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '[Calle y número]',
+      streetAddress: '[Calle y numero]',
       addressLocality: 'Madrid',
       addressRegion: 'Comunidad de Madrid',
       postalCode: '28XXX',
@@ -102,7 +105,7 @@ export function localBusinessSchema() {
   };
 }
 
-// ── 3. WebSite with SearchAction ────────────────────────────────────────────
+// -- 3. WebSite with SearchAction ---------------------------------------------
 
 export function webSiteSchema() {
   return {
@@ -124,7 +127,7 @@ export function webSiteSchema() {
   };
 }
 
-// ── 4. Service (one per vertical + subservice) ──────────────────────────────
+// -- 4. Service (one per vertical + subservice) -------------------------------
 
 interface ServiceSchemaInput {
   locale: Locale;
@@ -170,98 +173,79 @@ export function serviceSchema({ locale, routeKey, name, description, parentKey }
 // Pre-built service schemas per vertical
 
 const serviceDefinitions: Record<string, Record<Locale, { name: string; description: string }>> = {
-  // ── t&think ──
+  // -- t&think --
   think: {
-    es: { name: 't&think — Creatividad y Estrategia', description: 'Línea de negocio de pensamiento estratégico y creativo. Creatividad, PR, performance y trade marketing.' },
-    en: { name: 't&think — Creativity & Strategy', description: 'Strategic and creative thinking business line. Creativity, PR, performance and trade marketing.' },
+    es: { name: 't&think — Pensamiento Estrategico y Creativo', description: 'Linea de negocio de pensamiento estrategico y creativo. Creatividad, estrategia, investigacion de mercados y data analitica.' },
+    en: { name: 't&think — Strategic & Creative Thinking', description: 'Strategic and creative thinking business line. Creativity, strategy, market research and data analytics.' },
   },
   creatividad: {
-    es: { name: 'Creatividad y Dirección de Arte', description: 'Dirección de arte, diseño gráfico, identidad visual y creatividad publicitaria.' },
+    es: { name: 'Creatividad y Direccion de Arte', description: 'Direccion de arte, diseno grafico, identidad visual y creatividad publicitaria.' },
     en: { name: 'Creativity & Art Direction', description: 'Art direction, graphic design, visual identity and advertising creativity.' },
   },
-  'pr-comunicacion': {
-    es: { name: 'PR y Comunicación', description: 'Relaciones públicas, comunicación corporativa, gestión de crisis y estrategia de reputación.' },
-    en: { name: 'PR & Communications', description: 'Public relations, corporate communications, crisis management and reputation strategy.' },
+  estrategia: {
+    es: { name: 'Estrategia', description: 'Consultoria de marca, estrategia de negocio, posicionamiento y go-to-market.' },
+    en: { name: 'Strategy', description: 'Brand consulting, business strategy, positioning and go-to-market.' },
   },
-  performance: {
-    es: { name: 'Performance y Medios', description: 'Campañas de performance, paid media, SEM, social ads y planificación de medios.' },
-    en: { name: 'Performance & Media', description: 'Performance campaigns, paid media, SEM, social ads and media planning.' },
+  investigacion: {
+    es: { name: 'Investigacion de Mercados', description: 'Estudios de mercado, analisis de competencia, investigacion de consumidor.' },
+    en: { name: 'Market Research', description: 'Market studies, competitive analysis, consumer research.' },
+  },
+  'data-analitica': {
+    es: { name: 'Data y Analitica', description: 'Analitica web, business intelligence, dashboards y modelos de atribucion.' },
+    en: { name: 'Data & Analytics', description: 'Web analytics, business intelligence, dashboards and attribution models.' },
+  },
+  // -- t&tech --
+  tech: {
+    es: { name: 't&tech — Tecnologia Propia', description: 'Linea de negocio de tecnologia propia. Productos tecnologicos 2laps y 1000er para marketing y transformacion.' },
+    en: { name: 't&tech — Proprietary Technology', description: 'Proprietary technology business line. 2laps and 1000er technology products for marketing and transformation.' },
+  },
+  '2laps': {
+    es: { name: '2laps', description: 'Producto tecnologico propio de T&T que acelera procesos de marketing y transformacion digital.' },
+    en: { name: '2laps', description: 'T&T\'s proprietary technology product that accelerates marketing and digital transformation processes.' },
+  },
+  '1000er': {
+    es: { name: '1000er', description: 'Plataforma tecnologica de T&T disenada para escalar resultados de negocio.' },
+    en: { name: '1000er', description: 'T&T\'s proprietary technology platform designed to scale business results.' },
+  },
+  // -- t&tailor --
+  tailor: {
+    es: { name: 't&tailor — Produccion a Medida', description: 'Linea de negocio de produccion personalizada. Soluciones unicas para marcas que exigen calidad y diferenciacion.' },
+    en: { name: 't&tailor — Bespoke Production', description: 'Custom production business line. Unique solutions for brands that demand quality and differentiation.' },
+  },
+  // -- t&trade --
+  trade: {
+    es: { name: 't&trade — Trade Show y Trade Marketing', description: 'Linea de negocio de presencia comercial y ferial. Stands, ferias y activaciones en punto de venta.' },
+    en: { name: 't&trade — Trade Show & Trade Marketing', description: 'Commercial presence and trade business line. Stands, trade shows and point-of-sale activations.' },
+  },
+  'trade-show': {
+    es: { name: 'Trade Show', description: 'Diseno y produccion de stands, presencia en ferias comerciales y activaciones in situ.' },
+    en: { name: 'Trade Show', description: 'Stand design and production, trade show presence and on-site activations.' },
   },
   'trade-marketing': {
     es: { name: 'Trade Marketing', description: 'Activaciones en punto de venta, promociones, merchandising y estrategia de canal.' },
     en: { name: 'Trade Marketing', description: 'Point-of-sale activations, promotions, merchandising and channel strategy.' },
   },
-  // ── t&tech ──
-  tech: {
-    es: { name: 't&tech — Tecnología y Desarrollo Digital', description: 'Línea de negocio tecnológica. Desarrollo web, IA, CRM y automatización.' },
-    en: { name: 't&tech — Technology & Digital Development', description: 'Technology business line. Web development, AI, CRM and automation.' },
+  // -- t&talk --
+  talk: {
+    es: { name: 't&talk — Comunicacion y Medios', description: 'Linea de negocio de comunicacion y medios. Relaciones publicas, comunicacion corporativa y estrategia de reputacion.' },
+    en: { name: 't&talk — Communications & Media', description: 'Communications and media business line. Public relations, corporate communications and reputation strategy.' },
   },
-  desarrollo: {
-    es: { name: 'Desarrollo Web y App', description: 'Webs corporativas, e-commerce, apps nativas y PWA con código limpio y rendimiento real.' },
-    en: { name: 'Web & App Development', description: 'Corporate websites, e-commerce, native apps and PWAs with clean code and real performance.' },
-  },
-  'inteligencia-artificial': {
-    es: { name: 'Inteligencia Artificial', description: 'Chatbots, análisis predictivo, NLP, agentes IA y automatización inteligente.' },
-    en: { name: 'Artificial Intelligence', description: 'Chatbots, predictive analytics, NLP, AI agents and intelligent automation.' },
-  },
-  crm: {
-    es: { name: 'Sistemas CRM', description: 'Implementación, migración y optimización de HubSpot, Salesforce y Zoho.' },
-    en: { name: 'CRM Systems', description: 'HubSpot, Salesforce and Zoho implementation, migration and optimisation.' },
-  },
-  automatizacion: {
-    es: { name: 'Automatización', description: 'Marketing automation, workflows operativos, Zapier, Make, n8n y customer journey automation.' },
-    en: { name: 'Automation', description: 'Marketing automation, operational workflows, Zapier, Make, n8n and customer journey automation.' },
-  },
-  // ── t&trends ──
-  trends: {
-    es: { name: 't&trends — Consultoría Estratégica y Data', description: 'Línea de negocio de inteligencia estratégica. Consultoría, data y analítica, investigación de mercados.' },
-    en: { name: 't&trends — Strategic Consulting & Data', description: 'Strategic intelligence business line. Consulting, data and analytics, market research.' },
-  },
-  consultoria: {
-    es: { name: 'Consultoría Estratégica', description: 'Consultoría de marca, estrategia de negocio, posicionamiento y go-to-market.' },
-    en: { name: 'Strategic Consulting', description: 'Brand consulting, business strategy, positioning and go-to-market.' },
-  },
-  'data-analitica': {
-    es: { name: 'Data y Analítica', description: 'Analítica web, business intelligence, dashboards y modelos de atribución.' },
-    en: { name: 'Data & Analytics', description: 'Web analytics, business intelligence, dashboards and attribution models.' },
-  },
-  investigacion: {
-    es: { name: 'Investigación de Mercados', description: 'Estudios de mercado, análisis de competencia, investigación de consumidor.' },
-    en: { name: 'Market Research', description: 'Market studies, competitive analysis, consumer research.' },
-  },
-  // ── t&team ──
+  // -- t&team --
   team: {
-    es: { name: 't&team — Talento y Formación', description: 'Línea de negocio de personas y cultura. Captación, formación y team building.' },
+    es: { name: 't&team — Talento y Formacion', description: 'Linea de negocio de personas y cultura. Captacion, formacion y team building.' },
     en: { name: 't&team — Talent & Training', description: 'People and culture business line. Talent acquisition, training and team building.' },
   },
   captacion: {
-    es: { name: 'Captación de Talento', description: 'Reclutamiento especializado, employer branding y headhunting de perfiles de marketing y digital.' },
+    es: { name: 'Captacion de Talento', description: 'Reclutamiento especializado, employer branding y headhunting de perfiles de marketing y digital.' },
     en: { name: 'Talent Acquisition', description: 'Specialised recruitment, employer branding and headhunting of marketing and digital profiles.' },
   },
   formacion: {
-    es: { name: 'Formación Corporativa', description: 'Programas in-company de marketing digital, IA, liderazgo y comunicación.' },
+    es: { name: 'Formacion Corporativa', description: 'Programas in-company de marketing digital, IA, liderazgo y comunicacion.' },
     en: { name: 'Corporate Training', description: 'In-company programmes in digital marketing, AI, leadership and communications.' },
   },
   teambuilding: {
-    es: { name: 'Team Building', description: 'Workshops creativos, dinámicas de equipo y actividades de integración corporativa.' },
+    es: { name: 'Team Building', description: 'Workshops creativos, dinamicas de equipo y actividades de integracion corporativa.' },
     en: { name: 'Team Building', description: 'Creative workshops, team dynamics and corporate integration activities.' },
-  },
-  // ── t&events ──
-  events: {
-    es: { name: 't&events — Eventos y Experiencias', description: 'Línea de negocio de eventos de marca. Eventos corporativos, stands y marketing experiencial.' },
-    en: { name: 't&events — Events & Experiences', description: 'Brand events business line. Corporate events, stands and experiential marketing.' },
-  },
-  corporativos: {
-    es: { name: 'Eventos Corporativos', description: 'Convenciones, presentaciones de producto, galas y eventos de networking.' },
-    en: { name: 'Corporate Events', description: 'Conventions, product launches, galas and networking events.' },
-  },
-  stands: {
-    es: { name: 'Stands y Ferias', description: 'Diseño y producción de stands, presencia ferial y activaciones in situ.' },
-    en: { name: 'Stands & Exhibitions', description: 'Stand design and production, trade show presence and on-site activations.' },
-  },
-  'marketing-experiencial': {
-    es: { name: 'Marketing Experiencial', description: 'Experiencias de marca inmersivas, pop-ups, roadshows y activaciones de engagement.' },
-    en: { name: 'Experiential Marketing', description: 'Immersive brand experiences, pop-ups, roadshows and engagement activations.' },
   },
 };
 
@@ -280,7 +264,7 @@ export function getServiceSchema(routeKey: string, locale: Locale) {
   });
 }
 
-// ── 5. BreadcrumbList ───────────────────────────────────────────────────────
+// -- 5. BreadcrumbList --------------------------------------------------------
 
 export function breadcrumbSchema(routeKey: string, locale: Locale) {
   const crumbs: { name: string; url: string }[] = [];
@@ -315,7 +299,7 @@ export function breadcrumbSchema(routeKey: string, locale: Locale) {
   };
 }
 
-// ── 6. FAQPage ──────────────────────────────────────────────────────────────
+// -- 6. FAQPage ---------------------------------------------------------------
 
 export function faqPageSchema(routeKey: string, locale: Locale) {
   const faqs = faqData[routeKey]?.[locale];
@@ -335,12 +319,12 @@ export function faqPageSchema(routeKey: string, locale: Locale) {
   };
 }
 
-// ── Combined schema for a page ──────────────────────────────────────────────
+// -- Combined schema for a page -----------------------------------------------
 
 /**
  * Returns an array of all applicable JSON-LD schemas for a given page.
  * Usage:
- *   const schemas = getPageSchemas('desarrollo', 'es');
+ *   const schemas = getPageSchemas('2laps', 'es');
  *   schemas.forEach(s => <JsonLd data={s} />);
  */
 export function getPageSchemas(routeKey: string, locale: Locale): Record<string, unknown>[] {
