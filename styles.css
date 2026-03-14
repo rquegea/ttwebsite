@@ -166,6 +166,16 @@ a {
     z-index: 150;
 }
 
+/* Puente invisible: cierra el gap entre el nav link y el panel del mega-menu */
+.mega-menu::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+}
+
 .has-dropdown.is-open .mega-menu {
     opacity: 1;
     visibility: visible;

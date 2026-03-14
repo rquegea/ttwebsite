@@ -48,22 +48,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mega-menu JS control with timeout (replaces CSS :hover)
+  // Mega-menu JS control — SOLO JS, sin CSS :hover (evita race condition)
   const dropdowns = document.querySelectorAll('.has-dropdown');
   let menuCloseTimeout = null;
 
-  dropdowns.forEach(dropdown => {
-    dropdown.addEventListener('mouseenter', () => {
-      if (menuCloseTimeout) { clearTimeout(menuCloseTimeout); menuCloseTimeout = null; }
-      // Close all other dropdowns
-      dropdowns.forEach(d => { if (d !== dropdown) d.classList.remove('is-open'); });
-      dropdown.classList.add('is-open');
-    });
+  const openDropdown = (dropdown) => {
+    if (menuCloseTimeout) { clearTimeout(menuCloseTimeout); menuCloseTimeout = null; }
+    dropdowns.forEach(d => { if (d !== dropdown) d.classList.remove('is-open'); });
+    dropdown.classList.add('is-open');
+  };
 
-    dropdown.addEventListener('mouseleave', () => {
-      if (menuCloseTimeout) { clearTimeout(menuCloseTimeout); menuCloseTimeout = null; }
+  const scheduleClose = (dropdown) => {
+    menuCloseTimeout = setTimeout(() => {
       dropdown.classList.remove('is-open');
-    });
+      menuCloseTimeout = null;
+    }, 300);
+  };
+
+  dropdowns.forEach(dropdown => {
+    const megaMenu = dropdown.querySelector('.mega-menu');
+
+    dropdown.addEventListener('mouseenter', () => openDropdown(dropdown));
+    dropdown.addEventListener('mouseleave', () => scheduleClose(dropdown));
+
+    if (megaMenu) {
+      megaMenu.addEventListener('mouseenter', () => {
+        if (menuCloseTimeout) { clearTimeout(menuCloseTimeout); menuCloseTimeout = null; }
+      });
+      megaMenu.addEventListener('mouseleave', () => scheduleClose(dropdown));
+    }
   });
 
   // Feature items interactivity
