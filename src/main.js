@@ -48,20 +48,61 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Mega-menu: JS-only control (nuclear rewrite) ──
+  // ── Mega-menu: JS-only control ──
   const dropdowns = document.querySelectorAll('.has-dropdown');
+  const header = document.querySelector('.header');
   let menuCloseTimeout = null;
+
+  // Force position:relative inline (CSS specificity fix)
+  // and create bridge divs covering the gap between <li> and mega-menu
+  dropdowns.forEach(dropdown => {
+    dropdown.style.position = 'relative';
+    const menu = dropdown.querySelector('.mega-menu');
+    if (menu) {
+      const bridge = document.createElement('div');
+      bridge.className = 'dropdown-bridge';
+      bridge.style.cssText = 'position:absolute;left:-50px;right:-50px;top:100%;height:70px;background:transparent;z-index:149;pointer-events:auto;display:none;';
+      dropdown.appendChild(bridge);
+    }
+  });
 
   function openMenu(target) {
     if (menuCloseTimeout) { clearTimeout(menuCloseTimeout); menuCloseTimeout = null; }
-    dropdowns.forEach(d => { if (d !== target) d.classList.remove('is-open'); });
+    dropdowns.forEach(d => {
+      if (d !== target) {
+        d.classList.remove('is-open');
+        const b = d.querySelector('.dropdown-bridge');
+        if (b) b.style.display = 'none';
+      }
+    });
     target.classList.add('is-open');
+    const bridge = target.querySelector('.dropdown-bridge');
+    if (bridge) bridge.style.display = 'block';
+    if (header) header.classList.add('menu-active');
+
+    // Position mega-menu fixed just below the header
+    const menu = target.querySelector('.mega-menu');
+    if (menu && header) {
+      menu.style.position = 'fixed';
+      menu.style.top = header.getBoundingClientRect().bottom + 'px';
+      menu.style.left = '0';
+      menu.style.width = '100%';
+    }
+  }
+
+  function closeAllMenus() {
+    dropdowns.forEach(d => {
+      d.classList.remove('is-open');
+      const b = d.querySelector('.dropdown-bridge');
+      if (b) b.style.display = 'none';
+    });
+    if (header) header.classList.remove('menu-active');
   }
 
   function startClose() {
     if (menuCloseTimeout) clearTimeout(menuCloseTimeout);
     menuCloseTimeout = setTimeout(() => {
-      dropdowns.forEach(d => d.classList.remove('is-open'));
+      closeAllMenus();
       menuCloseTimeout = null;
     }, 400);
   }
@@ -78,16 +119,13 @@ document.addEventListener('DOMContentLoaded', () => {
       menu.addEventListener('mouseenter', () => cancelClose());
       menu.addEventListener('mouseleave', () => startClose());
     }
+    const bridge = dropdown.querySelector('.dropdown-bridge');
+    if (bridge) {
+      bridge.addEventListener('mouseenter', () => cancelClose());
+      bridge.addEventListener('mouseleave', () => startClose());
+    }
   });
 
-  // Safety: cerrar todo al salir del header
-  const hdr = document.querySelector('.header');
-  if (hdr) {
-    hdr.addEventListener('mouseleave', () => {
-      if (menuCloseTimeout) { clearTimeout(menuCloseTimeout); menuCloseTimeout = null; }
-      dropdowns.forEach(d => d.classList.remove('is-open'));
-    });
-  }
 
 
   // Feature items interactivity
