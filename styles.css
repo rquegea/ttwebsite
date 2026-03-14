@@ -174,12 +174,17 @@ a {
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
+
 .has-dropdown>a svg {
     transition: transform 0.3s ease;
 }
 
 .has-dropdown.is-open>a svg {
     transform: rotate(180deg);
+}
+
+.has-dropdown {
+    position: relative;
 }
 
 .header-right {
