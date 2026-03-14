@@ -1,3 +1,4 @@
+// cache-bust-fix-v1
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -53,31 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.header');
   let menuCloseTimeout = null;
 
-  // Force position:relative inline (CSS specificity fix)
-  // and create bridge divs covering the gap between <li> and mega-menu
-  dropdowns.forEach(dropdown => {
-    dropdown.style.position = 'relative';
-    const menu = dropdown.querySelector('.mega-menu');
-    if (menu) {
-      const bridge = document.createElement('div');
-      bridge.className = 'dropdown-bridge';
-      bridge.style.cssText = 'position:absolute;left:-50px;right:-50px;top:100%;height:70px;background:transparent;z-index:149;pointer-events:auto;display:none;';
-      dropdown.appendChild(bridge);
-    }
-  });
-
   function openMenu(target) {
     if (menuCloseTimeout) { clearTimeout(menuCloseTimeout); menuCloseTimeout = null; }
     dropdowns.forEach(d => {
-      if (d !== target) {
-        d.classList.remove('is-open');
-        const b = d.querySelector('.dropdown-bridge');
-        if (b) b.style.display = 'none';
-      }
+      if (d !== target) d.classList.remove('is-open');
     });
     target.classList.add('is-open');
-    const bridge = target.querySelector('.dropdown-bridge');
-    if (bridge) bridge.style.display = 'block';
     if (header) header.classList.add('menu-active');
 
     // Position mega-menu fixed just below the header
@@ -91,11 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function closeAllMenus() {
-    dropdowns.forEach(d => {
-      d.classList.remove('is-open');
-      const b = d.querySelector('.dropdown-bridge');
-      if (b) b.style.display = 'none';
-    });
+    dropdowns.forEach(d => d.classList.remove('is-open'));
     if (header) header.classList.remove('menu-active');
   }
 
@@ -104,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     menuCloseTimeout = setTimeout(() => {
       closeAllMenus();
       menuCloseTimeout = null;
-    }, 400);
+    }, 300);
   }
 
   function cancelClose() {
@@ -118,11 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menu) {
       menu.addEventListener('mouseenter', () => cancelClose());
       menu.addEventListener('mouseleave', () => startClose());
-    }
-    const bridge = dropdown.querySelector('.dropdown-bridge');
-    if (bridge) {
-      bridge.addEventListener('mouseenter', () => cancelClose());
-      bridge.addEventListener('mouseleave', () => startClose());
     }
   });
 

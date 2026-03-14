@@ -171,6 +171,16 @@ a {
     z-index: 150;
 }
 
+.mega-menu::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: transparent;
+}
+
 .has-dropdown.is-open .mega-menu {
     opacity: 1;
     visibility: visible;
@@ -192,9 +202,6 @@ a {
     position: relative;
 }
 
-.has-dropdown .dropdown-bridge {
-    display: none;
-}
 
 .header-right {
     display: flex;
