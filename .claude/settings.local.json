@@ -37,7 +37,11 @@
       "Bash(node:*)",
       "Bash(xargs:*)",
       "Bash(pkill:*)",
-      "Bash(echo exit: $?:*)"
+      "Bash(echo exit: $?:*)",
+      "Bash(curl:*)",
+      "Bash(test:*)",
+      "Bash(npm install:*)",
+      "Bash(kill:*)"
     ]
   }
 }

@@ -49,7 +49,7 @@ function getEsNav(isHomepage) {
           <div class="nav-glider"></div>
           <!-- t&think -->
           <li class="has-dropdown">
-            <span class="nav-vertical-label">t&amp;think ${CHEVRON_DOWN}</span>
+            <a class="nav-vertical-label">t&amp;think ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -86,7 +86,7 @@ function getEsNav(isHomepage) {
           </li>
           <!-- t&tech -->
           <li class="has-dropdown">
-            <span class="nav-vertical-label">t&amp;tech ${CHEVRON_DOWN}</span>
+            <a class="nav-vertical-label">t&amp;tech ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -113,21 +113,21 @@ function getEsNav(isHomepage) {
           </li>
           <!-- t&tailor -->
           <li class="has-dropdown">
-            <span class="nav-vertical-label">t&amp;tailor ${CHEVRON_DOWN}</span>
+            <a class="nav-vertical-label">t&amp;tailor ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
-                  <a href="/tailor/" class="feature-item active">
+                  <a href="/tailor/plv/" class="feature-item active">
                     <h3>PLV y Displays</h3>
                     <p>Material de punto de venta, expositores y soportes gráficos de alta calidad.</p>
                     <span class="arrow">→</span>
                   </a>
-                  <a href="/tailor/" class="feature-item">
+                  <a href="/tailor/merchandising/" class="feature-item">
                     <h3>Merchandising y Textil</h3>
                     <p>Ropa corporativa, artículos promocionales y textil técnico de marca.</p>
                     <span class="arrow">→</span>
                   </a>
-                  <a href="/tailor/" class="feature-item">
+                  <a href="/tailor/packaging/" class="feature-item">
                     <h3>Packaging y Producción</h3>
                     <p>Packaging premium, roll-ups, vinilos y producción gráfica a medida.</p>
                     <span class="arrow">→</span>
@@ -145,7 +145,7 @@ function getEsNav(isHomepage) {
           </li>
           <!-- t&trade -->
           <li class="has-dropdown">
-            <span class="nav-vertical-label">t&amp;trade ${CHEVRON_DOWN}</span>
+            <a class="nav-vertical-label">t&amp;trade ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -172,21 +172,21 @@ function getEsNav(isHomepage) {
           </li>
           <!-- t&talk -->
           <li class="has-dropdown">
-            <span class="nav-vertical-label">t&amp;talk ${CHEVRON_DOWN}</span>
+            <a class="nav-vertical-label">t&amp;talk ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
-                  <a href="/talk/" class="feature-item active">
+                  <a href="/talk/pr-comunicacion/" class="feature-item active">
                     <h3>PR y Comunicación</h3>
                     <p>Relaciones públicas, comunicación corporativa y gestión de reputación.</p>
                     <span class="arrow">→</span>
                   </a>
-                  <a href="/talk/" class="feature-item">
+                  <a href="/talk/seo-paid-media/" class="feature-item">
                     <h3>SEO, GEO y Paid Media</h3>
                     <p>Posicionamiento orgánico, publicidad digital y captación de tráfico cualificado.</p>
                     <span class="arrow">→</span>
                   </a>
-                  <a href="/talk/" class="feature-item">
+                  <a href="/talk/content-medios/" class="feature-item">
                     <h3>Content y Medios</h3>
                     <p>Estrategia de contenidos, medios convencionales y planificación multimedia.</p>
                     <span class="arrow">→</span>
@@ -204,7 +204,7 @@ function getEsNav(isHomepage) {
           </li>
           <!-- t&team -->
           <li class="has-dropdown">
-            <span class="nav-vertical-label">t&amp;team ${CHEVRON_DOWN}</span>
+            <a class="nav-vertical-label">t&amp;team ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -253,12 +253,12 @@ function getEsNav(isHomepage) {
       </div>
       <nav class="mobile-menu-nav${isHomepage ? '' : ' container'}">
         <ul>
-          <li><span class="nav-vertical-label">t&amp;think</span></li>
-          <li><span class="nav-vertical-label">t&amp;tech</span></li>
-          <li><span class="nav-vertical-label">t&amp;tailor</span></li>
-          <li><span class="nav-vertical-label">t&amp;trade</span></li>
-          <li><span class="nav-vertical-label">t&amp;talk</span></li>
-          <li><span class="nav-vertical-label">t&amp;team</span></li>
+          <li><a class="nav-vertical-label">t&amp;think</a></li>
+          <li><a class="nav-vertical-label">t&amp;tech</a></li>
+          <li><a class="nav-vertical-label">t&amp;tailor</a></li>
+          <li><a class="nav-vertical-label">t&amp;trade</a></li>
+          <li><a class="nav-vertical-label">t&amp;talk</a></li>
+          <li><a class="nav-vertical-label">t&amp;team</a></li>
           <li><a href="/contacto/">Contacto${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
         </ul>
       </nav>
@@ -290,7 +290,7 @@ function getEnNav(isHomepage) {
           <div class="nav-glider"></div>
           <!-- t&think -->
           <li class="has-dropdown">
-            <span class="nav-vertical-label">t&amp;think ${CHEVRON_DOWN}</span>
+            <a class="nav-vertical-label">t&amp;think ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -327,7 +327,7 @@ function getEnNav(isHomepage) {
           </li>
           <!-- t&tech -->
           <li class="has-dropdown">
-            <span class="nav-vertical-label">t&amp;tech ${CHEVRON_DOWN}</span>
+            <a class="nav-vertical-label">t&amp;tech ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -354,21 +354,21 @@ function getEnNav(isHomepage) {
           </li>
           <!-- t&tailor -->
           <li class="has-dropdown">
-            <span class="nav-vertical-label">t&amp;tailor ${CHEVRON_DOWN}</span>
+            <a class="nav-vertical-label">t&amp;tailor ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
-                  <a href="/en/tailor/" class="feature-item active">
+                  <a href="/en/tailor/pos-displays/" class="feature-item active">
                     <h3>POS &amp; Displays</h3>
                     <p>Point-of-sale materials, display units and high-quality graphic supports.</p>
                     <span class="arrow">→</span>
                   </a>
-                  <a href="/en/tailor/" class="feature-item">
+                  <a href="/en/tailor/merchandising/" class="feature-item">
                     <h3>Merchandising &amp; Textiles</h3>
                     <p>Corporate clothing, promotional items and branded technical textiles.</p>
                     <span class="arrow">→</span>
                   </a>
-                  <a href="/en/tailor/" class="feature-item">
+                  <a href="/en/tailor/packaging/" class="feature-item">
                     <h3>Packaging &amp; Print</h3>
                     <p>Premium packaging, roll-ups, vinyl wraps and bespoke graphic production.</p>
                     <span class="arrow">→</span>
@@ -386,7 +386,7 @@ function getEnNav(isHomepage) {
           </li>
           <!-- t&trade -->
           <li class="has-dropdown">
-            <span class="nav-vertical-label">t&amp;trade ${CHEVRON_DOWN}</span>
+            <a class="nav-vertical-label">t&amp;trade ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -413,21 +413,21 @@ function getEnNav(isHomepage) {
           </li>
           <!-- t&talk -->
           <li class="has-dropdown">
-            <span class="nav-vertical-label">t&amp;talk ${CHEVRON_DOWN}</span>
+            <a class="nav-vertical-label">t&amp;talk ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
-                  <a href="/en/talk/" class="feature-item active">
+                  <a href="/en/talk/pr-communications/" class="feature-item active">
                     <h3>PR &amp; Communications</h3>
                     <p>Public relations, corporate communications and reputation management.</p>
                     <span class="arrow">→</span>
                   </a>
-                  <a href="/en/talk/" class="feature-item">
+                  <a href="/en/talk/seo-paid-media/" class="feature-item">
                     <h3>SEO, GEO &amp; Paid Media</h3>
                     <p>Organic positioning, digital advertising and qualified traffic acquisition.</p>
                     <span class="arrow">→</span>
                   </a>
-                  <a href="/en/talk/" class="feature-item">
+                  <a href="/en/talk/content-media/" class="feature-item">
                     <h3>Content &amp; Media</h3>
                     <p>Content strategy, traditional media and multimedia planning.</p>
                     <span class="arrow">→</span>
@@ -445,7 +445,7 @@ function getEnNav(isHomepage) {
           </li>
           <!-- t&team -->
           <li class="has-dropdown">
-            <span class="nav-vertical-label">t&amp;team ${CHEVRON_DOWN}</span>
+            <a class="nav-vertical-label">t&amp;team ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <div class="mega-menu-container container">
                 <div class="features-list">
@@ -494,12 +494,12 @@ function getEnNav(isHomepage) {
       </div>
       <nav class="mobile-menu-nav${isHomepage ? '' : ' container'}">
         <ul>
-          <li><span class="nav-vertical-label">t&amp;think</span></li>
-          <li><span class="nav-vertical-label">t&amp;tech</span></li>
-          <li><span class="nav-vertical-label">t&amp;tailor</span></li>
-          <li><span class="nav-vertical-label">t&amp;trade</span></li>
-          <li><span class="nav-vertical-label">t&amp;talk</span></li>
-          <li><span class="nav-vertical-label">t&amp;team</span></li>
+          <li><a class="nav-vertical-label">t&amp;think</a></li>
+          <li><a class="nav-vertical-label">t&amp;tech</a></li>
+          <li><a class="nav-vertical-label">t&amp;tailor</a></li>
+          <li><a class="nav-vertical-label">t&amp;trade</a></li>
+          <li><a class="nav-vertical-label">t&amp;talk</a></li>
+          <li><a class="nav-vertical-label">t&amp;team</a></li>
           <li><a href="/en/contact/">Contact${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
         </ul>
       </nav>
@@ -535,23 +535,16 @@ const ES_FOOTER = `<footer class="footer">
             </ul>
           </div>
           <div class="footer-column">
-            <h4>Soluciones</h4>
+            <h4>Productos</h4>
             <ul>
-              <li><a href="/think/creatividad/">Creatividad</a></li>
               <li><a href="/tech/2laps/">2laps</a></li>
-              <li><a href="/tailor/">Producción</a></li>
-              <li><a href="/trade/trade-show/">Trade Show</a></li>
-              <li><a href="/talk/">Comunicación</a></li>
-              <li><a href="/team/captacion/">Talento</a></li>
+              <li><a href="/tech/1000er/">1000er</a></li>
             </ul>
           </div>
           <div class="footer-column">
-            <h4>Empresa</h4>
+            <h4>Journal</h4>
             <ul>
-              <li><a href="/empresa/">Sobre nosotros</a></li>
-              <li><a href="/clientes/">Clientes</a></li>
               <li><a href="/insights/">Insights</a></li>
-              <li><a href="/contacto/">Contacto</a></li>
             </ul>
           </div>
           <div class="footer-column">
@@ -588,23 +581,16 @@ const EN_FOOTER = `<footer class="footer">
             </ul>
           </div>
           <div class="footer-column">
-            <h4>Solutions</h4>
+            <h4>Products</h4>
             <ul>
-              <li><a href="/en/think/creativity/">Creativity</a></li>
               <li><a href="/en/tech/2laps/">2laps</a></li>
-              <li><a href="/en/tailor/">Production</a></li>
-              <li><a href="/en/trade/trade-show/">Trade Show</a></li>
-              <li><a href="/en/talk/">Communications</a></li>
-              <li><a href="/en/team/talent-acquisition/">Talent</a></li>
+              <li><a href="/en/tech/1000er/">1000er</a></li>
             </ul>
           </div>
           <div class="footer-column">
-            <h4>Company</h4>
+            <h4>Journal</h4>
             <ul>
-              <li><a href="/en/company/">About us</a></li>
-              <li><a href="/en/clients/">Clients</a></li>
               <li><a href="/en/insights/">Insights</a></li>
-              <li><a href="/en/contact/">Contact</a></li>
             </ul>
           </div>
           <div class="footer-column">

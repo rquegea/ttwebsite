@@ -3301,3 +3301,79 @@ a {
     display: block;
     line-height: 1.2;
 }
+
+/* Journal Hero */
+.journal-hero {
+    padding: 12rem 0 4rem;
+}
+
+.journal-hero-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 4rem;
+}
+
+.journal-hero h1,
+.light-theme .journal-hero h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(3rem, 7vw, 6rem) !important;
+    font-weight: 800 !important;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: #0A0A0A;
+    max-width: 65%;
+    text-transform: uppercase;
+}
+
+.journal-hero-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+    max-width: 280px;
+    padding-top: 1rem;
+}
+
+.journal-hero-image {
+    padding: 0 0 6rem;
+}
+
+.journal-hero-image-inner {
+    background-color: #F2F2F2;
+    border-radius: 12px;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.journal-hero-image-inner img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .journal-hero {
+        padding: 10rem 0 3rem;
+    }
+
+    .journal-hero-inner {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .journal-hero h1 {
+        max-width: 100%;
+        font-size: 2.5rem;
+    }
+
+    .journal-hero-desc {
+        max-width: 100%;
+    }
+
+    .journal-hero-image-inner {
+        min-height: 300px;
+    }
+}

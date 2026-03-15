@@ -19,6 +19,10 @@ function getLocale(request: NextRequest): string {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  if (pathname.startsWith('/admin') || pathname.startsWith('/acceso')) {
+    return;
+  }
+
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||

@@ -224,16 +224,50 @@ document.addEventListener('DOMContentLoaded', () => {
     let isPaused = false;
     let slideInterval;
 
+    // Safe play: catches browser power-saving interruptions
+    function safePlay(video) {
+      if (!video) return;
+      var p = video.play();
+      if (p && typeof p.catch === 'function') {
+        p.catch(function() { /* browser paused video to save power — ignore */ });
+      }
+    }
+
+    // Preload next slide's video so transition is seamless
+    function preloadNext() {
+      var nextIdx = (currentSlide + 1) % heroSlides.length;
+      var nextVideo = heroSlides[nextIdx].querySelector('video');
+      if (nextVideo && nextVideo.preload === 'none') {
+        nextVideo.preload = 'auto';
+        nextVideo.load();
+      }
+    }
+
+    // Set all non-active videos to preload="none" on init
+    heroSlides.forEach(function(slide, i) {
+      var vid = slide.querySelector('video');
+      if (vid && i !== 0) {
+        vid.preload = 'none';
+        vid.removeAttribute('autoplay');
+      }
+    });
+
+    // Preload the second video after first starts
+    preloadNext();
+
     function nextSlide() {
-      const currentVideo = heroSlides[currentSlide].querySelector('video');
+      var currentVideo = heroSlides[currentSlide].querySelector('video');
       if (currentVideo) currentVideo.pause();
       heroSlides[currentSlide].classList.remove('active');
 
       currentSlide = (currentSlide + 1) % heroSlides.length;
 
       heroSlides[currentSlide].classList.add('active');
-      const newVideo = heroSlides[currentSlide].querySelector('video');
-      if (newVideo) newVideo.play();
+      var newVideo = heroSlides[currentSlide].querySelector('video');
+      safePlay(newVideo);
+
+      // Preload the next one in advance
+      preloadNext();
     }
 
     function startSlides() {
@@ -243,16 +277,16 @@ document.addEventListener('DOMContentLoaded', () => {
     startSlides();
 
     if (heroPauseBtn) {
-      heroPauseBtn.addEventListener('click', () => {
+      heroPauseBtn.addEventListener('click', function() {
         isPaused = !isPaused;
         if (isPaused) {
           clearInterval(slideInterval);
           heroPauseIcon.textContent = '▶';
-          const vid = heroSlides[currentSlide].querySelector('video');
+          var vid = heroSlides[currentSlide].querySelector('video');
           if (vid) vid.pause();
         } else {
-          const vid = heroSlides[currentSlide].querySelector('video');
-          if (vid) vid.play();
+          var vid = heroSlides[currentSlide].querySelector('video');
+          safePlay(vid);
           startSlides();
           heroPauseIcon.textContent = '⏸';
         }
