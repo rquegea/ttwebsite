@@ -15,6 +15,17 @@ export async function getPublishedProjects(): Promise<Project[]> {
   return data || [];
 }
 
+export async function getProjectBySlug(slug: string): Promise<Project | null> {
+  const { data, error } = await supabaseAdmin
+    .from('projects')
+    .select('*')
+    .eq('slug', slug)
+    .single();
+
+  if (error || !data) return null;
+  return data;
+}
+
 export async function getPublishedArticles(): Promise<Article[]> {
   const { data, error } = await supabaseAdmin
     .from('articles')

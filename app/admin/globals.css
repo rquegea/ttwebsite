@@ -489,6 +489,120 @@
   font-size: 14px;
 }
 
+/* ---- Textarea ---- */
+.admin-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: #1a1a1a;
+  resize: vertical;
+  transition: border-color 0.15s;
+  box-sizing: border-box;
+}
+
+.admin-textarea:focus {
+  outline: none;
+  border-color: #800020;
+}
+
+/* ---- Section dividers (structured fields) ---- */
+.admin-section-divider {
+  border-top: 2px solid #e5e5e5;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+}
+
+.admin-section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* ---- Disciplines ---- */
+.admin-discipline-item {
+  border: 1px solid #e5e5e5;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  background: #fafafa;
+  position: relative;
+}
+
+.admin-discipline-remove {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.admin-discipline-remove:hover {
+  color: #800020;
+}
+
+/* ---- Gallery grid ---- */
+.admin-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.admin-gallery-item {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.admin-gallery-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.admin-gallery-remove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.admin-gallery-remove:hover {
+  background: rgba(128, 0, 32, 0.8);
+}
+
+/* ---- Image preview ---- */
+.admin-image-preview {
+  margin-top: 8px;
+  border-radius: 6px;
+  overflow: hidden;
+  max-height: 200px;
+}
+
+.admin-image-preview img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
   .admin-sidebar {

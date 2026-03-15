@@ -237,7 +237,7 @@ function getEsNav(isHomepage) {
         </ul>
       </nav>
       <div class="header-right">
-        <div class="login"><a href="#">Acceso</a></div>
+        <div class="login"><a href="/acceso">Acceso</a></div>
         <button class="mobile-menu-btn" aria-label="Toggle menu">
           ${isHomepage ? '<span class="menu-icon">■</span> MENU' : HAMBURGER_SVG}
         </button>
@@ -270,7 +270,7 @@ function getEsNav(isHomepage) {
           <a href="#" aria-label="Facebook">f</a>
         </div>`
           : `<button class="cta-primary">Solicita una propuesta</button>
-        <button class="cta-outline">Acceso</button>`}
+        <a href="/acceso" class="cta-outline">Acceso</a>`}
       </div>
     </div>
   </header>`;
@@ -478,7 +478,7 @@ function getEnNav(isHomepage) {
         </ul>
       </nav>
       <div class="header-right">
-        <div class="login"><a href="#">Login</a></div>
+        <div class="login"><a href="/acceso">Login</a></div>
         <button class="mobile-menu-btn" aria-label="Toggle menu">
           ${isHomepage ? '<span class="menu-icon">■</span> MENU' : HAMBURGER_SVG}
         </button>
@@ -511,7 +511,7 @@ function getEnNav(isHomepage) {
           <a href="#" aria-label="Facebook">f</a>
         </div>`
           : `<button class="cta-primary">Request a proposal</button>
-        <button class="cta-outline">Login</button>`}
+        <a href="/acceso" class="cta-outline">Login</a>`}
       </div>
     </div>
   </header>`;

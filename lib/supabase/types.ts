@@ -9,6 +9,13 @@ export interface Project {
   slug: string;
   published: boolean;
   sort_order: number;
+  challenge: string | null;
+  solution: string | null;
+  result: string | null;
+  disciplines: { title: string; description: string }[] | null;
+  gallery_urls: string[] | null;
+  showcase_image_url: string | null;
+  split_image_url: string | null;
   created_at: string;
   updated_at: string;
 }

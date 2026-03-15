@@ -25,6 +25,8 @@ function slugify(text: string): string {
     .replace(/(^-|-$)/g, '');
 }
 
+type Discipline = { title: string; description: string };
+
 export default function EditProjectPage() {
   const router = useRouter();
   const params = useParams();
@@ -37,6 +39,13 @@ export default function EditProjectPage() {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [logoFile, setLogoFile] = useState<File | null>(null);
 
+  // New image states
+  const [showcasePreview, setShowcasePreview] = useState<string | null>(null);
+  const [showcaseFile, setShowcaseFile] = useState<File | null>(null);
+  const [splitPreview, setSplitPreview] = useState<string | null>(null);
+  const [splitFile, setSplitFile] = useState<File | null>(null);
+  const [galleryUploading, setGalleryUploading] = useState(false);
+
   const [form, setForm] = useState({
     title: '',
     client_name: '',
@@ -45,7 +54,15 @@ export default function EditProjectPage() {
     slug: '',
     sort_order: 0,
     published: false,
+    challenge: '',
+    solution: '',
+    result: '',
+    showcase_image_url: '',
+    split_image_url: '',
   });
+
+  const [disciplines, setDisciplines] = useState<Discipline[]>([]);
+  const [galleryUrls, setGalleryUrls] = useState<string[]>([]);
 
   useEffect(() => {
     supabase
@@ -68,9 +85,18 @@ export default function EditProjectPage() {
           slug: project.slug,
           sort_order: project.sort_order,
           published: project.published,
+          challenge: project.challenge || '',
+          solution: project.solution || '',
+          result: project.result || '',
+          showcase_image_url: project.showcase_image_url || '',
+          split_image_url: project.split_image_url || '',
         });
+        setDisciplines(project.disciplines || []);
+        setGalleryUrls(project.gallery_urls || []);
         if (project.image_url) setImagePreview(project.image_url);
         if (project.client_logo_url) setLogoPreview(project.client_logo_url);
+        if (project.showcase_image_url) setShowcasePreview(project.showcase_image_url);
+        if (project.split_image_url) setSplitPreview(project.split_image_url);
         setLoading(false);
       });
   }, [id, router]);
@@ -93,18 +119,80 @@ export default function EditProjectPage() {
     setLogoPreview(URL.createObjectURL(file));
   };
 
+  const handleShowcaseChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setShowcaseFile(file);
+    setShowcasePreview(URL.createObjectURL(file));
+  };
+
+  const handleSplitChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setSplitFile(file);
+    setSplitPreview(URL.createObjectURL(file));
+  };
+
+  const handleGalleryUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+    setGalleryUploading(true);
+    try {
+      const newUrls: string[] = [];
+      for (let i = 0; i < files.length; i++) {
+        const url = await uploadImage(files[i], `projects/gallery/${form.slug}`);
+        newUrls.push(url);
+      }
+      setGalleryUrls((prev) => [...prev, ...newUrls]);
+    } catch (err) {
+      alert('Error subiendo imágenes: ' + (err as Error).message);
+    }
+    setGalleryUploading(false);
+    e.target.value = '';
+  };
+
+  const removeGalleryImage = (index: number) => {
+    setGalleryUrls((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  // Disciplines
+  const addDiscipline = () => {
+    if (disciplines.length >= 6) return;
+    setDisciplines((prev) => [...prev, { title: '', description: '' }]);
+  };
+
+  const updateDiscipline = (index: number, field: keyof Discipline, value: string) => {
+    setDisciplines((prev) =>
+      prev.map((d, i) => (i === index ? { ...d, [field]: value } : d))
+    );
+  };
+
+  const removeDiscipline = (index: number) => {
+    setDisciplines((prev) => prev.filter((_, i) => i !== index));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSaving(true);
 
     try {
-      const updates: Record<string, unknown> = { ...form };
+      const updates: Record<string, unknown> = {
+        ...form,
+        disciplines: disciplines.length > 0 ? disciplines : null,
+        gallery_urls: galleryUrls.length > 0 ? galleryUrls : null,
+      };
 
       if (imageFile) {
         updates.image_url = await uploadImage(imageFile, 'projects');
       }
       if (logoFile) {
         updates.client_logo_url = await uploadImage(logoFile, 'logos');
+      }
+      if (showcaseFile) {
+        updates.showcase_image_url = await uploadImage(showcaseFile, 'projects/showcase');
+      }
+      if (splitFile) {
+        updates.split_image_url = await uploadImage(splitFile, 'projects/split');
       }
 
       const { error } = await supabase
@@ -185,6 +273,147 @@ export default function EditProjectPage() {
           />
         </div>
 
+        {/* ========== CONTENIDO DE LA PÁGINA ========== */}
+        <div className="admin-section-divider">
+          <h3 className="admin-section-title">Contenido de la Página</h3>
+
+          {/* a) Imagen Showcase */}
+          <div className="admin-form-group">
+            <label className="admin-form-label">Imagen Showcase (grande debajo del hero)</label>
+            <div className="admin-upload-area">
+              <input type="file" accept="image/*" onChange={handleShowcaseChange} />
+              {showcasePreview ? (
+                <div className="admin-image-preview">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={showcasePreview} alt="Showcase preview" />
+                </div>
+              ) : (
+                <p className="admin-upload-text">Haz clic o arrastra la imagen showcase</p>
+              )}
+            </div>
+          </div>
+
+          {/* b) Desafío, Solución, Resultado */}
+          <div className="admin-form-group">
+            <label className="admin-form-label">El desafío</label>
+            <textarea
+              value={form.challenge}
+              onChange={(e) => setForm((prev) => ({ ...prev, challenge: e.target.value }))}
+              className="admin-textarea"
+              rows={4}
+            />
+          </div>
+
+          <div className="admin-form-group">
+            <label className="admin-form-label">La solución</label>
+            <textarea
+              value={form.solution}
+              onChange={(e) => setForm((prev) => ({ ...prev, solution: e.target.value }))}
+              className="admin-textarea"
+              rows={4}
+            />
+          </div>
+
+          <div className="admin-form-group">
+            <label className="admin-form-label">El resultado</label>
+            <textarea
+              value={form.result}
+              onChange={(e) => setForm((prev) => ({ ...prev, result: e.target.value }))}
+              className="admin-textarea"
+              rows={4}
+            />
+          </div>
+
+          {/* c) Imagen lateral */}
+          <div className="admin-form-group">
+            <label className="admin-form-label">Imagen lateral (junto al texto desafío/solución/resultado)</label>
+            <div className="admin-upload-area">
+              <input type="file" accept="image/*" onChange={handleSplitChange} />
+              {splitPreview ? (
+                <div className="admin-image-preview">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={splitPreview} alt="Split preview" />
+                </div>
+              ) : (
+                <p className="admin-upload-text">Haz clic o arrastra la imagen lateral</p>
+              )}
+            </div>
+          </div>
+
+          {/* d) Disciplinas aplicadas */}
+          <div className="admin-form-group">
+            <label className="admin-form-label">Disciplinas aplicadas</label>
+            {disciplines.map((disc, index) => (
+              <div key={index} className="admin-discipline-item">
+                <button
+                  type="button"
+                  className="admin-discipline-remove"
+                  onClick={() => removeDiscipline(index)}
+                >
+                  ✕
+                </button>
+                <div style={{ marginBottom: 8 }}>
+                  <input
+                    type="text"
+                    placeholder="Título de la disciplina"
+                    value={disc.title}
+                    onChange={(e) => updateDiscipline(index, 'title', e.target.value)}
+                    className="admin-form-input"
+                  />
+                </div>
+                <textarea
+                  placeholder="Descripción"
+                  value={disc.description}
+                  onChange={(e) => updateDiscipline(index, 'description', e.target.value)}
+                  className="admin-textarea"
+                  rows={2}
+                />
+              </div>
+            ))}
+            {disciplines.length < 6 && (
+              <button type="button" onClick={addDiscipline} className="admin-btn admin-btn-secondary admin-btn-sm">
+                + Añadir disciplina
+              </button>
+            )}
+          </div>
+
+          {/* e) Galería de imágenes */}
+          <div className="admin-form-group">
+            <label className="admin-form-label">Galería de imágenes</label>
+            <div className="admin-upload-area">
+              <input
+                type="file"
+                accept="image/*"
+                multiple
+                onChange={handleGalleryUpload}
+                disabled={galleryUploading}
+              />
+              <p className="admin-upload-text">
+                {galleryUploading ? 'Subiendo imágenes...' : 'Haz clic o arrastra imágenes para la galería'}
+              </p>
+            </div>
+            {galleryUrls.length > 0 && (
+              <div className="admin-gallery-grid">
+                {galleryUrls.map((url, index) => (
+                  <div key={index} className="admin-gallery-item">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={url} alt={`Galería ${index + 1}`} />
+                    <button
+                      type="button"
+                      className="admin-gallery-remove"
+                      onClick={() => removeGalleryImage(index)}
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* ========== FIN CONTENIDO DE LA PÁGINA ========== */}
+
         <div className="admin-form-row">
           <div className="admin-form-group">
             <label className="admin-form-label">Orden</label>
@@ -213,6 +442,7 @@ export default function EditProjectPage() {
           <div className="admin-upload-area">
             <input type="file" accept="image/*" onChange={handleImageChange} />
             {imagePreview ? (
+              // eslint-disable-next-line @next/next/no-img-element
               <img src={imagePreview} alt="Preview" className="admin-upload-preview" />
             ) : (
               <p className="admin-upload-text">Haz clic o arrastra una imagen</p>
@@ -225,6 +455,7 @@ export default function EditProjectPage() {
           <div className="admin-upload-area">
             <input type="file" accept="image/*" onChange={handleLogoChange} />
             {logoPreview ? (
+              // eslint-disable-next-line @next/next/no-img-element
               <img src={logoPreview} alt="Preview" className="admin-upload-preview" />
             ) : (
               <p className="admin-upload-text">Haz clic o arrastra el logo</p>
