@@ -40,6 +40,7 @@ export default function NewProjectPage() {
     slug: '',
     sort_order: 0,
     published: false,
+    video_url: '',
   });
 
   const handleTitleChange = (value: string) => {
@@ -191,6 +192,17 @@ export default function NewProjectPage() {
               <p className="admin-upload-text">Haz clic o arrastra una imagen</p>
             )}
           </div>
+        </div>
+
+        <div className="admin-form-group">
+          <label className="admin-form-label">URL del Video (MP4)</label>
+          <input
+            type="text"
+            value={form.video_url}
+            onChange={(e) => setForm((prev) => ({ ...prev, video_url: e.target.value }))}
+            className="admin-form-input"
+            placeholder="/ruta/al/video.mp4 o URL completa"
+          />
         </div>
 
         <div className="admin-form-group">

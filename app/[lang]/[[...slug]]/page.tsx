@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { getPublishedProjects, getProjectBySlug } from '@/lib/supabase/queries';
 import type { Project } from '@/lib/supabase/types';
+import { getHeaderHtml, getFooterHtml } from '@/lib/nav';
 
 export const revalidate = 60;
 
@@ -28,6 +29,19 @@ function extractBody(html: string): string {
   return match ? match[1] : html;
 }
 
+function stripHeader(body: string): string {
+  return body.replace(/<header class="header">[\s\S]*?<\/header>/i, '');
+}
+
+function stripFooter(body: string): string {
+  return body.replace(/<footer class="footer">[\s\S]*?<\/footer>/i, '');
+}
+
+function replaceNav(body: string, lang: string, isHomepage: boolean): string {
+  const stripped = stripFooter(stripHeader(body));
+  return getHeaderHtml(lang, isHomepage) + stripped + getFooterHtml(lang);
+}
+
 function extractBodyClass(html: string): string {
   const match = html.match(/<body[^>]*class="([^"]*)"/i);
   return match ? match[1] : '';
@@ -43,15 +57,22 @@ function escapeHtml(str: string): string {
 
 function buildProjectsGrid(projects: Project[]): string {
   const cards = projects.map((p) => {
-    const imgStyle = p.image_url
-      ? `background:url('${escapeHtml(p.image_url)}') center/cover no-repeat;`
-      : 'background:#e0e0e0;';
+    const hasVideo = p.video_url && p.video_url.trim() !== '';
+    const imgStyle = hasVideo
+      ? ''
+      : p.image_url
+        ? `background:url('${escapeHtml(p.image_url)}') center/cover no-repeat;`
+        : 'background:#e0e0e0;';
+    const mediaHtml = hasVideo
+      ? `<video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;"><source src="${escapeHtml(p.video_url!)}" type="video/mp4"></video>`
+      : '';
     const logoHtml = p.client_logo_url
       ? `<div class="badge-icon"><img src="${escapeHtml(p.client_logo_url)}" alt="${escapeHtml(p.client_name)}"></div>`
       : '';
 
     return `      <a href="/work/${escapeHtml(p.slug)}/" class="project-card-home">
-        <div class="project-image" style="${imgStyle}">
+        <div class="project-image"${imgStyle ? ` style="${imgStyle}"` : ''}>
+          ${mediaHtml}
           <div class="project-client-badge">
             ${logoHtml}
             <div class="badge-text">
@@ -147,17 +168,17 @@ ${cards}
   </section>`;
   }
 
-  // Gallery section
+  // Gallery section (2-column grid)
   let galleryHtml = '';
   if (project.gallery_urls && project.gallery_urls.length > 0) {
     const images = project.gallery_urls.map(url =>
-      `        <div class="gallery-item" style="background:url('${escapeHtml(url)}') center/cover no-repeat; min-height:300px; border-radius:8px;"></div>`
+      `        <div class="gallery-item"><img src="${escapeHtml(url)}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>`
     ).join('\n');
 
     galleryHtml = `
   <section class="subpage-gallery reveal">
     <div class="container">
-      <div class="gallery-grid">
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;">
 ${images}
       </div>
     </div>
@@ -168,9 +189,9 @@ ${images}
   <section class="subpage-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">T&T</a> <span>/</span> <a href="/work/">${breadcrumbWork}</a> <span>/</span> <span class="current">${escapeHtml(project.client_name)}</span>
+        <a href="/"><img src="/logos/tytnuevologo.png" alt="T&T" style="height:20px;vertical-align:middle;"></a> <span>/</span> <a href="/work/">${breadcrumbWork}</a> <span>/</span> <span class="current">${escapeHtml(project.client_name)}</span>
       </nav>
-      <h1>${escapeHtml(project.title)}</h1>
+      <h1 style="font-family:'Switzer',sans-serif;font-size:clamp(2.8rem,6vw,4.5rem);font-weight:600;">${escapeHtml(project.title)}</h1>
     </div>
   </section>
 
@@ -285,6 +306,9 @@ export default async function Page({ params }: Props) {
       bodyContent = replaceProjectsSection(bodyContent, projects);
     }
   }
+
+  // Strip hardcoded header/footer from static HTML → use shared nav
+  bodyContent = replaceNav(bodyContent, lang, isHomepage);
 
   return <div className={bodyClass} dangerouslySetInnerHTML={{ __html: bodyContent }} />;
 }

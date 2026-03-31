@@ -1,32 +1,7 @@
-#!/usr/bin/env node
 /**
- * inject-nav.js — Replaces header and footer in all T&T HTML files
- * Run: node scripts/inject-nav.js
+ * Shared header and footer HTML — single source of truth.
+ * Replaces the old inject-nav.js approach of duplicating HTML in 73 files.
  */
-
-const fs = require('fs');
-const path = require('path');
-const { globSync } = require('fs').promises ? require('glob') : { globSync: null };
-
-// Manual glob fallback
-function findHtmlFiles(dir, results = []) {
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-  for (const entry of entries) {
-    const fullPath = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      if (['node_modules', '.next', 'dist', 'public', '.git', '.claude', 'scripts', 'styles'].includes(entry.name)) continue;
-      findHtmlFiles(fullPath, results);
-    } else if (entry.name === 'index.html') {
-      results.push(fullPath);
-    }
-  }
-  return results;
-}
-
-const ROOT = path.resolve(__dirname, '..');
-
-// Files to SKIP (will be deleted in Phase 4)
-const SKIP_PATHS = [];
 
 // SVG icons
 const CHEVRON_DOWN = '<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>';
@@ -34,9 +9,16 @@ const CHEVRON_RIGHT = '<svg width="20" height="20" viewBox="0 0 24 24" fill="non
 const HAMBURGER_SVG = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 6H21M3 12H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>';
 const CLOSE_SVG = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6L18 18" stroke-linecap="round" stroke-linejoin="round" /></svg>';
 
-// --- ES NAV ---
-function getEsNav(isHomepage) {
-  const logoHref = '/';
+export function getHeaderHtml(lang: string, isHomepage: boolean): string {
+  return lang === 'en' ? getEnHeader(isHomepage) : getEsHeader(isHomepage);
+}
+
+export function getFooterHtml(lang: string): string {
+  return lang === 'en' ? EN_FOOTER : ES_FOOTER;
+}
+
+// --- ES HEADER ---
+function getEsHeader(isHomepage: boolean): string {
   const logoWrap = isHomepage
     ? '<div class="logo"><img src="/logos/tytnuevologo.png" alt="T&T" class="logo-img"></div>'
     : '<div class="logo"><a href="/"><img src="/logos/tytnuevologo.png" alt="T&T" class="logo-img"></a></div>';
@@ -276,8 +258,8 @@ function getEsNav(isHomepage) {
   </header>`;
 }
 
-// --- EN NAV ---
-function getEnNav(isHomepage) {
+// --- EN HEADER ---
+function getEnHeader(isHomepage: boolean): string {
   const logoWrap = isHomepage
     ? '<div class="logo"><img src="/logos/tytnuevologo.png" alt="T&T" class="logo-img"></div>'
     : '<div class="logo"><a href="/en/"><img src="/logos/tytnuevologo.png" alt="T&T" class="logo-img"></a></div>';
@@ -608,65 +590,3 @@ const EN_FOOTER = `<footer class="footer">
       </div>
     </div>
   </footer>`;
-
-// --- MAIN ---
-function main() {
-  const allFiles = findHtmlFiles(ROOT);
-  let updated = 0;
-  let skipped = 0;
-
-  for (const filePath of allFiles) {
-    const rel = path.relative(ROOT, filePath).replace(/\/index\.html$/, '');
-
-    // Skip files marked for deletion
-    if (SKIP_PATHS.some(skip => rel === skip || rel.startsWith(skip + '/'))) {
-      console.log(`  SKIP (to-delete): ${rel}/index.html`);
-      skipped++;
-      continue;
-    }
-
-    let content = fs.readFileSync(filePath, 'utf8');
-
-    const isEN = rel.startsWith('en/') || rel === 'en';
-    const isHomepage = rel === '.' || rel === '' || rel === 'en' || rel === 'index.html';
-    // Check if it's the root index.html or en/index.html
-    const isRootHomepage = filePath === path.join(ROOT, 'index.html') || filePath === path.join(ROOT, 'en', 'index.html');
-
-    // Replace header
-    const headerStart = content.indexOf('<header class="header">');
-    const headerEnd = content.indexOf('</header>');
-    if (headerStart !== -1 && headerEnd !== -1) {
-      const newNav = isEN ? getEnNav(isRootHomepage) : getEsNav(isRootHomepage);
-      content = content.substring(0, headerStart) + newNav + content.substring(headerEnd + '</header>'.length);
-    } else {
-      console.log(`  WARN: No header found in ${rel}/index.html`);
-    }
-
-    // Replace footer
-    const footerStart = content.indexOf('<footer class="footer">');
-    const footerEnd = content.indexOf('</footer>');
-    if (footerStart !== -1 && footerEnd !== -1) {
-      const newFooter = isEN ? EN_FOOTER : ES_FOOTER;
-      content = content.substring(0, footerStart) + newFooter + content.substring(footerEnd + '</footer>'.length);
-    } else {
-      console.log(`  WARN: No footer found in ${rel}/index.html`);
-    }
-
-    // Inject cookie consent script before </body>
-    const cookieScript = '<script src="/cookie-consent.js"></script>';
-    if (!content.includes('cookie-consent.js')) {
-      const bodyClose = content.lastIndexOf('</body>');
-      if (bodyClose !== -1) {
-        content = content.substring(0, bodyClose) + '  ' + cookieScript + '\n' + content.substring(bodyClose);
-      }
-    }
-
-    fs.writeFileSync(filePath, content, 'utf8');
-    console.log(`  OK: ${rel}/index.html`);
-    updated++;
-  }
-
-  console.log(`\nDone. Updated: ${updated}, Skipped: ${skipped}`);
-}
-
-main();

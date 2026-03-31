@@ -41,7 +41,8 @@
       "Bash(curl:*)",
       "Bash(test:*)",
       "Bash(npm install:*)",
-      "Bash(kill:*)"
+      "Bash(kill:*)",
+      "WebFetch(domain:platform.trucoytrufa.es)"
     ]
   }
 }

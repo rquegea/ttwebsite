@@ -16,6 +16,7 @@ export interface Project {
   gallery_urls: string[] | null;
   showcase_image_url: string | null;
   split_image_url: string | null;
+  video_url: string | null;
   created_at: string;
   updated_at: string;
 }

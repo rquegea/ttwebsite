@@ -59,6 +59,7 @@ export default function EditProjectPage() {
     result: '',
     showcase_image_url: '',
     split_image_url: '',
+    video_url: '',
   });
 
   const [disciplines, setDisciplines] = useState<Discipline[]>([]);
@@ -90,6 +91,7 @@ export default function EditProjectPage() {
           result: project.result || '',
           showcase_image_url: project.showcase_image_url || '',
           split_image_url: project.split_image_url || '',
+          video_url: project.video_url || '',
         });
         setDisciplines(project.disciplines || []);
         setGalleryUrls(project.gallery_urls || []);
@@ -448,6 +450,17 @@ export default function EditProjectPage() {
               <p className="admin-upload-text">Haz clic o arrastra una imagen</p>
             )}
           </div>
+        </div>
+
+        <div className="admin-form-group">
+          <label className="admin-form-label">URL del Video (MP4)</label>
+          <input
+            type="text"
+            value={form.video_url}
+            onChange={(e) => setForm((prev) => ({ ...prev, video_url: e.target.value }))}
+            className="admin-form-input"
+            placeholder="/ruta/al/video.mp4 o URL completa"
+          />
         </div>
 
         <div className="admin-form-group">
