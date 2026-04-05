@@ -327,97 +327,53 @@
     </div>
   </section>
 
-  <!-- 3. FEATURES -->
-  <section class="subpage-split reveal">
-    <div class="split-grid container">
-      <div class="split-media"><img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=1200&q=80&fit=crop&auto=format" alt="Creative team working" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="feature-stack">
-        <div class="feature-stack-item">
-          <h3>Campaign Conceptualisation</h3>
-          <p>From brief to creative concept. We develop ideas that articulate clear messages and generate impact across every touchpoint.</p>
-        </div>
-        <div class="feature-stack-item">
-          <h3>Art Direction</h3>
-          <p>We define the visual tone of every project. Colour, typography, composition and photographic style aligned with brand strategy.</p>
-        </div>
-        <div class="feature-stack-item">
-          <h3>Branding & Visual Identity</h3>
-          <p>We create and evolve complete brand systems: logo, palette, typography, iconography and application guidelines.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. CAPABILITIES -->
-  <section class="subpage-capabilities reveal">
+  <!-- 2b. WHY T&T -->
+  <section class="subpage-claim reveal">
     <div class="container">
-      <h2>Every project starts with one question: what does your brand need to become unforgettable?</h2>
-      <div class="capabilities-grid">
-        <div class="capability-card reveal reveal-delay-1">
-          <h3>Key Visuals & Graphic Production</h3>
-          <p>Hero assets that define the campaign. Adaptable to every format: digital, outdoor, print and point of sale.</p>
+      <h2 class="claim-title">Why top companies<br>choose T&T</h2>
+      <div class="claim-cards">
+        <div class="claim-card reveal reveal-delay-1">
+          <div class="claim-card-media"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80&fit=crop&auto=format" alt="Colour palette and design samples" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
+          <h3>Creativity with strategy</h3>
+          <p>We don't design for aesthetics alone. Every concept starts with a brand diagnosis and a concrete business objective.</p>
         </div>
-        <div class="capability-card reveal reveal-delay-2">
-          <h3>Audiovisual Production</h3>
-          <p>TV spots, social content, motion graphics and corporate video. In-house production with end-to-end creative control.</p>
-        </div>
-        <div class="capability-card reveal reveal-delay-3">
-          <h3>Packaging & Editorial Design</h3>
-          <p>Packaging, catalogues, annual reports and publications that reinforce brand positioning in every detail.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. WHY T&T -->
-  <section class="subpage-split reversed reveal">
-    <div class="split-grid container">
-      <div class="feature-stack">
-        <div class="feature-stack-item">
-          <h3>Creativity backed by strategy</h3>
-          <p>We don't make pretty visuals without substance. Every concept starts with a brand diagnosis, a business objective and deep market knowledge.</p>
-        </div>
-        <div class="feature-stack-item">
+        <div class="claim-card reveal reveal-delay-2">
+          <div class="claim-card-media"><img src="https://images.unsplash.com/photo-1613909207039-6b173b755cc1?w=800&q=80&fit=crop&auto=format" alt="Art direction and visual composition" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
           <h3>Integrated production</h3>
-          <p>Concept, design, photography, video and post-production under one team. No middlemen, no quality loss between idea and execution.</p>
+          <p>Concept, design, photography and video under one team. No middlemen, no quality loss.</p>
         </div>
-        <div class="feature-stack-item">
-          <h3>Trusted by leading brands</h3>
-          <p>Dom Pérignon, Nivea, Campofrío and Grupo Planeta. We work with companies that demand creative excellence and measurable results.</p>
+        <div class="claim-card reveal reveal-delay-3">
+          <div class="claim-card-media"><img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&q=80&fit=crop&auto=format" alt="Typography and branding" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
+          <h3>Brands that demand excellence</h3>
+          <p>Dom Pérignon, Nivea, Campofrío and Grupo Planeta. We work with those who refuse to settle.</p>
         </div>
-      </div>
-      <div class="split-media split-media-light"></div>
-    </div>
-  </section>
-
-  <!-- 6. FAQ -->
-  <section class="subpage-faq reveal">
-    <div class="container">
-      <div class="faq-inner">
-        <h2>Frequently asked questions</h2>
-        <details>
-          <summary>What does an art direction service include?</summary>
-          <p>Visual campaign conceptualisation, brand identity development, key visuals, graphic and audiovisual production, packaging and editorial design. Everything aligned with business strategy.</p>
-        </details>
-        <details>
-          <summary>How does T&T's creative approach stand out?</summary>
-          <p>Every creative piece starts with a strategic diagnosis. We don't design for aesthetics alone — we design so your brand is remembered, recognised and chosen.</p>
-        </details>
-        <details>
-          <summary>What kind of brands does T&T work with in creativity?</summary>
-          <p>We work with FMCG, luxury, education, finance and technology brands. Dom Pérignon, Nivea, Campofrío and Grupo Planeta are among our clients.</p>
-        </details>
       </div>
     </div>
   </section>
 
-  <!-- 7. CTA FINAL -->
-  <section class="cta-banner">
+  <!-- CTA FINAL -->
+  <section class="cta-banner cta-banner--light">
     <div class="cta-banner-container container">
-      <h2>Your brand deserves to be extraordinary</h2>
-      <a href="/en/contact/" class="cta-primary" style="display:inline-block; text-decoration:none;">Let's talk</a>
+      <h2>Your <span id="cta-dynamic-word" style="display:inline-block; transition: opacity 0.4s ease;">brand</span> deserves to be extraordinary</h2>
+      <a href="/en/contact/" class="cta-primary cta-primary--dark" style="display:inline-block; text-decoration:none;">Let's talk</a>
     </div>
   </section>
+  <script>
+    (function() {
+      var el = document.getElementById('cta-dynamic-word');
+      if (!el) return;
+      var words = ['brand', 'identity', 'vision'];
+      var i = 0;
+      setInterval(function() {
+        el.style.opacity = '0';
+        setTimeout(function() {
+          i = (i + 1) % words.length;
+          el.textContent = words[i];
+          el.style.opacity = '1';
+        }, 400);
+      }, 3000);
+    })();
+  </script>
 
   <!-- Footer -->
   <footer class="footer">

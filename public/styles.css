@@ -1321,7 +1321,7 @@ a {
 
 /* Light Theme for subpages */
 .light-theme {
-    background-color: #FFFFFF;
+    background-color: #FAFAFA;
     color: #0A0A0A;
 }
 
@@ -1661,7 +1661,7 @@ a {
 .subpage-hero {
     padding: 12rem 0 4rem;
     text-align: left;
-    background: #FFFFFF;
+    background: #FAFAFA;
 }
 
 .subpage-hero .breadcrumb {
@@ -1703,7 +1703,7 @@ a {
 
 /* 2. Showcase */
 .subpage-showcase {
-    background: #FFFFFF;
+    background: #FAFAFA;
     padding: 4rem 0;
     text-align: center;
 }
@@ -1718,7 +1718,7 @@ a {
 
 /* 2b. Claim */
 .subpage-claim {
-    background: #FFFFFF;
+    background: #FAFAFA;
     padding: 6rem 0;
 }
 
@@ -1773,7 +1773,7 @@ a {
 /* 3. Split sections — 2 columns with stacked features */
 .subpage-split {
     padding: 6rem 0;
-    background-color: #FFFFFF;
+    background-color: #FAFAFA;
 }
 
 .subpage-split .split-grid {
@@ -2060,7 +2060,7 @@ a {
 /* 6. FAQ */
 .subpage-faq {
     padding: 6rem 0;
-    background-color: #FFFFFF;
+    background-color: #FAFAFA;
 }
 
 .subpage-faq .faq-inner {

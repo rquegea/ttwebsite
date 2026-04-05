@@ -298,9 +298,10 @@ export default async function Page({ params }: Props) {
   let bodyContent = extractBody(html);
   const bodyClass = extractBodyClass(html);
 
-  // Homepage: replace static projects grid with Supabase data
+  // Replace static projects grid with Supabase data (homepage + work page)
   const isHomepage = slug.length === 0;
-  if (isHomepage) {
+  const isWorkPage = slug.length === 1 && slug[0] === 'work';
+  if (isHomepage || isWorkPage) {
     const projects = await getPublishedProjects();
     if (projects.length > 0) {
       bodyContent = replaceProjectsSection(bodyContent, projects);
