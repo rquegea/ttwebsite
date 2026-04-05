@@ -96,7 +96,8 @@
       "Bash(sed -i '' 's#/think/investigacion/images/#/images/think/investigacion/#g' think/investigacion/index.html)",
       "Bash(sed -i '' 's#/think/estrategia/images/#/images/think/estrategia/#g' think/estrategia/index.html)",
       "Bash(sed -i '' 's#/think/data-analitica/images/#/images/think/data-analitica/#g' think/data-analitica/index.html)",
-      "Bash(sed -i '' 's#/trade/trade-marketing/images/#/images/trade/trade-marketing/#g' trade/trade-marketing/index.html)"
+      "Bash(sed -i '' 's#/trade/trade-marketing/images/#/images/trade/trade-marketing/#g' trade/trade-marketing/index.html)",
+      "Bash(git push:*)"
     ]
   }
 }

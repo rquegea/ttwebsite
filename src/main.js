@@ -2,6 +2,35 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Header show/hide on scroll
+  const headerEl = document.querySelector('.header');
+  if (headerEl) {
+    let lastScrollY = 0;
+    let ticking = false;
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          var currentY = window.scrollY;
+          if (currentY > 100) {
+            headerEl.classList.add('header-scrolled');
+            if (currentY > lastScrollY) {
+              headerEl.classList.add('header-hidden');
+            } else {
+              headerEl.classList.remove('header-hidden');
+            }
+          } else {
+            headerEl.classList.remove('header-scrolled');
+            headerEl.classList.remove('header-hidden');
+          }
+          lastScrollY = currentY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+
   // Mobile Menu Overlay Toggle
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const mobileMenuCloseBtn = document.getElementById('mobileMenuClose');
@@ -62,13 +91,14 @@ document.addEventListener('DOMContentLoaded', () => {
     target.classList.add('is-open');
     if (header) header.classList.add('menu-active');
 
-    // Position mega-menu fixed just below the header
+    // Position mega-menu below the nav item
     const menu = target.querySelector('.mega-menu');
     if (menu && header) {
-      menu.style.position = 'fixed';
-      menu.style.top = header.getBoundingClientRect().bottom + 'px';
-      menu.style.left = '0';
-      menu.style.width = '100%';
+      const itemRect = target.getBoundingClientRect();
+      const headerBottom = header.getBoundingClientRect().bottom;
+      menu.style.top = itemRect.bottom + 8 + 'px';
+      menu.style.left = itemRect.left + 'px';
+      menu.style.width = '';
     }
   }
 
@@ -216,8 +246,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Hero Video Carousel — crossfade background videos
   const heroSlides = document.querySelectorAll('.hero-slide');
-  const heroPauseBtn = document.querySelector('.hero-pause');
-  const heroPauseIcon = document.querySelector('.hero-pause-icon');
+  const heroPauseBtn = null;
+  const heroPauseIcon = null;
 
   if (heroSlides.length > 0) {
     let currentSlide = 0;
@@ -294,57 +324,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Client Stories — slide diagonal carousel on hover
+  const csItems = document.querySelectorAll('.client-story-item');
+  const carousel = document.querySelector('.client-stories-carousel');
+  const cItems = document.querySelectorAll('.carousel-item');
+  if (csItems.length && carousel && cItems.length) {
+    const step = 600;
+    const offsets = [
+      { x: -step * 2, y: -step * 2 },
+      { x: -step, y: -step },
+      { x: 0, y: 0 },
+      { x: step, y: step },
+      { x: step * 2, y: step * 2 },
+    ];
+
+    csItems.forEach((item, i) => {
+      item.addEventListener('mouseenter', () => {
+        const ox = -offsets[i].x;
+        const oy = -offsets[i].y;
+        carousel.style.transform = 'translate(' + ox + 'px, ' + oy + 'px)';
+        cItems.forEach((ci, j) => {
+          if (j === i) { ci.classList.add('is-active'); }
+          else { ci.classList.remove('is-active'); }
+        });
+      });
+      item.addEventListener('mouseleave', () => {
+        cItems.forEach(ci => ci.classList.remove('is-active'));
+      });
+    });
+  }
+
+  // Reports parallax — image width tied to scroll via rAF
+  var rpWrapper = document.querySelector('.reports-image-wrapper');
+  if (rpWrapper) {
+    var rpMinW = 1000;
+    var rpMaxW = 1400;
+    var rpTicking = false;
+
+    function updateReportsWidth() {
+      var rect = rpWrapper.getBoundingClientRect();
+      var wh = window.innerHeight;
+      var center = rect.top + rect.height / 2;
+      var progress = Math.max(0, Math.min(1, (center - wh / 2) / (wh * 0.8)));
+      var w = rpMinW + (rpMaxW - rpMinW) * progress;
+      rpWrapper.style.width = w + 'px';
+      rpTicking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!rpTicking) {
+        requestAnimationFrame(updateReportsWidth);
+        rpTicking = true;
+      }
+    });
+    updateReportsWidth();
+  }
+
 });
 
-// Hero name carousel — completely separate, runs after full load
-window.addEventListener('load', function() {
-  var heroTrack = document.querySelector('.hero-name-track');
-  if (!heroTrack) return;
-
-  var heroSpans = heroTrack.querySelectorAll('span');
-  if (heroSpans.length === 0) return;
-
-  // Hardcoded: each span is 4.2rem tall
-  var rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-  var ITEM_H = 4.2 * rootFontSize;
-  var TOTAL_REAL = 8;
-  var heroIdx = 2; // índice del primer cliente real (hay 2 clones antes)
-
-  // Posicionar: offset (heroIdx - 2) centra el activo en el mask gradient
-  heroTrack.style.transition = 'none';
-  heroTrack.style.transform = 'translateY(-' + ((heroIdx - 2) * ITEM_H) + 'px)';
-
-  var heroResetting = false;
-  setInterval(function() {
-    if (heroResetting) return;
-
-    heroIdx++;
-    console.log('heroIdx:', heroIdx, 'nombre:', heroSpans[heroIdx] ? heroSpans[heroIdx].textContent : 'N/A', 'reset?', heroIdx >= TOTAL_REAL + 2);
-
-    // Animar al siguiente nombre
-    heroTrack.style.transition = 'transform 0.6s cubic-bezier(0.4,0,0.2,1)';
-    heroTrack.style.transform = 'translateY(-' + ((heroIdx - 2) * ITEM_H) + 'px)';
-
-    // Actualizar clase active
-    for (var j = 0; j < heroSpans.length; j++) {
-      heroSpans[j].classList.remove('active');
-    }
-    if (heroSpans[heroIdx]) heroSpans[heroIdx].classList.add('active');
-
-    // Reset cuando llega al primer clon del final
-    if (heroIdx >= TOTAL_REAL + 2) {
-      heroResetting = true;
-      setTimeout(function() {
-        heroIdx = 2;
-        heroTrack.style.transition = 'none';
-        heroTrack.style.transform = 'translateY(0px)';
-        for (var j = 0; j < heroSpans.length; j++) {
-          heroSpans[j].classList.remove('active');
-        }
-        heroSpans[2].classList.add('active');
-        heroResetting = false;
-      }, 650);
-    }
-  }, 3500);
-});
 

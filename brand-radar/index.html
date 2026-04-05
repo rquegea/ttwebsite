@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/favicon/favicontyt.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brand Radar | Inteligencia de Marca en Tiempo Real — T&T</title>
+  <meta name="description" content="Brand Radar de T&T: monitoriza cómo perciben tu marca los consumidores, los medios y la IA. Inteligencia de marca continua para decisiones más rápidas.">
+  <link rel="canonical" href="https://www.tyt.es/brand-radar/">
+  <link rel="alternate" hreflang="es" href="https://www.tyt.es/brand-radar/">
+  <link rel="alternate" hreflang="en" href="https://www.tyt.es/en/brand-radar/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/src/main.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Brand Radar",
+    "provider": { "@type": "Organization", "name": "T&T", "url": "https://www.tyt.es" },
+    "description": "Monitorización continua de percepción de marca en medios, redes sociales e inteligencia artificial generativa.",
+    "serviceType": "Brand Intelligence",
+    "areaServed": "Worldwide"
+  }
+  </script>
+</head>
+
+<body class="brand-radar-page">
+
+  <style>
+    .brand-radar-page {
+      background-color: #1C1C1C;
+      color: #FFFFFF;
+    }
+    .brand-radar-page .header {
+      background: transparent;
+      border-bottom-color: transparent;
+    }
+    .brand-radar-page .header.header-scrolled {
+      background-color: #1C1C1C;
+      border-bottom-color: rgba(255,255,255,0.08);
+    }
+    .br-hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 clamp(2rem, 5vw, 5rem) 5rem;
+    }
+    .br-hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto auto;
+      column-gap: 1.5rem;
+      align-items: start;
+    }
+    .br-hero-label {
+      grid-column: 1;
+      grid-row: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.45);
+      white-space: nowrap;
+      line-height: 1;
+      padding-top: 0.2em;
+    }
+    .br-h1-line1 {
+      grid-column: 2;
+      grid-row: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 4.5rem);
+      font-weight: 500;
+      line-height: 1.05;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+    .br-h1-line2 {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 4.5rem);
+      font-weight: 500;
+      line-height: 1.05;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+      margin-bottom: 2.5rem;
+    }
+    .br-hero-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0.6rem 0.6rem 1.4rem;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 999px;
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      text-decoration: none;
+      transition: background 0.25s ease;
+    }
+    .br-hero-cta a:hover {
+      background: rgba(255,255,255,0.08);
+    }
+    .br-hero-cta .cta-arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      color: #1C1C1C;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .br-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      z-index: 1;
+    }
+    .br-scroll-circle {
+      width: 52px;
+      height: 52px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+    }
+    .br-scroll-arrow {
+      font-size: 1rem;
+      margin-top: 0.4rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* Content sections */
+    .br-what {
+      padding: 8rem clamp(2rem, 6vw, 8rem);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .br-what-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      padding-top: 0.35rem;
+    }
+    .br-what-content h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: #FFFFFF;
+      margin: 0 0 2rem 0;
+      letter-spacing: -0.015em;
+    }
+    .br-what-content p {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.6);
+      max-width: 60ch;
+      margin: 0 0 1.25rem 0;
+    }
+
+    /* Metrics grid */
+    .br-metrics {
+      padding: 6rem clamp(2rem, 6vw, 8rem);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .br-metric {
+      background: #1C1C1C;
+      padding: 3.5rem 3rem;
+    }
+    .br-metric-num {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .br-metric-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.5;
+    }
+
+    /* Capabilities */
+    .br-caps {
+      padding: 8rem clamp(2rem, 6vw, 8rem);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .br-caps-header {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      margin-bottom: 5rem;
+    }
+    .br-caps-header h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: #FFFFFF;
+      letter-spacing: -0.015em;
+      grid-column: 2;
+    }
+    .br-caps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .br-cap-item {
+      background: #1C1C1C;
+      padding: 3rem;
+      transition: background 0.2s ease;
+    }
+    .br-cap-item:hover {
+      background: #242424;
+    }
+    .br-cap-num {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+    .br-cap-item h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #FFFFFF;
+      margin: 0 0 0.75rem 0;
+    }
+    .br-cap-item p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+      margin: 0;
+    }
+
+    /* CTA final */
+    .br-cta {
+      padding: 10rem clamp(2rem, 6vw, 8rem);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .br-cta h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: #FFFFFF;
+      letter-spacing: -0.025em;
+      max-width: 16ch;
+      margin: 0 0 3rem 0;
+    }
+    .br-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 2rem;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 999px;
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.25s ease;
+    }
+    .br-cta a:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* Footer override for dark page */
+    .brand-radar-page .footer {
+      background-color: #141414;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 768px) {
+      .br-what,
+      .br-caps-header {
+        grid-template-columns: 1fr;
+      }
+      .br-caps-header h2 {
+        grid-column: 1;
+      }
+      .br-metrics {
+        grid-template-columns: 1fr;
+      }
+      .br-caps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <!-- Hero -->
+  <section class="br-hero">
+    <div class="br-hero-inner">
+      <p class="br-hero-label">Brand Radar</p>
+      <p class="br-h1-line1">Tu marca vista desde fuera.</p>
+      <p class="br-h1-line2">En tiempo real.</p>
+      <div class="br-hero-cta" style="grid-column:1/-1;">
+        <a href="/contacto/">Hablemos <span class="cta-arrow">→</span></a>
+      </div>
+    </div>
+    <div class="br-scroll">
+      <div class="br-scroll-circle">Scroll</div>
+      <div class="br-scroll-arrow">↓</div>
+    </div>
+  </section>
+
+  <!-- What is it -->
+  <section class="br-what">
+    <p class="br-what-label">Qué es</p>
+    <div class="br-what-content">
+      <h2>Inteligencia de marca continua, no puntual.</h2>
+      <p>Las marcas se construyen en la mente del consumidor, no en las presentaciones de PowerPoint. Brand Radar monitoriza de forma continua cómo aparece tu marca en medios, redes sociales, buscadores y modelos de inteligencia artificial generativa.</p>
+      <p>No es un informe anual. Es una señal siempre encendida que detecta cambios de percepción antes de que se conviertan en un problema — o en una oportunidad perdida.</p>
+    </div>
+  </section>
+
+  <!-- Metrics -->
+  <div class="br-metrics">
+    <div class="br-metric">
+      <div class="br-metric-num">4+</div>
+      <div class="br-metric-label">Modelos de IA monitorizados<br>(ChatGPT, Perplexity, Gemini…)</div>
+    </div>
+    <div class="br-metric">
+      <div class="br-metric-num">24h</div>
+      <div class="br-metric-label">Frecuencia de actualización<br>de datos de visibilidad</div>
+    </div>
+    <div class="br-metric">
+      <div class="br-metric-num">360°</div>
+      <div class="br-metric-label">Visión de marca: medios,<br>social, búsqueda e IA</div>
+    </div>
+  </div>
+
+  <!-- Capabilities -->
+  <section class="br-caps">
+    <div class="br-caps-header">
+      <h2>Lo que mide Brand Radar.</h2>
+    </div>
+    <div class="br-caps-grid">
+      <div class="br-cap-item">
+        <p class="br-cap-num">01</p>
+        <h3>Visibilidad en IA Generativa</h3>
+        <p>Mide cómo y cuándo tu marca aparece en las respuestas de ChatGPT, Perplexity, Gemini y otros LLMs. El nuevo SEO ya no es solo Google.</p>
+      </div>
+      <div class="br-cap-item">
+        <p class="br-cap-num">02</p>
+        <h3>Monitorización de Medios</h3>
+        <p>Cobertura en prensa, publicaciones digitales y medios especializados. Volumen, tono y share of voice frente a la competencia.</p>
+      </div>
+      <div class="br-cap-item">
+        <p class="br-cap-num">03</p>
+        <h3>Análisis de Percepción Social</h3>
+        <p>Seguimiento de conversaciones, menciones y sentimiento en redes sociales. Detecta tendencias emergentes antes que nadie.</p>
+      </div>
+      <div class="br-cap-item">
+        <p class="br-cap-num">04</p>
+        <h3>Benchmarking Competitivo</h3>
+        <p>Tu marca en contexto. Compara visibilidad, tono y presencia frente a tus competidores directos en todos los canales.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="br-cta">
+    <h2>¿Sabes cómo te ve el mundo ahora mismo?</h2>
+    <a href="/contacto/">Solicita una demo →</a>
+  </section>
+
+</body>
+</html>
