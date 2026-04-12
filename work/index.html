@@ -15,7 +15,7 @@
   <script type="module" src="/src/main.js"></script>
 </head>
 
-<body class="light-theme">
+<body class="work-page">
   <!-- Header -->
   <header class="header">
     <div class="header-container container">
@@ -245,42 +245,397 @@
     </div>
   </header>
 
+  <style>
+    .work-page {
+      background-color: #F0EDE8;
+      color: #0A0A0A;
+    }
+    .work-page .header:not(.header-scrolled) {
+      background: transparent;
+      border-bottom-color: transparent;
+    }
+    .work-page .header:not(.header-scrolled) .nav > ul > li > a,
+    .work-page .header:not(.header-scrolled) .nav-vertical-label,
+    .work-page .header:not(.header-scrolled) .header-connect-btn {
+      color: #0A0A0A !important;
+      border-color: rgba(10,10,10,0.15) !important;
+    }
+    .work-page .header:not(.header-scrolled) .logo-img {
+      filter: brightness(1) saturate(1) invert(0);
+    }
+    .work-hero {
+      min-height: auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 12rem clamp(2rem, 5vw, 5rem) 0 clamp(2rem, 5vw, 5rem);
+    }
+    .work-hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-rows: auto auto;
+      column-gap: 1.5rem;
+      align-items: start;
+      width: fit-content;
+      margin-top: -5vh;
+    }
+    .work-hero-label {
+      grid-column: 1;
+      grid-row: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: rgba(10,10,10,0.5);
+      white-space: nowrap;
+      line-height: 1;
+      padding-top: calc((clamp(2rem, 4.5vw, 4.5rem) * 0.05));
+    }
+    .work-h1-line1 {
+      grid-column: 2;
+      grid-row: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 4.5rem);
+      font-weight: 500;
+      line-height: 1;
+      color: #0A0A0A;
+      letter-spacing: -0.02em;
+    }
+    .work-h1-line2 {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 4.5rem);
+      font-weight: 500;
+      line-height: 1;
+      color: #0A0A0A;
+      letter-spacing: -0.02em;
+      padding-top: 0.15em;
+      margin-bottom: 2.5rem;
+    }
+    .work-hero-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0.6rem 0.6rem 1.4rem;
+      border: 1px solid rgba(10,10,10,0.25);
+      border-radius: 999px;
+      color: #0A0A0A;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      text-decoration: none;
+      transition: background 0.25s ease;
+    }
+    .work-hero-cta a:hover {
+      background: rgba(10,10,10,0.06);
+    }
+    .work-hero-cta .cta-arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #0A0A0A;
+      color: #F0EDE8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .work-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      z-index: 1;
+    }
+    .work-scroll-circle {
+      width: 52px;
+      height: 52px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+    }
+    .work-scroll-arrow {
+      font-size: 1rem;
+      margin-top: 0.4rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .work-page .cta-banner {
+      background: #F0EDE8;
+      border-top: 1px solid rgba(10,10,10,0.08);
+    }
+    .work-page .cta-banner h2 {
+      color: #0A0A0A;
+    }
+    .work-page .cta-banner a {
+      border-color: rgba(10,10,10,0.25) !important;
+      color: #0A0A0A !important;
+    }
+    .work-page .cta-banner a:hover {
+      background: rgba(10,10,10,0.06) !important;
+    }
+    .work-page .footer {
+      background-color: #141414;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    /* Projects Section */
+    .work-page .subpage-projects {
+      background: #F0EDE8;
+      padding: 6rem clamp(2rem, 5vw, 5rem) 5rem;
+    }
+    .work-projects-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(10,10,10,0.12);
+    }
+    .work-projects-count {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: rgba(10,10,10,0.6);
+    }
+    .work-projects-controls {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .work-filter-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      background: #0A0A0A;
+      color: #FFF;
+      border: none;
+      border-radius: 999px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .work-filter-btn:hover {
+      background: #1A1A1A;
+    }
+    .work-projects-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: rgba(10,10,10,0.6);
+      margin-bottom: 2.5rem;
+    }
+    .work-projects-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .work-page .projects-grid-home {
+      display: grid;
+      grid-template-columns: repeat(3, 350px);
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+      justify-content: end;
+    }
+    /* Projects List Table */
+    .work-projects-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .work-projects-list-header {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 0;
+    }
+    .work-projects-list-header p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(10,10,10,0.5);
+      padding: 1.5rem;
+      border-bottom: 1px solid rgba(10,10,10,0.25);
+      margin: 0;
+    }
+    .work-projects-list-item {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 0;
+      position: relative;
+      transition: background 0.3s ease;
+    }
+    .work-projects-list-item a {
+      display: contents;
+      text-decoration: none;
+      color: inherit;
+    }
+    .work-projects-list-cell {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: #0A0A0A;
+      padding: 1.5rem;
+      border-bottom: 1px solid rgba(10,10,10,0.2);
+      position: relative;
+      transition: background 0.3s ease;
+    }
+    .work-projects-list-item:hover .work-projects-list-cell {
+      background: rgba(10,10,10,0.02);
+    }
+    .work-projects-list-media {
+      position: fixed;
+      max-width: 320px;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+      display: none;
+    }
+    .work-projects-list-item:hover .work-projects-list-media {
+      display: block;
+      opacity: 1;
+    }
+    .work-page .project-card-home {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .work-page .project-card-home:nth-child(n+4) {
+      display: none;
+    }
+    .work-page .project-image {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .work-page .project-card-home:hover .project-image {
+      transform: scale(1.02);
+    }
+    .work-page .project-meta {
+      background: transparent;
+      padding: 1.25rem 0 0 0;
+    }
+    .work-page .project-meta-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .work-page .project-meta h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #0A0A0A;
+      margin: 0;
+    }
+    .work-page .project-arrow {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #0A0A0A;
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      transition: background 0.2s ease;
+    }
+    .work-page .project-card-home:hover .project-arrow {
+      background: #CC2936;
+    }
+    .work-page .project-tag {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: rgba(10,10,10,0.5);
+      margin: 0;
+    }
+  </style>
+
   <!-- HERO -->
-  <section class="subpage-hero">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">T&T</a> <span>/</span> <span class="current">Trabajo</span>
-      </nav>
-      <h1>Nuestro Trabajo</h1>
+  <section class="work-hero">
+    <div class="work-hero-inner">
+      <p class="work-hero-label">Work</p>
+      <p class="work-h1-line1">Las marcas que construimos.</p>
+      <p class="work-h1-line2">Los proyectos que nos definen.</p>
+      <div class="work-hero-cta" style="grid-column:1/-1;">
+        <a href="#proyectos">Ver proyectos <span class="cta-arrow">↓</span></a>
+      </div>
+    </div>
+    <div class="work-scroll">
+      <div class="work-scroll-circle">Scroll</div>
+      <div class="work-scroll-arrow">↓</div>
     </div>
   </section>
 
   <!-- GRID DE PROYECTOS -->
-  <section class="subpage-projects">
+  <section id="proyectos" class="subpage-projects">
     <div class="container">
-      <div class="projects-grid-home">
+      <div class="work-projects-header">
+        <p class="work-projects-count">Showing <strong>23 cases</strong></p>
+        <div class="work-projects-controls">
+          <button class="work-filter-btn">Filters <span style="background: #CC2936; color: #FFF; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600;">0</span></button>
+          <button class="work-filter-btn" style="background: #333;">⚙</button>
+        </div>
+      </div>
+
+      <div class="work-projects-layout">
+        <h2 class="work-projects-title" style="font-family:'Inter',sans-serif;font-size:0.95rem;font-weight:400;color:rgba(10,10,10,0.6);margin:0;">Casos destacados</h2>
+        <div class="projects-grid-home">
 
         <a href="/work/prime-welcome-pack/" class="project-card-home">
           <div class="project-image" style="background:url('/projects/prime-welcome-pack/hero.jpg') center/cover no-repeat;"></div>
           <div class="project-meta">
+            <div class="project-meta-top">
+              <h3>Prime — Welcome Pack</h3>
+              <span class="project-arrow">→</span>
+            </div>
             <p class="project-tag">t&amp;tailor</p>
-            <h3>Prime — Welcome Pack</h3>
           </div>
         </a>
 
         <a href="/work/barcelo-nevalia/" class="project-card-home">
           <div class="project-image" style="background:url('/projects/barcelo-nevalia/hero.jpg') center/cover no-repeat;"></div>
           <div class="project-meta">
+            <div class="project-meta-top">
+              <h3>Festival Barceló Nevalia</h3>
+              <span class="project-arrow">→</span>
+            </div>
             <p class="project-tag">t&amp;trade</p>
-            <h3>Festival Barceló Nevalia</h3>
           </div>
         </a>
 
         <a href="/work/ruinart-rooftop/" class="project-card-home">
           <div class="project-image" style="background:url('/projects/ruinart-rooftop/hero.jpg') center/cover no-repeat;"></div>
           <div class="project-meta">
+            <div class="project-meta-top">
+              <h3>Ruinart — Roof Top Palacio de los Duques</h3>
+              <span class="project-arrow">→</span>
+            </div>
             <p class="project-tag">t&amp;things</p>
-            <h3>Ruinart — Roof Top Palacio de los Duques</h3>
           </div>
         </a>
 
@@ -308,16 +663,72 @@
           </div>
         </a>
 
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA FINAL -->
-  <section class="cta-banner cta-banner--light">
-    <div class="cta-banner-container container">
-      <h2>¿Tu proyecto,<br>el próximo en esta lista?</h2>
-      <a href="/contacto/" class="cta-primary cta-primary--dark" style="display:inline-block; text-decoration:none;">Hablemos</a>
-    </div>
+  <!-- Separator Line Full Width -->
+  <div style="height: 1px; background: rgba(10,10,10,0.1); margin: 2rem 0 3rem 0;"></div>
+
+  <!-- Projects Table Section -->
+  <section class="subpage-projects" style="padding: 3rem 0 5rem 0;">
+    <!-- All Projects Table -->
+    <div class="work-projects-list" style="padding: 0 3rem;">
+        <div class="work-projects-list-header">
+          <p>Cliente</p>
+          <p>Proyecto</p>
+          <p>Soluciones</p>
+        </div>
+
+        <div class="work-projects-list-item" data-image="/projects/prime-welcome-pack/hero.jpg">
+          <a href="/work/prime-welcome-pack/">
+            <div class="work-projects-list-cell">Prime</div>
+            <div class="work-projects-list-cell">Welcome Pack</div>
+            <div class="work-projects-list-cell">t&tailor</div>
+          </a>
+        </div>
+
+        <div class="work-projects-list-item" data-image="/projects/barcelo-nevalia/hero.jpg">
+          <a href="/work/barcelo-nevalia/">
+            <div class="work-projects-list-cell">Barceló</div>
+            <div class="work-projects-list-cell">Festival Nevalia</div>
+            <div class="work-projects-list-cell">t&trade</div>
+          </a>
+        </div>
+
+        <div class="work-projects-list-item">
+          <a href="/work/ruinart-rooftop/">
+            <div class="work-projects-list-cell">Ruinart</div>
+            <div class="work-projects-list-cell">Roof Top Palacio</div>
+            <div class="work-projects-list-cell">t&things</div>
+          </a>
+        </div>
+
+        <div class="work-projects-list-item">
+          <a href="/work/kelloggs-sinacio/">
+            <div class="work-projects-list-cell">Kellogg's</div>
+            <div class="work-projects-list-cell">Snackin'</div>
+            <div class="work-projects-list-cell">t&things</div>
+          </a>
+        </div>
+
+        <div class="work-projects-list-item">
+          <a href="/work/moet-chandon-pharrell/">
+            <div class="work-projects-list-cell">Moët &amp; Chandon</div>
+            <div class="work-projects-list-cell">x Pharrell</div>
+            <div class="work-projects-list-cell">t&trade</div>
+          </a>
+        </div>
+
+        <div class="work-projects-list-item">
+          <a href="/work/campofrio-snackin/">
+            <div class="work-projects-list-cell">Campofrío</div>
+            <div class="work-projects-list-cell">Snackin'</div>
+            <div class="work-projects-list-cell">t&trade</div>
+          </a>
+        </div>
+      </div>
   </section>
 
   <!-- Footer -->
@@ -366,6 +777,83 @@
     </div>
   </footer>
   <script src="/cookie-consent.js"></script>
+  <script>
+    // Image follow cursor
+    let currentMedia = null;
+    document.addEventListener('mousemove', (e) => {
+      const items = document.querySelectorAll('.work-projects-list-item');
+      let hoveredItem = null;
+
+      // Find which item is being hovered
+      for (let item of items) {
+        if (item.matches(':hover')) {
+          hoveredItem = item;
+          break;
+        }
+      }
+
+      if (hoveredItem) {
+        const image = hoveredItem.dataset.image || '';
+        const video = hoveredItem.dataset.video || '';
+        const media = image || video;
+
+        if (media && media.trim()) {
+          // Create or update media
+          if (!currentMedia) {
+            currentMedia = document.createElement(video ? 'video' : 'img');
+            currentMedia.className = 'work-projects-list-media';
+            document.body.appendChild(currentMedia);
+          }
+
+          // Update src if changed
+          if (video) {
+            if (currentMedia.tagName !== 'VIDEO') {
+              const newVideo = document.createElement('video');
+              newVideo.className = 'work-projects-list-media';
+              newVideo.autoplay = true;
+              newVideo.muted = true;
+              newVideo.loop = true;
+              newVideo.playsinline = true;
+              const source = document.createElement('source');
+              source.src = video;
+              source.type = 'video/mp4';
+              newVideo.appendChild(source);
+              document.body.replaceChild(newVideo, currentMedia);
+              currentMedia = newVideo;
+            } else if (!currentMedia.querySelector('source') || currentMedia.querySelector('source').src !== video) {
+              const source = currentMedia.querySelector('source') || (() => {
+                const s = document.createElement('source');
+                currentMedia.appendChild(s);
+                return s;
+              })();
+              source.src = video;
+              source.type = 'video/mp4';
+            }
+          } else {
+            if (currentMedia.tagName !== 'IMG') {
+              const newImg = document.createElement('img');
+              newImg.className = 'work-projects-list-media';
+              newImg.src = image;
+              newImg.alt = 'Project';
+              document.body.replaceChild(newImg, currentMedia);
+              currentMedia = newImg;
+            } else if (currentMedia.src !== image) {
+              currentMedia.src = image;
+              currentMedia.alt = 'Project';
+            }
+          }
+
+          currentMedia.style.display = 'block';
+          currentMedia.style.left = (e.clientX + 20) + 'px';
+          currentMedia.style.top = (e.clientY - 20) + 'px';
+        } else {
+          if (currentMedia) currentMedia.style.display = 'none';
+        }
+      } else {
+        if (currentMedia) currentMedia.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 
 </html>

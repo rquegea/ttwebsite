@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/favicon/favicontyt.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Governance | Marco de gobierno de IA para empresas — T&T</title>
+  <meta name="description" content="AI Governance de T&T: auditoría, política y gobierno de inteligencia artificial para organizaciones que necesitan operar con seguridad en el nuevo entorno regulatorio.">
+  <link rel="canonical" href="https://www.tyt.es/ai-governance/">
+  <link rel="alternate" hreflang="es" href="https://www.tyt.es/ai-governance/">
+  <link rel="alternate" hreflang="en" href="https://www.tyt.es/en/ai-governance/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/src/main.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI Governance",
+    "provider": { "@type": "Organization", "name": "T&T", "url": "https://www.tyt.es" },
+    "description": "Auditoría, política y gobierno de inteligencia artificial para organizaciones que operan en el nuevo entorno regulatorio.",
+    "serviceType": "AI Governance & Compliance",
+    "areaServed": "Worldwide"
+  }
+  </script>
+</head>
+
+<body class="ai-governance-page">
+
+  <style>
+    .ai-governance-page {
+      background-color: #1C1C1C;
+      color: #FFFFFF;
+    }
+    .ai-governance-page .header:not(.header-scrolled) {
+      background: transparent;
+      border-bottom-color: transparent;
+    }
+    .br-hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 clamp(2rem, 5vw, 5rem) 5rem;
+    }
+    .br-hero-inner {
+      position: relative;
+      display: grid; grid-template-columns: auto auto;
+      grid-template-rows: auto auto; column-gap: 1.5rem; align-items: start;
+      width: fit-content;
+    }
+    .br-hero-label {
+      grid-column: 1; grid-row: 1;
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 400;
+      letter-spacing: 0.04em; color: rgba(255,255,255,0.45);
+      white-space: nowrap; line-height: 1;
+      padding-top: calc((clamp(2rem, 4.5vw, 4.5rem) * 0.05));
+    }
+    .br-h1-line1 {
+      grid-column: 2; grid-row: 1;
+      font-family: 'Inter', sans-serif; font-size: clamp(2rem, 4.5vw, 4.5rem);
+      font-weight: 500; line-height: 1; color: #FFFFFF; letter-spacing: -0.02em;
+    }
+    .br-h1-line2 {
+      grid-column: 1 / -1; grid-row: 2;
+      font-family: 'Inter', sans-serif; font-size: clamp(2rem, 4.5vw, 4.5rem);
+      font-weight: 500; line-height: 1; color: #FFFFFF; letter-spacing: -0.02em;
+      padding-top: 0.15em; margin-bottom: 2.5rem;
+    }
+    .br-hero-cta a {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      padding: 0.6rem 0.6rem 0.6rem 1.4rem;
+      border: 1px solid rgba(255,255,255,0.35); border-radius: 999px;
+      color: #FFFFFF; font-family: 'Inter', sans-serif;
+      font-size: 0.9rem; font-weight: 400; text-decoration: none;
+      transition: background 0.25s ease;
+    }
+    .br-hero-cta a:hover { background: rgba(255,255,255,0.08); }
+    .br-hero-cta .cta-arrow {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: #FFFFFF; color: #1C1C1C;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .br-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center;
+      color: rgba(255,255,255,0.5); font-family: 'Inter', sans-serif;
+      font-size: 0.7rem; letter-spacing: 0.06em; z-index: 1;
+    }
+    .br-scroll-circle {
+      width: 52px; height: 52px; border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.62rem; letter-spacing: 0.06em;
+    }
+    .br-scroll-arrow { font-size: 1rem; margin-top: 0.4rem; color: rgba(255,255,255,0.4); }
+
+    .br-what {
+      background-color: #F0EDE8;
+      padding: 8rem clamp(2rem, 6vw, 8rem);
+      display: flex; justify-content: center;
+    }
+    .br-what-content { max-width: 780px; width: 100%; }
+    .br-what-content h2 {
+      font-family: 'Inter', sans-serif; font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+      font-weight: 700; line-height: 1.1; color: #0A0A0A;
+      margin: 0 0 3rem 0; letter-spacing: -0.025em;
+    }
+    .br-what-content p {
+      font-family: 'Inter', sans-serif; font-size: 1rem;
+      font-weight: 400; line-height: 1.75; color: #333333; margin: 0 0 1.25rem 0;
+    }
+
+    .br-stats {
+      background-color: #F0EDE8;
+      padding: 6rem clamp(2rem, 6vw, 8rem);
+      display: grid; grid-template-columns: 220px 1fr;
+      gap: 0 4rem; align-items: start;
+    }
+    .br-stats-label {
+      font-family: 'Inter', sans-serif; font-size: 0.8rem;
+      font-weight: 400; color: #888; letter-spacing: 0.02em; padding-top: 0.3rem;
+    }
+    .br-stats-list { list-style: none; margin: 0; padding: 0; }
+    .br-stats-list li {
+      font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 400;
+      color: #1A1A1A; line-height: 1.5; padding: 1.5rem 0; border-bottom: 1px solid #D5D0CA;
+    }
+    .br-stats-list li:first-child { border-top: 1px solid #D5D0CA; }
+    .br-stats-list li strong { font-weight: 700; }
+
+    .br-usecases {
+      background-color: #F0EDE8;
+      padding: 6rem clamp(2rem, 6vw, 8rem) 7rem; text-align: center;
+    }
+    .br-usecases-inner { display: flex; flex-direction: column; align-items: center; gap: 3rem; }
+    .br-usecases-sidebar { display: flex; flex-direction: column; align-items: center; }
+    .br-usecases-label {
+      font-family: 'Inter', sans-serif; font-size: 0.8rem;
+      font-weight: 400; color: #888; letter-spacing: 0.02em; margin: 0;
+    }
+    .br-usecases-arrow { display: none; }
+    .br-usecases-track {
+      display: grid; grid-template-columns: repeat(3, 260px);
+      gap: 1rem; justify-content: center;
+    }
+    .br-usecase-card {
+      background: #FFFFFF; border-radius: 12px; overflow: hidden;
+      display: flex; flex-direction: column; position: relative; min-height: 360px;
+    }
+    .br-usecase-card-top { padding: 1.75rem 1.75rem 1.25rem; flex: 1; }
+    .br-usecase-card-top h3 {
+      font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600;
+      color: #0A0A0A; margin: 0 0 0.6rem 0; letter-spacing: -0.01em;
+    }
+    .br-usecase-card-top p {
+      font-family: 'Inter', sans-serif; font-size: 0.82rem;
+      font-weight: 400; line-height: 1.6; color: #555; margin: 0;
+    }
+    .br-usecase-card-img { height: 148px; flex-shrink: 0; }
+    .br-usecase-toggle {
+      position: absolute; bottom: 164px; right: 1rem;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: #0A0A0A; color: #FFFFFF; border: none;
+      font-size: 1.1rem; line-height: 1; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s ease; font-weight: 300;
+    }
+    .br-usecase-toggle:hover, .br-usecase-toggle.active { background: #CC2936; }
+
+    .br-faqs {
+      background-color: #F0EDE8;
+      padding: 8rem clamp(2rem, 6vw, 8rem);
+      display: flex; justify-content: center;
+    }
+    .br-faqs-inner {
+      display: flex; flex-direction: column; align-items: center;
+      width: 100%; max-width: 780px;
+    }
+    .br-faqs-sidebar { margin-bottom: 1rem; }
+    .br-faqs-label {
+      font-family: 'Inter', sans-serif; font-size: 0.8rem;
+      font-weight: 400; color: #888; letter-spacing: 0.02em;
+    }
+    .br-faqs-content { width: 100%; }
+    .br-faqs-title {
+      font-family: 'Inter', sans-serif; font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 700; line-height: 1.15; color: #0A0A0A;
+      letter-spacing: -0.025em; margin: 0 0 5rem 0;
+    }
+    .br-faq-item { padding: 3rem 0; border-top: 1px solid #D5D0CA; }
+    .br-faq-item:last-child { border-bottom: 1px solid #D5D0CA; }
+    .br-faq-item h3 {
+      font-family: 'Inter', sans-serif; font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+      font-weight: 600; line-height: 1.2; color: #0A0A0A;
+      letter-spacing: -0.02em; margin: 0 0 1.25rem 0;
+    }
+    .br-faq-item p {
+      font-family: 'Inter', sans-serif; font-size: 1rem;
+      font-weight: 400; line-height: 1.75; color: #444;
+      margin: 0; max-width: 60ch;
+    }
+
+    .br-explore {
+      background-color: #141414;
+      padding: 7rem clamp(2rem, 6vw, 8rem);
+    }
+    .br-explore-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start;
+    }
+    .br-explore-heading h2 {
+      font-family: 'Inter', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700; line-height: 1.1; color: #FFFFFF;
+      letter-spacing: -0.025em; margin: 0;
+    }
+    .br-explore-list { list-style: none; margin: 0; padding: 0; }
+    .br-explore-list li { border-top: 1px solid rgba(255,255,255,0.1); }
+    .br-explore-list li:last-child { border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .br-explore-list a {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.75rem 0; text-decoration: none; transition: opacity 0.2s ease;
+    }
+    .br-explore-list a:hover { opacity: 0.6; }
+    .br-explore-name {
+      font-family: 'Inter', sans-serif; font-size: clamp(1.6rem, 3vw, 2.8rem);
+      font-weight: 500; color: #FFFFFF; letter-spacing: -0.02em;
+    }
+    .br-explore-arrow {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      color: #FFFFFF; font-size: 1rem; flex-shrink: 0;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .br-explore-list a:hover .br-explore-arrow {
+      background: #FFFFFF; color: #141414; border-color: #FFFFFF;
+    }
+
+    .br-cta {
+      background-color: #F0EDE8;
+      padding: 10rem clamp(2rem, 6vw, 8rem);
+      border-top: 1px solid #D5D0CA;
+      text-align: center; display: flex; flex-direction: column; align-items: center;
+    }
+    .br-cta h2 {
+      font-family: 'Inter', sans-serif; font-size: clamp(2.5rem, 6vw, 5.5rem);
+      font-weight: 400; line-height: 1.1; color: #0A0A0A;
+      letter-spacing: -0.025em; max-width: 16ch; margin: 0 0 3rem 0;
+    }
+    .br-cta a {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.85rem 2rem; border: 1px solid rgba(0,0,0,0.25);
+      border-radius: 999px; color: #0A0A0A;
+      font-family: 'Inter', sans-serif; font-size: 0.95rem;
+      text-decoration: none; transition: background 0.25s ease;
+    }
+    .br-cta a:hover { background: rgba(0,0,0,0.06); }
+
+    .ai-governance-page .footer {
+      background-color: #141414;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 768px) {
+      .br-usecases-track { grid-template-columns: 1fr; }
+      .br-explore-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <!-- Hero -->
+  <section class="br-hero">
+    <div class="br-hero-inner">
+      <p class="br-hero-label">AI Governance</p>
+      <p class="br-h1-line1">Tu empresa preparada para la era de la IA.</p>
+      <p class="br-h1-line2">Con reglas. Con confianza.</p>
+      <div class="br-hero-cta" style="grid-column:1/-1;">
+        <a href="/contacto/">Hablemos <span class="cta-arrow">→</span></a>
+      </div>
+    </div>
+    <div class="br-scroll">
+      <div class="br-scroll-circle">Scroll</div>
+      <div class="br-scroll-arrow">↓</div>
+    </div>
+  </section>
+
+  <!-- What is it -->
+  <section class="br-what">
+    <div class="br-what-content">
+      <h2>La IA ya está en tu empresa. La pregunta es si está bajo control.</h2>
+      <p>Las organizaciones que adoptan inteligencia artificial sin un marco de gobierno asumen riesgos legales, reputacionales y operativos que no siempre son visibles hasta que ya es tarde. El EU AI Act no es una opción — es una realidad regulatoria que ya está en vigor.</p>
+      <p>AI Governance de T&T diseña políticas, audita sistemas y forma equipos para que la IA trabaje a tu favor: con transparencia, dentro del marco regulatorio y alineada con los valores de tu organización. No es compliance por compliance. Es ventaja competitiva.</p>
+    </div>
+  </section>
+
+  <!-- Metrics -->
+  <div class="br-stats">
+    <p class="br-stats-label">Lo que conseguimos</p>
+    <ul class="br-stats-list">
+      <li><strong>Auditoría completa en 3 semanas</strong> de todos los sistemas de IA activos en tu organización, con mapa de riesgos y plan de acción</li>
+      <li><strong>Cumplimiento del EU AI Act</strong> con políticas adaptadas a tu sector, tamaño y perfil de riesgo específico</li>
+      <li><strong>Políticas de uso claras</strong> para empleados, proveedores y agencias — quién puede usar qué, cómo y con qué límites</li>
+      <li><strong>Formación certificada</strong> para equipos de dirección, marketing, tecnología y operaciones</li>
+      <li><strong>Reducción de riesgo regulatorio</strong> antes de que una auditoría externa o una brecha de datos lo haga visible</li>
+    </ul>
+  </div>
+
+  <section class="cta-connect">
+    <div class="cta-connect-container container">
+      <span class="cta-connect-label">Contacto</span>
+      <h2 class="cta-connect-heading">¿Qué podemos hacer por <span class="cta-you">ti</span>?</h2>
+      <a href="/contacto/" class="cta-connect-btn">
+        <span class="cta-connect-btn-text">Escríbenos</span>
+        <span class="cta-connect-btn-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="br-usecases">
+    <div class="br-usecases-inner">
+      <div class="br-usecases-sidebar">
+        <p class="br-usecases-label">Casos de uso</p>
+      </div>
+      <div class="br-usecases-track">
+        <div class="br-usecase-card">
+          <div class="br-usecase-card-top">
+            <h3>Auditoría de IA</h3>
+            <p>Identifica todos los sistemas de IA activos en tu organización, evalúa su nivel de riesgo y detecta brechas de compliance.</p>
+          </div>
+          <div class="br-usecase-card-img" style="background: linear-gradient(135deg, #e8e0d4 0%, #c9bfb3 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M14 28 L24 38 L42 18" stroke="#999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <button class="br-usecase-toggle" aria-label="Ver más">+</button>
+        </div>
+        <div class="br-usecase-card">
+          <div class="br-usecase-card-top">
+            <h3>Políticas de uso</h3>
+            <p>Define las reglas de uso de IA para tu organización: qué herramientas, en qué contextos y con qué salvaguardas.</p>
+          </div>
+          <div class="br-usecase-card-img" style="background: linear-gradient(135deg, #d4e0e8 0%, #b3c9d4 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect x="14" y="12" width="28" height="34" rx="3" stroke="#999" stroke-width="1.5"/><path d="M20 22h16M20 29h12M20 36h8" stroke="#999" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <button class="br-usecase-toggle" aria-label="Ver más">+</button>
+        </div>
+        <div class="br-usecase-card">
+          <div class="br-usecase-card-top">
+            <h3>EU AI Act compliance</h3>
+            <p>Prepara a tu organización para la regulación europea: clasificación de sistemas, obligaciones y plazos de adaptación.</p>
+          </div>
+          <div class="br-usecase-card-img" style="background: linear-gradient(135deg, #d4d4e8 0%, #b3b3d4 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="14" stroke="#999" stroke-width="1.5"/><path d="M14 28h28M28 14c-6 4-6 24 0 28M28 14c6 4 6 24 0 28" stroke="#999" stroke-width="1.5"/></svg>
+          </div>
+          <button class="br-usecase-toggle" aria-label="Ver más">+</button>
+        </div>
+        <div class="br-usecase-card">
+          <div class="br-usecase-card-top">
+            <h3>Brand safety en IA</h3>
+            <p>Controla cómo usan la IA tus proveedores y agencias en trabajos para tu marca. Protege tu identidad y reputación.</p>
+          </div>
+          <div class="br-usecase-card-img" style="background: linear-gradient(135deg, #e8d4d4 0%, #d4b3b3 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M28 10 L44 18 V30 C44 38 36 44 28 46 C20 44 12 38 12 30 V18 Z" stroke="#999" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <button class="br-usecase-toggle" aria-label="Ver más">+</button>
+        </div>
+        <div class="br-usecase-card">
+          <div class="br-usecase-card-top">
+            <h3>Formación de equipos</h3>
+            <p>Capacita a dirección, marketing y operaciones en el uso responsable de la IA. Programas adaptados a cada perfil.</p>
+          </div>
+          <div class="br-usecase-card-img" style="background: linear-gradient(135deg, #d4e8d8 0%, #b3d4ba 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><circle cx="22" cy="22" r="8" stroke="#999" stroke-width="1.5"/><circle cx="36" cy="22" r="8" stroke="#999" stroke-width="1.5"/><path d="M10 44 C10 36 16 32 22 32 M46 44 C46 36 40 32 36 32" stroke="#999" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <button class="br-usecase-toggle" aria-label="Ver más">+</button>
+        </div>
+        <div class="br-usecase-card">
+          <div class="br-usecase-card-top">
+            <h3>Gestión de riesgos</h3>
+            <p>Identifica y mitiga los riesgos de IA antes de que sean un problema: sesgos, privacidad, derechos de autor y más.</p>
+          </div>
+          <div class="br-usecase-card-img" style="background: linear-gradient(135deg, #e8e4d4 0%, #d4ccb3 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M28 12 L12 38 L44 38 Z" stroke="#999" stroke-width="1.5" stroke-linejoin="round"/><path d="M28 26v6M28 36v2" stroke="#999" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <button class="br-usecase-toggle" aria-label="Ver más">+</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="br-faqs">
+    <div class="br-faqs-inner">
+      <div class="br-faqs-sidebar">
+        <span class="br-faqs-label">FAQs</span>
+      </div>
+      <div class="br-faqs-content">
+        <h2 class="br-faqs-title">Todo lo que necesitas saber sobre AI Governance.</h2>
+
+        <div class="br-faq-item">
+          <h3>¿Qué es el EU AI Act y cómo afecta a mi empresa?</h3>
+          <p>El EU AI Act es el primer marco regulatorio integral sobre inteligencia artificial en el mundo, vigente desde agosto de 2024. Clasifica los sistemas de IA por nivel de riesgo (inaceptable, alto, limitado, mínimo) y establece obligaciones específicas para cada categoría. Afecta a cualquier empresa que desarrolle, comercialice o use sistemas de IA en la Unión Europea — independientemente de dónde esté su sede.</p>
+        </div>
+
+        <div class="br-faq-item">
+          <h3>¿Por dónde empezamos si no tenemos ningún marco de IA?</h3>
+          <p>El punto de partida siempre es la auditoría. Necesitamos saber qué sistemas de IA están activos en tu organización — muchos ni siquiera son visibles para la dirección — y cuál es su nivel de riesgo regulatorio. A partir de ese mapa, diseñamos un plan de acción priorizado por urgencia y coste de implementación.</p>
+        </div>
+
+        <div class="br-faq-item">
+          <h3>¿Cuánto tiempo lleva implementar un sistema de gobierno de IA?</h3>
+          <p>La auditoría inicial lleva entre 2 y 3 semanas. El diseño de políticas, entre 4 y 6 semanas adicionales. La formación de equipos se puede ejecutar en paralelo. Un marco de gobierno completo puede estar operativo en 2-3 meses. Es un proceso iterativo — no se hace una sola vez, sino que evoluciona con la organización.</p>
+        </div>
+
+        <div class="br-faq-item">
+          <h3>¿AI Governance es solo para grandes empresas?</h3>
+          <p>No. Las pymes que usan herramientas de IA generativa en su operativa diaria — redacción, atención al cliente, análisis de datos — también están expuestas a riesgos regulatorios y reputacionales. T&T ofrece programas escalados al tamaño y complejidad de cada organización, con propuestas específicas para empresas medianas.</p>
+        </div>
+
+        <div class="br-faq-item">
+          <h3>¿Cómo se diferencia de una consultoría legal?</h3>
+          <p>Una consultoría legal te dice qué dice la ley. T&T te ayuda a implementarlo. Nuestro enfoque es operativo: diseñamos políticas que funcionan en el día a día, formamos a los equipos que tienen que aplicarlas y monitorizamos su cumplimiento. Trabajamos con los equipos legales del cliente, no en lugar de ellos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore Solutions -->
+  <section class="br-explore">
+    <div class="br-explore-inner">
+      <div class="br-explore-heading">
+        <h2>Explora nuestras soluciones tecnológicas.</h2>
+      </div>
+      <ul class="br-explore-list">
+        <li>
+          <a href="/es/tech/2laps/">
+            <span class="br-explore-name">2laps</span>
+            <span class="br-explore-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="/es/tech/1000er/">
+            <span class="br-explore-name">1000er.ai</span>
+            <span class="br-explore-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="/brand-radar/">
+            <span class="br-explore-name">Brand Radar</span>
+            <span class="br-explore-arrow">→</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="br-cta">
+    <h2>¿Tu empresa está lista para la IA?</h2>
+    <a href="/contacto/">Hablemos →</a>
+  </section>
+
+  <script>
+    document.querySelectorAll('.br-usecase-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('active');
+        btn.textContent = btn.classList.contains('active') ? '−' : '+';
+      });
+    });
+  </script>
+
+</body>
+</html>

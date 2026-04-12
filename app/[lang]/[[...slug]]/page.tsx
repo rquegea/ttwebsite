@@ -96,10 +96,92 @@ ${cards.join('\n')}
   </section>`;
 }
 
-function replaceProjectsSection(html: string, projects: Project[]): string {
-  const regex = /<section\s+class="subpage-projects"[\s\S]*?<\/section>/i;
-  const newSection = buildProjectsGrid(projects);
-  return html.replace(regex, newSection);
+function buildProjectsTable(projects: Project[], lang = 'es'): string {
+  const rows = projects.map((p) => {
+    // Solutions: mostrar disciplinas o vacío
+    let solutionsHtml = '';
+    if (Array.isArray(p.disciplines) && p.disciplines.length > 0) {
+      try {
+        const firstDiscipline = escapeHtml(p.disciplines[0].title || '');
+        if (p.disciplines.length === 1) {
+          solutionsHtml = firstDiscipline;
+        } else {
+          solutionsHtml = `${firstDiscipline} <span style="color:rgba(10,10,10,0.5);">+${p.disciplines.length - 1}</span>`;
+        }
+      } catch (e) {
+        console.warn(`Error processing disciplines for project ${p.slug}:`, e);
+      }
+    }
+
+    return `        <div class="work-projects-list-item" data-image="${escapeHtml(p.image_url || '')}" data-video="${escapeHtml(p.video_url || '')}">
+          <a href="/work/${escapeHtml(p.slug)}/">
+            <div class="work-projects-list-cell">${escapeHtml(p.client_name)}</div>
+            <div class="work-projects-list-cell">${escapeHtml(p.title)}</div>
+            <div class="work-projects-list-cell">${solutionsHtml}</div>
+          </a>
+        </div>`;
+  }).join('\n');
+
+  return `      <div class="work-projects-list" style="padding: 0 3rem;">
+        <div class="work-projects-list-header">
+          <p>${lang === 'en' ? 'Client' : 'Cliente'}</p>
+          <p>${lang === 'en' ? 'Project' : 'Proyecto'}</p>
+          <p>${lang === 'en' ? 'Solutions' : 'Soluciones'}</p>
+        </div>
+${rows}
+      </div>`;
+}
+
+function replaceProjectsSection(html: string, projects: Project[], lang = 'es'): string {
+  // Only replace table for work page - grid is different structure on homepage vs work page
+  const isWorkPage = html.includes('work-projects-list');
+
+  if (isWorkPage) {
+    // For work page: replace the table with dynamic data
+    const tableRegex = /<div class="work-projects-list"[^>]*>[\s\S]*?(?=<\/div>\s*<\/section>)/i;
+    const tableHtml = buildProjectsTable(projects, lang);
+    return html.replace(tableRegex, tableHtml);
+  } else {
+    // For homepage: replace the grid cards with dynamic data
+    const gridRegex = /<div class="projects-grid-home">[\s\S]*?<\/div>/i;
+    const gridCards = projects.map((p) => {
+      const hasVideo = p.video_url && p.video_url.trim() !== '';
+      const imgStyle = hasVideo
+        ? ''
+        : p.image_url
+          ? `background:url('${escapeHtml(p.image_url)}') center/cover no-repeat;`
+          : 'background:#e0e0e0;';
+      const mediaHtml = hasVideo
+        ? `<video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;"><source src="${escapeHtml(p.video_url!)}" type="video/mp4"></video>`
+        : '';
+      const logoHtml = p.client_logo_url
+        ? `<div class="badge-icon"><img src="${escapeHtml(p.client_logo_url)}" alt="${escapeHtml(p.client_name)}"></div>`
+        : '';
+
+      return `        <a href="/work/${escapeHtml(p.slug)}/" class="project-card-home">
+        <div class="project-image"${imgStyle ? ` style="${imgStyle}"` : ''}>
+          ${mediaHtml}
+          <div class="project-client-badge">
+            ${logoHtml}
+            <div class="badge-text">
+              <span class="badge-name">${escapeHtml(p.client_name)}</span>
+              <span class="badge-sector">${escapeHtml(p.category)}</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <h3>${escapeHtml(p.title)}</h3>
+        </div>
+      </a>`;
+    }).join('\n');
+
+    const newGridHtml = `<div class="projects-grid-home">
+
+${gridCards}
+
+        </div>`;
+    return html.replace(gridRegex, newGridHtml);
+  }
 }
 
 // --- Dynamic project detail page ---
@@ -225,16 +307,18 @@ ${images}
 ${disciplinesHtml}
 ${galleryHtml}
 
-  <section class="subpage-split" style="background:#FAFAFA; padding: 4rem 0;">
+  <section class="subpage-split" style="padding: 4rem 0;">
     <div class="container" style="display:flex; justify-content:center; align-items:center;">
       <a href="/work/" style="font-family:'Inter',sans-serif; font-size:0.9rem; color:#888; text-decoration:none;">← ${isEn ? 'All projects' : 'Todos los proyectos'}</a>
     </div>
   </section>
 
-  <section class="cta-banner cta-banner--light">
-    <div class="cta-banner-container container">
-      <h2>${ctaHeading}</h2>
-      <a href="${contactHref}" class="cta-primary cta-primary--dark" style="display:inline-block; text-decoration:none;">${ctaButton}</a>
+  <section style="background:#F0EDE8; padding: 6rem clamp(2rem,5vw,5rem); text-align:center;">
+    <p style="font-family:'Inter',sans-serif; font-size:0.8rem; font-weight:500; color:#0A0A0A; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:2rem;">${isEn ? 'Connect' : 'Contacto'}</p>
+    <h2 style="font-family:'Inter',sans-serif; font-size:clamp(2.5rem,7vw,6rem); font-weight:700; color:#0A0A0A; line-height:1.05; margin-bottom:3rem;">${isEn ? 'Like what you see?<br>Contact us.' : '¿Te gusta lo<br>que ves? Contáctanos.'}</h2>
+    <div style="display:flex; gap:0.75rem; align-items:center; justify-content:center;">
+      <a href="${contactHref}" style="font-family:'Inter',sans-serif; font-size:0.9rem; font-weight:500; color:#FFFFFF; background:#0A0A0A; padding:0.75rem 1.5rem; border-radius:9999px; text-decoration:none;">${ctaButton}</a>
+      <a href="${contactHref}" style="display:flex; align-items:center; justify-content:center; width:2.75rem; height:2.75rem; background:#0A0A0A; border-radius:9999px; text-decoration:none; color:#FFFFFF; font-size:1.1rem;">→</a>
     </div>
   </section>`;
 }
@@ -276,16 +360,9 @@ export default async function Page({ params }: Props) {
   if (isWorkDetailRoute(slug)) {
     const project = await getProjectBySlug(slug[1]);
     if (project) {
-      const template = getWorkTemplateHtml(lang);
       const projectContent = buildProjectPage(project, lang);
-
-      if (template) {
-        const bodyContent = template.header + '\n' + projectContent + '\n' + template.footer;
-        return <div className="light-theme" dangerouslySetInnerHTML={{ __html: bodyContent }} />;
-      }
-
-      // No template available — render content sections only
-      return <div className="light-theme" dangerouslySetInnerHTML={{ __html: projectContent }} />;
+      const bodyContent = getHeaderHtml(lang, false) + '\n' + projectContent + '\n' + getFooterHtml(lang);
+      return <div className="work-page" dangerouslySetInnerHTML={{ __html: bodyContent }} />;
     }
     // Project not found in Supabase — fall through to static HTML
   }
@@ -304,7 +381,7 @@ export default async function Page({ params }: Props) {
   if (isHomepage || isWorkPage) {
     const projects = await getPublishedProjects();
     if (projects.length > 0) {
-      bodyContent = replaceProjectsSection(bodyContent, projects);
+      bodyContent = replaceProjectsSection(bodyContent, projects, lang);
     }
   }
 

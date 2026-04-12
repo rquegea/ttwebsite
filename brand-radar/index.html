@@ -35,14 +35,12 @@
       background-color: #1C1C1C;
       color: #FFFFFF;
     }
-    .brand-radar-page .header {
+    /* Hero (no scrolled): transparente para que el fondo oscuro se vea */
+    .brand-radar-page .header:not(.header-scrolled) {
       background: transparent;
       border-bottom-color: transparent;
     }
-    .brand-radar-page .header.header-scrolled {
-      background-color: #1C1C1C;
-      border-bottom-color: rgba(255,255,255,0.08);
-    }
+    /* Scrolled: hereda el estilo global beige sin overrides */
     .br-hero {
       min-height: 100vh;
       position: relative;
@@ -54,10 +52,11 @@
     .br-hero-inner {
       position: relative;
       display: grid;
-      grid-template-columns: auto 1fr;
+      grid-template-columns: auto auto;
       grid-template-rows: auto auto;
       column-gap: 1.5rem;
       align-items: start;
+      width: fit-content;
     }
     .br-hero-label {
       grid-column: 1;
@@ -154,71 +153,71 @@
       color: rgba(255,255,255,0.4);
     }
 
-    /* Content sections */
+    /* Second section */
     .br-what {
+      background-color: #F0EDE8;
       padding: 8rem clamp(2rem, 6vw, 8rem);
-      border-top: 1px solid rgba(255,255,255,0.08);
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 4rem;
-      align-items: start;
+      display: flex;
+      justify-content: center;
     }
-    .br-what-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      padding-top: 0.35rem;
+    .br-what-content {
+      max-width: 780px;
+      width: 100%;
     }
     .br-what-content h2 {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
-      font-weight: 400;
-      line-height: 1.2;
-      color: #FFFFFF;
-      margin: 0 0 2rem 0;
-      letter-spacing: -0.015em;
+      font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: #0A0A0A;
+      margin: 0 0 3rem 0;
+      letter-spacing: -0.025em;
     }
     .br-what-content p {
       font-family: 'Inter', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 300;
+      font-size: 1rem;
+      font-weight: 400;
       line-height: 1.75;
-      color: rgba(255,255,255,0.6);
-      max-width: 60ch;
+      color: #333333;
       margin: 0 0 1.25rem 0;
     }
 
     /* Metrics grid */
-    .br-metrics {
+    .br-stats {
+      background-color: #F0EDE8;
       padding: 6rem clamp(2rem, 6vw, 8rem);
-      border-top: 1px solid rgba(255,255,255,0.08);
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,0.08);
+      grid-template-columns: 220px 1fr;
+      gap: 0 4rem;
+      align-items: start;
     }
-    .br-metric {
-      background: #1C1C1C;
-      padding: 3.5rem 3rem;
-    }
-    .br-metric-num {
+    .br-stats-label {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      font-weight: 300;
-      color: #FFFFFF;
-      letter-spacing: -0.03em;
-      line-height: 1;
-      margin-bottom: 1rem;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #888;
+      letter-spacing: 0.02em;
+      padding-top: 0.3rem;
     }
-    .br-metric-label {
+    .br-stats-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .br-stats-list li {
       font-family: 'Inter', sans-serif;
       font-size: 0.9rem;
       font-weight: 400;
-      color: rgba(255,255,255,0.45);
+      color: #1A1A1A;
       line-height: 1.5;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #D5D0CA;
+    }
+    .br-stats-list li:first-child {
+      border-top: 1px solid #D5D0CA;
+    }
+    .br-stats-list li strong {
+      font-weight: 700;
     }
 
     /* Capabilities */
@@ -278,17 +277,90 @@
       margin: 0;
     }
 
+    /* Explore Solutions */
+    .br-explore {
+      background-color: #141414;
+      padding: 7rem clamp(2rem, 6vw, 8rem);
+    }
+    .br-explore-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .br-explore-heading h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: #FFFFFF;
+      letter-spacing: -0.025em;
+      margin: 0;
+    }
+    .br-explore-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .br-explore-list li {
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .br-explore-list li:last-child {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .br-explore-list a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.75rem 0;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+    .br-explore-list a:hover {
+      opacity: 0.6;
+    }
+    .br-explore-name {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.8rem);
+      font-weight: 500;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+    .br-explore-arrow {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 1rem;
+      flex-shrink: 0;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .br-explore-list a:hover .br-explore-arrow {
+      background: #FFFFFF;
+      color: #141414;
+      border-color: #FFFFFF;
+    }
+
     /* CTA final */
     .br-cta {
+      background-color: #F0EDE8;
       padding: 10rem clamp(2rem, 6vw, 8rem);
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid #D5D0CA;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .br-cta h2 {
       font-family: 'Inter', sans-serif;
       font-size: clamp(2.5rem, 6vw, 5.5rem);
       font-weight: 400;
       line-height: 1.1;
-      color: #FFFFFF;
+      color: #0A0A0A;
       letter-spacing: -0.025em;
       max-width: 16ch;
       margin: 0 0 3rem 0;
@@ -298,16 +370,173 @@
       align-items: center;
       gap: 0.6rem;
       padding: 0.85rem 2rem;
-      border: 1px solid rgba(255,255,255,0.35);
+      border: 1px solid rgba(0,0,0,0.25);
       border-radius: 999px;
-      color: #FFFFFF;
+      color: #0A0A0A;
       font-family: 'Inter', sans-serif;
       font-size: 0.95rem;
       text-decoration: none;
       transition: background 0.25s ease;
     }
     .br-cta a:hover {
-      background: rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.06);
+    }
+
+    /* Use Cases — centrado */
+    .br-usecases {
+      background-color: #F0EDE8;
+      padding: 6rem clamp(2rem, 6vw, 8rem) 7rem;
+      text-align: center;
+    }
+    .br-usecases-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+    }
+    .br-usecases-sidebar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .br-usecases-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #888;
+      letter-spacing: 0.02em;
+      margin: 0;
+    }
+    .br-usecases-arrow {
+      display: none;
+    }
+    .br-usecases-track {
+      display: grid;
+      grid-template-columns: repeat(3, 260px);
+      gap: 1rem;
+      justify-content: center;
+    }
+    .br-usecase-card {
+      flex: 0 0 260px;
+      background: #FFFFFF;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      scroll-snap-align: start;
+      min-height: 360px;
+    }
+    .br-usecase-card-top {
+      padding: 1.75rem 1.75rem 1.25rem;
+      flex: 1;
+    }
+    .br-usecase-card-top h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0A0A0A;
+      margin: 0 0 0.6rem 0;
+      letter-spacing: -0.01em;
+    }
+    .br-usecase-card-top p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: #555;
+      margin: 0;
+    }
+    .br-usecase-card-img {
+      height: 148px;
+      flex-shrink: 0;
+    }
+    .br-usecase-toggle {
+      position: absolute;
+      bottom: 164px;
+      right: 1rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #0A0A0A;
+      color: #FFFFFF;
+      border: none;
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+      font-weight: 300;
+    }
+    .br-usecase-toggle:hover {
+      background: #CC2936;
+    }
+    .br-usecase-toggle.active {
+      background: #CC2936;
+    }
+
+    /* FAQs */
+    .br-faqs {
+      background-color: #F0EDE8;
+      padding: 8rem clamp(2rem, 6vw, 8rem);
+      display: flex;
+      justify-content: center;
+    }
+    .br-faqs-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 780px;
+    }
+    .br-faqs-sidebar {
+      margin-bottom: 1rem;
+    }
+    .br-faqs-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #888;
+      letter-spacing: 0.02em;
+    }
+    .br-faqs-content {
+      width: 100%;
+    }
+    .br-faqs-title {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #0A0A0A;
+      letter-spacing: -0.025em;
+      margin: 0 0 5rem 0;
+    }
+    .br-faq-item {
+      padding: 3rem 0;
+      border-top: 1px solid #D5D0CA;
+    }
+    .br-faq-item:last-child {
+      border-bottom: 1px solid #D5D0CA;
+    }
+    .br-faq-item h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: #0A0A0A;
+      letter-spacing: -0.02em;
+      margin: 0 0 1.25rem 0;
+    }
+    .br-faq-item p {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.75;
+      color: #444;
+      margin: 0;
+      max-width: 60ch;
     }
 
     /* Footer override for dark page */
@@ -351,7 +580,6 @@
 
   <!-- What is it -->
   <section class="br-what">
-    <p class="br-what-label">Qué es</p>
     <div class="br-what-content">
       <h2>Inteligencia de marca continua, no puntual.</h2>
       <p>Las marcas se construyen en la mente del consumidor, no en las presentaciones de PowerPoint. Brand Radar monitoriza de forma continua cómo aparece tu marca en medios, redes sociales, buscadores y modelos de inteligencia artificial generativa.</p>
@@ -360,47 +588,165 @@
   </section>
 
   <!-- Metrics -->
-  <div class="br-metrics">
-    <div class="br-metric">
-      <div class="br-metric-num">4+</div>
-      <div class="br-metric-label">Modelos de IA monitorizados<br>(ChatGPT, Perplexity, Gemini…)</div>
-    </div>
-    <div class="br-metric">
-      <div class="br-metric-num">24h</div>
-      <div class="br-metric-label">Frecuencia de actualización<br>de datos de visibilidad</div>
-    </div>
-    <div class="br-metric">
-      <div class="br-metric-num">360°</div>
-      <div class="br-metric-label">Visión de marca: medios,<br>social, búsqueda e IA</div>
-    </div>
+  <div class="br-stats">
+    <p class="br-stats-label">Resultados que importan</p>
+    <ul class="br-stats-list">
+      <li><strong>Visibilidad en 4+ modelos de IA</strong> monitorizando cómo aparece tu marca en ChatGPT, Perplexity, Gemini y otros LLMs</li>
+      <li><strong>Detección en menos de 24h</strong> de cambios en la percepción de marca en medios y redes sociales</li>
+      <li><strong>Cobertura 360°</strong> de todos los canales donde se forma la opinión: medios, social, búsqueda e IA generativa</li>
+      <li><strong>Benchmarking competitivo continuo</strong> para saber siempre dónde estás frente a tu competencia</li>
+      <li><strong>Alertas tempranas</strong> que convierten una crisis potencial en una oportunidad de respuesta</li>
+    </ul>
   </div>
 
-  <!-- Capabilities -->
-  <section class="br-caps">
-    <div class="br-caps-header">
-      <h2>Lo que mide Brand Radar.</h2>
+  <section class="cta-connect">
+    <div class="cta-connect-container container">
+      <span class="cta-connect-label">Contacto</span>
+      <h2 class="cta-connect-heading">¿Qué podemos hacer por <span class="cta-you">ti</span>?</h2>
+      <a href="/contacto/" class="cta-connect-btn">
+        <span class="cta-connect-btn-text">Escríbenos</span>
+        <span class="cta-connect-btn-arrow">→</span>
+      </a>
     </div>
-    <div class="br-caps-grid">
-      <div class="br-cap-item">
-        <p class="br-cap-num">01</p>
-        <h3>Visibilidad en IA Generativa</h3>
-        <p>Mide cómo y cuándo tu marca aparece en las respuestas de ChatGPT, Perplexity, Gemini y otros LLMs. El nuevo SEO ya no es solo Google.</p>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="br-usecases">
+    <div class="br-usecases-inner">
+      <div class="br-usecases-sidebar">
+        <p class="br-usecases-label">Casos de uso</p>
+        <svg class="br-usecases-arrow" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 12 C8 12, 20 10, 28 20 C36 30, 34 42, 34 42 M28 38 L34 42 L38 36" stroke="#999" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
       </div>
-      <div class="br-cap-item">
-        <p class="br-cap-num">02</p>
-        <h3>Monitorización de Medios</h3>
-        <p>Cobertura en prensa, publicaciones digitales y medios especializados. Volumen, tono y share of voice frente a la competencia.</p>
+      <div class="br-usecases-track">
+        <div class="br-usecase-card">
+          <div class="br-usecase-card-top">
+            <h3>Crisis reputacional</h3>
+            <p>Detecta el cambio de tono en medios y redes antes de que escale. Tiempo de reacción en horas, no en días.</p>
+          </div>
+          <div class="br-usecase-card-img" style="background: linear-gradient(135deg, #e8e0d4 0%, #c9bfb3 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="20" stroke="#999" stroke-width="1.5"/><path d="M28 18v12M28 36v2" stroke="#999" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <button class="br-usecase-toggle" aria-label="Ver más">+</button>
+        </div>
+        <div class="br-usecase-card">
+          <div class="br-usecase-card-top">
+            <h3>Lanzamiento de producto</h3>
+            <p>Mide la percepción en tiempo real desde el primer día. Corrige el mensaje mientras aún importa.</p>
+          </div>
+          <div class="br-usecase-card-img" style="background: linear-gradient(135deg, #d4e0e8 0%, #b3c9d4 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M28 10 L34 30 L28 26 L22 30 Z" stroke="#999" stroke-width="1.5" stroke-linejoin="round"/><path d="M22 30 L20 40 M34 30 L36 40" stroke="#999" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <button class="br-usecase-toggle" aria-label="Ver más">+</button>
+        </div>
+        <div class="br-usecase-card">
+          <div class="br-usecase-card-top">
+            <h3>Benchmarking competitivo</h3>
+            <p>Compara tu visibilidad frente a tus competidores en medios, social y búsqueda. Siempre actualizado.</p>
+          </div>
+          <div class="br-usecase-card-img" style="background: linear-gradient(135deg, #d4e8d8 0%, #b3d4ba 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect x="10" y="30" width="8" height="16" stroke="#999" stroke-width="1.5"/><rect x="24" y="22" width="8" height="24" stroke="#999" stroke-width="1.5"/><rect x="38" y="14" width="8" height="32" stroke="#999" stroke-width="1.5"/></svg>
+          </div>
+          <button class="br-usecase-toggle" aria-label="Ver más">+</button>
+        </div>
+        <div class="br-usecase-card">
+          <div class="br-usecase-card-top">
+            <h3>Visibilidad en IA</h3>
+            <p>Cómo te describe ChatGPT cuando alguien busca tu categoría. El nuevo SEO ya no es solo Google.</p>
+          </div>
+          <div class="br-usecase-card-img" style="background: linear-gradient(135deg, #e8d4e4 0%, #d4b3cc 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="14" stroke="#999" stroke-width="1.5"/><path d="M14 28h28M28 14c-6 4-6 24 0 28M28 14c6 4 6 24 0 28" stroke="#999" stroke-width="1.5"/></svg>
+          </div>
+          <button class="br-usecase-toggle" aria-label="Ver más">+</button>
+        </div>
+        <div class="br-usecase-card">
+          <div class="br-usecase-card-top">
+            <h3>Reputación corporativa</h3>
+            <p>Monitoriza el tono editorial sobre tu empresa en tiempo real. De inversores a empleados potenciales.</p>
+          </div>
+          <div class="br-usecase-card-img" style="background: linear-gradient(135deg, #e8e4d4 0%, #d4ccb3 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect x="14" y="20" width="28" height="22" rx="3" stroke="#999" stroke-width="1.5"/><path d="M20 20v-4a8 8 0 0116 0v4" stroke="#999" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <button class="br-usecase-toggle" aria-label="Ver más">+</button>
+        </div>
+        <div class="br-usecase-card">
+          <div class="br-usecase-card-top">
+            <h3>Estrategia de marca</h3>
+            <p>Datos continuos para construir con dirección. Sustituye la intuición por evidencia actualizada cada semana.</p>
+          </div>
+          <div class="br-usecase-card-img" style="background: linear-gradient(135deg, #dde8d4 0%, #c0d4b3 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M12 38 L22 26 L30 32 L42 16" stroke="#999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="42" cy="16" r="3" stroke="#999" stroke-width="1.5"/></svg>
+          </div>
+          <button class="br-usecase-toggle" aria-label="Ver más">+</button>
+        </div>
       </div>
-      <div class="br-cap-item">
-        <p class="br-cap-num">03</p>
-        <h3>Análisis de Percepción Social</h3>
-        <p>Seguimiento de conversaciones, menciones y sentimiento en redes sociales. Detecta tendencias emergentes antes que nadie.</p>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="br-faqs">
+    <div class="br-faqs-inner">
+      <div class="br-faqs-sidebar">
+        <span class="br-faqs-label">FAQs</span>
       </div>
-      <div class="br-cap-item">
-        <p class="br-cap-num">04</p>
-        <h3>Benchmarking Competitivo</h3>
-        <p>Tu marca en contexto. Compara visibilidad, tono y presencia frente a tus competidores directos en todos los canales.</p>
+      <div class="br-faqs-content">
+        <h2 class="br-faqs-title">Todo lo que necesitas saber sobre Brand Radar.</h2>
+
+        <div class="br-faq-item">
+          <h3>¿Qué canales monitoriza Brand Radar?</h3>
+          <p>Brand Radar cubre medios digitales y prensa, redes sociales (X, Instagram, LinkedIn, TikTok), buscadores y — de forma única — los modelos de IA generativa más relevantes: ChatGPT, Perplexity, Gemini y otros LLMs. Es la única solución que cierra el ciclo completo de percepción de marca.</p>
+        </div>
+
+        <div class="br-faq-item">
+          <h3>¿Con qué frecuencia se actualizan los datos?</h3>
+          <p>Los datos de medios y redes sociales se actualizan en menos de 24 horas. La monitorización de visibilidad en IA se ejecuta de forma periódica con cadencia configurable. Recibes alertas automáticas cuando se detectan cambios relevantes, sin necesidad de entrar a revisar el dashboard.</p>
+        </div>
+
+        <div class="br-faq-item">
+          <h3>¿Cómo se diferencia de herramientas como Brandwatch o Mention?</h3>
+          <p>Las herramientas tradicionales de social listening no miden cómo te ve la inteligencia artificial — que es ya donde se forma buena parte de la opinión de nuevos consumidores. Brand Radar integra la monitorización de IA generativa junto con el listening tradicional, y añade benchmarking competitivo continuo en todos los canales.</p>
+        </div>
+
+        <div class="br-faq-item">
+          <h3>¿Qué recibo como cliente? ¿Es solo tecnología o hay equipo detrás?</h3>
+          <p>Brand Radar combina tecnología propia con un equipo senior de análisis. No recibes solo datos: recibes interpretación, contexto estratégico y recomendaciones accionables. Cada mes hay una sesión de revisión con el equipo de T&T para priorizar respuestas y ajustar la estrategia.</p>
+        </div>
+
+        <div class="br-faq-item">
+          <h3>¿Cuánto tiempo tarda en estar operativo?</h3>
+          <p>El onboarding estándar es de 5 días hábiles. Incluye la configuración de keywords, competidores y fuentes relevantes para tu sector, la integración con tus canales propios si aplica, y una sesión de calibración del sistema con el equipo.</p>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Explore Solutions -->
+  <section class="br-explore">
+    <div class="br-explore-inner">
+      <div class="br-explore-heading">
+        <h2>Explora nuestras soluciones tecnológicas.</h2>
+      </div>
+      <ul class="br-explore-list">
+        <li>
+          <a href="/es/tech/2laps/">
+            <span class="br-explore-name">2laps</span>
+            <span class="br-explore-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="/es/tech/1000er/">
+            <span class="br-explore-name">1000er.ai</span>
+            <span class="br-explore-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="/es/tech/murphy/">
+            <span class="br-explore-name">Murphy</span>
+            <span class="br-explore-arrow">→</span>
+          </a>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -409,6 +755,17 @@
     <h2>¿Sabes cómo te ve el mundo ahora mismo?</h2>
     <a href="/contacto/">Solicita una demo →</a>
   </section>
+
+  <script>
+    // Toggle cards
+    document.querySelectorAll('.br-usecase-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('active');
+        btn.textContent = btn.classList.contains('active') ? '−' : '+';
+      });
+    });
+
+  </script>
 
 </body>
 </html>

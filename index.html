@@ -25,10 +25,13 @@
     "url": "https://www.tyt.es",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "C. de Francisco Sancha, 4, 2º planta derecha",
       "addressLocality": "Madrid",
       "addressRegion": "Comunidad de Madrid",
+      "postalCode": "28034",
       "addressCountry": "ES"
     },
+    "telephone": "+34915134694",
     "areaServed": {
       "@type": "Place",
       "name": "Worldwide"
@@ -237,6 +240,43 @@
               </div>
             </div>
           </li>
+          <!-- Nosotros -->
+          <li class="has-dropdown">
+            <a class="nav-vertical-label">Nosotros <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+            <div class="mega-menu">
+              <div class="mega-menu-container container">
+                <div class="features-list">
+                  <a href="/empresa/" class="feature-item active">
+                    <h3>La empresa</h3>
+                    <p>Quiénes somos, qué nos mueve y por qué hacemos lo que hacemos.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/clientes/" class="feature-item">
+                    <h3>Clientes</h3>
+                    <p>Marcas que confían en nosotros para construir algo extraordinario.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/insights/" class="feature-item">
+                    <h3>Insights</h3>
+                    <p>Análisis, tendencias y perspectivas del mercado desde dentro.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/contacto/" class="feature-item">
+                    <h3>Contacto</h3>
+                    <p>Cuéntanos tu reto. Empecemos a trabajar.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                </div>
+                <div class="features-multimedia mega-menu-multimedia">
+                  <div class="video-placeholder"></div>
+                  <div class="video-caption">
+                    <h4>T&amp;T</h4>
+                    <p>Tecnología propia. Inteligencia aplicada. Resultados reales.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
         </ul>
       </nav>
       <div class="header-right">
@@ -262,6 +302,8 @@
           <li><a class="nav-vertical-label">t&amp;trade</a></li>
           <li><a class="nav-vertical-label">t&amp;talk</a></li>
           <li><a class="nav-vertical-label">t&amp;team</a></li>
+          <li><a href="/empresa/">Nosotros</a></li>
+          <li><a href="/insights/">Insights</a></li>
           <li><a href="/contacto/">Contacto</a></li>
         </ul>
       </nav>
@@ -324,46 +366,92 @@
     <!-- Overlay -->
     <div class="hero-overlay"></div>
 
-    <!-- Hero content — monks style -->
-    <div class="hero-content-monks">
-      <p class="hero-tagline">Accelerating growth through Marketing and Technology.</p>
+    <!-- Hero content wrapper -->
+    <div class="hero-center">
+      <div class="hero-label-fixed">
+        <span class="hero-label">HECHO CON</span>
+        <div class="hero-client-logo">
+          <img src="/favicon/barcelo.png" alt="Barceló" class="client-icon active">
+          <img src="/favicon/playstation.jpg" alt="PlayStation" class="client-icon">
+          <img src="/favicon/domperignom.png" alt="Dom Pérignon" class="client-icon">
+          <img src="/favicon/sabadell.jpg" alt="Sabadell" class="client-icon">
+          <img src="/favicon/planeta.jpeg" alt="Grupo Planeta" class="client-icon">
+          <img src="/favicon/moet.png" alt="Moët" class="client-icon">
+          <img src="/favicon/prime.jpg" alt="Prime" class="client-icon">
+          <img src="/favicon/lotus.png" alt="Lotus" class="client-icon">
+        </div>
+      </div>
+      <div class="hero-name-container">
+        <div class="hero-name-track">
+          <!-- 2 clones (últimos 2 reales) para el loop -->
+          <span>PRIME</span>
+          <span>LOTUS</span>
+          <!-- 8 clientes reales -->
+          <span class="active">BARCELÓ</span>
+          <span>PLAYSTATION</span>
+          <span>DOM PÉRIGNON</span>
+          <span>SABADELL</span>
+          <span>GRUPO PLANETA</span>
+          <span>MOËT&amp;CHANDON</span>
+          <span>PRIME</span>
+          <span>LOTUS</span>
+          <!-- 3 clones (primeros 3 reales) para el loop -->
+          <span>BARCELÓ</span>
+          <span>PLAYSTATION</span>
+          <span>DOM PÉRIGNON</span>
+        </div>
+      </div>
     </div>
-    <div class="hero-scroll-indicator">
-      <span class="scroll-text">Scroll</span>
-      <svg class="scroll-arrow" width="24" height="40" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 8V32M12 32L6 26M12 32L18 26" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+
+    <!-- Contact button -->
+    <a href="mailto:trucoytrufa@trucoytrufa.es" class="hero-contact-btn">Contáctanos</a>
+
+    <!-- Brand icons -->
+    <div class="hero-brand-icons">
+      <img src="/favicon/barcelo.png" alt="Barceló">
+      <img src="/favicon/playstation.jpg" alt="PlayStation">
+      <img src="/favicon/domperignom.png" alt="Dom Pérignon">
+      <img src="/favicon/sabadell.jpg" alt="Sabadell">
+      <img src="/favicon/planeta.jpeg" alt="Grupo Planeta">
+      <img src="/favicon/moet.png" alt="Moët">
+      <img src="/favicon/prime.jpg" alt="Prime">
+      <img src="/favicon/lotus.png" alt="Lotus">
     </div>
+
+    <!-- Pause/play control -->
+    <button class="hero-pause" aria-label="Pausar carrusel">
+      <span class="hero-pause-icon">⏸</span>
+    </button>
   </section>
 
 
   <!-- Services Offerings Section -->
   <section class="offerings-section">
     <div class="container">
-      <h2 class="offerings-heading">Your trusted partner for innovation across four strategic service offerings:</h2>
+      <h2 class="offerings-heading">Tu socio de confianza en innovación a través de cuatro líneas de negocio estratégicas:</h2>
       <div class="offerings-grid">
         <a href="/think/" class="offering-card">
           <div class="offering-number">01</div>
           <div class="offering-image" style="background:url('/projects/moet-chandon-escaparate/hero.jpg') center/cover no-repeat;"></div>
-          <span class="offering-label">Solutions</span>
+          <span class="offering-label">Soluciones</span>
           <h3 class="offering-title">t&think <span class="offering-arrow">→</span></h3>
         </a>
         <a href="/tech/" class="offering-card">
           <div class="offering-number">02</div>
           <div class="offering-image" style="background:url('/projects/roc-digital/hero.jpg') center/cover no-repeat;"></div>
-          <span class="offering-label">Technology</span>
+          <span class="offering-label">Tecnología</span>
           <h3 class="offering-title">t&tech <span class="offering-arrow">→</span></h3>
         </a>
         <a href="/tailor/" class="offering-card">
           <div class="offering-number">03</div>
           <div class="offering-image" style="background:url('/projects/pancracio-popup/hero.jpg') center/cover no-repeat;"></div>
-          <span class="offering-label">Production</span>
+          <span class="offering-label">Producción</span>
           <h3 class="offering-title">t&tailor <span class="offering-arrow">→</span></h3>
         </a>
         <a href="/trade/" class="offering-card">
           <div class="offering-number">04</div>
           <div class="offering-image" style="background:url('/projects/moet-chandon-escaparate/hero.jpg') center/cover no-repeat;"></div>
-          <span class="offering-label">Events</span>
+          <span class="offering-label">Eventos</span>
           <h3 class="offering-title">t&trade <span class="offering-arrow">→</span></h3>
         </a>
       </div>
@@ -375,9 +463,9 @@
     <div class="container">
       <div class="ai-grid">
         <div class="ai-text">
-          <h2 class="ai-heading">AI leadership that's rapid and real, backed by premier tech partners.</h2>
-          <p class="ai-description">While others talk about AI, we deliver results. We are the essential partner for last-mile intelligence, closing the gap between powerful AI platforms and real-world business impact. With our proprietary tools — 2laps, Murphy, and 1000er.ai — we custom-fit technology to your specific goals, turning powerful tools into a true competitive advantage.</p>
-          <a href="/tech/" class="ai-cta">Explore t&tech <span class="ai-cta-arrow">→</span></a>
+          <h2 class="ai-heading">Liderazgo en IA real y tangible, respaldado por tecnología propia.</h2>
+          <p class="ai-description">Mientras otros hablan de IA, nosotros entregamos resultados. Somos el socio esencial para la inteligencia de última milla, cerrando la brecha entre las plataformas de IA y el impacto real en negocio. Con nuestras herramientas propias — 2laps, Murphy y 1000er.ai — adaptamos la tecnología a tus objetivos específicos, convirtiendo herramientas potentes en una ventaja competitiva real.</p>
+          <a href="/tech/" class="ai-cta">Descubre t&tech <span class="ai-cta-arrow">→</span></a>
         </div>
         <div class="ai-visual">
           <div class="ai-visual-image" style="background:url('/projects/roc-digital/hero.jpg') center/cover no-repeat;"></div>
@@ -389,10 +477,10 @@
   <!-- CTA Banner Section -->
   <section class="cta-connect">
     <div class="cta-connect-container container">
-      <span class="cta-connect-label">Connect</span>
-      <h2 class="cta-connect-heading">What can we do for <span class="cta-you">you</span>?</h2>
+      <span class="cta-connect-label">Contacto</span>
+      <h2 class="cta-connect-heading">¿Qué podemos hacer por <span class="cta-you">ti</span>?</h2>
       <a href="/contacto/" class="cta-connect-btn">
-        <span class="cta-connect-btn-text">Reach out</span>
+        <span class="cta-connect-btn-text">Escríbenos</span>
         <span class="cta-connect-btn-arrow">→</span>
       </a>
     </div>
@@ -401,7 +489,7 @@
   <!-- Client Stories Section -->
   <section class="client-stories">
     <div class="client-stories-container container">
-      <span class="client-stories-label">Client Stories</span>
+      <span class="client-stories-label">Casos de éxito</span>
       <div class="client-stories-list">
         <a href="/work/moet-chandon-escaparate/" class="client-story-item" data-image="/projects/moet-chandon-escaparate/hero.jpg">
           <h3>Moët & Chandon — Escaparate El Corte Inglés</h3>
@@ -450,9 +538,9 @@
         </div>
       </div>
       <div class="reports-content container">
-        <span class="reports-label">Report</span>
+        <span class="reports-label">Informe</span>
         <h2 class="reports-title">Owning the Answer: The Marketer's Playbook for AEO, GEO and the AI Search Era</h2>
-        <p class="reports-meta">By T&T · 2 min read</p>
+        <p class="reports-meta">Por T&T · 2 min de lectura</p>
       </div>
     </div>
   </section>
@@ -463,23 +551,23 @@
       <div class="articles-grid">
         <article class="article-card">
           <div class="article-image-wrapper" style="background: #E0E0E0;"></div>
-          <span class="article-label">Blog Post</span>
-          <h3 class="article-title">Your Brand's DNA is the Ultimate AI Differentiator</h3>
-          <p class="article-meta">By Jessica Ross · 4 min read</p>
+          <span class="article-label">Artículo</span>
+          <h3 class="article-title">El ADN de tu marca es el diferenciador definitivo en IA</h3>
+          <p class="article-meta">Por Jessica Ross · 4 min de lectura</p>
         </article>
 
         <article class="article-card">
           <div class="article-image-wrapper" style="background: #E0E0E0;"></div>
-          <span class="article-label">Blog Post</span>
-          <h3 class="article-title">Taming Brand Chaos with Bespoke AI Agent Solutions</h3>
-          <p class="article-meta">By Iran Reyes · 4 min read</p>
+          <span class="article-label">Artículo</span>
+          <h3 class="article-title">Dominar el caos de marca con soluciones de agentes de IA a medida</h3>
+          <p class="article-meta">Por Iran Reyes · 4 min de lectura</p>
         </article>
 
         <article class="article-card">
           <div class="article-image-wrapper" style="background: #E0E0E0;"></div>
-          <span class="article-label">Content</span>
-          <h3 class="article-title">CES 2026: From Vision to Velocity</h3>
-          <p class="article-meta">By T&T Team</p>
+          <span class="article-label">Contenido</span>
+          <h3 class="article-title">CES 2026: de la visión a la velocidad</h3>
+          <p class="article-meta">Por T&T Team</p>
         </article>
       </div>
     </div>
@@ -491,30 +579,30 @@
       <h2 class="radar-title">En el radar</h2>
       <div class="radar-list">
         <a href="/insights/" class="radar-item">
-          <span class="radar-type">Report</span>
+          <span class="radar-type">Informe</span>
           <div class="radar-content">
             <span class="radar-headline">Owning the Answer: The Marketer's Playbook</span>
-            <span class="radar-sub">for AEO, GEO and the AI Search Era</span>
+            <span class="radar-sub">para AEO, GEO y la era de la búsqueda con IA</span>
           </div>
-          <span class="radar-time">2 min read</span>
+          <span class="radar-time">2 min de lectura</span>
           <span class="radar-cta">Leer ahora <span class="radar-arrow">→</span></span>
         </a>
         <a href="/insights/" class="radar-item">
-          <span class="radar-type">Blog Post</span>
+          <span class="radar-type">Artículo</span>
           <div class="radar-content">
-            <span class="radar-headline">Your Brand's DNA is the Ultimate AI Differentiator</span>
-            <span class="radar-sub">Why proprietary identity beats any prompt</span>
+            <span class="radar-headline">El ADN de tu marca es el diferenciador definitivo en IA</span>
+            <span class="radar-sub">Por qué la identidad propia supera a cualquier prompt</span>
           </div>
-          <span class="radar-time">4 min read</span>
+          <span class="radar-time">4 min de lectura</span>
           <span class="radar-cta">Leer ahora <span class="radar-arrow">→</span></span>
         </a>
         <a href="/insights/" class="radar-item">
-          <span class="radar-type">Blog Post</span>
+          <span class="radar-type">Artículo</span>
           <div class="radar-content">
-            <span class="radar-headline">Taming Brand Chaos with Bespoke AI Agent Solutions</span>
-            <span class="radar-sub">Multi-agent systems for enterprise marketing</span>
+            <span class="radar-headline">Dominar el caos de marca con agentes de IA a medida</span>
+            <span class="radar-sub">Sistemas multi-agente para marketing empresarial</span>
           </div>
-          <span class="radar-time">4 min read</span>
+          <span class="radar-time">4 min de lectura</span>
           <span class="radar-cta">Leer ahora <span class="radar-arrow">→</span></span>
         </a>
         <a href="/insights/" class="radar-item">
@@ -523,16 +611,16 @@
             <span class="radar-headline">GEO vs SEO: La guerra por la visibilidad en la era de la IA</span>
             <span class="radar-sub">Cómo aparecen las marcas en ChatGPT, Perplexity y Gemini</span>
           </div>
-          <span class="radar-time">5 min read</span>
+          <span class="radar-time">5 min de lectura</span>
           <span class="radar-cta">Leer ahora <span class="radar-arrow">→</span></span>
         </a>
         <a href="/insights/" class="radar-item">
-          <span class="radar-type">Content</span>
+          <span class="radar-type">Contenido</span>
           <div class="radar-content">
-            <span class="radar-headline">CES 2026: From Vision to Velocity</span>
-            <span class="radar-sub">The trends reshaping marketing technology this year</span>
+            <span class="radar-headline">CES 2026: de la visión a la velocidad</span>
+            <span class="radar-sub">Las tendencias que están transformando la tecnología de marketing este año</span>
           </div>
-          <span class="radar-time">3 min read</span>
+          <span class="radar-time">3 min de lectura</span>
           <span class="radar-cta">Leer ahora <span class="radar-arrow">→</span></span>
         </a>
       </div>
@@ -564,8 +652,10 @@
             </ul>
           </div>
           <div class="footer-column">
-            <h4>Journal</h4>
+            <h4>Nosotros</h4>
             <ul>
+              <li><a href="/empresa/">La empresa</a></li>
+              <li><a href="/clientes/">Clientes</a></li>
               <li><a href="/insights/">Insights</a></li>
             </ul>
           </div>
@@ -590,9 +680,9 @@
           <a href="#" class="footer-social-icon" aria-label="X / Twitter">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.631L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
           </a>
-          <span class="footer-follow-label">Follow Us</span>
+          <span class="footer-follow-label">Síguenos</span>
         </div>
-        <a href="/newsletter/" class="footer-newsletter-btn">Newsletter <span>→</span></a>
+        <a href="/insights/" class="footer-newsletter-btn">Insights <span>→</span></a>
         <p class="footer-copyright">&copy; 2026 T&T. Madrid, España.</p>
       </div>
     </div>

@@ -3954,3 +3954,36 @@ a {
 .nav-vertical-label {
   cursor: default;
 }
+
+/* Marketing Section Styles */
+.marketing-section {
+  padding: 4rem 0;
+  width: 100%;
+}
+
+.marketing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+.marketing-box {
+  min-height: 400px;
+  background-color: #EAEAEA;
+  border-radius: 8px;
+  border: 3px solid #CC2936;
+  width: 100%;
+  display: block;
+}
+
+.light-theme .marketing-box {
+  background-color: #EAEAEA;
+  border-color: #CC2936;
+}
+
+@media (max-width: 768px) {
+  .marketing-grid {
+    grid-template-columns: 1fr;
+  }
+}

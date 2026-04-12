@@ -30,7 +30,7 @@ function getEsHeader(isHomepage: boolean): string {
         <ul>
           <div class="nav-glider"></div>
           <li class="has-dropdown">
-            <a class="nav-vertical-label"><span class="nav-dot">•</span>Solutions ${CHEVRON_DOWN}</a>
+            <a class="nav-vertical-label"><span class="nav-dot">•</span>Soluciones ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <a href="/brand-radar/">Brand Radar</a>
               <a href="/preplay/">Preplay</a>
@@ -38,34 +38,33 @@ function getEsHeader(isHomepage: boolean): string {
             </div>
           </li>
           <li class="has-dropdown">
-            <a class="nav-vertical-label"><span class="nav-dot">•</span>Marketing Services ${CHEVRON_DOWN}</a>
+            <a class="nav-vertical-label"><span class="nav-dot">•</span>Servicios de Marketing ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
-              <a href="/think/estrategia/">Brand</a>
-              <a href="/think/estrategia/">Strategy</a>
-              <a href="/talk/paid-media/">Media</a>
-              <a href="/talk/social/">Social</a>
-              <a href="/trade/trade-marketing/">Trade Marketing</a>
-              <a href="/trade/trade-show/">Events</a>
-              <a href="/tailor/">Production</a>
-              <a href="/team/">Talent</a>
+              <a href="/marketing/brand/">Marca</a>
+              <a href="/marketing/strategy/">Estrategia</a>
+              <a href="/marketing/media/">Medios</a>
+              <a href="/marketing/social/">Social</a>
+              <a href="/marketing/trade-marketing/">Trade Marketing</a>
+              <a href="/marketing/events/">Eventos</a>
+              <a href="/marketing/production/">Producción</a>
+              <a href="/marketing/talent/">Talento</a>
             </div>
           </li>
           <li class="has-dropdown">
-            <a class="nav-vertical-label"><span class="nav-dot">•</span>Technology Services ${CHEVRON_DOWN}</a>
+            <a class="nav-vertical-label"><span class="nav-dot">•</span>Servicios de Tecnología ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
-              <a href="/tech/2laps/">2laps</a>
-              <a href="/tech/murphy/">Murphy</a>
-              <a href="/tech/1000er/">1000er.ai</a>
+              <span class="nav-coming-soon">2laps<span class="nav-coming-soon-label">Web próximamente</span></span>
+              <span class="nav-coming-soon">Murphy<span class="nav-coming-soon-label">Web próximamente</span></span>
+              <span class="nav-coming-soon">1000er.ai<span class="nav-coming-soon-label">Web próximamente</span></span>
             </div>
           </li>
           <li>
-            <a href="/work/" class="nav-vertical-label">Work</a>
+            <a href="/work/" class="nav-vertical-label">Trabajo</a>
           </li>
           <li class="has-dropdown">
-            <a class="nav-vertical-label"><span class="nav-dot">•</span>About Us ${CHEVRON_DOWN}</a>
+            <a class="nav-vertical-label"><span class="nav-dot">•</span>Nosotros ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <a href="/empresa/">Empresa</a>
-              <a href="/clientes/">Clientes</a>
               <a href="/insights/">Insights</a>
             </div>
           </li>
@@ -88,11 +87,11 @@ function getEsHeader(isHomepage: boolean): string {
       </div>
       <nav class="mobile-menu-nav${isHomepage ? '' : ' container'}">
         <ul>
-          <li><a class="nav-vertical-label">Solutions</a></li>
-          <li><a class="nav-vertical-label">Marketing Services</a></li>
-          <li><a href="#" class="nav-vertical-label">Technology Services</a></li>
-          <li><a href="/work/" class="nav-vertical-label">Work</a></li>
-          <li><a class="nav-vertical-label">About Us</a></li>
+          <li><a class="nav-vertical-label">Soluciones</a></li>
+          <li><a class="nav-vertical-label">Servicios de Marketing</a></li>
+          <li><a href="#" class="nav-vertical-label">Servicios de Tecnología</a></li>
+          <li><a href="/work/" class="nav-vertical-label">Trabajo</a></li>
+          <li><a class="nav-vertical-label">Nosotros</a></li>
           <li><a href="/contacto/">Contacto${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
         </ul>
       </nav>
@@ -133,13 +132,14 @@ function getEnHeader(isHomepage: boolean): string {
           <li class="has-dropdown">
             <a class="nav-vertical-label"><span class="nav-dot">•</span>Marketing Services ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
-              <a href="/en/think/estrategia/">Brand Strategy</a>
-              <a href="/en/talk/paid-media/">Media</a>
-              <a href="/en/talk/social/">Social</a>
-              <a href="/en/trade/trade-marketing/">Trade Marketing</a>
-              <a href="/en/trade/trade-show/">Events</a>
-              <a href="/en/tailor/">Production</a>
-              <a href="/en/team/">Talent</a>
+              <a href="/en/marketing/brand/">Brand</a>
+              <a href="/en/marketing/strategy/">Strategy</a>
+              <a href="/en/marketing/media/">Media</a>
+              <a href="/en/marketing/social/">Social</a>
+              <a href="/en/marketing/trade-marketing/">Trade Marketing</a>
+              <a href="/en/marketing/events/">Events</a>
+              <a href="/en/marketing/production/">Production</a>
+              <a href="/en/marketing/talent/">Talent</a>
             </div>
           </li>
           <li class="has-dropdown">
@@ -157,7 +157,6 @@ function getEnHeader(isHomepage: boolean): string {
             <a class="nav-vertical-label"><span class="nav-dot">•</span>About Us ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
               <a href="/en/empresa/">About</a>
-              <a href="/en/clientes/">Clients</a>
               <a href="/en/insights/">Insights</a>
             </div>
           </li>
@@ -196,7 +195,7 @@ function getEnHeader(isHomepage: boolean): string {
           <a href="#" aria-label="Facebook">f</a>
         </div>`
           : `<button class="cta-primary">Request a proposal</button>
-        <a href="/acceso" class="cta-outline">Login</a>`}
+        <a href="/en/acceso" class="cta-outline">Login</a>`}
       </div>
     </div>
   </header>`;
@@ -227,8 +226,9 @@ const ES_FOOTER = `<footer class="footer">
             </ul>
           </div>
           <div class="footer-column">
-            <h4>Journal</h4>
+            <h4>Nosotros</h4>
             <ul>
+              <li><a href="/empresa/">Empresa</a></li>
               <li><a href="/insights/">Insights</a></li>
             </ul>
           </div>
@@ -251,12 +251,9 @@ const ES_FOOTER = `<footer class="footer">
             <a href="https://instagram.com/tyt" class="footer-social-icon" aria-label="Instagram" target="_blank" rel="noopener">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
             </a>
-            <a href="https://x.com/tyt" class="footer-social-icon" aria-label="X" target="_blank" rel="noopener">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.631L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
-            </a>
-            <span class="footer-follow-label">Follow Us</span>
+            <span class="footer-follow-label">Síguenos</span>
           </div>
-          <a href="/newsletter/" class="footer-newsletter-btn">Newsletter <span>→</span></a>
+          <a href="/insights/" class="footer-newsletter-btn">Insights <span>→</span></a>
         </div>
         <p class="footer-copyright">&copy; 2026 T&T. Madrid, España.</p>
       </div>
@@ -288,8 +285,9 @@ const EN_FOOTER = `<footer class="footer">
             </ul>
           </div>
           <div class="footer-column">
-            <h4>Journal</h4>
+            <h4>About</h4>
             <ul>
+              <li><a href="/en/empresa/">Company</a></li>
               <li><a href="/en/insights/">Insights</a></li>
             </ul>
           </div>
@@ -312,12 +310,9 @@ const EN_FOOTER = `<footer class="footer">
             <a href="https://instagram.com/tyt" class="footer-social-icon" aria-label="Instagram" target="_blank" rel="noopener">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
             </a>
-            <a href="https://x.com/tyt" class="footer-social-icon" aria-label="X" target="_blank" rel="noopener">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.631L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
-            </a>
             <span class="footer-follow-label">Follow Us</span>
           </div>
-          <a href="/en/newsletter/" class="footer-newsletter-btn">Newsletter <span>→</span></a>
+          <a href="/en/insights/" class="footer-newsletter-btn">Insights <span>→</span></a>
         </div>
         <p class="footer-copyright">&copy; 2026 T&T. Madrid, Spain.</p>
       </div>

@@ -11,33 +11,33 @@ const supabase = createClient(
 );
 
 const existingProjects = [
-  {
-    title: "ESCAPARATE EL CORTE INGLÉS",
-    client_name: "Moët & Chandon",
-    category: "Luxury & Spirits",
-    slug: "moet-chandon-escaparate",
-    client_logo_path: "/favicon/moet.png",
-    image_path: "/projects/moet-chandon-escaparate/hero.jpg",
-    sort_order: 1
-  },
-  {
-    title: "TEAMBUILDING",
-    client_name: "Lotus",
-    category: "FMCG & Snacks",
-    slug: "lotus-teambuilding",
-    client_logo_path: "/favicon/lotus.png",
-    image_path: null,
-    sort_order: 2
-  },
-  {
-    title: "CAMPAÑAS DIGITALES",
-    client_name: "ROC",
-    category: "Entertainment",
-    slug: "roc-digital",
-    client_logo_path: "/favicon/Roc.png",
-    image_path: "/projects/roc-digital/hero.jpg",
-    sort_order: 3
-  },
+  // {
+  //   title: "ESCAPARATE EL CORTE INGLÉS",
+  //   client_name: "Moët & Chandon",
+  //   category: "Luxury & Spirits",
+  //   slug: "moet-chandon-escaparate",
+  //   client_logo_path: "/favicon/moet.png",
+  //   image_path: "/projects/moet-chandon-escaparate/hero.jpg",
+  //   sort_order: 1
+  // },
+  // {
+  //   title: "TEAMBUILDING",
+  //   client_name: "Lotus",
+  //   category: "FMCG & Snacks",
+  //   slug: "lotus-teambuilding",
+  //   client_logo_path: "/favicon/lotus.png",
+  //   image_path: null,
+  //   sort_order: 2
+  // },
+  // {
+  //   title: "CAMPAÑAS DIGITALES",
+  //   client_name: "ROC",
+  //   category: "Entertainment",
+  //   slug: "roc-digital",
+  //   client_logo_path: "/favicon/Roc.png",
+  //   image_path: "/projects/roc-digital/hero.jpg",
+  //   sort_order: 3
+  // },
   {
     title: "POP UP EL CORTE INGLÉS",
     client_name: "Pancracio",

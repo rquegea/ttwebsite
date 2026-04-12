@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marca — T&T</title>
-  <meta name="description" content="Estrategia de marca, posicionamiento e identidad que construye marcas que perduran">
+  <title>Talento — T&T</title>
+  <meta name="description" content="Captación, formación y desarrollo de talento para empresas que entienden que las personas son el diferencial">
 </head>
 <body class="light-theme">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
@@ -12,10 +12,9 @@
     body {
       background: #FFAD60;
     }
-    .brand-page-wrapper {
+    .page-wrapper {
       background: #FFAD60;
     }
-    /* Header fondo */
     .light-theme .header {
       background: transparent !important;
       border-bottom-color: transparent !important;
@@ -24,7 +23,6 @@
       background: #FFAD60 !important;
       border-bottom: 2px solid rgba(87,59,34,0.2) !important;
     }
-    /* Nav textos */
     .light-theme .header .nav > ul > li > a,
     .light-theme .header .nav-vertical-label,
     .light-theme .header .header-connect-btn {
@@ -38,16 +36,14 @@
       background: #302113 !important;
       color: #FFAD60 !important;
     }
-    /* Logo tintado */
     .light-theme .header .logo-img {
       filter: brightness(0) saturate(100%) invert(15%) sepia(35%) saturate(800%) hue-rotate(15deg) brightness(55%) contrast(110%);
     }
-    /* Textos contenido */
-    .brand-page-wrapper h1,
-    .brand-page-wrapper h2,
-    .brand-page-wrapper p,
-    .brand-page-wrapper span,
-    .brand-page-wrapper strong {
+    .page-wrapper h1,
+    .page-wrapper h2,
+    .page-wrapper p,
+    .page-wrapper span,
+    .page-wrapper strong {
       color: #302113 !important;
     }
   </style>
@@ -57,7 +53,6 @@
       var logoImg = document.querySelector('.header .logo-img');
       if (logoImg) logoImg.src = '/tytnuevologonegro.png';
 
-      // Transition colors on scroll
       const experienceSection = document.getElementById('experience-section');
       const transitionSection = document.getElementById('transition-section');
 
@@ -68,9 +63,6 @@
         const experienceRect = experienceSection.getBoundingClientRect();
         const transitionRect = transitionSection.getBoundingClientRect();
 
-        // Calcular progreso entre las dos secciones
-        // Comienza cuando "Una experiencia" llega al centro de la pantalla
-        // Termina cuando "¿Cómo podemos ayudarte?" llega al centro de la pantalla
         const startPoint = experienceRect.top - windowHeight / 2;
         const endPoint = transitionRect.top - windowHeight / 2;
         const totalDistance = endPoint - startPoint;
@@ -78,40 +70,33 @@
         let progress = (startPoint * -1) / totalDistance;
         progress = Math.max(0, Math.min(1, progress));
 
-        // Interpolación de colores
-        // Fondo: #FFAD60 -> #FFFFFF
         const bgStart = [255, 173, 96];
         const bgEnd = [255, 255, 255];
         const bgCurrent = bgStart.map((c, i) => Math.round(c + (bgEnd[i] - c) * progress));
         const bgHex = '#' + bgCurrent.map(c => c.toString(16).padStart(2, '0').toUpperCase()).join('');
 
-        // Texto: #302113 -> #FFFFFF
         const textStart = [48, 33, 19];
         const textEnd = [255, 255, 255];
         const textCurrent = textStart.map((c, i) => Math.round(c + (textEnd[i] - c) * progress));
         const textHex = '#' + textCurrent.map(c => c.toString(16).padStart(2, '0').toUpperCase()).join('');
 
         document.body.style.background = bgHex;
-        document.querySelector('.brand-page-wrapper').style.background = bgHex;
+        document.querySelector('.page-wrapper').style.background = bgHex;
 
-        // Header background (including scrolled state)
         const header = document.querySelector('.light-theme .header');
         if (header) {
           header.style.setProperty('background', bgHex, 'important');
         }
 
-        // Header nav colors
         const navLinks = document.querySelectorAll('.light-theme .header .nav > ul > li > a, .light-theme .header .nav-vertical-label, .light-theme .header .header-connect-btn');
         navLinks.forEach(el => el.style.color = textHex);
 
-        // Header connect arrow
         const arrow = document.querySelector('.light-theme .header .connect-arrow');
         if (arrow) {
           arrow.style.background = textHex;
         }
 
-        // Todos los textos dentro de brand-page-wrapper
-        const allTexts = document.querySelectorAll('.brand-page-wrapper h1, .brand-page-wrapper h2, .brand-page-wrapper p, .brand-page-wrapper span');
+        const allTexts = document.querySelectorAll('.page-wrapper h1, .page-wrapper h2, .page-wrapper p, .page-wrapper span');
         allTexts.forEach(el => {
           el.style.color = textHex;
         });
@@ -121,18 +106,18 @@
       updateColors();
     });
   </script>
-  <div class="brand-page-wrapper">
+  <div class="page-wrapper">
   <main>
 
     <!-- HERO -->
     <section style="padding: 0 3rem 6rem; margin-top: -1rem;">
       <div style="display: flex; align-items: flex-start; gap: 0;">
         <div style="width: 600px; height: 200px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; overflow: hidden;">
-          <span style="font-family: Helvetica, Arial, sans-serif; font-weight: 600; font-size: 1.4rem;">t&amp;think</span>
+          <span style="font-family: Helvetica, Arial, sans-serif; font-weight: 600; font-size: 1.4rem;">t&amp;team</span>
         </div>
         <div style="width: 600px; height: 200px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; overflow: hidden;">
-          <h1 style="font-family: Helvetica, Arial, sans-serif; font-size: 5rem; font-weight: 700; line-height: 1; margin: 0 0 0.75rem 0;">Marca</h1>
-          <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.25rem; margin: 0; line-height: 1.4; text-align: left;"><strong style="font-family: Helvetica, Arial, sans-serif;">Construye marcas que perduran</strong> con estrategia, identidad y propósito.</p>
+          <h1 style="font-family: Helvetica, Arial, sans-serif; font-size: 5rem; font-weight: 700; line-height: 1; margin: 0 0 0.75rem 0;">Talento</h1>
+          <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.25rem; margin: 0; line-height: 1.4; text-align: left;"><strong style="font-family: Helvetica, Arial, sans-serif;">El activo más valioso</strong> de cualquier marca se llama personas.</p>
         </div>
       </div>
     </section>
@@ -140,19 +125,19 @@
     <!-- STATEMENT -->
     <section style="padding: 6rem 3rem;">
       <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-        <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.1; margin: 0 0 2.5rem 0;">Somos el partner que lleva tu marca del concepto a la cultura.</h2>
-        <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; margin: 0 0 1.5rem 0;">Ayudamos a las marcas a crecer en un entorno donde la atención es el activo más escaso. Nuestro enfoque conecta cada pieza de tu mundo de marca — garantizando una presencia coherente, fluida e impactante en <strong style="font-family: Helvetica, Arial, sans-serif;">plataformas digitales</strong>, <strong style="font-family: Helvetica, Arial, sans-serif;">espacios físicos</strong> y <strong style="font-family: Helvetica, Arial, sans-serif;">medios</strong>.</p>
-        <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; margin: 0;">Como partner de marca, integramos estrategia, creatividad y tecnología propia para hacer realidad tu visión. Tanto si quieres crecer globalmente como fortalecer tu presencia local, te damos las herramientas y la inteligencia para lograrlo.</p>
+        <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.1; margin: 0 0 2.5rem 0;">Encontramos, formamos y desarrollamos el talento que llevan las marcas al siguiente nivel.</h2>
+        <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; margin: 0 0 1.5rem 0;">El talento no es un recurso — es el diferencial. Ayudamos a las organizaciones a identificar, atraer y retener a los profesionales que mejor encajan con su cultura y sus objetivos. También desarrollamos programas de formación continua que mantienen a los equipos a la vanguardia en un entorno en constante cambio.</p>
+        <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; margin: 0;">Cubrimos captación de perfiles de marketing y comunicación, formación en herramientas y metodologías digitales, y teambuilding diseñado para fortalecer la cultura interna. Con el mismo rigor con el que tratamos la marca externa.</p>
       </div>
     </section>
 
     <!-- 360 EXPERIENCE -->
     <section id="experience-section" style="padding: 6rem 3rem;">
-      <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.05; margin: 0 0 3rem 0;">Una experiencia<br>de marca 360°</h2>
+      <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.05; margin: 0 0 3rem 0;">Una estrategia<br>de talento 360°</h2>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 900px;">
         <div style="background: rgba(87,59,34,0.1); border-radius: 8px; min-height: 320px; padding: 2rem; display: flex; flex-direction: column; justify-content: flex-end;">
           <span style="font-family: Helvetica, Arial, sans-serif; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;">Trabajo</span>
-          <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1rem; margin: 0; line-height: 1.5;"><strong style="font-family: Helvetica, Arial, sans-serif;">Rediseño de identidad de marca</strong> · Con una voz renovada que activa experiencias en todos los touchpoints digitales y físicos.</p>
+          <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1rem; margin: 0; line-height: 1.5;"><strong style="font-family: Helvetica, Arial, sans-serif;">Programa de formación en IA para equipos de marketing</strong> · Diseño e impartición de formación práctica sobre herramientas de IA generativa aplicadas a creatividad, datos y estrategia.</p>
         </div>
         <div style="background: rgba(87,59,34,0.07); border-radius: 8px; min-height: 320px;"></div>
       </div>
@@ -161,19 +146,19 @@
     <!-- CTA -->
     <section id="transition-section" style="padding: 8rem 3rem;">
       <p style="font-family: Helvetica, Arial, sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 2rem 0;">Contacto</p>
-      <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.1; margin: 0 0 2.5rem 0;">¿Cómo podemos ayudarte<br>a innovar?<br>Hablemos.</h2>
+      <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.1; margin: 0 0 2.5rem 0;">¿Quieres construir<br>el equipo que tu marca<br>merece? Hablemos.</h2>
       <a href="/contacto/" style="display: inline-flex; align-items: center; gap: 0.75rem; background: #302113; color: #FFAD60 !important; font-family: Helvetica, Arial, sans-serif; font-size: 0.95rem; font-weight: 600; padding: 0.9rem 1.8rem; border-radius: 100px; text-decoration: none;">Conecta con nosotros <span style="background: #FFAD60; color: #302113 !important; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-size: 1rem;">→</span></a>
     </section>
 
     <!-- PILLARS -->
     <section style="padding: 6rem 3rem;">
       <div style="max-width: 700px; margin: 0 auto 6rem auto; text-align: center;">
-        <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.1; margin: 0 0 2rem 0;">Listos para servir cada ambición creativa.</h2>
-        <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; margin: 0;">Pocos partners tienen la capacidad de combinar creatividad de alto nivel con tecnología propia. Sea cual sea tu visión, ponemos a disposición de tu marca un equipo senior, herramientas de IA propias y un método que mezcla craft excepcional con datos reales para crear experiencias de marca que generan resonancia cultural.</p>
+        <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.1; margin: 0 0 2rem 0;">Captación de perfiles senior con visión estratégica y dominio tecnológico.</h2>
+        <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; margin: 0;">Nos especializamos en perfiles de marketing, comunicación, datos y tecnología. Entendemos el sector desde dentro — lo que significa que evaluamos el fit cultural y técnico con criterio real, no solo con CVs. Encontramos a las personas que no están buscando activamente, porque los mejores no suelen estarlo.</p>
       </div>
       <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-        <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.1; margin: 0 0 2rem 0;">Construimos sobre bases estratégicas para alcanzar tu visión de negocio.</h2>
-        <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; margin: 0;">No solo creamos piezas creativas — construimos los sistemas y las herramientas necesarios para que esas experiencias cobren vida en todo el ecosistema de marca. Usamos estrategia e inteligencia de mercado para entender qué tiene sentido para el negocio y luego diseñamos los customer journeys que inspiran acción y generan brand love.</p>
+        <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.1; margin: 0 0 2rem 0;">La formación continua no es un beneficio — es una ventaja competitiva.</h2>
+        <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; margin: 0;">Diseñamos programas formativos a medida para equipos que quieren mantenerse a la vanguardia en IA, datos, creatividad y estrategia. Combinamos conocimiento teórico con aplicación práctica — usando nuestras propias herramientas como campo de entrenamiento real.</p>
       </div>
     </section>
 
