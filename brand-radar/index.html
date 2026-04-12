@@ -308,7 +308,8 @@
     .br-explore-list li:last-child {
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-    .br-explore-list a {
+    .br-explore-list a,
+    .br-explore-list .br-explore-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -316,8 +317,36 @@
       text-decoration: none;
       transition: opacity 0.2s ease;
     }
-    .br-explore-list a:hover {
+    .br-explore-list a:hover,
+    .br-explore-list .br-explore-item:hover {
       opacity: 0.6;
+    }
+    .br-explore-item {
+      cursor: default;
+      position: relative;
+    }
+    .br-explore-soon {
+      position: absolute;
+      left: 0;
+      bottom: calc(100% + 4px);
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(4px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .br-explore-item:hover .br-explore-soon {
+      opacity: 1;
+      transform: translateY(0);
     }
     .br-explore-name {
       font-family: 'Inter', sans-serif;
@@ -339,7 +368,8 @@
       flex-shrink: 0;
       transition: background 0.2s ease, border-color 0.2s ease;
     }
-    .br-explore-list a:hover .br-explore-arrow {
+    .br-explore-list a:hover .br-explore-arrow,
+    .br-explore-list .br-explore-item:hover .br-explore-arrow {
       background: #FFFFFF;
       color: #141414;
       border-color: #FFFFFF;
@@ -729,22 +759,25 @@
       </div>
       <ul class="br-explore-list">
         <li>
-          <a href="/es/tech/2laps/">
+          <span class="br-explore-item">
+            <span class="br-explore-soon">Web próximamente</span>
             <span class="br-explore-name">2laps</span>
             <span class="br-explore-arrow">→</span>
-          </a>
+          </span>
         </li>
         <li>
-          <a href="/es/tech/1000er/">
+          <span class="br-explore-item">
+            <span class="br-explore-soon">Web próximamente</span>
             <span class="br-explore-name">1000er.ai</span>
             <span class="br-explore-arrow">→</span>
-          </a>
+          </span>
         </li>
         <li>
-          <a href="/es/tech/murphy/">
+          <span class="br-explore-item">
+            <span class="br-explore-soon">Web próximamente</span>
             <span class="br-explore-name">Murphy</span>
             <span class="br-explore-arrow">→</span>
-          </a>
+          </span>
         </li>
       </ul>
     </div>

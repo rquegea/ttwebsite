@@ -10,31 +10,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
-      background: #FFAD60;
+      background: #F5EDA0;
     }
     .page-wrapper {
-      background: #FFAD60;
+      background: #F5EDA0;
     }
     .light-theme .header {
       background: transparent !important;
       border-bottom-color: transparent !important;
     }
     .light-theme .header.header-scrolled {
-      background: #FFAD60 !important;
-      border-bottom: 2px solid rgba(87,59,34,0.2) !important;
+      background: #F5EDA0 !important;
+      border-bottom: 2px solid rgba(42,38,0,0.2) !important;
     }
     .light-theme .header .nav > ul > li > a,
     .light-theme .header .nav-vertical-label,
     .light-theme .header .header-connect-btn {
-      color: #302113 !important;
-      border-color: rgba(87,59,34,0.35) !important;
+      color: #2A2600 !important;
+      border-color: rgba(42,38,0,0.35) !important;
     }
     .light-theme .header .mega-menu a {
       color: #fff !important;
     }
     .light-theme .header .connect-arrow {
-      background: #302113 !important;
-      color: #FFAD60 !important;
+      background: #2A2600 !important;
+      color: #F5EDA0 !important;
     }
     .light-theme .header .logo-img {
       filter: brightness(0) saturate(100%) invert(15%) sepia(35%) saturate(800%) hue-rotate(15deg) brightness(55%) contrast(110%);
@@ -44,7 +44,7 @@
     .page-wrapper p,
     .page-wrapper span,
     .page-wrapper strong {
-      color: #302113 !important;
+      color: #2A2600 !important;
     }
   </style>
   <header class="header"></header>
@@ -70,12 +70,12 @@
         let progress = (startPoint * -1) / totalDistance;
         progress = Math.max(0, Math.min(1, progress));
 
-        const bgStart = [255, 173, 96];
+        const bgStart = [245, 237, 160];
         const bgEnd = [255, 255, 255];
         const bgCurrent = bgStart.map((c, i) => Math.round(c + (bgEnd[i] - c) * progress));
         const bgHex = '#' + bgCurrent.map(c => c.toString(16).padStart(2, '0').toUpperCase()).join('');
 
-        const textStart = [48, 33, 19];
+        const textStart = [42, 38, 0];
         const textEnd = [255, 255, 255];
         const textCurrent = textStart.map((c, i) => Math.round(c + (textEnd[i] - c) * progress));
         const textHex = '#' + textCurrent.map(c => c.toString(16).padStart(2, '0').toUpperCase()).join('');
@@ -135,7 +135,7 @@
     <section id="experience-section" style="padding: 6rem 3rem;">
       <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.05; margin: 0 0 3rem 0;">Una estrategia<br>de marca 360°</h2>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 900px;">
-        <div style="background: rgba(87,59,34,0.1); border-radius: 8px; min-height: 320px; padding: 2rem; display: flex; flex-direction: column; justify-content: flex-end;">
+        <div style="background: rgba(42,38,0,0.1); border-radius: 8px; min-height: 320px; padding: 2rem; display: flex; flex-direction: column; justify-content: flex-end;">
           <span style="font-family: Helvetica, Arial, sans-serif; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;">Trabajo</span>
           <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1rem; margin: 0; line-height: 1.5;"><strong style="font-family: Helvetica, Arial, sans-serif;">Reposicionamiento de marca en nuevo mercado</strong> · Análisis de competencia, definición de propuesta de valor diferencial y plan de entrada con simulación de escenarios.</p>
         </div>
@@ -147,7 +147,7 @@
     <section id="transition-section" style="padding: 8rem 3rem;">
       <p style="font-family: Helvetica, Arial, sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 2rem 0;">Contacto</p>
       <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.1; margin: 0 0 2.5rem 0;">¿Necesitas claridad<br>para tomar la siguiente<br>decisión? Hablemos.</h2>
-      <a href="/contacto/" style="display: inline-flex; align-items: center; gap: 0.75rem; background: #302113; color: #FFAD60 !important; font-family: Helvetica, Arial, sans-serif; font-size: 0.95rem; font-weight: 600; padding: 0.9rem 1.8rem; border-radius: 100px; text-decoration: none;">Conecta con nosotros <span style="background: #FFAD60; color: #302113 !important; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-size: 1rem;">→</span></a>
+      <a href="/contacto/" style="display: inline-flex; align-items: center; gap: 0.75rem; background: #2A2600; color: #F5EDA0 !important; font-family: Helvetica, Arial, sans-serif; font-size: 0.95rem; font-weight: 600; padding: 0.9rem 1.8rem; border-radius: 100px; text-decoration: none;">Conecta con nosotros <span style="background: #F5EDA0; color: #2A2600 !important; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-size: 1rem;">→</span></a>
     </section>
 
     <!-- PILLARS -->
