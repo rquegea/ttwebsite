@@ -15,7 +15,7 @@
   <script type="module" src="/src/main.js"></script>
 </head>
 
-<body class="light-theme">
+<body class="work-page">
   <!-- Header -->
   <header class="header">
     <div class="header-container container">
@@ -245,18 +245,239 @@
     </div>
   </header>
 
+  <style>
+    .work-page {
+      background-color: #F0EDE8;
+      color: #0A0A0A;
+    }
+    .work-page .header:not(.header-scrolled) {
+      background: transparent;
+      border-bottom-color: transparent;
+    }
+    .work-page .header:not(.header-scrolled) .nav > ul > li > a,
+    .work-page .header:not(.header-scrolled) .nav-vertical-label,
+    .work-page .header:not(.header-scrolled) .header-connect-btn {
+      color: #0A0A0A !important;
+      border-color: rgba(10,10,10,0.15) !important;
+    }
+    .work-page .header:not(.header-scrolled) .logo-img {
+      filter: brightness(1) saturate(1) invert(0);
+    }
+    .work-hero {
+      min-height: auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 12rem clamp(2rem, 5vw, 5rem) 0 clamp(2rem, 5vw, 5rem);
+    }
+    .work-hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-rows: auto auto;
+      column-gap: 1.5rem;
+      align-items: start;
+      width: fit-content;
+      margin-top: -5vh;
+    }
+    .work-hero-label {
+      grid-column: 1;
+      grid-row: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: rgba(10,10,10,0.5);
+      white-space: nowrap;
+      line-height: 1;
+      padding-top: calc((clamp(2rem, 4.5vw, 4.5rem) * 0.05));
+    }
+    .work-h1-line1 {
+      grid-column: 2;
+      grid-row: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 4.5rem);
+      font-weight: 500;
+      line-height: 1;
+      color: #0A0A0A;
+      letter-spacing: -0.02em;
+    }
+    .work-h1-line2 {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 4.5rem);
+      font-weight: 500;
+      line-height: 1;
+      color: #0A0A0A;
+      letter-spacing: -0.02em;
+      padding-top: 0.15em;
+      margin-bottom: 2.5rem;
+    }
+    .work-hero-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0.6rem 0.6rem 1.4rem;
+      border: 1px solid rgba(10,10,10,0.25);
+      border-radius: 999px;
+      color: #0A0A0A;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      text-decoration: none;
+      transition: background 0.25s ease;
+    }
+    .work-hero-cta a:hover {
+      background: rgba(10,10,10,0.06);
+    }
+    .work-hero-cta .cta-arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #0A0A0A;
+      color: #F0EDE8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .work-page .footer {
+      background-color: #141414;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    /* Projects Section */
+    .work-page .subpage-projects {
+      background: #F0EDE8;
+      padding: 6rem clamp(2rem, 5vw, 5rem) 5rem;
+    }
+    .work-projects-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(10,10,10,0.12);
+    }
+    .work-projects-count {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: rgba(10,10,10,0.6);
+    }
+    .work-projects-controls {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .work-filter-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      background: #0A0A0A;
+      color: #FFF;
+      border: none;
+      border-radius: 999px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .work-filter-btn:hover {
+      background: #1A1A1A;
+    }
+    .work-projects-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .work-page .projects-grid-home {
+      display: grid;
+      grid-template-columns: repeat(3, 350px);
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+      justify-content: end;
+    }
+    .work-page .project-card-home {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .work-page .project-card-home:nth-child(n+4) {
+      display: none;
+    }
+    .work-page .project-image {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .work-page .project-card-home:hover .project-image {
+      transform: scale(1.02);
+    }
+    .work-page .project-meta {
+      background: transparent;
+      padding: 1.25rem 0 0 0;
+    }
+    .work-page .project-meta-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .work-page .project-meta h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #0A0A0A;
+      margin: 0;
+    }
+    .work-page .project-arrow {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #0A0A0A;
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      transition: background 0.2s ease;
+    }
+    .work-page .project-card-home:hover .project-arrow {
+      background: #CC2936;
+    }
+    .work-page .project-tag {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: rgba(10,10,10,0.5);
+      margin: 0;
+    }
+  </style>
+
   <!-- HERO -->
-  <section class="subpage-hero">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/en/">T&T</a> <span>/</span> <span class="current">Work</span>
-      </nav>
-      <h1>Our Work</h1>
+  <section class="work-hero">
+    <div class="work-hero-inner">
+      <p class="work-hero-label">Work</p>
+      <p class="work-h1-line1">The brands we build.</p>
+      <p class="work-h1-line2">The projects that define us.</p>
+      <div class="work-hero-cta" style="grid-column:1/-1;">
+        <a href="#projects">See projects <span class="cta-arrow">↓</span></a>
+      </div>
     </div>
   </section>
 
   <!-- PROJECTS GRID -->
-  <section class="subpage-projects">
+  <section id="projects" class="subpage-projects">
     <div class="container">
       <div class="projects-grid-home">
 
@@ -309,14 +530,6 @@
         </a>
 
       </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-banner cta-banner--light">
-    <div class="cta-banner-container container">
-      <h2>Your project,<br>next on this list?</h2>
-      <a href="/en/contact/" class="cta-primary cta-primary--dark" style="display:inline-block; text-decoration:none;">Let's talk</a>
     </div>
   </section>
 

@@ -94,9 +94,9 @@ function stripFooter(body: string): string {
   return body.replace(/<footer class="footer">[\s\S]*?<\/footer>/i, '');
 }
 
-function replaceNav(body: string, lang: string, isHomepage: boolean): string {
+function replaceNav(body: string, lang: string, isHomepage: boolean, slug: string[]): string {
   const stripped = stripFooter(stripHeader(body));
-  return getHeaderHtml(lang, isHomepage) + stripped + getFooterHtml(lang);
+  return getHeaderHtml(lang, isHomepage, slug) + stripped + getFooterHtml(lang);
 }
 
 function extractBodyClass(html: string): string {
@@ -418,7 +418,7 @@ export default async function Page({ params }: Props) {
     const project = await getProjectBySlug(slug[1]);
     if (project) {
       const projectContent = buildProjectPage(project, lang);
-      const bodyContent = getHeaderHtml(lang, false) + '\n' + projectContent + '\n' + getFooterHtml(lang);
+      const bodyContent = getHeaderHtml(lang, false, slug) + '\n' + projectContent + '\n' + getFooterHtml(lang);
       return <div className="work-page" dangerouslySetInnerHTML={{ __html: bodyContent }} />;
     }
     // Project not found in Supabase — fall through to static HTML
@@ -443,7 +443,7 @@ export default async function Page({ params }: Props) {
   }
 
   // Strip hardcoded header/footer from static HTML → use shared nav
-  bodyContent = replaceNav(bodyContent, lang, isHomepage);
+  bodyContent = replaceNav(bodyContent, lang, isHomepage, slug);
 
   return <div className={bodyClass} dangerouslySetInnerHTML={{ __html: bodyContent }} />;
 }

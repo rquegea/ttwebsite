@@ -9,19 +9,95 @@ const CHEVRON_RIGHT = '<svg width="20" height="20" viewBox="0 0 24 24" fill="non
 const HAMBURGER_SVG = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 6H21M3 12H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>';
 const CLOSE_SVG = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6L18 18" stroke-linecap="round" stroke-linejoin="round" /></svg>';
 
-export function getHeaderHtml(lang: string, isHomepage: boolean): string {
-  return lang === 'en' ? getEnHeader(isHomepage) : getEsHeader(isHomepage);
+// ES path (no leading/trailing slash) → EN path. Paths not listed are assumed identical in both languages.
+export const SLUG_MAP: Record<string, string> = {
+  '': '',
+  'contacto': 'contact',
+  'empresa': 'company',
+  'clientes': 'clients',
+  'insights': 'insights',
+  'work': 'work',
+  'privacidad': 'privacy',
+  'aviso-legal': 'legal-notice',
+  'cookies': 'cookies',
+  'brand-radar': 'brand-radar',
+  'preplay': 'preplay',
+  'ai-governance': 'ai-governance',
+  'think': 'think',
+  'think/creatividad': 'think/creativity',
+  'think/estrategia': 'think/strategy',
+  'think/investigacion': 'think/research',
+  'think/data-analitica': 'think/data-analytics',
+  'tech': 'tech',
+  'tech/2laps': 'tech/2laps',
+  'tech/1000er': 'tech/1000er',
+  'tech/murphy': 'tech/murphy',
+  'tailor': 'tailor',
+  'tailor/plv': 'tailor/pos-displays',
+  'tailor/merchandising': 'tailor/merchandising',
+  'tailor/packaging': 'tailor/packaging',
+  'trade': 'trade',
+  'trade/trade-show': 'trade/trade-show',
+  'trade/trade-marketing': 'trade/trade-marketing',
+  'talk': 'talk',
+  'talk/pr-comunicacion': 'talk/pr-communications',
+  'talk/content-medios': 'talk/content-media',
+  'talk/seo-paid-media': 'talk/seo-paid-media',
+  'team': 'team',
+  'team/captacion': 'team/talent-acquisition',
+  'team/formacion': 'team/training',
+  'team/teambuilding': 'team/teambuilding',
+  'marketing/brand': 'marketing/brand',
+  'marketing/strategy': 'marketing/strategy',
+  'marketing/media': 'marketing/media',
+  'marketing/social': 'marketing/social',
+  'marketing/trade-marketing': 'marketing/trade-marketing',
+  'marketing/events': 'marketing/events',
+  'marketing/production': 'marketing/production',
+  'marketing/talent': 'marketing/talent',
+};
+
+export const SLUG_MAP_REVERSE: Record<string, string> = Object.fromEntries(
+  Object.entries(SLUG_MAP).map(([es, en]) => [en, es])
+);
+
+/**
+ * Resolve the equivalent URL in the other language for a given slug path.
+ * currentLang = language of the page we're on. Returns the URL that points to the other language.
+ * Unknown paths (e.g. /work/<dynamic-slug>/) pass through unchanged.
+ */
+export function getAltLangUrl(currentLang: string, slug: string[]): string {
+  const key = slug.join('/');
+  if (currentLang === 'es') {
+    const target = SLUG_MAP[key] ?? key;
+    return target === '' ? '/en/' : `/en/${target}/`;
+  }
+  const target = SLUG_MAP_REVERSE[key] ?? key;
+  return target === '' ? '/es/' : `/es/${target}/`;
+}
+
+export function getHeaderHtml(lang: string, isHomepage: boolean, slug: string[] = []): string {
+  return lang === 'en' ? getEnHeader(isHomepage, slug) : getEsHeader(isHomepage, slug);
 }
 
 export function getFooterHtml(lang: string): string {
   return lang === 'en' ? EN_FOOTER : ES_FOOTER;
 }
 
+function langSwitcherHtml(currentLang: string, slug: string[]): string {
+  const altUrl = getAltLangUrl(currentLang, slug);
+  const altLabel = currentLang === 'es' ? 'EN' : 'ES';
+  const altAria = currentLang === 'es' ? 'Switch to English' : 'Cambiar a español';
+  return `<a href="${altUrl}" class="lang-switcher" aria-label="${altAria}">${altLabel}</a>`;
+}
+
 // --- ES HEADER ---
-function getEsHeader(isHomepage: boolean): string {
+function getEsHeader(isHomepage: boolean, slug: string[]): string {
   const logoWrap = isHomepage
     ? '<div class="logo"><img src="/logos/tytnuevologo.png" alt="T&T" class="logo-img"></div>'
-    : '<div class="logo"><a href="/"><img src="/logos/tytnuevologo.png" alt="T&T" class="logo-img"></a></div>';
+    : '<div class="logo"><a href="/es/"><img src="/logos/tytnuevologo.png" alt="T&T" class="logo-img"></a></div>';
+
+  const switcher = langSwitcherHtml('es', slug);
 
   return `<header class="header">
     <div class="header-container container">
@@ -32,22 +108,22 @@ function getEsHeader(isHomepage: boolean): string {
           <li class="has-dropdown">
             <a class="nav-vertical-label"><span class="nav-dot">•</span>Soluciones ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
-              <a href="/brand-radar/">Brand Radar</a>
-              <a href="/preplay/">Preplay</a>
-              <a href="/ai-governance/">AI Governance</a>
+              <a href="/es/brand-radar/">Brand Radar</a>
+              <a href="/es/preplay/">Preplay</a>
+              <a href="/es/ai-governance/">AI Governance</a>
             </div>
           </li>
           <li class="has-dropdown">
             <a class="nav-vertical-label"><span class="nav-dot">•</span>Servicios de Marketing ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
-              <a href="/marketing/brand/">Marca</a>
-              <a href="/marketing/strategy/">Estrategia</a>
-              <a href="/marketing/media/">Medios</a>
-              <a href="/marketing/social/">Social</a>
-              <a href="/marketing/trade-marketing/">Trade Marketing</a>
-              <a href="/marketing/events/">Eventos</a>
-              <a href="/marketing/production/">Producción</a>
-              <a href="/marketing/talent/">Talento</a>
+              <a href="/es/marketing/brand/">Marca</a>
+              <a href="/es/marketing/strategy/">Estrategia</a>
+              <a href="/es/marketing/media/">Medios</a>
+              <a href="/es/marketing/social/">Social</a>
+              <a href="/es/marketing/trade-marketing/">Trade Marketing</a>
+              <a href="/es/marketing/events/">Eventos</a>
+              <a href="/es/marketing/production/">Producción</a>
+              <a href="/es/marketing/talent/">Talento</a>
             </div>
           </li>
           <li class="has-dropdown">
@@ -59,19 +135,20 @@ function getEsHeader(isHomepage: boolean): string {
             </div>
           </li>
           <li>
-            <a href="/work/" class="nav-vertical-label">Trabajo</a>
+            <a href="/es/work/" class="nav-vertical-label">Trabajo</a>
           </li>
           <li class="has-dropdown">
             <a class="nav-vertical-label"><span class="nav-dot">•</span>Nosotros ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
-              <a href="/empresa/">Empresa</a>
-              <a href="/insights/">Insights</a>
+              <a href="/es/empresa/">Empresa</a>
+              <a href="/es/insights/">Insights</a>
             </div>
           </li>
         </ul>
       </nav>
       <div class="header-right">
-        <a href="/contacto/" class="header-connect-btn">Contacto <span class="connect-arrow">\u2192</span></a>
+        ${switcher}
+        <a href="/es/contacto/" class="header-connect-btn">Contacto <span class="connect-arrow">\u2192</span></a>
         <button class="mobile-menu-btn" aria-label="Toggle menu">
           ${isHomepage ? '<span class="menu-icon">\u25A0</span> MENU' : HAMBURGER_SVG}
         </button>
@@ -90,9 +167,10 @@ function getEsHeader(isHomepage: boolean): string {
           <li><a class="nav-vertical-label">Soluciones</a></li>
           <li><a class="nav-vertical-label">Servicios de Marketing</a></li>
           <li><a href="#" class="nav-vertical-label">Servicios de Tecnología</a></li>
-          <li><a href="/work/" class="nav-vertical-label">Trabajo</a></li>
+          <li><a href="/es/work/" class="nav-vertical-label">Trabajo</a></li>
           <li><a class="nav-vertical-label">Nosotros</a></li>
-          <li><a href="/contacto/">Contacto${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
+          <li><a href="/es/contacto/">Contacto${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
+          <li>${switcher}</li>
         </ul>
       </nav>
       <div class="mobile-menu-footer${isHomepage ? '' : ' container'}">
@@ -110,10 +188,12 @@ function getEsHeader(isHomepage: boolean): string {
 }
 
 // --- EN HEADER ---
-function getEnHeader(isHomepage: boolean): string {
+function getEnHeader(isHomepage: boolean, slug: string[]): string {
   const logoWrap = isHomepage
     ? '<div class="logo"><img src="/logos/tytnuevologo.png" alt="T&T" class="logo-img"></div>'
     : '<div class="logo"><a href="/en/"><img src="/logos/tytnuevologo.png" alt="T&T" class="logo-img"></a></div>';
+
+  const switcher = langSwitcherHtml('en', slug);
 
   return `<header class="header">
     <div class="header-container container">
@@ -145,9 +225,9 @@ function getEnHeader(isHomepage: boolean): string {
           <li class="has-dropdown">
             <a class="nav-vertical-label"><span class="nav-dot">•</span>Technology Services ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
-              <a href="/en/tech/2laps/">2laps</a>
-              <a href="/en/tech/murphy/">Murphy</a>
-              <a href="/en/tech/1000er/">1000er.ai</a>
+              <span class="nav-coming-soon">2laps<span class="nav-coming-soon-label">Site coming soon</span></span>
+              <span class="nav-coming-soon">Murphy<span class="nav-coming-soon-label">Site coming soon</span></span>
+              <span class="nav-coming-soon">1000er.ai<span class="nav-coming-soon-label">Site coming soon</span></span>
             </div>
           </li>
           <li>
@@ -156,13 +236,14 @@ function getEnHeader(isHomepage: boolean): string {
           <li class="has-dropdown">
             <a class="nav-vertical-label"><span class="nav-dot">•</span>About Us ${CHEVRON_DOWN}</a>
             <div class="mega-menu">
-              <a href="/en/empresa/">About</a>
+              <a href="/en/company/">About</a>
               <a href="/en/insights/">Insights</a>
             </div>
           </li>
         </ul>
       </nav>
       <div class="header-right">
+        ${switcher}
         <a href="/en/contact/" class="header-connect-btn">Connect <span class="connect-arrow">\u2192</span></a>
         <button class="mobile-menu-btn" aria-label="Toggle menu">
           ${isHomepage ? '<span class="menu-icon">\u25A0</span> MENU' : HAMBURGER_SVG}
@@ -185,6 +266,7 @@ function getEnHeader(isHomepage: boolean): string {
           <li><a href="/en/work/" class="nav-vertical-label">Work</a></li>
           <li><a class="nav-vertical-label">About Us</a></li>
           <li><a href="/en/contact/">Contact${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
+          <li>${switcher}</li>
         </ul>
       </nav>
       <div class="mobile-menu-footer${isHomepage ? '' : ' container'}">
@@ -195,7 +277,7 @@ function getEnHeader(isHomepage: boolean): string {
           <a href="#" aria-label="Facebook">f</a>
         </div>`
           : `<button class="cta-primary">Request a proposal</button>
-        <a href="/en/acceso" class="cta-outline">Login</a>`}
+        <a href="/en/login" class="cta-outline">Login</a>`}
       </div>
     </div>
   </header>`;
@@ -206,16 +288,16 @@ const ES_FOOTER = `<footer class="footer">
     <div class="footer-inner container">
       <div class="footer-main">
         <div class="footer-logo">
-          <a href="/"><img src="/logos/tytnuevologo.png" alt="T&T" style="height:28px;"></a>
+          <a href="/es/"><img src="/logos/tytnuevologo.png" alt="T&T" style="height:28px;"></a>
         </div>
         <nav class="footer-nav">
-          <a href="/brand-radar/">Soluciones</a>
-          <a href="/marketing/brand/">Marketing</a>
-          <a href="/tech/">Tecnología</a>
-          <a href="/work/">Trabajo</a>
-          <a href="/empresa/">Nosotros</a>
+          <a href="/es/brand-radar/">Soluciones</a>
+          <a href="/es/marketing/brand/">Marketing</a>
+          <a href="/es/tech/">Tecnología</a>
+          <a href="/es/work/">Trabajo</a>
+          <a href="/es/empresa/">Nosotros</a>
         </nav>
-        <a href="/contacto/" class="footer-cta">Contacto <span class="footer-cta-arrow">→</span></a>
+        <a href="/es/contacto/" class="footer-cta">Contacto <span class="footer-cta-arrow">→</span></a>
       </div>
       <div class="footer-bottom">
         <p class="footer-copyright">&copy; 2026 T&T. Madrid, España.</p>
@@ -228,9 +310,9 @@ const ES_FOOTER = `<footer class="footer">
           </a>
         </div>
         <div class="footer-legal">
-          <a href="/privacidad/">Privacidad</a>
-          <a href="/aviso-legal/">Aviso legal</a>
-          <a href="/cookies/">Cookies</a>
+          <a href="/es/privacidad/">Privacidad</a>
+          <a href="/es/aviso-legal/">Aviso legal</a>
+          <a href="/es/cookies/">Cookies</a>
         </div>
       </div>
     </div>
@@ -248,7 +330,7 @@ const EN_FOOTER = `<footer class="footer">
           <a href="/en/marketing/brand/">Marketing</a>
           <a href="/en/tech/">Technology</a>
           <a href="/en/work/">Work</a>
-          <a href="/en/empresa/">About</a>
+          <a href="/en/company/">About</a>
         </nav>
         <a href="/en/contact/" class="footer-cta">Connect <span class="footer-cta-arrow">→</span></a>
       </div>
@@ -263,9 +345,9 @@ const EN_FOOTER = `<footer class="footer">
           </a>
         </div>
         <div class="footer-legal">
-          <a href="/privacidad/">Privacy</a>
-          <a href="/aviso-legal/">Legal</a>
-          <a href="/cookies/">Cookies</a>
+          <a href="/en/privacy/">Privacy</a>
+          <a href="/en/legal-notice/">Legal</a>
+          <a href="/en/cookies/">Cookies</a>
         </div>
       </div>
     </div>

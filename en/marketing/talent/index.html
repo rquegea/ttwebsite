@@ -4,17 +4,166 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Talent — T&T</title>
-  <meta name="description" content="Talent recruitment and development services">
+  <meta name="description" content="Talent recruitment, training and development for companies that understand people are the real differentiator">
 </head>
 <body class="light-theme">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #FFE07A;
+    }
+    .page-wrapper {
+      background: #FFE07A;
+    }
+    .light-theme .header {
+      background: transparent !important;
+      border-bottom-color: transparent !important;
+    }
+    .light-theme .header.header-scrolled {
+      background: #FFE07A !important;
+      border-bottom: 2px solid rgba(48,32,0,0.2) !important;
+    }
+    .light-theme .header .nav > ul > li > a,
+    .light-theme .header .nav-vertical-label,
+    .light-theme .header .header-connect-btn {
+      color: #302000 !important;
+      border-color: rgba(48,32,0,0.35) !important;
+    }
+    .light-theme .header .mega-menu a {
+      color: #fff !important;
+    }
+    .light-theme .header .connect-arrow {
+      background: #302000 !important;
+      color: #FFE07A !important;
+    }
+    .light-theme .header .logo-img {
+      filter: brightness(0) saturate(100%) invert(15%) sepia(35%) saturate(800%) hue-rotate(15deg) brightness(55%) contrast(110%);
+    }
+    .page-wrapper h1,
+    .page-wrapper h2,
+    .page-wrapper p,
+    .page-wrapper span,
+    .page-wrapper strong {
+      color: #302000 !important;
+    }
+  </style>
   <header class="header"></header>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var logoImg = document.querySelector('.header .logo-img');
+      if (logoImg) logoImg.src = '/tytnuevologonegro.png';
+
+      const experienceSection = document.getElementById('experience-section');
+      const transitionSection = document.getElementById('transition-section');
+
+      function updateColors() {
+        if (!experienceSection || !transitionSection) return;
+
+        const windowHeight = window.innerHeight;
+        const experienceRect = experienceSection.getBoundingClientRect();
+        const transitionRect = transitionSection.getBoundingClientRect();
+
+        const startPoint = experienceRect.top - windowHeight / 2;
+        const endPoint = transitionRect.top - windowHeight / 2;
+        const totalDistance = endPoint - startPoint;
+
+        let progress = (startPoint * -1) / totalDistance;
+        progress = Math.max(0, Math.min(1, progress));
+
+        const bgStart = [255, 224, 122];
+        const bgEnd = [255, 255, 255];
+        const bgCurrent = bgStart.map((c, i) => Math.round(c + (bgEnd[i] - c) * progress));
+        const bgHex = '#' + bgCurrent.map(c => c.toString(16).padStart(2, '0').toUpperCase()).join('');
+
+        const textStart = [48, 32, 0];
+        const textEnd = [255, 255, 255];
+        const textCurrent = textStart.map((c, i) => Math.round(c + (textEnd[i] - c) * progress));
+        const textHex = '#' + textCurrent.map(c => c.toString(16).padStart(2, '0').toUpperCase()).join('');
+
+        document.body.style.background = bgHex;
+        document.querySelector('.page-wrapper').style.background = bgHex;
+
+        const header = document.querySelector('.light-theme .header');
+        if (header) {
+          header.style.setProperty('background', bgHex, 'important');
+        }
+
+        const navLinks = document.querySelectorAll('.light-theme .header .nav > ul > li > a, .light-theme .header .nav-vertical-label, .light-theme .header .header-connect-btn');
+        navLinks.forEach(el => el.style.color = textHex);
+
+        const arrow = document.querySelector('.light-theme .header .connect-arrow');
+        if (arrow) {
+          arrow.style.background = textHex;
+        }
+
+        const allTexts = document.querySelectorAll('.page-wrapper h1, .page-wrapper h2, .page-wrapper p, .page-wrapper span');
+        allTexts.forEach(el => {
+          el.style.color = textHex;
+        });
+      }
+
+      window.addEventListener('scroll', updateColors);
+      updateColors();
+    });
+  </script>
+  <div class="page-wrapper">
   <main>
-    <section class="subpage-hero">
-      <div class="container">
-        <h1>Talent</h1>
+
+    <!-- HERO -->
+    <section style="padding: 0 3rem 6rem; margin-top: -1rem;">
+      <div style="display: flex; align-items: flex-start; gap: 0;">
+        <div style="width: 600px; height: 200px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; overflow: hidden;">
+          <span style="font-family: Helvetica, Arial, sans-serif; font-weight: 600; font-size: 1.4rem;">t&amp;team</span>
+        </div>
+        <div style="width: 600px; height: 200px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; overflow: hidden;">
+          <h1 style="font-family: Helvetica, Arial, sans-serif; font-size: 5rem; font-weight: 700; line-height: 1; margin: 0 0 0.75rem 0;">Talent</h1>
+          <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.25rem; margin: 0; line-height: 1.4; text-align: left;"><strong style="font-family: Helvetica, Arial, sans-serif;">The most valuable asset</strong> of any brand is called people.</p>
+        </div>
       </div>
     </section>
+
+    <!-- STATEMENT -->
+    <section style="padding: 6rem 3rem;">
+      <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+        <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.1; margin: 0 0 2.5rem 0;">We find, develop and retain the talent that takes brands to the next level.</h2>
+        <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; margin: 0 0 1.5rem 0;">Talent is not a resource — it's the differentiator. We help organisations identify, attract and retain the professionals who best fit their culture and objectives. We also develop continuous training programmes that keep teams ahead of the curve in a constantly changing environment.</p>
+        <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; margin: 0;">We cover recruitment for marketing and communications profiles, training in digital tools and methodologies, and teambuilding designed to strengthen internal culture. With the same rigour we apply to external brand work.</p>
+      </div>
+    </section>
+
+    <!-- 360 EXPERIENCE -->
+    <section id="experience-section" style="padding: 6rem 3rem;">
+      <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.05; margin: 0 0 3rem 0;">A 360°<br>talent strategy</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 900px;">
+        <div style="background: rgba(48,32,0,0.1); border-radius: 8px; min-height: 320px; padding: 2rem; display: flex; flex-direction: column; justify-content: flex-end;">
+          <span style="font-family: Helvetica, Arial, sans-serif; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;">Work</span>
+          <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1rem; margin: 0; line-height: 1.5;"><strong style="font-family: Helvetica, Arial, sans-serif;">AI training programme for marketing teams</strong> · Design and delivery of hands-on training on generative AI tools applied to creativity, data and strategy.</p>
+        </div>
+        <div style="background: rgba(87,59,34,0.07); border-radius: 8px; min-height: 320px;"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="transition-section" style="padding: 8rem 3rem;">
+      <p style="font-family: Helvetica, Arial, sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 2rem 0;">Contact</p>
+      <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.1; margin: 0 0 2.5rem 0;">Want to build<br>the team your brand<br>deserves? Let's talk.</h2>
+      <a href="/en/contact/" style="display: inline-flex; align-items: center; gap: 0.75rem; background: #302000; color: #FFE07A !important; font-family: Helvetica, Arial, sans-serif; font-size: 0.95rem; font-weight: 600; padding: 0.9rem 1.8rem; border-radius: 100px; text-decoration: none;">Get in touch <span style="background: #FFE07A; color: #302000 !important; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-size: 1rem;">→</span></a>
+    </section>
+
+    <!-- PILLARS -->
+    <section style="padding: 6rem 3rem;">
+      <div style="max-width: 700px; margin: 0 auto 6rem auto; text-align: center;">
+        <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.1; margin: 0 0 2rem 0;">Senior profile recruitment with strategic vision and technology mastery.</h2>
+        <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; margin: 0;">We specialise in marketing, communications, data and technology profiles. We understand the sector from the inside — which means we evaluate cultural and technical fit with real judgment, not just CVs. We find the people who aren't actively looking, because the best ones rarely are.</p>
+      </div>
+      <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+        <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.1; margin: 0 0 2rem 0;">Continuous training is not a perk — it's a competitive advantage.</h2>
+        <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; margin: 0;">We design bespoke training programmes for teams that want to stay ahead in AI, data, creativity and strategy. We combine theoretical knowledge with practical application — using our own tools as a real training ground.</p>
+      </div>
+    </section>
+
   </main>
+  </div>
   <footer class="footer"></footer>
 </body>
 </html>

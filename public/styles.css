@@ -267,6 +267,36 @@ a {
     gap: 2rem;
 }
 
+.lang-switcher {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: inherit;
+    text-decoration: none;
+    padding: 0.4rem 0.65rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+.lang-switcher:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.1);
+}
+.header.header-scrolled .lang-switcher,
+.light-theme .lang-switcher {
+    border-color: rgba(10, 10, 10, 0.25);
+    color: #0A0A0A;
+}
+.header.header-scrolled .lang-switcher:hover,
+.light-theme .lang-switcher:hover {
+    background: rgba(10, 10, 10, 0.08);
+}
+
 .header-connect-btn {
     display: inline-flex;
     align-items: center;

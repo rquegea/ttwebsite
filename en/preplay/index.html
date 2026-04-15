@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/favicon/favicontyt.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preplay | Simulate your campaign before launch — T&T</title>
+  <meta name="description" content="T&T's Preplay: simulate market reaction before launching your campaign. Synthetic agents, results in 48h, zero risk.">
+  <link rel="canonical" href="https://www.tyt.es/en/preplay/">
+  <link rel="alternate" hreflang="es" href="https://www.tyt.es/preplay/">
+  <link rel="alternate" hreflang="en" href="https://www.tyt.es/en/preplay/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/src/main.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Preplay",
+    "provider": { "@type": "Organization", "name": "T&T", "url": "https://www.tyt.es" },
+    "description": "Market simulation with synthetic agents to validate campaigns and messaging before launch.",
+    "serviceType": "Market Simulation",
+    "areaServed": "Worldwide"
+  }
+  </script>
+</head>
+
+<body class="preplay-page">
+
+  <style>
+    .preplay-page {
+      background-color: #1C1C1C;
+      color: #FFFFFF;
+    }
+    .preplay-page .header:not(.header-scrolled) {
+      background: transparent;
+      border-bottom-color: transparent;
+    }
+    .br-hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 clamp(2rem, 5vw, 5rem) 5rem;
+    }
+    .br-hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-rows: auto auto;
+      column-gap: 1.5rem;
+      align-items: start;
+      width: fit-content;
+    }
+    .br-hero-label {
+      grid-column: 1;
+      grid-row: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.45);
+      white-space: nowrap;
+      line-height: 1;
+      padding-top: calc((clamp(2rem, 4.5vw, 4.5rem) * 0.05));
+    }
+    .br-h1-line1 {
+      grid-column: 2;
+      grid-row: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 4.5rem);
+      font-weight: 500;
+      line-height: 1;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+    .br-h1-line2 {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 4.5rem);
+      font-weight: 500;
+      line-height: 1;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+      padding-top: 0.15em;
+      margin-bottom: 2.5rem;
+    }
+    .br-hero-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0.6rem 0.6rem 1.4rem;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 999px;
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      text-decoration: none;
+      transition: background 0.25s ease;
+    }
+    .br-hero-cta a:hover { background: rgba(255,255,255,0.08); }
+    .br-hero-cta .cta-arrow {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: #FFFFFF; color: #1C1C1C;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .br-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Inter', sans-serif; font-size: 0.7rem;
+      letter-spacing: 0.06em; z-index: 1;
+    }
+    .br-scroll-circle {
+      width: 52px; height: 52px;
+      border: 1px solid rgba(255,255,255,0.35); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.62rem; letter-spacing: 0.06em;
+    }
+    .br-scroll-arrow { font-size: 1rem; margin-top: 0.4rem; color: rgba(255,255,255,0.4); }
+
+    .br-what {
+      background-color: #F0EDE8;
+      padding: 8rem clamp(2rem, 6vw, 8rem);
+      display: flex; justify-content: center;
+    }
+    .br-what-content { max-width: 780px; width: 100%; }
+    .br-what-content h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+      font-weight: 700; line-height: 1.1; color: #0A0A0A;
+      margin: 0 0 3rem 0; letter-spacing: -0.025em;
+    }
+    .br-what-content p {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem; font-weight: 400; line-height: 1.75;
+      color: #333333; margin: 0 0 1.25rem 0;
+    }
+
+    .br-stats {
+      background-color: #F0EDE8;
+      padding: 6rem clamp(2rem, 6vw, 8rem);
+      display: grid; grid-template-columns: 220px 1fr;
+      gap: 0 4rem; align-items: start;
+    }
+    .br-stats-label {
+      font-family: 'Inter', sans-serif; font-size: 0.8rem;
+      font-weight: 400; color: #888; letter-spacing: 0.02em; padding-top: 0.3rem;
+    }
+    .br-stats-list { list-style: none; margin: 0; padding: 0; }
+    .br-stats-list li {
+      font-family: 'Inter', sans-serif; font-size: 0.9rem;
+      font-weight: 400; color: #1A1A1A; line-height: 1.5;
+      padding: 1.5rem 0; border-bottom: 1px solid #D5D0CA;
+    }
+    .br-stats-list li:first-child { border-top: 1px solid #D5D0CA; }
+    .br-stats-list li strong { font-weight: 700; }
+
+    .br-usecases {
+      background-color: #F0EDE8;
+      padding: 6rem clamp(2rem, 6vw, 8rem) 7rem;
+      text-align: center;
+    }
+    .br-usecases-inner { display: flex; flex-direction: column; align-items: center; gap: 3rem; }
+    .br-usecases-sidebar { display: flex; flex-direction: column; align-items: center; }
+    .br-usecases-label {
+      font-family: 'Inter', sans-serif; font-size: 0.8rem;
+      font-weight: 400; color: #888; letter-spacing: 0.02em; margin: 0;
+    }
+    .br-usecases-arrow { display: none; }
+    .br-usecases-track {
+      display: grid; grid-template-columns: repeat(3, 260px);
+      gap: 1rem; justify-content: center;
+    }
+    .br-usecase-card {
+      background: #FFFFFF; border-radius: 12px; overflow: hidden;
+      display: flex; flex-direction: column; position: relative; min-height: 360px;
+    }
+    .br-usecase-card-top { padding: 1.75rem 1.75rem 1.25rem; flex: 1; }
+    .br-usecase-card-top h3 {
+      font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600;
+      color: #0A0A0A; margin: 0 0 0.6rem 0; letter-spacing: -0.01em;
+    }
+    .br-usecase-card-top p {
+      font-family: 'Inter', sans-serif; font-size: 0.82rem;
+      font-weight: 400; line-height: 1.6; color: #555; margin: 0;
+    }
+    .br-usecase-card-img { height: 148px; flex-shrink: 0; }
+    .br-usecase-toggle {
+      position: absolute; bottom: 164px; right: 1rem;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: #0A0A0A; color: #FFFFFF; border: none;
+      font-size: 1.1rem; line-height: 1; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s ease; font-weight: 300;
+    }
+    .br-usecase-toggle:hover, .br-usecase-toggle.active { background: #CC2936; }
+
+    .br-faqs {
+      background-color: #F0EDE8;
+      padding: 8rem clamp(2rem, 6vw, 8rem);
+      display: flex; justify-content: center;
+    }
+    .br-faqs-inner {
+      display: flex; flex-direction: column; align-items: center;
+      width: 100%; max-width: 780px;
+    }
+    .br-faqs-sidebar { margin-bottom: 1rem; }
+    .br-faqs-label {
+      font-family: 'Inter', sans-serif; font-size: 0.8rem;
+      font-weight: 400; color: #888; letter-spacing: 0.02em;
+    }
+    .br-faqs-content { width: 100%; }
+    .br-faqs-title {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 700;
+      line-height: 1.15; color: #0A0A0A; letter-spacing: -0.025em;
+      margin: 0 0 5rem 0;
+    }
+    .br-faq-item { padding: 3rem 0; border-top: 1px solid #D5D0CA; }
+    .br-faq-item:last-child { border-bottom: 1px solid #D5D0CA; }
+    .br-faq-item h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 2.2rem); font-weight: 600;
+      line-height: 1.2; color: #0A0A0A; letter-spacing: -0.02em;
+      margin: 0 0 1.25rem 0;
+    }
+    .br-faq-item p {
+      font-family: 'Inter', sans-serif; font-size: 1rem;
+      font-weight: 400; line-height: 1.75; color: #444;
+      margin: 0; max-width: 60ch;
+    }
+
+    .br-explore {
+      background-color: #141414;
+      padding: 7rem clamp(2rem, 6vw, 8rem);
+    }
+    .br-explore-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start;
+    }
+    .br-explore-heading h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700;
+      line-height: 1.1; color: #FFFFFF; letter-spacing: -0.025em; margin: 0;
+    }
+    .br-explore-list { list-style: none; margin: 0; padding: 0; }
+    .br-explore-list li { border-top: 1px solid rgba(255,255,255,0.1); }
+    .br-explore-list li:last-child { border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .br-explore-list a {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.75rem 0; text-decoration: none; transition: opacity 0.2s ease;
+    }
+    .br-explore-list a:hover { opacity: 0.6; }
+    .br-explore-name {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.8rem); font-weight: 500;
+      color: #FFFFFF; letter-spacing: -0.02em;
+    }
+    .br-explore-arrow {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      color: #FFFFFF; font-size: 1rem; flex-shrink: 0;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .br-explore-list a:hover .br-explore-arrow {
+      background: #FFFFFF; color: #141414; border-color: #FFFFFF;
+    }
+
+    .br-cta {
+      background-color: #F0EDE8;
+      padding: 10rem clamp(2rem, 6vw, 8rem);
+      border-top: 1px solid #D5D0CA;
+      text-align: center; display: flex; flex-direction: column; align-items: center;
+    }
+    .br-cta h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 5.5rem); font-weight: 400;
+      line-height: 1.1; color: #0A0A0A; letter-spacing: -0.025em;
+      max-width: 16ch; margin: 0 0 3rem 0;
+    }
+    .br-cta a {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.85rem 2rem; border: 1px solid rgba(0,0,0,0.25);
+      border-radius: 999px; color: #0A0A0A;
+      font-family: 'Inter', sans-serif; font-size: 0.95rem;
+      text-decoration: none; transition: background 0.25s ease;
+    }
+    .br-cta a:hover { background: rgba(0,0,0,0.06); }
+
+    .preplay-page .footer {
+      background-color: #141414;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 768px) {
+      .br-usecases-track { grid-template-columns: 1fr; }
+      .br-explore-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <!-- Hero -->
+  <section class="br-hero">
+    <div class="br-hero-inner">
+      <p class="br-hero-label">Preplay</p>
+      <p class="br-h1-line1">Test your campaign before you launch.</p>
+      <p class="br-h1-line2">In a digital twin of the market.</p>
+      <div class="br-hero-cta" style="grid-column:1/-1;">
+        <a href="/en/contact/">Request a simulation <span class="cta-arrow">→</span></a>
+      </div>
+    </div>
+    <div class="br-scroll">
+      <div class="br-scroll-circle">Scroll</div>
+      <div class="br-scroll-arrow">↓</div>
+    </div>
+  </section>
+
+  <!-- What is it -->
+  <section class="br-what">
+    <div class="br-what-content">
+      <h2>Simulate the market before the market judges you.</h2>
+      <p>Preplay creates a synthetic environment of agents that replicate your audience's behaviour, your competitors and the media ecosystem. Before you spend a cent on production or media buying, you already know how the market will react.</p>
+      <p>Not a focus group. Not a survey. A dynamic simulation with dozens of agents interacting with each other — returning behavioural patterns, objections, adoption and rejection with a precision no traditional method can match.</p>
+    </div>
+  </section>
+
+  <!-- Metrics -->
+  <div class="br-stats">
+    <p class="br-stats-label">Why it works</p>
+    <ul class="br-stats-list">
+      <li><strong>60+ synthetic agents</strong> that replicate real audience profiles with distinct behaviours, biases and motivations</li>
+      <li><strong>40 iteration rounds</strong> per simulation to capture market evolution and second-order effects</li>
+      <li><strong>Results in 48 hours</strong> from brief to final report with actionable recommendations</li>
+      <li><strong>Cross-validation</strong> against real market data to calibrate the precision of every simulation</li>
+      <li><strong>Up to 40% savings</strong> in failed production costs by catching problems before launch</li>
+    </ul>
+  </div>
+
+  <section class="cta-connect">
+    <div class="cta-connect-container container">
+      <span class="cta-connect-label">Connect</span>
+      <h2 class="cta-connect-heading">What can we do for <span class="cta-you">you</span>?</h2>
+      <a href="/en/contact/" class="cta-connect-btn">
+        <span class="cta-connect-btn-text">Write to us</span>
+        <span class="cta-connect-btn-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="br-usecases">
+    <div class="br-usecases-inner">
+      <div class="br-usecases-sidebar">
+        <p class="br-usecases-label">Use cases</p>
+      </div>
+      <div class="br-usecases-track">
+        <div class="br-usecase-card">
+          <div class="br-usecase-card-top">
+            <h3>Campaign pre-test</h3>
+            <p>Simulate your audience's reaction to a message, creative or concept before investing in production.</p>
+          </div>
+          <div class="br-usecase-card-img" style="background: linear-gradient(135deg, #e8e0d4 0%, #c9bfb3 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M14 28 L24 38 L42 18" stroke="#999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <button class="br-usecase-toggle" aria-label="Show more">+</button>
+        </div>
+        <div class="br-usecase-card">
+          <div class="br-usecase-card-top">
+            <h3>Message testing</h3>
+            <p>Validate which copy version connects best with each segment. No real sample, no waiting.</p>
+          </div>
+          <div class="br-usecase-card-img" style="background: linear-gradient(135deg, #d4e0e8 0%, #b3c9d4 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect x="12" y="16" width="32" height="24" rx="3" stroke="#999" stroke-width="1.5"/><path d="M20 28h16M20 22h10" stroke="#999" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <button class="br-usecase-toggle" aria-label="Show more">+</button>
+        </div>
+        <div class="br-usecase-card">
+          <div class="br-usecase-card-top">
+            <h3>Crisis simulation</h3>
+            <p>Anticipate how the market would react to an adverse scenario and prepare the optimal response.</p>
+          </div>
+          <div class="br-usecase-card-img" style="background: linear-gradient(135deg, #e8d4d4 0%, #d4b3b3 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="20" stroke="#999" stroke-width="1.5"/><path d="M28 18v12M28 36v2" stroke="#999" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <button class="br-usecase-toggle" aria-label="Show more">+</button>
+        </div>
+        <div class="br-usecase-card">
+          <div class="br-usecase-card-top">
+            <h3>Concept validation</h3>
+            <p>Test a product or service idea before investing in development. Identify adoption barriers.</p>
+          </div>
+          <div class="br-usecase-card-img" style="background: linear-gradient(135deg, #d4e8d8 0%, #b3d4ba 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M28 12 L34 24 L48 26 L38 36 L40 50 L28 44 L16 50 L18 36 L8 26 L22 24 Z" stroke="#999" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <button class="br-usecase-toggle" aria-label="Show more">+</button>
+        </div>
+        <div class="br-usecase-card">
+          <div class="br-usecase-card-top">
+            <h3>Synthetic A/B testing</h3>
+            <p>Compare product, price or messaging variants without needing a real audience or wait time.</p>
+          </div>
+          <div class="br-usecase-card-img" style="background: linear-gradient(135deg, #e8e4d4 0%, #d4ccb3 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><rect x="10" y="18" width="14" height="20" rx="2" stroke="#999" stroke-width="1.5"/><rect x="32" y="18" width="14" height="20" rx="2" stroke="#999" stroke-width="1.5"/><path d="M28 14v28" stroke="#999" stroke-width="1.5" stroke-dasharray="3 3"/></svg>
+          </div>
+          <button class="br-usecase-toggle" aria-label="Show more">+</button>
+        </div>
+        <div class="br-usecase-card">
+          <div class="br-usecase-card-top">
+            <h3>Market research</h3>
+            <p>Get qualitative and quantitative insights in 48h. Replace months of fieldwork with precise simulation.</p>
+          </div>
+          <div class="br-usecase-card-img" style="background: linear-gradient(135deg, #dde8d4 0%, #c0d4b3 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><circle cx="26" cy="26" r="14" stroke="#999" stroke-width="1.5"/><path d="M36 36 L46 46" stroke="#999" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <button class="br-usecase-toggle" aria-label="Show more">+</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="br-faqs">
+    <div class="br-faqs-inner">
+      <div class="br-faqs-sidebar">
+        <span class="br-faqs-label">FAQs</span>
+      </div>
+      <div class="br-faqs-content">
+        <h2 class="br-faqs-title">Everything you need to know about Preplay.</h2>
+
+        <div class="br-faq-item">
+          <h3>What is a synthetic agent?</h3>
+          <p>A synthetic agent is a computational model that replicates the behaviour of a real type of person — their motivations, biases, socioeconomic context and decision patterns. It's not a bot or an automated survey: it's a dynamic simulation that interacts with other agents and produces emergent behaviours a traditional focus group could never capture.</p>
+        </div>
+
+        <div class="br-faq-item">
+          <h3>How accurate are the simulations?</h3>
+          <p>Preplay's agents are calibrated with real market data, consumer behaviour studies and T&T's own data. Every simulation includes a cross-validation process. Results are always expressed with confidence ranges so you make informed decisions — not blind ones.</p>
+        </div>
+
+        <div class="br-faq-item">
+          <h3>How is it different from a focus group or a survey?</h3>
+          <p>Focus groups are slow, expensive, biased by group dynamics and hard to scale. Surveys measure stated intent, not real behaviour. Preplay simulates how people actually act, not how they say they'd act — and it does it in 48 hours with dozens of simultaneous profiles.</p>
+        </div>
+
+        <div class="br-faq-item">
+          <h3>What do I need to start a simulation?</h3>
+          <p>A brief with the simulation objective, the concept or message to test, the target audience definition and the relevant competitive context. The T&T team handles the rest: agent design, scenario setup and results analysis.</p>
+        </div>
+
+        <div class="br-faq-item">
+          <h3>How long does the full process take?</h3>
+          <p>From brief to final report: 48–72 hours for standard simulations. For more complex projects with multiple scenarios or audiences, the timeline can extend to 5 working days. In any case, significantly faster than any traditional research method.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore Solutions -->
+  <section class="br-explore">
+    <div class="br-explore-inner">
+      <div class="br-explore-heading">
+        <h2>Explore our technology solutions.</h2>
+      </div>
+      <ul class="br-explore-list">
+        <li>
+          <a href="/en/tech/2laps/">
+            <span class="br-explore-name">2laps</span>
+            <span class="br-explore-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="/en/tech/1000er/">
+            <span class="br-explore-name">1000er.ai</span>
+            <span class="br-explore-arrow">→</span>
+          </a>
+        </li>
+        <li>
+          <a href="/en/brand-radar/">
+            <span class="br-explore-name">Brand Radar</span>
+            <span class="br-explore-arrow">→</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="br-cta">
+    <h2>Ready to test before you launch?</h2>
+    <a href="/en/contact/">Request a simulation →</a>
+  </section>
+
+  <script>
+    document.querySelectorAll('.br-usecase-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('active');
+        btn.textContent = btn.classList.contains('active') ? '−' : '+';
+      });
+    });
+  </script>
+
+</body>
+</html>

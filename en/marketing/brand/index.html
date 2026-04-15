@@ -4,26 +4,173 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brand — T&T</title>
-  <meta name="description" content="Brand strategy and positioning services">
-  <link rel="stylesheet" href="/styles.css">
+  <meta name="description" content="Brand strategy, positioning and identity that builds brands that endure">
 </head>
 <body class="light-theme">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #C8EC58;
+    }
+    .brand-page-wrapper {
+      background: #C8EC58;
+    }
+    /* Header background */
+    .light-theme .header {
+      background: transparent !important;
+      border-bottom-color: transparent !important;
+    }
+    .light-theme .header.header-scrolled {
+      background: #C8EC58 !important;
+      border-bottom: 2px solid rgba(26,40,0,0.2) !important;
+    }
+    /* Nav text */
+    .light-theme .header .nav > ul > li > a,
+    .light-theme .header .nav-vertical-label,
+    .light-theme .header .header-connect-btn {
+      color: #1A2800 !important;
+      border-color: rgba(26,40,0,0.35) !important;
+    }
+    .light-theme .header .mega-menu a {
+      color: #fff !important;
+    }
+    .light-theme .header .connect-arrow {
+      background: #1A2800 !important;
+      color: #C8EC58 !important;
+    }
+    /* Logo tint */
+    .light-theme .header .logo-img {
+      filter: brightness(0) saturate(100%) invert(15%) sepia(35%) saturate(800%) hue-rotate(15deg) brightness(55%) contrast(110%);
+    }
+    /* Content text */
+    .brand-page-wrapper h1,
+    .brand-page-wrapper h2,
+    .brand-page-wrapper p,
+    .brand-page-wrapper span,
+    .brand-page-wrapper strong {
+      color: #1A2800 !important;
+    }
+  </style>
   <header class="header"></header>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var logoImg = document.querySelector('.header .logo-img');
+      if (logoImg) logoImg.src = '/tytnuevologonegro.png';
+
+      // Transition colors on scroll
+      const experienceSection = document.getElementById('experience-section');
+      const transitionSection = document.getElementById('transition-section');
+
+      function updateColors() {
+        if (!experienceSection || !transitionSection) return;
+
+        const windowHeight = window.innerHeight;
+        const experienceRect = experienceSection.getBoundingClientRect();
+        const transitionRect = transitionSection.getBoundingClientRect();
+
+        const startPoint = experienceRect.top - windowHeight / 2;
+        const endPoint = transitionRect.top - windowHeight / 2;
+        const totalDistance = endPoint - startPoint;
+
+        let progress = (startPoint * -1) / totalDistance;
+        progress = Math.max(0, Math.min(1, progress));
+
+        // Background: #C8EC58 -> #FFFFFF
+        const bgStart = [200, 236, 88];
+        const bgEnd = [255, 255, 255];
+        const bgCurrent = bgStart.map((c, i) => Math.round(c + (bgEnd[i] - c) * progress));
+        const bgHex = '#' + bgCurrent.map(c => c.toString(16).padStart(2, '0').toUpperCase()).join('');
+
+        // Text: #1A2800 -> #FFFFFF
+        const textStart = [26, 40, 0];
+        const textEnd = [255, 255, 255];
+        const textCurrent = textStart.map((c, i) => Math.round(c + (textEnd[i] - c) * progress));
+        const textHex = '#' + textCurrent.map(c => c.toString(16).padStart(2, '0').toUpperCase()).join('');
+
+        document.body.style.background = bgHex;
+        document.querySelector('.brand-page-wrapper').style.background = bgHex;
+
+        const header = document.querySelector('.light-theme .header');
+        if (header) {
+          header.style.setProperty('background', bgHex, 'important');
+        }
+
+        const navLinks = document.querySelectorAll('.light-theme .header .nav > ul > li > a, .light-theme .header .nav-vertical-label, .light-theme .header .header-connect-btn');
+        navLinks.forEach(el => el.style.color = textHex);
+
+        const arrow = document.querySelector('.light-theme .header .connect-arrow');
+        if (arrow) {
+          arrow.style.background = textHex;
+        }
+
+        const allTexts = document.querySelectorAll('.brand-page-wrapper h1, .brand-page-wrapper h2, .brand-page-wrapper p, .brand-page-wrapper span');
+        allTexts.forEach(el => {
+          el.style.color = textHex;
+        });
+      }
+
+      window.addEventListener('scroll', updateColors);
+      updateColors();
+    });
+  </script>
+  <div class="brand-page-wrapper">
   <main>
-    <section class="subpage-hero">
-      <div class="container">
-        <h1>Brand</h1>
-      </div>
-    </section>
-    <section class="marketing-section">
-      <div class="container">
-        <div class="marketing-grid">
-          <div class="marketing-box left"></div>
-          <div class="marketing-box right"></div>
+
+    <!-- HERO -->
+    <section style="padding: 0 3rem 6rem; margin-top: -1rem;">
+      <div style="display: flex; align-items: flex-start; gap: 0;">
+        <div style="width: 600px; height: 200px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; overflow: hidden;">
+          <span style="font-family: Helvetica, Arial, sans-serif; font-weight: 600; font-size: 1.4rem;">t&amp;think</span>
+        </div>
+        <div style="width: 600px; height: 200px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; overflow: hidden;">
+          <h1 style="font-family: Helvetica, Arial, sans-serif; font-size: 5rem; font-weight: 700; line-height: 1; margin: 0 0 0.75rem 0;">Brand</h1>
+          <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.25rem; margin: 0; line-height: 1.4; text-align: left;"><strong style="font-family: Helvetica, Arial, sans-serif;">Build brands that endure</strong> with strategy, identity and purpose.</p>
         </div>
       </div>
     </section>
+
+    <!-- STATEMENT -->
+    <section style="padding: 6rem 3rem;">
+      <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+        <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.1; margin: 0 0 2.5rem 0;">We take your brand from concept to culture.</h2>
+        <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; margin: 0 0 1.5rem 0;">We help brands grow in an environment where attention is the scarcest asset. Our approach connects every piece of your brand world — ensuring a coherent, fluid and impactful presence across <strong style="font-family: Helvetica, Arial, sans-serif;">digital platforms</strong>, <strong style="font-family: Helvetica, Arial, sans-serif;">physical spaces</strong> and <strong style="font-family: Helvetica, Arial, sans-serif;">media</strong>.</p>
+        <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; margin: 0;">As your brand partner, we integrate strategy, creativity and proprietary technology to bring your vision to life. Whether you want to grow globally or strengthen your local presence, we give you the tools and intelligence to make it happen.</p>
+      </div>
+    </section>
+
+    <!-- 360 EXPERIENCE -->
+    <section id="experience-section" style="padding: 6rem 3rem;">
+      <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.05; margin: 0 0 3rem 0;">A 360°<br>brand experience</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 900px;">
+        <div style="background: rgba(26,40,0,0.1); border-radius: 8px; min-height: 320px; padding: 2rem; display: flex; flex-direction: column; justify-content: flex-end;">
+          <span style="font-family: Helvetica, Arial, sans-serif; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;">Work</span>
+          <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1rem; margin: 0; line-height: 1.5;"><strong style="font-family: Helvetica, Arial, sans-serif;">Brand identity redesign</strong> · A renewed voice that activates experiences across all digital and physical touchpoints.</p>
+        </div>
+        <div style="background: rgba(87,59,34,0.07); border-radius: 8px; min-height: 320px;"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="transition-section" style="padding: 8rem 3rem;">
+      <p style="font-family: Helvetica, Arial, sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 2rem 0;">Contact</p>
+      <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.1; margin: 0 0 2.5rem 0;">How can we help<br>you innovate?<br>Let's talk.</h2>
+      <a href="/en/contact/" style="display: inline-flex; align-items: center; gap: 0.75rem; background: #1A2800; color: #C8EC58 !important; font-family: Helvetica, Arial, sans-serif; font-size: 0.95rem; font-weight: 600; padding: 0.9rem 1.8rem; border-radius: 100px; text-decoration: none;">Get in touch <span style="background: #C8EC58; color: #1A2800 !important; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-size: 1rem;">→</span></a>
+    </section>
+
+    <!-- PILLARS -->
+    <section style="padding: 6rem 3rem;">
+      <div style="max-width: 700px; margin: 0 auto 6rem auto; text-align: center;">
+        <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.1; margin: 0 0 2rem 0;">Ready to serve every creative ambition.</h2>
+        <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; margin: 0;">Few partners can combine world-class creativity with proprietary technology. Whatever your vision, we bring senior talent, our own AI tools and a method that blends exceptional craft with real data — creating brand experiences that generate cultural resonance.</p>
+      </div>
+      <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+        <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.1; margin: 0 0 2rem 0;">We build on strategic foundations to reach your business vision.</h2>
+        <p style="font-family: Helvetica, Arial, sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.7; margin: 0;">We don't just create creative pieces — we build the systems and tools needed for those experiences to come alive across the entire brand ecosystem. We use strategy and market intelligence to understand what makes sense for the business, then design the customer journeys that inspire action and build brand love.</p>
+      </div>
+    </section>
+
   </main>
+  </div>
   <footer class="footer"></footer>
 </body>
 </html>

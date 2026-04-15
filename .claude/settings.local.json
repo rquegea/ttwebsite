@@ -113,7 +113,11 @@
       "Bash(gsutil -m rsync -r -d -n out gs://trucoytrufa.es)",
       "Bash(gsutil -m rsync -r -d out gs://trucoytrufa.es)",
       "Bash(gsutil cat *)",
-      "Bash(gsutil -m rsync -r out gs://trucoytrufa.es)"
+      "Bash(gsutil -m rsync -r out gs://trucoytrufa.es)",
+      "Bash(awk 'NR>1 {print $2}')",
+      "Bash(awk 'NR>1 {print $2, $1, $9}')",
+      "Bash(gsutil --version)",
+      "Bash(bash *)"
     ]
   }
 }
