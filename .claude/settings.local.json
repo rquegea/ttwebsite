@@ -97,7 +97,23 @@
       "Bash(sed -i '' 's#/think/estrategia/images/#/images/think/estrategia/#g' think/estrategia/index.html)",
       "Bash(sed -i '' 's#/think/data-analitica/images/#/images/think/data-analitica/#g' think/data-analitica/index.html)",
       "Bash(sed -i '' 's#/trade/trade-marketing/images/#/images/trade/trade-marketing/#g' trade/trade-marketing/index.html)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(git reset:*)",
+      "Bash(git -C /Users/macbook/t-t-websiterecuperada remote -v)",
+      "Bash(gcloud *)",
+      "Bash(gsutil cp *)",
+      "Bash(gsutil -m rsync -r /Users/macbook/t-t-websiterecuperada/public gs://trucoytrufa.es)",
+      "Bash(gsutil ls *)",
+      "Bash(gsutil -m rsync -r /Users/macbook/t-t-websiterecuperada/src gs://trucoytrufa.es/src)",
+      "Bash(gsutil stat *)",
+      "Bash(gsutil iam *)",
+      "Bash(gsutil web *)",
+      "Bash(gsutil -m acl ch -r -u AllUsers:R gs://trucoytrufa.es)",
+      "Bash(chmod +x *)",
+      "Bash(gsutil -m rsync -r -d -n out gs://trucoytrufa.es)",
+      "Bash(gsutil -m rsync -r -d out gs://trucoytrufa.es)",
+      "Bash(gsutil cat *)",
+      "Bash(gsutil -m rsync -r out gs://trucoytrufa.es)"
     ]
   }
 }

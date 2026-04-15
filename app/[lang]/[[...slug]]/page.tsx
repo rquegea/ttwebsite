@@ -6,10 +6,67 @@ import { getPublishedProjects, getProjectBySlug } from '@/lib/supabase/queries';
 import type { Project } from '@/lib/supabase/types';
 import { getHeaderHtml, getFooterHtml } from '@/lib/nav';
 
-export const revalidate = 60;
+export const dynamicParams = false;
 
 interface Props {
   params: { lang: string; slug?: string[] };
+}
+
+export async function generateStaticParams() {
+  const root = process.cwd();
+  const results: { lang: string; slug: string[] }[] = [];
+
+  function walk(dir: string, lang: string, prefix: string[]) {
+    if (!fs.existsSync(dir)) return;
+    if (fs.existsSync(path.join(dir, 'index.html'))) {
+      results.push({ lang, slug: prefix });
+    }
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      if (entry.name.startsWith('.') || entry.name.startsWith('_')) continue;
+      walk(path.join(dir, entry.name), lang, [...prefix, entry.name]);
+    }
+  }
+
+  const esDirs = [
+    'think', 'tech', 'tailor', 'trade', 'talk', 'team',
+    'clientes', 'contacto', 'empresa', 'insights', 'marketing', 'work',
+    'brand-radar', 'ai-governance', 'aviso-legal', 'cookies', 'privacidad', 'preplay',
+  ];
+  if (fs.existsSync(path.join(root, 'index.html'))) {
+    results.push({ lang: 'es', slug: [] });
+  }
+  for (const d of esDirs) walk(path.join(root, d), 'es', [d]);
+
+  const enRoot = path.join(root, 'en');
+  if (fs.existsSync(path.join(enRoot, 'index.html'))) {
+    results.push({ lang: 'en', slug: [] });
+  }
+  if (fs.existsSync(enRoot)) {
+    for (const entry of fs.readdirSync(enRoot, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      if (entry.name.startsWith('.') || entry.name.startsWith('_')) continue;
+      walk(path.join(enRoot, entry.name), 'en', [entry.name]);
+    }
+  }
+
+  try {
+    const projects = await getPublishedProjects();
+    for (const p of projects) {
+      results.push({ lang: 'es', slug: ['work', p.slug] });
+      results.push({ lang: 'en', slug: ['work', p.slug] });
+    }
+  } catch (e) {
+    console.warn('generateStaticParams: Supabase unavailable, skipping dynamic project routes', e);
+  }
+
+  const seen = new Set<string>();
+  return results.filter((r) => {
+    const key = `${r.lang}/${r.slug.join('/')}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 function getHtmlPath(lang: string, slug: string[]): string {

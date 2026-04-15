@@ -611,6 +611,11 @@ a {
     opacity: 1;
 }
 
+.hero-brand-icons img[alt="Nivea"] {
+    background-color: #003399;
+    object-fit: cover;
+}
+
 .hero-pause {
     position: absolute;
     left: 2rem;
@@ -968,8 +973,8 @@ a {
 
 .offerings-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
     align-items: start;
 }
 
@@ -1055,7 +1060,7 @@ a {
     margin-top: 8rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
     .offerings-grid {
         grid-template-columns: repeat(3, 1fr);
     }
