@@ -164,11 +164,51 @@ function getEsHeader(isHomepage: boolean, slug: string[]): string {
       </div>
       <nav class="mobile-menu-nav${isHomepage ? '' : ' container'}">
         <ul>
-          <li><a class="nav-vertical-label">Soluciones</a></li>
-          <li><a class="nav-vertical-label">Servicios de Marketing</a></li>
-          <li><a href="#" class="nav-vertical-label">Servicios de Tecnología</a></li>
+          <li class="mobile-menu-item has-submenu">
+            <button type="button" class="nav-vertical-label mobile-submenu-toggle" aria-expanded="false" aria-controls="mm-es-soluciones">
+              <span>Soluciones</span>${CHEVRON_DOWN}
+            </button>
+            <ul class="mobile-submenu" id="mm-es-soluciones" hidden>
+              <li><a href="/es/brand-radar/">Brand Radar</a></li>
+              <li><a href="/es/preplay/">Preplay</a></li>
+              <li><a href="/es/ai-governance/">AI Governance</a></li>
+            </ul>
+          </li>
+          <li class="mobile-menu-item has-submenu">
+            <button type="button" class="nav-vertical-label mobile-submenu-toggle" aria-expanded="false" aria-controls="mm-es-marketing">
+              <span>Servicios de Marketing</span>${CHEVRON_DOWN}
+            </button>
+            <ul class="mobile-submenu" id="mm-es-marketing" hidden>
+              <li><a href="/es/marketing/brand/">Marca</a></li>
+              <li><a href="/es/marketing/strategy/">Estrategia</a></li>
+              <li><a href="/es/marketing/media/">Medios</a></li>
+              <li><a href="/es/marketing/social/">Social</a></li>
+              <li><a href="/es/marketing/trade-marketing/">Trade Marketing</a></li>
+              <li><a href="/es/marketing/events/">Eventos</a></li>
+              <li><a href="/es/marketing/production/">Producción</a></li>
+              <li><a href="/es/marketing/talent/">Talento</a></li>
+            </ul>
+          </li>
+          <li class="mobile-menu-item has-submenu">
+            <button type="button" class="nav-vertical-label mobile-submenu-toggle" aria-expanded="false" aria-controls="mm-es-tech">
+              <span>Servicios de Tecnología</span>${CHEVRON_DOWN}
+            </button>
+            <ul class="mobile-submenu" id="mm-es-tech" hidden>
+              <li><span class="nav-coming-soon">2laps<span class="nav-coming-soon-label">Web próximamente</span></span></li>
+              <li><span class="nav-coming-soon">Murphy<span class="nav-coming-soon-label">Web próximamente</span></span></li>
+              <li><span class="nav-coming-soon">1000er.ai<span class="nav-coming-soon-label">Web próximamente</span></span></li>
+            </ul>
+          </li>
           <li><a href="/es/work/" class="nav-vertical-label">Trabajo</a></li>
-          <li><a class="nav-vertical-label">Nosotros</a></li>
+          <li class="mobile-menu-item has-submenu">
+            <button type="button" class="nav-vertical-label mobile-submenu-toggle" aria-expanded="false" aria-controls="mm-es-nosotros">
+              <span>Nosotros</span>${CHEVRON_DOWN}
+            </button>
+            <ul class="mobile-submenu" id="mm-es-nosotros" hidden>
+              <li><a href="/es/empresa/">Empresa</a></li>
+              <li><a href="/es/insights/">Insights</a></li>
+            </ul>
+          </li>
           <li><a href="/es/contacto/">Contacto${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
           <li>${switcher}</li>
         </ul>
@@ -176,8 +216,8 @@ function getEsHeader(isHomepage: boolean, slug: string[]): string {
       <div class="mobile-menu-footer${isHomepage ? '' : ' container'}">
         ${isHomepage
           ? `<div class="mobile-social-links">
-          <a href="#" aria-label="LinkedIn">in</a>
-          <a href="#" aria-label="Instagram">ig</a>
+          <a href="https://www.linkedin.com/company/truco-y-trufa/" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
+          <a href="https://www.instagram.com/trucoytrufa/" aria-label="Instagram" target="_blank" rel="noopener">ig</a>
           <a href="#" aria-label="Facebook">f</a>
         </div>`
           : `<button class="cta-primary">Solicita una propuesta</button>
@@ -260,11 +300,51 @@ function getEnHeader(isHomepage: boolean, slug: string[]): string {
       </div>
       <nav class="mobile-menu-nav${isHomepage ? '' : ' container'}">
         <ul>
-          <li><a class="nav-vertical-label">Solutions</a></li>
-          <li><a class="nav-vertical-label">Marketing Services</a></li>
-          <li><a href="#" class="nav-vertical-label">Technology Services</a></li>
+          <li class="mobile-menu-item has-submenu">
+            <button type="button" class="nav-vertical-label mobile-submenu-toggle" aria-expanded="false" aria-controls="mm-en-solutions">
+              <span>Solutions</span>${CHEVRON_DOWN}
+            </button>
+            <ul class="mobile-submenu" id="mm-en-solutions" hidden>
+              <li><a href="/en/brand-radar/">Brand Radar</a></li>
+              <li><a href="/en/preplay/">Preplay</a></li>
+              <li><a href="/en/ai-governance/">AI Governance</a></li>
+            </ul>
+          </li>
+          <li class="mobile-menu-item has-submenu">
+            <button type="button" class="nav-vertical-label mobile-submenu-toggle" aria-expanded="false" aria-controls="mm-en-marketing">
+              <span>Marketing Services</span>${CHEVRON_DOWN}
+            </button>
+            <ul class="mobile-submenu" id="mm-en-marketing" hidden>
+              <li><a href="/en/marketing/brand/">Brand</a></li>
+              <li><a href="/en/marketing/strategy/">Strategy</a></li>
+              <li><a href="/en/marketing/media/">Media</a></li>
+              <li><a href="/en/marketing/social/">Social</a></li>
+              <li><a href="/en/marketing/trade-marketing/">Trade Marketing</a></li>
+              <li><a href="/en/marketing/events/">Events</a></li>
+              <li><a href="/en/marketing/production/">Production</a></li>
+              <li><a href="/en/marketing/talent/">Talent</a></li>
+            </ul>
+          </li>
+          <li class="mobile-menu-item has-submenu">
+            <button type="button" class="nav-vertical-label mobile-submenu-toggle" aria-expanded="false" aria-controls="mm-en-tech">
+              <span>Technology Services</span>${CHEVRON_DOWN}
+            </button>
+            <ul class="mobile-submenu" id="mm-en-tech" hidden>
+              <li><span class="nav-coming-soon">2laps<span class="nav-coming-soon-label">Site coming soon</span></span></li>
+              <li><span class="nav-coming-soon">Murphy<span class="nav-coming-soon-label">Site coming soon</span></span></li>
+              <li><span class="nav-coming-soon">1000er.ai<span class="nav-coming-soon-label">Site coming soon</span></span></li>
+            </ul>
+          </li>
           <li><a href="/en/work/" class="nav-vertical-label">Work</a></li>
-          <li><a class="nav-vertical-label">About Us</a></li>
+          <li class="mobile-menu-item has-submenu">
+            <button type="button" class="nav-vertical-label mobile-submenu-toggle" aria-expanded="false" aria-controls="mm-en-about">
+              <span>About Us</span>${CHEVRON_DOWN}
+            </button>
+            <ul class="mobile-submenu" id="mm-en-about" hidden>
+              <li><a href="/en/company/">About</a></li>
+              <li><a href="/en/insights/">Insights</a></li>
+            </ul>
+          </li>
           <li><a href="/en/contact/">Contact${isHomepage ? '' : ' ' + CHEVRON_RIGHT}</a></li>
           <li>${switcher}</li>
         </ul>
@@ -272,8 +352,8 @@ function getEnHeader(isHomepage: boolean, slug: string[]): string {
       <div class="mobile-menu-footer${isHomepage ? '' : ' container'}">
         ${isHomepage
           ? `<div class="mobile-social-links">
-          <a href="#" aria-label="LinkedIn">in</a>
-          <a href="#" aria-label="Instagram">ig</a>
+          <a href="https://www.linkedin.com/company/truco-y-trufa/" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
+          <a href="https://www.instagram.com/trucoytrufa/" aria-label="Instagram" target="_blank" rel="noopener">ig</a>
           <a href="#" aria-label="Facebook">f</a>
         </div>`
           : `<button class="cta-primary">Request a proposal</button>
@@ -302,10 +382,10 @@ const ES_FOOTER = `<footer class="footer">
       <div class="footer-bottom">
         <p class="footer-copyright">&copy; 2026 T&T. Madrid, España.</p>
         <div class="footer-social">
-          <a href="https://linkedin.com/company/tyt" class="footer-social-icon" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <a href="https://www.linkedin.com/company/truco-y-trufa/" class="footer-social-icon" aria-label="LinkedIn" target="_blank" rel="noopener">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
-          <a href="https://instagram.com/tyt" class="footer-social-icon" aria-label="Instagram" target="_blank" rel="noopener">
+          <a href="https://www.instagram.com/trucoytrufa/" class="footer-social-icon" aria-label="Instagram" target="_blank" rel="noopener">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           </a>
         </div>
@@ -337,10 +417,10 @@ const EN_FOOTER = `<footer class="footer">
       <div class="footer-bottom">
         <p class="footer-copyright">&copy; 2026 T&T. Madrid, Spain.</p>
         <div class="footer-social">
-          <a href="https://linkedin.com/company/tyt" class="footer-social-icon" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <a href="https://www.linkedin.com/company/truco-y-trufa/" class="footer-social-icon" aria-label="LinkedIn" target="_blank" rel="noopener">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
-          <a href="https://instagram.com/tyt" class="footer-social-icon" aria-label="Instagram" target="_blank" rel="noopener">
+          <a href="https://www.instagram.com/trucoytrufa/" class="footer-social-icon" aria-label="Instagram" target="_blank" rel="noopener">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           </a>
         </div>

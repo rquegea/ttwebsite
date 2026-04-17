@@ -50,6 +50,32 @@ document.addEventListener('DOMContentLoaded', () => {
       const overlay = document.getElementById('mobileMenu');
       if (overlay) { overlay.classList.remove('is-active'); document.body.style.overflow = ''; }
     }
+
+    // Mobile submenu accordion toggle
+    const toggle = e.target.closest('.mobile-submenu-toggle');
+    if (toggle) {
+      e.preventDefault();
+      const item = toggle.parentElement;
+      const sub = item && item.querySelector('.mobile-submenu');
+      const willOpen = !item.classList.contains('is-open');
+      item.classList.toggle('is-open', willOpen);
+      toggle.setAttribute('aria-expanded', String(willOpen));
+      if (sub) sub.hidden = !willOpen;
+    }
+
+    // Article detail: copy share link
+    const copyBtn = e.target.closest('.article-share-copy');
+    if (copyBtn) {
+      e.preventDefault();
+      const url = copyBtn.getAttribute('data-copy-url') || window.location.href;
+      const original = copyBtn.textContent;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+          copyBtn.textContent = '✓';
+          setTimeout(() => { copyBtn.textContent = original; }, 1500);
+        });
+      }
+    }
   });
 
   // ── Nav glider — event delegation ──

@@ -2,8 +2,8 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import fs from 'fs';
 import path from 'path';
-import { getPublishedProjects, getProjectBySlug } from '@/lib/supabase/queries';
-import type { Project } from '@/lib/supabase/types';
+import { getPublishedProjects, getProjectBySlug, getPublishedArticles, getArticleBySlug, getLatestArticles, getRelatedArticles } from '@/lib/supabase/queries';
+import type { Project, Article } from '@/lib/supabase/types';
 import { getHeaderHtml, getFooterHtml } from '@/lib/nav';
 
 export const dynamicParams = false;
@@ -60,6 +60,16 @@ export async function generateStaticParams() {
     console.warn('generateStaticParams: Supabase unavailable, skipping dynamic project routes', e);
   }
 
+  try {
+    const articles = await getPublishedArticles();
+    for (const a of articles) {
+      results.push({ lang: 'es', slug: ['insights', a.slug] });
+      results.push({ lang: 'en', slug: ['insights', a.slug] });
+    }
+  } catch (e) {
+    console.warn('generateStaticParams: Supabase unavailable, skipping article routes', e);
+  }
+
   const seen = new Set<string>();
   return results.filter((r) => {
     const key = `${r.lang}/${r.slug.join('/')}`;
@@ -112,7 +122,8 @@ function escapeHtml(str: string): string {
     .replace(/"/g, '&quot;');
 }
 
-function buildProjectsGrid(projects: Project[]): string {
+function buildProjectsGrid(projects: Project[], lang = 'es'): string {
+  const workBase = lang === 'en' ? '/en/work/' : '/work/';
   const cards = projects.map((p) => {
     const hasVideo = p.video_url && p.video_url.trim() !== '';
     const imgStyle = hasVideo
@@ -127,7 +138,7 @@ function buildProjectsGrid(projects: Project[]): string {
       ? `<div class="badge-icon"><img src="${escapeHtml(p.client_logo_url)}" alt="${escapeHtml(p.client_name)}"></div>`
       : '';
 
-    return `      <a href="/work/${escapeHtml(p.slug)}/" class="project-card-home">
+    return `      <a href="${workBase}${escapeHtml(p.slug)}/" class="project-card-home">
         <div class="project-image"${imgStyle ? ` style="${imgStyle}"` : ''}>
           ${mediaHtml}
           <div class="project-client-badge">
@@ -154,6 +165,7 @@ ${cards.join('\n')}
 }
 
 function buildProjectsTable(projects: Project[], lang = 'es'): string {
+  const workBase = lang === 'en' ? '/en/work/' : '/work/';
   const rows = projects.map((p) => {
     // Solutions: mostrar disciplinas o vacío
     let solutionsHtml = '';
@@ -171,7 +183,7 @@ function buildProjectsTable(projects: Project[], lang = 'es'): string {
     }
 
     return `        <div class="work-projects-list-item" data-image="${escapeHtml(p.image_url || '')}" data-video="${escapeHtml(p.video_url || '')}">
-          <a href="/work/${escapeHtml(p.slug)}/">
+          <a href="${workBase}${escapeHtml(p.slug)}/">
             <div class="work-projects-list-cell">${escapeHtml(p.client_name)}</div>
             <div class="work-projects-list-cell">${escapeHtml(p.title)}</div>
             <div class="work-projects-list-cell">${solutionsHtml}</div>
@@ -200,6 +212,7 @@ function replaceProjectsSection(html: string, projects: Project[], lang = 'es'):
     return html.replace(tableRegex, tableHtml);
   } else {
     // For homepage: replace the grid cards with dynamic data
+    const workBase = lang === 'en' ? '/en/work/' : '/work/';
     const gridRegex = /<div class="projects-grid-home">[\s\S]*?<\/div>/i;
     const gridCards = projects.map((p) => {
       const hasVideo = p.video_url && p.video_url.trim() !== '';
@@ -215,7 +228,7 @@ function replaceProjectsSection(html: string, projects: Project[], lang = 'es'):
         ? `<div class="badge-icon"><img src="${escapeHtml(p.client_logo_url)}" alt="${escapeHtml(p.client_name)}"></div>`
         : '';
 
-      return `        <a href="/work/${escapeHtml(p.slug)}/" class="project-card-home">
+      return `        <a href="${workBase}${escapeHtml(p.slug)}/" class="project-card-home">
         <div class="project-image"${imgStyle ? ` style="${imgStyle}"` : ''}>
           ${mediaHtml}
           <div class="project-client-badge">
@@ -277,6 +290,8 @@ function buildProjectPage(project: Project, lang: string): string {
   const ctaHeading = isEn ? 'Your brand,<br>the next success story?' : '¿Tu marca,<br>el próximo caso de éxito?';
   const ctaButton = isEn ? "Let's talk" : 'Hablemos';
   const contactHref = isEn ? '/en/contact/' : '/contacto/';
+  const homeHref = isEn ? '/en/' : '/';
+  const workHref = isEn ? '/en/work/' : '/work/';
 
   const showcaseStyle = project.showcase_image_url
     ? ` style="background:url('${escapeHtml(project.showcase_image_url)}') center/cover no-repeat; min-height:500px; border-radius:8px;"`
@@ -328,7 +343,7 @@ ${images}
   <section class="subpage-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/"><img src="/logos/tytnuevologo.png" alt="T&T" style="height:20px;vertical-align:middle;"></a> <span>/</span> <a href="/work/">${breadcrumbWork}</a> <span>/</span> <span class="current">${escapeHtml(project.client_name)}</span>
+        <a href="${homeHref}"><img src="/logos/tytnuevologo.png" alt="T&T" style="height:20px;vertical-align:middle;"></a> <span>/</span> <a href="${workHref}">${breadcrumbWork}</a> <span>/</span> <span class="current">${escapeHtml(project.client_name)}</span>
       </nav>
       <h1 style="font-family:'Switzer',sans-serif;font-size:clamp(2.8rem,6vw,4.5rem);font-weight:600;">${escapeHtml(project.title)}</h1>
     </div>
@@ -366,7 +381,7 @@ ${galleryHtml}
 
   <section class="subpage-split" style="padding: 4rem 0;">
     <div class="container" style="display:flex; justify-content:center; align-items:center;">
-      <a href="/work/" style="font-family:'Inter',sans-serif; font-size:0.9rem; color:#888; text-decoration:none;">← ${isEn ? 'All projects' : 'Todos los proyectos'}</a>
+      <a href="${workHref}" style="font-family:'Inter',sans-serif; font-size:0.9rem; color:#888; text-decoration:none;">← ${isEn ? 'All projects' : 'Todos los proyectos'}</a>
     </div>
   </section>
 
@@ -384,6 +399,164 @@ function isWorkDetailRoute(slug: string[]): boolean {
   return slug.length === 2 && slug[0] === 'work';
 }
 
+function isInsightsDetailRoute(slug: string[]): boolean {
+  return slug.length === 2 && slug[0] === 'insights';
+}
+
+function isInsightsListRoute(slug: string[]): boolean {
+  return slug.length === 1 && slug[0] === 'insights';
+}
+
+function formatArticleDate(iso: string | null, lang: string): string {
+  if (!iso) return '';
+  try {
+    const d = new Date(iso);
+    return d.toLocaleDateString(lang === 'en' ? 'en-US' : 'es-ES', {
+      year: 'numeric', month: 'long', day: 'numeric',
+    });
+  } catch {
+    return '';
+  }
+}
+
+function articleHref(article: Article, lang: string): string {
+  return lang === 'en' ? `/en/insights/${article.slug}/` : `/insights/${article.slug}/`;
+}
+
+function buildJournalCards(articles: Article[], lang: string): string {
+  const readLabel = lang === 'en' ? 'Read now' : 'Leer ahora';
+  const byLabel = lang === 'en' ? 'By' : 'Por';
+  return articles.map((a) => {
+    const imgHtml = a.image_url
+      ? `<img src="${escapeHtml(a.image_url)}" alt="${escapeHtml(a.title)}" loading="lazy">`
+      : `<div class="journal-card-image-placeholder"></div>`;
+    const excerpt = a.excerpt ? `<p class="journal-card-excerpt">${escapeHtml(a.excerpt)}</p>` : '';
+    const date = formatArticleDate(a.published_at, lang);
+    return `        <a href="${articleHref(a, lang)}" class="journal-card">
+          <div class="journal-card-image">${imgHtml}</div>
+          <div class="journal-card-body">
+            <h3 class="journal-card-title">${escapeHtml(a.title)}</h3>
+            ${excerpt}
+            <div class="journal-card-meta">${byLabel} ${escapeHtml(a.author)}${date ? ` · ${date}` : ''}</div>
+            <span class="journal-card-cta">${readLabel} →</span>
+          </div>
+        </a>`;
+  }).join('\n');
+}
+
+function replaceJournalGrid(html: string, articles: Article[], lang: string): string {
+  const gridRegex = /(<div class="journal-grid-inner">)([\s\S]*?)(<\/div>)/i;
+  if (!gridRegex.test(html)) return html;
+  const cards = articles.length
+    ? buildJournalCards(articles, lang)
+    : `        <p class="journal-empty">${lang === 'en' ? 'More articles coming soon.' : 'Próximamente nuevos artículos.'}</p>`;
+  return html.replace(gridRegex, `$1\n${cards}\n      $3`);
+}
+
+function buildHomepageArticleCards(articles: Article[], lang: string): string {
+  const defaultLabel = lang === 'en' ? 'Article' : 'Artículo';
+  const byLabel = lang === 'en' ? 'By' : 'Por';
+  return articles.slice(0, 3).map((a) => {
+    const imgHtml = a.image_url
+      ? `<div class="article-image-wrapper" style="background: #E0E0E0;"><img src="${escapeHtml(a.image_url)}" alt="${escapeHtml(a.title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>`
+      : `<div class="article-image-wrapper" style="background: #E0E0E0;"></div>`;
+    const date = formatArticleDate(a.published_at, lang);
+    return `        <a href="${articleHref(a, lang)}" class="article-card">
+          ${imgHtml}
+          <span class="article-label">${defaultLabel}</span>
+          <h3 class="article-title">${escapeHtml(a.title)}</h3>
+          <p class="article-meta">${byLabel} ${escapeHtml(a.author)}${date ? ` · ${date}` : ''}</p>
+        </a>`;
+  }).join('\n');
+}
+
+function replaceHomepageArticles(html: string, articles: Article[], lang: string): string {
+  if (!articles.length) return html;
+  const gridRegex = /(<div class="articles-grid">)[\s\S]*?(<\/div>\s*<\/div>\s*<\/section>)/i;
+  if (!gridRegex.test(html)) return html;
+  const cards = buildHomepageArticleCards(articles, lang);
+  return html.replace(gridRegex, `$1\n${cards}\n      $2`);
+}
+
+function buildArticleDetailPage(article: Article, related: Article[], lang: string): string {
+  const isEn = lang === 'en';
+  const breadcrumbInsights = isEn ? 'Insights' : 'Insights';
+  const breadcrumbHome = isEn ? 'Home' : 'Inicio';
+  const shareLabel = isEn ? 'Share' : 'Compartir';
+  const relatedLabel = isEn ? 'You may also like' : 'También te puede interesar';
+  const byLabel = isEn ? 'By' : 'Por';
+  const homeHref = isEn ? '/en/' : '/';
+  const insightsHref = isEn ? '/en/insights/' : '/insights/';
+  const date = formatArticleDate(article.published_at, lang);
+
+  const shareUrl = `https://www.trucoytrufa.es${articleHref(article, lang)}`;
+  const linkedinShare = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+  const xShare = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(article.title)}`;
+
+  const heroImg = article.image_url
+    ? `<div class="article-hero-image" style="background:url('${escapeHtml(article.image_url)}') center/cover no-repeat;"></div>`
+    : '';
+
+  const relatedHtml = related.length
+    ? `\n  <section class="article-related">
+    <div class="container">
+      <h2>${relatedLabel}</h2>
+      <div class="journal-grid-inner">
+${buildJournalCards(related, lang)}
+      </div>
+    </div>
+  </section>`
+    : '';
+
+  const contentHtml = article.content || (article.excerpt ? `<p>${escapeHtml(article.excerpt)}</p>` : '');
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.title,
+    description: article.excerpt || '',
+    image: article.image_url || undefined,
+    author: { '@type': 'Person', name: article.author },
+    datePublished: article.published_at || undefined,
+    publisher: {
+      '@type': 'Organization',
+      name: 'T&T',
+      logo: { '@type': 'ImageObject', url: 'https://www.trucoytrufa.es/logos/tytnuevologo.png' },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': shareUrl },
+  };
+
+  return `
+  <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
+  <section class="article-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="${homeHref}">${breadcrumbHome}</a> <span>/</span>
+        <a href="${insightsHref}">${breadcrumbInsights}</a> <span>/</span>
+        <span class="current">${escapeHtml(article.title)}</span>
+      </nav>
+      <h1 class="article-hero-title">${escapeHtml(article.title)}</h1>
+      <div class="article-hero-meta">
+        <span>${byLabel} ${escapeHtml(article.author)}</span>${date ? `<span class="article-meta-sep">·</span><span>${date}</span>` : ''}
+      </div>
+    </div>
+  </section>
+  ${heroImg}
+  <section class="article-body">
+    <div class="container article-body-container">
+      <div class="article-content">
+        ${contentHtml}
+      </div>
+      <aside class="article-share">
+        <span class="article-share-label">${shareLabel}</span>
+        <a href="${linkedinShare}" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+        <a href="${xShare}" target="_blank" rel="noopener" aria-label="X">X</a>
+        <button type="button" class="article-share-copy" data-copy-url="${escapeHtml(shareUrl)}" aria-label="${isEn ? 'Copy link' : 'Copiar enlace'}">🔗</button>
+      </aside>
+    </div>
+  </section>${relatedHtml}`;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang, slug = [] } = params;
 
@@ -394,6 +567,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       return {
         title: `${project.client_name} — ${project.title} | T&T`,
         description: project.description || `${project.title} — ${project.client_name}`,
+      };
+    }
+  }
+
+  // Dynamic article detail page
+  if (isInsightsDetailRoute(slug)) {
+    const article = await getArticleBySlug(slug[1]);
+    if (article) {
+      const description = article.excerpt || `${article.title} — T&T`;
+      return {
+        title: `${article.title} | T&T`,
+        description,
+        openGraph: {
+          title: article.title,
+          description,
+          type: 'article',
+          images: article.image_url ? [article.image_url] : undefined,
+        },
       };
     }
   }
@@ -424,6 +615,16 @@ export default async function Page({ params }: Props) {
     // Project not found in Supabase — fall through to static HTML
   }
 
+  // Dynamic article detail page from Supabase
+  if (isInsightsDetailRoute(slug)) {
+    const article = await getArticleBySlug(slug[1]);
+    if (!article) notFound();
+    const related = await getRelatedArticles(article.slug, 3);
+    const articleContent = buildArticleDetailPage(article, related, lang);
+    const bodyContent = getHeaderHtml(lang, false, slug) + '\n' + articleContent + '\n' + getFooterHtml(lang);
+    return <div className="light-theme article-page" dangerouslySetInnerHTML={{ __html: bodyContent }} />;
+  }
+
   const htmlPath = getHtmlPath(lang, slug);
 
   if (!fs.existsSync(htmlPath)) notFound();
@@ -440,6 +641,20 @@ export default async function Page({ params }: Props) {
     if (projects.length > 0) {
       bodyContent = replaceProjectsSection(bodyContent, projects, lang);
     }
+  }
+
+  // Homepage: inject latest articles into .articles-grid
+  if (isHomepage) {
+    const latest = await getLatestArticles(3);
+    if (latest.length > 0) {
+      bodyContent = replaceHomepageArticles(bodyContent, latest, lang);
+    }
+  }
+
+  // /insights/ listing: inject articles into .journal-grid-inner
+  if (isInsightsListRoute(slug)) {
+    const articles = await getPublishedArticles();
+    bodyContent = replaceJournalGrid(bodyContent, articles, lang);
   }
 
   // Strip hardcoded header/footer from static HTML → use shared nav

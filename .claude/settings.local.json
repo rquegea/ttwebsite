@@ -117,7 +117,8 @@
       "Bash(awk 'NR>1 {print $2}')",
       "Bash(awk 'NR>1 {print $2, $1, $9}')",
       "Bash(gsutil --version)",
-      "Bash(bash *)"
+      "Bash(bash *)",
+      "Bash(git diff *)"
     ]
   }
 }
