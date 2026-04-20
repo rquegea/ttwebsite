@@ -28,20 +28,18 @@ export async function generateStaticParams() {
     }
   }
 
+  // Always generate /es/ and /en/ root pages
+  results.push({ lang: 'es', slug: [] });
+  results.push({ lang: 'en', slug: [] });
+
   const esDirs = [
     'think', 'tech', 'tailor', 'trade', 'talk', 'team',
     'clientes', 'contacto', 'empresa', 'insights', 'marketing', 'work',
     'brand-radar', 'ai-governance', 'aviso-legal', 'cookies', 'privacidad', 'preplay',
   ];
-  if (fs.existsSync(path.join(root, 'index.html'))) {
-    results.push({ lang: 'es', slug: [] });
-  }
   for (const d of esDirs) walk(path.join(root, d), 'es', [d]);
 
   const enRoot = path.join(root, 'en');
-  if (fs.existsSync(path.join(enRoot, 'index.html'))) {
-    results.push({ lang: 'en', slug: [] });
-  }
   if (fs.existsSync(enRoot)) {
     for (const entry of fs.readdirSync(enRoot, { withFileTypes: true })) {
       if (!entry.isDirectory()) continue;
