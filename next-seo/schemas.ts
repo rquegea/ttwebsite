@@ -25,7 +25,7 @@ export function organizationSchema() {
     description: 'T&T is a marketing, communications and transformation company. Creativity, technology, strategy, talent and production for extraordinary brands.',
     foundingDate: '2015',
     slogan: 'We make brands extraordinary',
-    email: 'hello@tyt.com',
+    email: 'trucoytrufa@trucoytrufa.es',
     telephone: '+34-XXX-XXX-XXX',
     sameAs: [
       'https://www.linkedin.com/company/tyt',
@@ -78,7 +78,7 @@ export function localBusinessSchema() {
     image: `${SITE_URL}/images/office-madrid.jpg`,
     url: SITE_URL,
     telephone: '+34-XXX-XXX-XXX',
-    email: 'hello@tyt.com',
+    email: 'trucoytrufa@trucoytrufa.es',
     priceRange: '$$$',
     address: {
       '@type': 'PostalAddress',

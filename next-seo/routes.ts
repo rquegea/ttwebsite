@@ -3,7 +3,7 @@
 // Next.js 14+ App Router with i18n: /es/... and /en/...
 // ============================================================================
 
-export const SITE_URL = 'https://www.tyt.com'; // TODO: Replace with actual domain
+export const SITE_URL = 'https://www.trucoytrufa.es'; // TODO: Replace with actual domain
 
 export type Locale = 'es' | 'en';
 export const locales: Locale[] = ['es', 'en'];
