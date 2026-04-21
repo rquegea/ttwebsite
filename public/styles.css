@@ -1150,6 +1150,26 @@ a {
     opacity: 0.9;
 }
 
+.offering-tooltip {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #666;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.offering-card:hover .offering-tooltip {
+    opacity: 1;
+    visibility: visible;
+    max-height: 100px;
+}
+
 .offering-card:nth-child(2) {
     margin-top: 5rem;
 }
