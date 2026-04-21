@@ -345,6 +345,51 @@
       font-size: 1rem;
       flex-shrink: 0;
     }
+    .work-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      z-index: 1;
+    }
+    .work-scroll-circle {
+      width: 52px;
+      height: 52px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+    }
+    .work-scroll-arrow {
+      font-size: 1rem;
+      margin-top: 0.4rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .work-page .cta-banner {
+      background: #F0EDE8;
+      border-top: 1px solid rgba(10,10,10,0.08);
+    }
+    .work-page .cta-banner h2 {
+      color: #0A0A0A;
+    }
+    .work-page .cta-banner a {
+      border-color: rgba(10,10,10,0.25) !important;
+      color: #0A0A0A !important;
+    }
+    .work-page .cta-banner a:hover {
+      background: rgba(10,10,10,0.06) !important;
+    }
     .work-page .footer {
       background-color: #141414;
       border-top: 1px solid rgba(255,255,255,0.08);
@@ -388,6 +433,13 @@
     .work-filter-btn:hover {
       background: #1A1A1A;
     }
+    .work-projects-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: rgba(10,10,10,0.6);
+      margin-bottom: 2.5rem;
+    }
     .work-projects-layout {
       display: grid;
       grid-template-columns: 200px 1fr;
@@ -400,6 +452,65 @@
       gap: 1.5rem;
       margin-bottom: 5rem;
       justify-content: end;
+    }
+    /* Projects List Table */
+    .work-projects-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .work-projects-list-header {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 0;
+    }
+    .work-projects-list-header p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(10,10,10,0.5);
+      padding: 1.5rem;
+      border-bottom: 1px solid rgba(10,10,10,0.25);
+      margin: 0;
+    }
+    .work-projects-list-item {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 0;
+      position: relative;
+      transition: background 0.3s ease;
+    }
+    .work-projects-list-item a {
+      display: contents;
+      text-decoration: none;
+      color: inherit;
+    }
+    .work-projects-list-cell {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: #0A0A0A;
+      padding: 1.5rem;
+      border-bottom: 1px solid rgba(10,10,10,0.2);
+      position: relative;
+      transition: background 0.3s ease;
+    }
+    .work-projects-list-item:hover .work-projects-list-cell {
+      background: rgba(10,10,10,0.02);
+    }
+    .work-projects-list-media {
+      position: fixed;
+      max-width: 320px;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+      display: none;
+    }
+    .work-projects-list-item:hover .work-projects-list-media {
+      display: block;
+      opacity: 1;
     }
     .work-page .project-card-home {
       text-decoration: none;
@@ -474,38 +585,61 @@
         <a href="#projects">See projects <span class="cta-arrow">↓</span></a>
       </div>
     </div>
+    <div class="work-scroll">
+      <div class="work-scroll-circle">Scroll</div>
+      <div class="work-scroll-arrow">↓</div>
+    </div>
   </section>
 
   <!-- PROJECTS GRID -->
   <section id="projects" class="subpage-projects">
     <div class="container">
-      <div class="projects-grid-home">
+      <div class="work-projects-header">
+        <p class="work-projects-count">Showing <strong>23 cases</strong></p>
+        <div class="work-projects-controls">
+          <button class="work-filter-btn">Filters <span style="background: #CC2936; color: #FFF; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600;">0</span></button>
+          <button class="work-filter-btn" style="background: #333;">⚙</button>
+        </div>
+      </div>
 
-        <a href="/work/prime-welcome-pack/" class="project-card-home">
+      <div class="work-projects-layout">
+        <h2 class="work-projects-title" style="font-family:'Inter',sans-serif;font-size:0.95rem;font-weight:400;color:rgba(10,10,10,0.6);margin:0;">Featured cases</h2>
+        <div class="projects-grid-home">
+
+        <a href="/en/work/prime-welcome-pack/" class="project-card-home">
           <div class="project-image" style="background:url('/projects/prime-welcome-pack/hero.jpg') center/cover no-repeat;"></div>
           <div class="project-meta">
+            <div class="project-meta-top">
+              <h3>Prime — Welcome Pack</h3>
+              <span class="project-arrow">→</span>
+            </div>
             <p class="project-tag">t&amp;tailor</p>
-            <h3>Prime — Welcome Pack</h3>
           </div>
         </a>
 
-        <a href="/work/barcelo-nevalia/" class="project-card-home">
+        <a href="/en/work/barcelo-nevalia/" class="project-card-home">
           <div class="project-image" style="background:url('/projects/barcelo-nevalia/hero.jpg') center/cover no-repeat;"></div>
           <div class="project-meta">
+            <div class="project-meta-top">
+              <h3>Barceló Nevalia Festival</h3>
+              <span class="project-arrow">→</span>
+            </div>
             <p class="project-tag">t&amp;trade</p>
-            <h3>Barceló Nevalia Festival</h3>
           </div>
         </a>
 
-        <a href="/work/ruinart-rooftop/" class="project-card-home">
+        <a href="/en/work/ruinart-rooftop/" class="project-card-home">
           <div class="project-image" style="background:url('/projects/ruinart-rooftop/hero.jpg') center/cover no-repeat;"></div>
           <div class="project-meta">
+            <div class="project-meta-top">
+              <h3>Ruinart — Palacio de los Duques Rooftop</h3>
+              <span class="project-arrow">→</span>
+            </div>
             <p class="project-tag">t&amp;things</p>
-            <h3>Ruinart — Palacio de los Duques Rooftop</h3>
           </div>
         </a>
 
-        <a href="/work/kelloggs-sinacio/" class="project-card-home">
+        <a href="/en/work/kelloggs-sinacio/" class="project-card-home">
           <div class="project-image" style="background:url('/projects/kelloggs-sinacio/hero.jpg') center/cover no-repeat;"></div>
           <div class="project-meta">
             <p class="project-tag">t&amp;things</p>
@@ -513,7 +647,7 @@
           </div>
         </a>
 
-        <a href="/work/moet-chandon-pharrell/" class="project-card-home">
+        <a href="/en/work/moet-chandon-pharrell/" class="project-card-home">
           <div class="project-image" style="background:url('/projects/moet-chandon-pharrell/hero.jpg') center/cover no-repeat;"></div>
           <div class="project-meta">
             <p class="project-tag">t&amp;trade</p>
@@ -521,7 +655,7 @@
           </div>
         </a>
 
-        <a href="/work/campofrio-snackin/" class="project-card-home">
+        <a href="/en/work/campofrio-snackin/" class="project-card-home">
           <div class="project-image" style="background:url('/projects/campofrio-snackin/hero.jpg') center/cover no-repeat;"></div>
           <div class="project-meta">
             <p class="project-tag">t&amp;trade</p>
@@ -529,8 +663,72 @@
           </div>
         </a>
 
+        </div>
       </div>
     </div>
+  </section>
+
+  <!-- Separator Line Full Width -->
+  <div style="height: 1px; background: rgba(10,10,10,0.1); margin: 2rem 0 3rem 0;"></div>
+
+  <!-- Projects Table Section -->
+  <section class="subpage-projects" style="padding: 3rem 0 5rem 0;">
+    <!-- All Projects Table -->
+    <div class="work-projects-list" style="padding: 0 3rem;">
+        <div class="work-projects-list-header">
+          <p>Client</p>
+          <p>Project</p>
+          <p>Solutions</p>
+        </div>
+
+        <div class="work-projects-list-item" data-image="/projects/prime-welcome-pack/hero.jpg">
+          <a href="/en/work/prime-welcome-pack/">
+            <div class="work-projects-list-cell">Prime</div>
+            <div class="work-projects-list-cell">Welcome Pack</div>
+            <div class="work-projects-list-cell">t&amp;tailor</div>
+          </a>
+        </div>
+
+        <div class="work-projects-list-item" data-image="/projects/barcelo-nevalia/hero.jpg">
+          <a href="/en/work/barcelo-nevalia/">
+            <div class="work-projects-list-cell">Barceló</div>
+            <div class="work-projects-list-cell">Nevalia Festival</div>
+            <div class="work-projects-list-cell">t&amp;trade</div>
+          </a>
+        </div>
+
+        <div class="work-projects-list-item">
+          <a href="/en/work/ruinart-rooftop/">
+            <div class="work-projects-list-cell">Ruinart</div>
+            <div class="work-projects-list-cell">Rooftop Palacio</div>
+            <div class="work-projects-list-cell">t&amp;things</div>
+          </a>
+        </div>
+
+        <div class="work-projects-list-item">
+          <a href="/en/work/kelloggs-sinacio/">
+            <div class="work-projects-list-cell">Kellogg's</div>
+            <div class="work-projects-list-cell">x Sinacio</div>
+            <div class="work-projects-list-cell">t&amp;things</div>
+          </a>
+        </div>
+
+        <div class="work-projects-list-item">
+          <a href="/en/work/moet-chandon-pharrell/">
+            <div class="work-projects-list-cell">Moët &amp; Chandon</div>
+            <div class="work-projects-list-cell">x Pharrell</div>
+            <div class="work-projects-list-cell">t&amp;trade</div>
+          </a>
+        </div>
+
+        <div class="work-projects-list-item">
+          <a href="/en/work/campofrio-snackin/">
+            <div class="work-projects-list-cell">Campofrío</div>
+            <div class="work-projects-list-cell">Snackin'</div>
+            <div class="work-projects-list-cell">t&amp;trade</div>
+          </a>
+        </div>
+      </div>
   </section>
 
   <!-- Footer -->
@@ -579,6 +777,80 @@
     </div>
   </footer>
   <script src="/cookie-consent.js"></script>
+  <script>
+    // Image follow cursor
+    let currentMedia = null;
+    document.addEventListener('mousemove', (e) => {
+      const items = document.querySelectorAll('.work-projects-list-item');
+      let hoveredItem = null;
+
+      for (let item of items) {
+        if (item.matches(':hover')) {
+          hoveredItem = item;
+          break;
+        }
+      }
+
+      if (hoveredItem) {
+        const image = hoveredItem.dataset.image || '';
+        const video = hoveredItem.dataset.video || '';
+        const media = image || video;
+
+        if (media && media.trim()) {
+          if (!currentMedia) {
+            currentMedia = document.createElement(video ? 'video' : 'img');
+            currentMedia.className = 'work-projects-list-media';
+            document.body.appendChild(currentMedia);
+          }
+
+          if (video) {
+            if (currentMedia.tagName !== 'VIDEO') {
+              const newVideo = document.createElement('video');
+              newVideo.className = 'work-projects-list-media';
+              newVideo.autoplay = true;
+              newVideo.muted = true;
+              newVideo.loop = true;
+              newVideo.playsinline = true;
+              const source = document.createElement('source');
+              source.src = video;
+              source.type = 'video/mp4';
+              newVideo.appendChild(source);
+              document.body.replaceChild(newVideo, currentMedia);
+              currentMedia = newVideo;
+            } else if (!currentMedia.querySelector('source') || currentMedia.querySelector('source').src !== video) {
+              const source = currentMedia.querySelector('source') || (() => {
+                const s = document.createElement('source');
+                currentMedia.appendChild(s);
+                return s;
+              })();
+              source.src = video;
+              source.type = 'video/mp4';
+            }
+          } else {
+            if (currentMedia.tagName !== 'IMG') {
+              const newImg = document.createElement('img');
+              newImg.className = 'work-projects-list-media';
+              newImg.src = image;
+              newImg.alt = 'Project';
+              document.body.replaceChild(newImg, currentMedia);
+              currentMedia = newImg;
+            } else if (currentMedia.src !== image) {
+              currentMedia.src = image;
+              currentMedia.alt = 'Project';
+            }
+          }
+
+          currentMedia.style.display = 'block';
+          currentMedia.style.left = (e.clientX + 20) + 'px';
+          currentMedia.style.top = (e.clientY - 20) + 'px';
+        } else {
+          if (currentMedia) currentMedia.style.display = 'none';
+        }
+      } else {
+        if (currentMedia) currentMedia.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 
 </html>

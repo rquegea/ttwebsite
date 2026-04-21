@@ -13,6 +13,12 @@ export interface Project {
   solution: string | null;
   result: string | null;
   disciplines: { title: string; description: string }[] | null;
+  title_en: string | null;
+  description_en: string | null;
+  challenge_en: string | null;
+  solution_en: string | null;
+  result_en: string | null;
+  disciplines_en: { title: string; description: string }[] | null;
   gallery_urls: string[] | null;
   showcase_image_url: string | null;
   split_image_url: string | null;

@@ -136,6 +136,7 @@ function buildProjectsGrid(projects: Project[], lang = 'es'): string {
       ? `<div class="badge-icon"><img src="${escapeHtml(p.client_logo_url)}" alt="${escapeHtml(p.client_name)}"></div>`
       : '';
 
+    const cardTitle = lang === 'en' ? (p.title_en || p.title) : p.title;
     return `      <a href="${workBase}${escapeHtml(p.slug)}/" class="project-card-home">
         <div class="project-image"${imgStyle ? ` style="${imgStyle}"` : ''}>
           ${mediaHtml}
@@ -148,7 +149,7 @@ function buildProjectsGrid(projects: Project[], lang = 'es'): string {
           </div>
         </div>
         <div class="project-meta">
-          <h3>${escapeHtml(p.title)}</h3>
+          <h3>${escapeHtml(cardTitle)}</h3>
         </div>
       </a>`;
   });
@@ -180,10 +181,11 @@ function buildProjectsTable(projects: Project[], lang = 'es'): string {
       }
     }
 
+    const rowTitle = lang === 'en' ? (p.title_en || p.title) : p.title;
     return `        <div class="work-projects-list-item" data-image="${escapeHtml(p.image_url || '')}" data-video="${escapeHtml(p.video_url || '')}">
           <a href="${workBase}${escapeHtml(p.slug)}/">
             <div class="work-projects-list-cell">${escapeHtml(p.client_name)}</div>
-            <div class="work-projects-list-cell">${escapeHtml(p.title)}</div>
+            <div class="work-projects-list-cell">${escapeHtml(rowTitle)}</div>
             <div class="work-projects-list-cell">${solutionsHtml}</div>
           </a>
         </div>`;
@@ -226,6 +228,7 @@ function replaceProjectsSection(html: string, projects: Project[], lang = 'es'):
         ? `<div class="badge-icon"><img src="${escapeHtml(p.client_logo_url)}" alt="${escapeHtml(p.client_name)}"></div>`
         : '';
 
+      const homeCardTitle = lang === 'en' ? (p.title_en || p.title) : p.title;
       return `        <a href="${workBase}${escapeHtml(p.slug)}/" class="project-card-home">
         <div class="project-image"${imgStyle ? ` style="${imgStyle}"` : ''}>
           ${mediaHtml}
@@ -238,7 +241,7 @@ function replaceProjectsSection(html: string, projects: Project[], lang = 'es'):
           </div>
         </div>
         <div class="project-meta">
-          <h3>${escapeHtml(p.title)}</h3>
+          <h3>${escapeHtml(homeCardTitle)}</h3>
         </div>
       </a>`;
     }).join('\n');
@@ -299,10 +302,16 @@ function buildProjectPage(project: Project, lang: string): string {
     ? ` style="background:url('${escapeHtml(project.split_image_url)}') center/cover no-repeat; min-height:400px; border-radius:8px;"`
     : '';
 
+  const title = isEn ? (project.title_en || project.title) : project.title;
+  const challenge = isEn ? (project.challenge_en || project.challenge) : project.challenge;
+  const solution = isEn ? (project.solution_en || project.solution) : project.solution;
+  const result = isEn ? (project.result_en || project.result) : project.result;
+  const activeDisciplines = isEn ? (project.disciplines_en || project.disciplines) : project.disciplines;
+
   // Disciplines section
   let disciplinesHtml = '';
-  if (project.disciplines && project.disciplines.length > 0) {
-    const cards = project.disciplines.map(d =>
+  if (activeDisciplines && activeDisciplines.length > 0) {
+    const cards = activeDisciplines.map(d =>
       `        <div class="capability-card">
           <h3>${escapeHtml(d.title)}</h3>
           <p>${escapeHtml(d.description)}</p>
@@ -327,10 +336,11 @@ ${cards}
       `        <div class="gallery-item"><img src="${escapeHtml(url)}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>`
     ).join('\n');
 
+    const gridCols = project.gallery_urls!.length === 1 ? '1fr' : 'repeat(2,1fr)';
     galleryHtml = `
   <section class="subpage-gallery reveal">
     <div class="container">
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;">
+      <div style="display:grid;grid-template-columns:${gridCols};gap:1.5rem;">
 ${images}
       </div>
     </div>
@@ -343,7 +353,7 @@ ${images}
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="${homeHref}"><img src="/logos/tytnuevologo.png" alt="T&T" style="height:20px;vertical-align:middle;"></a> <span>/</span> <a href="${workHref}">${breadcrumbWork}</a> <span>/</span> <span class="current">${escapeHtml(project.client_name)}</span>
       </nav>
-      <h1 style="font-family:'Switzer',sans-serif;font-size:clamp(2.8rem,6vw,4.5rem);font-weight:600;">${escapeHtml(project.title)}</h1>
+      <h1 style="font-family:'Switzer',sans-serif;font-size:clamp(2.8rem,6vw,4.5rem);font-weight:600;">${escapeHtml(title)}</h1>
     </div>
   </section>
 
@@ -359,15 +369,15 @@ ${images}
         <div class="feature-stack">
           <div class="feature-stack-item">
             <h3>${challengeLabel}</h3>
-            <p>${escapeHtml(project.challenge || '')}</p>
+            <p>${escapeHtml(challenge || '')}</p>
           </div>
           <div class="feature-stack-item">
             <h3>${solutionLabel}</h3>
-            <p>${escapeHtml(project.solution || '')}</p>
+            <p>${escapeHtml(solution || '')}</p>
           </div>
           <div class="feature-stack-item">
             <h3>${resultLabel}</h3>
-            <p>${escapeHtml(project.result || '')}</p>
+            <p>${escapeHtml(result || '')}</p>
           </div>
         </div>
         <div class="split-media"${splitStyle}></div>
@@ -562,9 +572,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (isWorkDetailRoute(slug)) {
     const project = await getProjectBySlug(slug[1]);
     if (project) {
+      const isEn = lang === 'en';
+      const projectTitle = isEn ? (project.title_en || project.title) : project.title;
+      const projectDesc = isEn ? (project.description_en || project.description) : project.description;
       return {
-        title: `${project.client_name} — ${project.title} | T&T`,
-        description: project.description || `${project.title} — ${project.client_name}`,
+        title: `${project.client_name} — ${projectTitle} | T&T`,
+        description: projectDesc || `${projectTitle} — ${project.client_name}`,
       };
     }
   }
@@ -604,13 +617,28 @@ export default async function Page({ params }: Props) {
 
   // Dynamic project detail page from Supabase
   if (isWorkDetailRoute(slug)) {
-    const project = await getProjectBySlug(slug[1]);
-    if (project) {
-      const projectContent = buildProjectPage(project, lang);
-      const bodyContent = getHeaderHtml(lang, false, slug) + '\n' + projectContent + '\n' + getFooterHtml(lang);
-      return <div className="work-page" dangerouslySetInnerHTML={{ __html: bodyContent }} />;
+    // For EN routes: prefer static HTML if it exists (already translated)
+    // Only use Supabase dynamic rendering if no static file is present
+    if (lang === 'en') {
+      const staticPath = getHtmlPath(lang, slug);
+      if (!fs.existsSync(staticPath)) {
+        const project = await getProjectBySlug(slug[1]);
+        if (project) {
+          const projectContent = buildProjectPage(project, lang);
+          const bodyContent = getHeaderHtml(lang, false, slug) + '\n' + projectContent + '\n' + getFooterHtml(lang);
+          return <div className="work-page" dangerouslySetInnerHTML={{ __html: bodyContent }} />;
+        }
+      }
+      // Static file exists — fall through to static HTML handling below
+    } else {
+      const project = await getProjectBySlug(slug[1]);
+      if (project) {
+        const projectContent = buildProjectPage(project, lang);
+        const bodyContent = getHeaderHtml(lang, false, slug) + '\n' + projectContent + '\n' + getFooterHtml(lang);
+        return <div className="work-page" dangerouslySetInnerHTML={{ __html: bodyContent }} />;
+      }
+      // Project not found in Supabase — fall through to static HTML
     }
-    // Project not found in Supabase — fall through to static HTML
   }
 
   // Dynamic article detail page from Supabase
@@ -658,5 +686,6 @@ export default async function Page({ params }: Props) {
   // Strip hardcoded header/footer from static HTML → use shared nav
   bodyContent = replaceNav(bodyContent, lang, isHomepage, slug);
 
-  return <div className={bodyClass} dangerouslySetInnerHTML={{ __html: bodyContent }} />;
+  const finalClass = isWorkDetailRoute(slug) ? 'work-page' : bodyClass;
+  return <div className={finalClass} dangerouslySetInnerHTML={{ __html: bodyContent }} />;
 }

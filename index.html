@@ -1,64 +1,747 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/favicon/favicontyt.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>T&T | Marketing, Comunicación y Transformación</title>
   <meta name="description" content="Agencia de marketing en Madrid con alcance global. T&T: creatividad, tecnología, estrategia, talento y eventos para marcas que buscan transformación real.">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #0A0A0A;
-      color: #fff;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-    .container {
-      text-align: center;
-    }
-    .spinner {
-      width: 40px;
-      height: 40px;
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      border-top-color: #fff;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin: 0 auto 20px;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-    p {
-      font-size: 16px;
-      margin: 0;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="spinner"></div>
-    <p>Redirigiendo...</p>
-  </div>
-
-  <script>
-    (function() {
-      // Get browser language from Accept-Language header (fallback)
-      // or from navigator.language
-      const browserLang = navigator.language || navigator.userLanguage || '';
-
-      // Check if browser language starts with 'en'
-      const isEnglish = browserLang.toLowerCase().startsWith('en');
-
-      // Redirect to appropriate language version
-      const targetPath = isEnglish ? '/en/' : '/es/';
-
-      // Use location.replace to avoid adding to browser history
-      window.location.replace(targetPath);
-    })();
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/src/main.js"></script>
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "MarketingAgency"],
+    "name": "T&T",
+    "description": "Empresa de marketing, comunicación, tecnología y eventos en Madrid",
+    "url": "https://www.tyt.es",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "C. de Francisco Sancha, 4, 2º planta derecha",
+      "addressLocality": "Madrid",
+      "addressRegion": "Comunidad de Madrid",
+      "postalCode": "28034",
+      "addressCountry": "ES"
+    },
+    "telephone": "+34915134694",
+    "areaServed": {
+      "@type": "Place",
+      "name": "Worldwide"
+    },
+    "serviceType": ["Marketing", "Comunicación", "Tecnología", "Eventos", "Consultoría"]
+  }
   </script>
+</head>
+
+<body>
+
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container container">
+      <div class="logo"><img src="/logos/tytnuevologo.png" alt="T&T" class="logo-img"></div>
+      <nav class="nav">
+        <ul>
+          <div class="nav-glider"></div>
+          <!-- t&think -->
+          <li class="has-dropdown">
+            <a class="nav-vertical-label">t&amp;think <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+            <div class="mega-menu">
+              <div class="mega-menu-container container">
+                <div class="features-list">
+                  <a href="/think/creatividad/" class="feature-item active">
+                    <h3>Creatividad y Dirección de Arte</h3>
+                    <p>Conceptualización y diseño visual de campañas que conectan.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/think/estrategia/" class="feature-item">
+                    <h3>Estrategia de Marca</h3>
+                    <p>Planificación, posicionamiento y arquitectura de marca.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/think/investigacion/" class="feature-item">
+                    <h3>Investigación de Mercado</h3>
+                    <p>Análisis del consumidor, benchmarking y estudios cuali/cuanti.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/think/data-analitica/" class="feature-item">
+                    <h3>Data y Analítica</h3>
+                    <p>Dashboards, modelos de atribución y analítica web.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                </div>
+                <div class="features-multimedia mega-menu-multimedia">
+                  <div class="video-placeholder"></div>
+                  <div class="video-caption">
+                    <h4>Pensamiento Estratégico</h4>
+                    <p>Estrategia, creatividad e inteligencia de datos para marcas que piensan antes de actuar.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- t&tech -->
+          <li class="has-dropdown">
+            <a class="nav-vertical-label">t&amp;tech <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+            <div class="mega-menu">
+              <div class="mega-menu-container container">
+                <div class="features-list">
+                  <a href="/tech/2laps/" class="feature-item active">
+                    <h3>2laps</h3>
+                    <p>Tecnología propia para acelerar procesos de marketing y comunicación.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/tech/1000er/" class="feature-item">
+                    <h3>1000er</h3>
+                    <p>Plataforma de análisis y activación de datos para campañas de alto impacto.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                </div>
+                <div class="features-multimedia mega-menu-multimedia">
+                  <div class="video-placeholder"></div>
+                  <div class="video-caption">
+                    <h4>Tecnología Propia</h4>
+                    <p>Herramientas propias que convierten datos en decisiones y procesos en resultados.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- t&tailor -->
+          <li class="has-dropdown">
+            <a class="nav-vertical-label">t&amp;tailor <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+            <div class="mega-menu">
+              <div class="mega-menu-container container">
+                <div class="features-list">
+                  <a href="/tailor/plv/" class="feature-item active">
+                    <h3>PLV y Displays</h3>
+                    <p>Material de punto de venta, expositores y soportes gráficos de alta calidad.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/tailor/merchandising/" class="feature-item">
+                    <h3>Merchandising y Textil</h3>
+                    <p>Ropa corporativa, artículos promocionales y textil técnico de marca.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/tailor/packaging/" class="feature-item">
+                    <h3>Packaging y Producción</h3>
+                    <p>Packaging premium, roll-ups, vinilos y producción gráfica a medida.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                </div>
+                <div class="features-multimedia mega-menu-multimedia">
+                  <div class="video-placeholder"></div>
+                  <div class="video-caption">
+                    <h4>Producción a Medida</h4>
+                    <p>Todo lo que tu marca necesita fabricar. Del diseño al objeto.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- t&trade -->
+          <li class="has-dropdown">
+            <a class="nav-vertical-label">t&amp;trade <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+            <div class="mega-menu">
+              <div class="mega-menu-container container">
+                <div class="features-list">
+                  <a href="/trade/trade-show/" class="feature-item active">
+                    <h3>Trade Show y Ferias</h3>
+                    <p>Diseño y montaje de stands, logística ferial y activaciones en recinto.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/trade/trade-marketing/" class="feature-item">
+                    <h3>Trade Marketing</h3>
+                    <p>Estrategia shopper, activaciones en punto de venta y material POP.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                </div>
+                <div class="features-multimedia mega-menu-multimedia">
+                  <div class="video-placeholder"></div>
+                  <div class="video-caption">
+                    <h4>Activaciones Comerciales</h4>
+                    <p>Del stand al lineal. Activaciones que convierten espacios en experiencias de marca.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- t&talk -->
+          <li class="has-dropdown">
+            <a class="nav-vertical-label">t&amp;talk <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+            <div class="mega-menu">
+              <div class="mega-menu-container container">
+                <div class="features-list">
+                  <a href="/talk/pr-comunicacion/" class="feature-item active">
+                    <h3>PR y Comunicación</h3>
+                    <p>Relaciones públicas, comunicación corporativa y gestión de reputación.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/talk/seo-paid-media/" class="feature-item">
+                    <h3>SEO, GEO y Paid Media</h3>
+                    <p>Posicionamiento orgánico, publicidad digital y captación de tráfico cualificado.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/talk/content-medios/" class="feature-item">
+                    <h3>Content y Medios</h3>
+                    <p>Estrategia de contenidos, medios convencionales y planificación multimedia.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                </div>
+                <div class="features-multimedia mega-menu-multimedia">
+                  <div class="video-placeholder"></div>
+                  <div class="video-caption">
+                    <h4>Comunicación y Medios</h4>
+                    <p>Que hablen de tu marca. En el medio correcto, con el mensaje exacto.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- t&team -->
+          <li class="has-dropdown">
+            <a class="nav-vertical-label">t&amp;team <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+            <div class="mega-menu">
+              <div class="mega-menu-container container">
+                <div class="features-list">
+                  <a href="/team/captacion/" class="feature-item active">
+                    <h3>Captación y Talento</h3>
+                    <p>Recruiting especializado y Employer Branding.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/team/formacion/" class="feature-item">
+                    <h3>Formación Continua</h3>
+                    <p>Capacitación y desarrollo de habilidades para equipos.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/team/teambuilding/" class="feature-item">
+                    <h3>Teambuilding</h3>
+                    <p>Dinámicas de cohesión y mejora de cultura corporativa.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                </div>
+                <div class="features-multimedia mega-menu-multimedia">
+                  <div class="video-placeholder"></div>
+                  <div class="video-caption">
+                    <h4>Potencia tus Equipos</h4>
+                    <p>Las marcas extraordinarias se construyen con equipos extraordinarios.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- Nosotros -->
+          <li class="has-dropdown">
+            <a class="nav-vertical-label">Nosotros <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+            <div class="mega-menu">
+              <div class="mega-menu-container container">
+                <div class="features-list">
+                  <a href="/empresa/" class="feature-item active">
+                    <h3>La empresa</h3>
+                    <p>Quiénes somos, qué nos mueve y por qué hacemos lo que hacemos.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/clientes/" class="feature-item">
+                    <h3>Clientes</h3>
+                    <p>Marcas que confían en nosotros para construir algo extraordinario.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/insights/" class="feature-item">
+                    <h3>Insights</h3>
+                    <p>Análisis, tendencias y perspectivas del mercado desde dentro.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                  <a href="/contacto/" class="feature-item">
+                    <h3>Contacto</h3>
+                    <p>Cuéntanos tu reto. Empecemos a trabajar.</p>
+                    <span class="arrow">→</span>
+                  </a>
+                </div>
+                <div class="features-multimedia mega-menu-multimedia">
+                  <div class="video-placeholder"></div>
+                  <div class="video-caption">
+                    <h4>T&amp;T</h4>
+                    <p>Tecnología propia. Inteligencia aplicada. Resultados reales.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="header-right">
+        <a href="/contacto/" class="header-connect-btn">Contacto <span class="connect-arrow">→</span></a>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+          <span class="menu-icon">■</span> MENU
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+      <div class="mobile-menu-header">
+        <div class="logo"><img src="/logos/tytnuevologo.png" alt="T&T" class="logo-img"></div>
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+          <span class="menu-icon">■</span> CLOSE
+        </button>
+      </div>
+      <nav class="mobile-menu-nav">
+        <ul>
+          <li><a class="nav-vertical-label">t&amp;think</a></li>
+          <li><a class="nav-vertical-label">t&amp;tech</a></li>
+          <li><a class="nav-vertical-label">t&amp;tailor</a></li>
+          <li><a class="nav-vertical-label">t&amp;trade</a></li>
+          <li><a class="nav-vertical-label">t&amp;talk</a></li>
+          <li><a class="nav-vertical-label">t&amp;team</a></li>
+          <li><a href="/empresa/">Nosotros</a></li>
+          <li><a href="/insights/">Insights</a></li>
+          <li><a href="/contacto/">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-menu-footer">
+        <div class="mobile-social-links">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="Facebook">f</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section — Video Carousel -->
+  <section class="hero">
+    <!-- Video slides with crossfade -->
+    <div class="hero-slides">
+      <div class="hero-slide active" data-index="0">
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="/videos/barcelo.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-slide" data-index="1">
+        <video muted loop playsinline preload="none">
+          <source src="/videos/play.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-slide" data-index="2">
+        <video muted loop playsinline preload="none">
+          <source src="/videos/domperignon.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-slide" data-index="3">
+        <video muted loop playsinline preload="none">
+          <source src="/videos/sabadell.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-slide" data-index="4">
+        <video muted loop playsinline preload="none">
+          <source src="/videos/planeta.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-slide" data-index="5">
+        <video muted loop playsinline preload="none">
+          <source src="/videos/moet.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-slide" data-index="6">
+        <video muted loop playsinline preload="none">
+          <source src="/videos/prime.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-slide" data-index="7">
+        <video muted loop playsinline preload="none">
+          <source src="/videos/lotus.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-slide" data-index="8">
+        <video muted loop playsinline preload="none">
+          <source src="/videos/nivea.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- Hero content wrapper -->
+    <div class="hero-center">
+      <div class="hero-label-fixed">
+        <span class="hero-label">HECHO CON</span>
+        <div class="hero-client-logo">
+          <img src="/favicon/barcelo.png" alt="Barceló" class="client-icon active">
+          <img src="/favicon/playstation.jpg" alt="PlayStation" class="client-icon">
+          <img src="/favicon/domperignom.png" alt="Dom Pérignon" class="client-icon">
+          <img src="/favicon/sabadell.jpg" alt="Sabadell" class="client-icon">
+          <img src="/favicon/planeta.jpeg" alt="Grupo Planeta" class="client-icon">
+          <img src="/favicon/moet.png" alt="Moët" class="client-icon">
+          <img src="/favicon/prime.jpg" alt="Prime" class="client-icon">
+          <img src="/favicon/lotus.png" alt="Lotus" class="client-icon">
+        </div>
+      </div>
+      <div class="hero-name-container">
+        <div class="hero-name-track">
+          <!-- 2 clones (últimos 2 reales) para el loop -->
+          <span>PRIME</span>
+          <span>LOTUS</span>
+          <!-- 8 clientes reales -->
+          <span class="active">BARCELÓ</span>
+          <span>PLAYSTATION</span>
+          <span>DOM PÉRIGNON</span>
+          <span>SABADELL</span>
+          <span>GRUPO PLANETA</span>
+          <span>MOËT&amp;CHANDON</span>
+          <span>PRIME</span>
+          <span>LOTUS</span>
+          <!-- 3 clones (primeros 3 reales) para el loop -->
+          <span>BARCELÓ</span>
+          <span>PLAYSTATION</span>
+          <span>DOM PÉRIGNON</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact button -->
+    <a href="mailto:trucoytrufa@trucoytrufa.es" class="hero-contact-btn">Contáctanos</a>
+
+    <!-- Brand icons -->
+    <div class="hero-brand-icons">
+      <img src="/favicon/barcelo.png" alt="Barceló">
+      <img src="/favicon/playstation.jpg" alt="PlayStation">
+      <img src="/favicon/domperignom.png" alt="Dom Pérignon">
+      <img src="/favicon/sabadell.jpg" alt="Sabadell">
+      <img src="/favicon/planeta.jpeg" alt="Grupo Planeta">
+      <img src="/favicon/moet.png" alt="Moët">
+      <img src="/favicon/prime.jpg" alt="Prime">
+      <img src="/favicon/lotus.png" alt="Lotus">
+    </div>
+
+    <!-- Pause/play control -->
+    <button class="hero-pause" aria-label="Pausar carrusel">
+      <span class="hero-pause-icon">⏸</span>
+    </button>
+  </section>
+
+
+  <!-- Pill Section -->
+  <section class="pill-section">
+    <p class="pill-tagline">Acelerando el crecimiento a través del marketing y la tecnología</p>
+    <div class="pill-rings-wrap">
+      <div class="pill-ring pill-ring-1"></div>
+      <div class="pill-ring pill-ring-2"></div>
+      <div class="pill-ring pill-ring-3"></div>
+      <div class="pill-ring pill-ring-4"></div>
+      <div class="pill-logo">
+        <img src="/logos/tytnuevologo.png" alt="T&T">
+      </div>
+      <div class="pill-inner">
+        <div class="pill-services">
+          <span>t&amp;tech</span>
+          <span class="pill-plus">+</span>
+          <span>t&amp;talk</span>
+          <span class="pill-plus">+</span>
+          <span>t&amp;think</span>
+          <span class="pill-plus">+</span>
+          <span>t&amp;trade</span>
+          <span class="pill-plus">+</span>
+          <span>t&amp;tailor</span>
+          <span class="pill-plus">+</span>
+          <span>t&amp;team</span>
+        </div>
+      </div>
+    </div>
+    <p class="pill-sub">Cada reto requiere una combinación diferente.<br>Seis unidades. Un sistema integrado. Ensamblado en torno a tu reto.</p>
+  </section>
+
+  <!-- Services Offerings Section -->
+  <section class="offerings-section">
+    <div class="container">
+      <h2 class="offerings-heading">Tu socio de confianza en innovación a través de seis líneas de negocio estratégicas:</h2>
+      <div class="offerings-grid">
+        <div class="offering-card">
+          <div class="offering-number">01</div>
+          <div class="offering-image"></div>
+          <span class="offering-label">Creatividad & Estrategia</span>
+          <h3 class="offering-title">t&think <span class="offering-arrow">→</span></h3>
+          <div class="offering-tooltip">Creatividad, dirección de arte, estrategia de marca e investigación de mercado</div>
+        </div>
+        <div class="offering-card">
+          <div class="offering-number">02</div>
+          <div class="offering-image"></div>
+          <span class="offering-label">Tecnología IA</span>
+          <h3 class="offering-title">t&tech <span class="offering-arrow">→</span></h3>
+          <div class="offering-tooltip">2laps, Murphy y 1000er.ai — nuestras herramientas propias de IA</div>
+        </div>
+        <a href="/tailor/" class="offering-card">
+          <div class="offering-number">03</div>
+          <div class="offering-image"></div>
+          <span class="offering-label">Producción</span>
+          <h3 class="offering-title">t&tailor <span class="offering-arrow">→</span></h3>
+          <div class="offering-tooltip">PLV, packaging, merchandising y producción a medida</div>
+        </a>
+        <a href="/trade/" class="offering-card">
+          <div class="offering-number">04</div>
+          <div class="offering-image"></div>
+          <span class="offering-label">Trade & Eventos</span>
+          <h3 class="offering-title">t&trade <span class="offering-arrow">→</span></h3>
+          <div class="offering-tooltip">Trade shows, ferias y activaciones en punto de venta</div>
+        </a>
+        <a href="/talk/" class="offering-card">
+          <div class="offering-number">05</div>
+          <div class="offering-image"></div>
+          <span class="offering-label">PR & Comunicación</span>
+          <h3 class="offering-title">t&talk <span class="offering-arrow">→</span></h3>
+          <div class="offering-tooltip">PR, comunicación, SEO, GEO y medios</div>
+        </a>
+        <a href="/team/" class="offering-card">
+          <div class="offering-number">06</div>
+          <div class="offering-image"></div>
+          <span class="offering-label">Talento</span>
+          <h3 class="offering-title">t&team <span class="offering-arrow">→</span></h3>
+          <div class="offering-tooltip">Captación de talento, formación y teambuilding</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI / Tech Section — monks style -->
+  <section class="ai-section">
+    <div class="container">
+      <div class="ai-grid">
+        <div class="ai-text">
+          <h2 class="ai-heading">Liderazgo en IA real y tangible, respaldado por tecnología propia.</h2>
+          <p class="ai-description">Mientras otros hablan de IA, nosotros entregamos resultados. Somos el socio esencial para la inteligencia de última milla, cerrando la brecha entre las plataformas de IA y el impacto real en negocio. Con nuestras herramientas propias — 2laps, Murphy y 1000er.ai — adaptamos la tecnología a tus objetivos específicos, convirtiendo herramientas potentes en una ventaja competitiva real.</p>
+        </div>
+        <div class="ai-visual">
+          <div class="ai-visual-image" style="background:url('/projects/roc-digital/hero.jpg') center/cover no-repeat;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner Section -->
+  <section class="cta-connect">
+    <div class="cta-connect-container container">
+      <span class="cta-connect-label">Contacto</span>
+      <h2 class="cta-connect-heading">¿Qué podemos hacer por <span class="cta-you">ti</span>?</h2>
+      <a href="/contacto/" class="cta-connect-btn">
+        <span class="cta-connect-btn-text">Escríbenos</span>
+        <span class="cta-connect-btn-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Client Stories Section -->
+  <section class="client-stories">
+    <div class="client-stories-container container">
+      <span class="client-stories-label">Casos de éxito</span>
+      <div class="client-stories-list">
+        <a href="/work/moet-chandon-escaparate/" class="client-story-item" data-image="/projects/moet-chandon-escaparate/hero.jpg">
+          <h3>Moët & Chandon — Escaparate El Corte Inglés</h3>
+        </a>
+        <a href="/work/dom-perignon-lady-gaga/" class="client-story-item" data-image="/projects/dom-perignon-lady-gaga/hero.jpg">
+          <h3>Dom Pérignon x Lady Gaga</h3>
+        </a>
+        <a href="/work/sony-playstation-days-of-play/" class="client-story-item" data-image="/projects/sony-playstation-days-of-play/hero.jpg">
+          <h3>PlayStation — Days of Play</h3>
+        </a>
+        <a href="/work/barcelo-nevalia/" class="client-story-item" data-image="/projects/barcelo-nevalia/hero.jpg">
+          <h3>Barceló — Festival Nevalia</h3>
+        </a>
+        <a href="/work/campofrio-snackin/" class="client-story-item" data-image="/projects/campofrio-snackin/hero.jpg">
+          <h3>Campofrío — Snack'in</h3>
+        </a>
+      </div>
+      <div class="client-stories-image">
+        <div class="client-stories-carousel">
+          <div class="carousel-item" data-index="0">
+            <img src="/projects/moet-chandon-escaparate/hero.jpg" alt="Moët & Chandon">
+          </div>
+          <div class="carousel-item" data-index="1">
+            <img src="/projects/dom-perignon-lady-gaga/hero.jpg" alt="Dom Pérignon">
+          </div>
+          <div class="carousel-item" data-index="2">
+            <img src="/projects/sony-playstation-days-of-play/hero.jpg" alt="PlayStation">
+          </div>
+          <div class="carousel-item" data-index="3">
+            <img src="/projects/barcelo-nevalia/hero.jpg" alt="Barceló">
+          </div>
+          <div class="carousel-item" data-index="4">
+            <img src="/projects/campofrio-snackin/hero.jpg" alt="Campofrío">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reports Section -->
+  <section class="reports-section">
+    <div class="reports-container">
+      <div class="reports-image-outer">
+        <div class="reports-image-wrapper">
+          <img src="/projects/moet-chandon-escaparate/hero.jpg" alt="Report" class="reports-image">
+        </div>
+      </div>
+      <div class="reports-content container">
+        <span class="reports-label">Informe</span>
+        <h2 class="reports-title">Owning the Answer: The Marketer's Playbook for AEO, GEO and the AI Search Era</h2>
+        <p class="reports-meta">Por T&T · 2 min de lectura</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section class="articles-section">
+    <div class="articles-container container">
+      <div class="articles-grid">
+        <article class="article-card">
+          <div class="article-image-wrapper" style="background: #E0E0E0;"></div>
+          <span class="article-label">Artículo</span>
+          <h3 class="article-title">El ADN de tu marca es el diferenciador definitivo en IA</h3>
+          <p class="article-meta">Por Jessica Ross · 4 min de lectura</p>
+        </article>
+
+        <article class="article-card">
+          <div class="article-image-wrapper" style="background: #E0E0E0;"></div>
+          <span class="article-label">Artículo</span>
+          <h3 class="article-title">Dominar el caos de marca con soluciones de agentes de IA a medida</h3>
+          <p class="article-meta">Por Iran Reyes · 4 min de lectura</p>
+        </article>
+
+        <article class="article-card">
+          <div class="article-image-wrapper" style="background: #E0E0E0;"></div>
+          <span class="article-label">Contenido</span>
+          <h3 class="article-title">CES 2026: de la visión a la velocidad</h3>
+          <p class="article-meta">Por T&T Team</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- En el radar Section -->
+  <section class="radar-section">
+    <div class="container">
+      <h2 class="radar-title">En el radar</h2>
+      <div class="radar-list">
+        <a href="/insights/" class="radar-item">
+          <span class="radar-type">Informe</span>
+          <div class="radar-content">
+            <span class="radar-headline">Owning the Answer: The Marketer's Playbook</span>
+            <span class="radar-sub">para AEO, GEO y la era de la búsqueda con IA</span>
+          </div>
+          <span class="radar-time">2 min de lectura</span>
+          <span class="radar-cta">Leer ahora <span class="radar-arrow">→</span></span>
+        </a>
+        <a href="/insights/" class="radar-item">
+          <span class="radar-type">Artículo</span>
+          <div class="radar-content">
+            <span class="radar-headline">El ADN de tu marca es el diferenciador definitivo en IA</span>
+            <span class="radar-sub">Por qué la identidad propia supera a cualquier prompt</span>
+          </div>
+          <span class="radar-time">4 min de lectura</span>
+          <span class="radar-cta">Leer ahora <span class="radar-arrow">→</span></span>
+        </a>
+        <a href="/insights/" class="radar-item">
+          <span class="radar-type">Artículo</span>
+          <div class="radar-content">
+            <span class="radar-headline">Dominar el caos de marca con agentes de IA a medida</span>
+            <span class="radar-sub">Sistemas multi-agente para marketing empresarial</span>
+          </div>
+          <span class="radar-time">4 min de lectura</span>
+          <span class="radar-cta">Leer ahora <span class="radar-arrow">→</span></span>
+        </a>
+        <a href="/insights/" class="radar-item">
+          <span class="radar-type">Análisis</span>
+          <div class="radar-content">
+            <span class="radar-headline">GEO vs SEO: La guerra por la visibilidad en la era de la IA</span>
+            <span class="radar-sub">Cómo aparecen las marcas en ChatGPT, Perplexity y Gemini</span>
+          </div>
+          <span class="radar-time">5 min de lectura</span>
+          <span class="radar-cta">Leer ahora <span class="radar-arrow">→</span></span>
+        </a>
+        <a href="/insights/" class="radar-item">
+          <span class="radar-type">Contenido</span>
+          <div class="radar-content">
+            <span class="radar-headline">CES 2026: de la visión a la velocidad</span>
+            <span class="radar-sub">Las tendencias que están transformando la tecnología de marketing este año</span>
+          </div>
+          <span class="radar-time">3 min de lectura</span>
+          <span class="radar-cta">Leer ahora <span class="radar-arrow">→</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-container container">
+      <div class="footer-top">
+        <div class="footer-logo"><img src="/logos/tytnuevologo.png" alt="T&T" style="height:32px;"></div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Servicios</h4>
+            <ul>
+              <li><a href="/think/">t&amp;think</a></li>
+              <li><a href="/tech/">t&amp;tech</a></li>
+              <li><a href="/tailor/">t&amp;tailor</a></li>
+              <li><a href="/trade/">t&amp;trade</a></li>
+              <li><a href="/talk/">t&amp;talk</a></li>
+              <li><a href="/team/">t&amp;team</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Productos</h4>
+            <ul>
+              <li><a href="/tech/2laps/">2laps</a></li>
+              <li><a href="/tech/1000er/">1000er</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Nosotros</h4>
+            <ul>
+              <li><a href="/empresa/">La empresa</a></li>
+              <li><a href="/clientes/">Clientes</a></li>
+              <li><a href="/insights/">Insights</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="/privacidad/">Política de privacidad</a></li>
+              <li><a href="/aviso-legal/">Aviso legal</a></li>
+              <li><a href="/cookies/">Cookies</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-social">
+          <a href="#" class="footer-social-icon" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="X / Twitter">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.631L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+          </a>
+          <span class="footer-follow-label">Síguenos</span>
+        </div>
+        <a href="/insights/" class="footer-newsletter-btn">Insights <span>→</span></a>
+        <p class="footer-copyright">&copy; 2026 T&T. Madrid, España.</p>
+      </div>
+    </div>
+  </footer>
+  </div><!-- /page-wrapper -->
+  <script src="/peek-acceso.js"></script>
+  <script src="/cookie-consent.js"></script>
 </body>
+
 </html>
