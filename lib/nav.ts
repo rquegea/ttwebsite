@@ -373,7 +373,7 @@ const ES_FOOTER = `<footer class="footer">
         <nav class="footer-nav">
           <a href="/es/brand-radar/">Soluciones</a>
           <a href="/es/marketing/brand/">Marketing</a>
-          <a href="/es/tech/">Tecnología</a>
+          <a href="/es/">Tecnología</a>
           <a href="/es/work/">Trabajo</a>
           <a href="/es/empresa/">Nosotros</a>
         </nav>
@@ -408,7 +408,7 @@ const EN_FOOTER = `<footer class="footer">
         <nav class="footer-nav">
           <a href="/en/brand-radar/">Solutions</a>
           <a href="/en/marketing/brand/">Marketing</a>
-          <a href="/en/tech/">Technology</a>
+          <a href="/en/">Technology</a>
           <a href="/en/work/">Work</a>
           <a href="/en/company/">About</a>
         </nav>

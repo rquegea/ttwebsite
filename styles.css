@@ -4350,6 +4350,12 @@ a {
 .work-page .cta-banner--light {
   background-color: #F0EDE8;
 }
+.work-page .subpage-hero h1 {
+  font-family: 'Switzer', 'Inter', sans-serif;
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
 .work-page .cta-banner--light {
   border-top-color: rgba(10,10,10,0.1);
 }
@@ -4364,4 +4370,11 @@ a {
   pointer-events: none;
   z-index: 999;
   display: none;
+}
+/* ─── Accessibility: focus-visible ─── */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid #CC2936;
+  outline-offset: 3px;
+  border-radius: 2px;
 }
