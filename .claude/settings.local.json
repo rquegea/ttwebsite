@@ -118,7 +118,9 @@
       "Bash(awk 'NR>1 {print $2, $1, $9}')",
       "Bash(gsutil --version)",
       "Bash(bash *)",
-      "Bash(git diff *)"
+      "Bash(git diff *)",
+      "Bash(cat \"app/[lang]/[[...slug]]/page.tsx\")",
+      "Read(//tmp/**)"
     ]
   }
 }
