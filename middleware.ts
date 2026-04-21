@@ -27,9 +27,11 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Root "/" → "/es/"
+  // Root "/" → detect language from Accept-Language header
   if (pathname === '/') {
-    return NextResponse.redirect(new URL('/es/', request.url), 308);
+    const acceptLanguage = request.headers.get('accept-language') || 'es';
+    const lang = acceptLanguage.toLowerCase().startsWith('en') ? 'en' : 'es';
+    return NextResponse.redirect(new URL(`/${lang}/`, request.url), 308);
   }
 
   // Legacy ES paths without prefix → redirect to /es/...
