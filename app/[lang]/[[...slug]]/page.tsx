@@ -158,7 +158,7 @@ function escapeHtml(str: string): string {
 }
 
 function buildProjectsGrid(projects: Project[], lang = 'es'): string {
-  const workBase = lang === 'en' ? '/en/work/' : '/work/';
+  const workBase = lang === 'en' ? '/en/work/' : '/es/work/';
   const cards = projects.map((p) => {
     const hasVideo = p.video_url && p.video_url.trim() !== '';
     const imgStyle = hasVideo
@@ -201,7 +201,7 @@ ${cards.join('\n')}
 }
 
 function buildProjectsTable(projects: Project[], lang = 'es'): string {
-  const workBase = lang === 'en' ? '/en/work/' : '/work/';
+  const workBase = lang === 'en' ? '/en/work/' : '/es/work/';
   const rows = projects.map((p) => {
     // Solutions: mostrar disciplinas o vacío
     let solutionsHtml = '';
@@ -249,7 +249,7 @@ function replaceProjectsSection(html: string, projects: Project[], lang = 'es'):
     return html.replace(tableRegex, tableHtml);
   } else {
     // For homepage: replace the grid cards with dynamic data
-    const workBase = lang === 'en' ? '/en/work/' : '/work/';
+    const workBase = lang === 'en' ? '/en/work/' : '/es/work/';
     const gridRegex = /<div class="projects-grid-home">[\s\S]*?<\/div>/i;
     const gridCards = projects.map((p) => {
       const hasVideo = p.video_url && p.video_url.trim() !== '';
@@ -327,9 +327,9 @@ function buildProjectPage(project: Project, lang: string): string {
   const disciplinesLabel = isEn ? 'Disciplines applied in this project' : 'Disciplinas aplicadas en este proyecto';
   const ctaHeading = isEn ? 'Your brand,<br>the next success story?' : '¿Tu marca,<br>el próximo caso de éxito?';
   const ctaButton = isEn ? "Let's talk" : 'Hablemos';
-  const contactHref = isEn ? '/en/contact/' : '/contacto/';
-  const homeHref = isEn ? '/en/' : '/';
-  const workHref = isEn ? '/en/work/' : '/work/';
+  const contactHref = isEn ? '/en/contact/' : '/es/contacto/';
+  const homeHref = isEn ? '/en/' : '/es/';
+  const workHref = isEn ? '/en/work/' : '/es/work/';
 
   const showcaseStyle = project.showcase_image_url
     ? ` style="background:url('${escapeHtml(project.showcase_image_url)}') center/cover no-repeat; min-height:500px; border-radius:8px;"`
@@ -465,7 +465,7 @@ function formatArticleDate(iso: string | null, lang: string): string {
 }
 
 function articleHref(article: Article, lang: string): string {
-  return lang === 'en' ? `/en/insights/${article.slug}/` : `/insights/${article.slug}/`;
+  return lang === 'en' ? `/en/insights/${article.slug}/` : `/es/insights/${article.slug}/`;
 }
 
 function buildJournalCards(articles: Article[], lang: string): string {
@@ -530,8 +530,8 @@ function buildArticleDetailPage(article: Article, related: Article[], lang: stri
   const shareLabel = isEn ? 'Share' : 'Compartir';
   const relatedLabel = isEn ? 'You may also like' : 'También te puede interesar';
   const byLabel = isEn ? 'By' : 'Por';
-  const homeHref = isEn ? '/en/' : '/';
-  const insightsHref = isEn ? '/en/insights/' : '/insights/';
+  const homeHref = isEn ? '/en/' : '/es/';
+  const insightsHref = isEn ? '/en/insights/' : '/es/insights/';
   const date = formatArticleDate(article.published_at, lang);
 
   const shareUrl = `https://www.trucoytrufa.es${articleHref(article, lang)}`;
