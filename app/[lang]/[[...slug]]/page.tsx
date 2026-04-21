@@ -4,7 +4,44 @@ import fs from 'fs';
 import path from 'path';
 import { getPublishedProjects, getProjectBySlug, getPublishedArticles, getArticleBySlug, getLatestArticles, getRelatedArticles } from '@/lib/supabase/queries';
 import type { Project, Article } from '@/lib/supabase/types';
-import { getHeaderHtml, getFooterHtml } from '@/lib/nav';
+import { getHeaderHtml, getFooterHtml, getAltLangUrl } from '@/lib/nav';
+
+const SITE_BASE = 'https://www.trucoytrufa.es';
+
+function computeAlternates(lang: string, slug: string[], alwaysBilingual = false) {
+  const root = process.cwd();
+  const slugPath = slug.join('/');
+  const selfUrl = slugPath ? `${SITE_BASE}/${lang}/${slugPath}/` : `${SITE_BASE}/${lang}/`;
+  const altRelUrl = getAltLangUrl(lang, slug);
+  const altUrl = `${SITE_BASE}${altRelUrl}`;
+  const esUrl = lang === 'es' ? selfUrl : altUrl;
+  const enUrl = lang === 'en' ? selfUrl : altUrl;
+
+  let bilingual: boolean;
+  if (alwaysBilingual) {
+    bilingual = true;
+  } else if (lang === 'es') {
+    const enParts = altRelUrl.replace(/^\/en\/?/, '').replace(/\/$/, '').split('/').filter(Boolean);
+    const enHtml = enParts.length === 0
+      ? path.join(root, 'en', 'index.html')
+      : path.join(root, 'en', ...enParts, 'index.html');
+    bilingual = fs.existsSync(enHtml);
+  } else {
+    const esParts = altRelUrl.replace(/^\/es\/?/, '').replace(/\/$/, '').split('/').filter(Boolean);
+    const esHtml = esParts.length === 0
+      ? path.join(root, 'index.html')
+      : path.join(root, ...esParts, 'index.html');
+    bilingual = fs.existsSync(esHtml);
+  }
+
+  const languages: Record<string, string> = bilingual
+    ? { 'es-ES': esUrl, 'en-US': enUrl, 'x-default': esUrl }
+    : lang === 'es'
+      ? { 'es-ES': selfUrl, 'x-default': selfUrl }
+      : { 'en-US': selfUrl, 'x-default': selfUrl };
+
+  return { canonical: selfUrl, languages };
+}
 
 export const dynamicParams = false;
 
@@ -567,6 +604,7 @@ ${buildJournalCards(related, lang)}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang, slug = [] } = params;
+  const alternates = computeAlternates(lang, slug);
 
   // Dynamic project detail page
   if (isWorkDetailRoute(slug)) {
@@ -578,6 +616,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       return {
         title: `${project.client_name} — ${projectTitle} | T&T`,
         description: projectDesc || `${projectTitle} — ${project.client_name}`,
+        alternates: computeAlternates(lang, slug, true),
       };
     }
   }
@@ -596,12 +635,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           type: 'article',
           images: article.image_url ? [article.image_url] : undefined,
         },
+        alternates: computeAlternates(lang, slug, true),
       };
     }
   }
 
   const htmlPath = getHtmlPath(lang, slug);
-  if (!fs.existsSync(htmlPath)) return {};
+  if (!fs.existsSync(htmlPath)) return { alternates };
 
   const html = fs.readFileSync(htmlPath, 'utf-8');
   const title = html.match(/<title>([^<]*)<\/title>/i)?.[1];
@@ -609,7 +649,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     /<meta[^>]*name="description"[^>]*content="([^"]+)"/i
   )?.[1];
 
-  return { title, description };
+  return { title, description, alternates };
 }
 
 export default async function Page({ params }: Props) {
