@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 .page-wrapper {
     position: relative;
 }
@@ -1929,6 +1933,7 @@ a {
     justify-content: center;
     gap: 3.5rem;
     padding: 10rem 2rem;
+    overflow: hidden;
 }
 
 .pill-tagline {
