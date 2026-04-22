@@ -4383,3 +4383,10 @@ a {
   outline-offset: 3px;
   border-radius: 2px;
 }
+
+/* ─── Mobile overflow fix: header-container padding ─── */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0 1.5rem;
+    }
+}
