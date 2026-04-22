@@ -1556,7 +1556,7 @@ a {
     width: 480px;
     height: 480px;
     z-index: 1;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .client-stories-carousel {
