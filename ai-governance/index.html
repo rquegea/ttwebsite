@@ -44,7 +44,33 @@
       position: relative;
       display: flex; flex-direction: column; justify-content: flex-end;
       padding: 0 clamp(2rem, 5vw, 5rem) 5rem;
+      overflow: hidden;
+      background: #0a0a0a;
+      isolation: isolate;
     }
+    .ag-stage {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .ag-stage canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .br-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .br-hero > .br-hero-inner,
+    .br-hero > .br-scroll { position: relative; z-index: 2; }
     .br-hero-inner {
       position: relative;
       display: grid; grid-template-columns: auto auto;
@@ -273,6 +299,9 @@
 
   <!-- Hero -->
   <section class="br-hero">
+    <div class="ag-stage" aria-hidden="true">
+      <canvas class="ag-wall"></canvas>
+    </div>
     <div class="br-hero-inner">
       <p class="br-hero-label">AI Governance</p>
       <p class="br-h1-line1">Tu empresa preparada para la era de la IA.</p>

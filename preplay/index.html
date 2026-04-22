@@ -46,7 +46,33 @@
       flex-direction: column;
       justify-content: flex-end;
       padding: 0 clamp(2rem, 5vw, 5rem) 5rem;
+      overflow: hidden;
+      background: #000000;
+      isolation: isolate;
     }
+    .pp-stage {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .pp-net {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .br-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .br-hero > .br-hero-inner,
+    .br-hero > .br-scroll { position: relative; z-index: 2; }
     .br-hero-inner {
       position: relative;
       display: grid;
@@ -310,6 +336,9 @@
 
   <!-- Hero -->
   <section class="br-hero">
+    <div class="pp-stage" aria-hidden="true">
+      <canvas class="pp-net" aria-hidden="true"></canvas>
+    </div>
     <div class="br-hero-inner">
       <p class="br-hero-label">Preplay</p>
       <p class="br-h1-line1">Prueba tu campaña antes de lanzarla.</p>

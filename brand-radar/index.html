@@ -48,7 +48,29 @@
       flex-direction: column;
       justify-content: flex-end;
       padding: 0 clamp(2rem, 5vw, 5rem) 5rem;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 50% 48%, #0f0f18 0%, #09090f 60%, #050508 100%);
+      isolation: isolate;
     }
+    .br-hexcanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      display: block;
+    }
+    .br-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .br-hero > .br-hero-inner,
+    .br-hero > .br-scroll { position: relative; z-index: 2; }
     .br-hero-inner {
       position: relative;
       display: grid;
@@ -594,6 +616,7 @@
 
   <!-- Hero -->
   <section class="br-hero">
+    <canvas class="br-hexcanvas" aria-hidden="true"></canvas>
     <div class="br-hero-inner">
       <p class="br-hero-label">Brand Radar</p>
       <p class="br-h1-line1">Tu marca vista desde fuera.</p>

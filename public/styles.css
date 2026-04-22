@@ -1550,19 +1550,23 @@ a {
 
 .client-stories-image {
     position: absolute;
-    right: 12%;
-    top: 50%;
-    margin-top: -240px;
-    width: 480px;
-    height: 480px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     z-index: 1;
     overflow: hidden;
+    pointer-events: none;
 }
 
 .client-stories-carousel {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: auto;
+    right: 12%;
+    width: 480px;
+    height: 480px;
+    margin-top: -240px;
     transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -4937,4 +4941,58 @@ a.article-card .article-image-wrapper {
     .header-container {
         padding: 0 1.5rem;
     }
+}
+
+/* Marketing vertical hero — responsive label/title */
+.mk-hero {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.mk-hero-label-col,
+.mk-hero-title-col {
+  max-width: 600px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.mk-hero-label {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+.mk-hero-title {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 700;
+  line-height: 1;
+  margin: 0 0 0.75rem 0;
+}
+.mk-hero-lede {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 1.25rem;
+  margin: 0;
+  line-height: 1.4;
+  text-align: left;
+}
+@media (max-width: 768px) {
+  .mk-hero {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .mk-hero-label-col,
+  .mk-hero-title-col {
+    min-height: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  .mk-hero-label {
+    font-size: 1rem;
+  }
+  .mk-hero-lede {
+    font-size: 1.1rem;
+  }
 }
