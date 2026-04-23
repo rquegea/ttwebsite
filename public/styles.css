@@ -1128,26 +1128,28 @@ a {
     font-weight: 600;
     color: #0A0A0A;
     margin-top: 0.3rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.offering-arrow {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    border: 1px solid #0A0A0A;
-    border-radius: 50%;
-    font-size: 0.8rem;
-    transition: all 0.3s ease;
+    gap: 0.5rem;
+    position: relative;
+    align-self: flex-start;
 }
 
-.offering-card:hover .offering-arrow {
-    background: #0A0A0A;
-    color: #FFFFFF;
+.offering-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 2px;
+    background: #CC2936;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.3s ease;
+}
+
+.offering-card:hover .offering-title::after {
+    transform: scaleX(1);
 }
 
 .offering-card:hover .offering-image {
