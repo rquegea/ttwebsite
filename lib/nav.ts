@@ -124,6 +124,7 @@ function getEsHeader(isHomepage: boolean, slug: string[]): string {
               <a href="/es/marketing/events/">Eventos</a>
               <a href="/es/marketing/production/">Producción</a>
               <a href="/es/marketing/talent/">Talento</a>
+              <a href="https://merch.trucoytrufa.es" target="_blank" rel="noopener noreferrer">Merchandising ↗</a>
             </div>
           </li>
           <li class="has-dropdown">
@@ -187,6 +188,7 @@ function getEsHeader(isHomepage: boolean, slug: string[]): string {
               <li><a href="/es/marketing/events/">Eventos</a></li>
               <li><a href="/es/marketing/production/">Producción</a></li>
               <li><a href="/es/marketing/talent/">Talento</a></li>
+              <li><a href="https://merch.trucoytrufa.es" target="_blank" rel="noopener noreferrer">Merchandising ↗</a></li>
             </ul>
           </li>
           <li class="mobile-menu-item has-submenu">
@@ -260,6 +262,7 @@ function getEnHeader(isHomepage: boolean, slug: string[]): string {
               <a href="/en/marketing/events/">Events</a>
               <a href="/en/marketing/production/">Production</a>
               <a href="/en/marketing/talent/">Talent</a>
+              <a href="https://merch.trucoytrufa.es" target="_blank" rel="noopener noreferrer">Merchandising ↗</a>
             </div>
           </li>
           <li class="has-dropdown">
@@ -323,6 +326,7 @@ function getEnHeader(isHomepage: boolean, slug: string[]): string {
               <li><a href="/en/marketing/events/">Events</a></li>
               <li><a href="/en/marketing/production/">Production</a></li>
               <li><a href="/en/marketing/talent/">Talent</a></li>
+              <li><a href="https://merch.trucoytrufa.es" target="_blank" rel="noopener noreferrer">Merchandising ↗</a></li>
             </ul>
           </li>
           <li class="mobile-menu-item has-submenu">
